@@ -1,0 +1,197 @@
+#!/usr/bin/make -f
+
+# Comment this to turn off verbose mode.
+# export DH_VERBOSE=1
+
+config: config-stamp
+config-stamp:
+	dh_testdir
+
+	# Create autoconf stuff, if not present
+	if test ! -f configure; then $(MAKE) -f debian/rules clean; fi
+	chmod +x ./configure
+
+	# refclock version
+	mkdir -p build-refclock
+	cd build-refclock && ../configure --prefix=/usr \
+		--enable-all-clocks --enable-parse-clocks --enable-SHM \
+		--disable-debugging --sysconfdir=/var/lib/ntp \
+		--cache-file=../config.cache --disable-errorcache \
+		--enable-linuxcaps
+	touch build-refclock/stamp-h.in
+
+	# build simple version
+	mkdir -p build-simple
+	cd build-simple && ../configure --prefix=/usr \
+		--disable-all-clocks --disable-parse-clocks \
+		--disable-debugging --enable-LOCAL-CLOCK \
+		--sysconfdir=/var/lib/ntp --cache-file=../config.cache \
+		--disable-errorcache --enable-linuxcaps
+	touch build-simple/stamp-h.in
+
+	touch config-stamp
+
+build: build-stamp
+build-stamp: config-stamp
+	dh_testdir
+
+	make -C build-refclock/ntpd
+	make -C build-simple
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f config-stamp build-stamp 
+	rm -rf build-simple build-refclock
+	rm -f config.cache
+
+	-test -r /usr/share/misc/config.sub && \
+		cp -f /usr/share/misc/config.sub config.sub
+	-test -r /usr/share/misc/config.guess && \
+		cp -f /usr/share/misc/config.guess config.guess
+
+	-if test -f aclocal.m4 ; then touch aclocal.m4; else aclocal-1.7; fi
+	-if test -f config.h.in ; then touch config.h.in; else autoheader; fi
+	-if test -f Makefile.in ; then find . -name Makefile.in -exec touch {} \; ;\
+		else automake-1.7 --copy --add-missing; fi
+
+	-if test -f configure ; then touch configure; else autoconf; fi
+	-if test -f version ; then touch version; else \
+		dpkg-parsechangelog | sed -ne 's/^Version:[ 	]*//p' > version; fi
+
+	dh_clean
+
+install: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	$(MAKE) -C build-simple install \
+		bindir=`pwd`/debian/ntp/usr/sbin \
+		prefix=`pwd`/debian/ntp/usr
+
+	# move the user-space programs from /usr/sbin to /usr/bin
+	for file in ntpq ntpdc ntptrace; do \
+		mv debian/ntp/usr/sbin/$$file debian/ntp/usr/bin/$$file; \
+	done
+
+	# move the daemon to their packages
+	mv debian/ntp/usr/sbin/ntpd debian/ntp-simple/usr/sbin/ntpd
+	install build-refclock/ntpd/ntpd debian/ntp-refclock/usr/sbin/ntpd
+
+	# move support programs
+	for file in ntp-wait ntptime tickadj; do \
+		mv debian/ntp/usr/sbin/$$file debian/ntp-server/usr/sbin/$$file; \
+	done
+
+	install -o root -g root -m 755 debian/ntp-server.ifup \
+		debian/ntp-server/etc/network/if-up.d/ntp-server
+	install -o root -g root -m 0755 build-simple/scripts/ntpsweep \
+		debian/ntp/usr/bin/ntpsweep
+	install -o root -g root -m 0755 build-simple/util/ntp-keygen \
+		debian/ntp/usr/sbin/ntp-keygen
+	install -o root -g root -m 0644 debian/ntpsweep.1 \
+		debian/ntp/usr/share/man/man1/ntpsweep.1
+	# hand-craft the manpages since they're all worthless creations...
+
+	install -o root -g root -m 0644 debian/ntpdate.1 \
+		debian/ntpdate/usr/share/man/man1/ntpdate.1
+	install -o root -g root -m 0644 debian/ntpd.1 \
+		debian/ntp-simple/usr/share/man/man1/ntpd.1
+	install -o root -g root -m 0644 debian/ntpd.1 \
+		debian/ntp-refclock/usr/share/man/man1/ntpd.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp/usr/share/man/man1/ntpdc.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp/usr/share/man/man1/ntp-keygen.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp-server/usr/share/man/man1/ntp-wait.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp/usr/share/man/man1/ntpq.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp/usr/share/man/man1/ntptrace.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp-server/usr/share/man/man1/tickadj.1
+	install -o root -g root -m 0644 debian/useless.1 \
+		debian/ntp-server/usr/share/man/man1/ntptime.1
+	install -o root -g root -m 0644 debian/ntp.conf \
+		debian/ntp-server/etc
+	install -o root -g root -m 0644 debian/useless.5 \
+		debian/ntp-server/usr/share/man/man5/ntp.conf.5
+	install -o root -g root -m 0644 debian/ntpdate.default \
+		debian/ntpdate/etc/default/ntpdate
+	install -o root -g root -m 0644 debian/ntp-server.ignore \
+		debian/ntp-server/etc/logcheck/ignore.d.server/ntp-server
+	install -o root -g root -m 0644 debian/ntpdate.ignore \
+		debian/ntpdate/etc/logcheck/ignore.d.server/ntpdate
+
+	dh_movefiles --sourcedir=debian/ntp
+
+# Build architecture-independent files here.
+binary-indep: build install
+#	dh_testversion
+	dh_testdir -i
+	dh_testroot -i
+	dh_installdocs -i html
+	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/hints/solaris*
+	find debian/ntp-doc/usr/share/doc/ntp-doc/html/ -name SCCS -print0 \
+		| xargs -0r rm -rf
+	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/htmlprimer.html
+	dh_installexamples -i
+	dh_installmenu -i
+#	dh_installemacsen -i
+#	dh_installinit -i
+	dh_installcron -i
+	dh_installdebconf -i
+#	dh_installmanpages -i ansi2knr.1
+#	dh_undocumented
+	dh_installchangelogs -i
+	gzip -9f debian/ntp-doc/usr/share/doc/ntp-doc/changelog.Debian
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+# Build architecture-dependent files here.
+binary-arch: build install
+#	dh_testversion
+	dh_testdir -a
+	dh_testroot -a
+	dh_installdocs -a
+	dh_installexamples -a
+	dh_installmenu -a
+#	dh_installemacsen -a
+	dh_installdebconf -a
+	dh_installinit -pntp-server --update-rcd-params="defaults 23" 
+	dh_installinit -pntpdate --update-rcd-params="start 51 S ." \
+		--init-script=ntpdate
+	dh_installcron -a
+#	dh_installmanpages -a ansi2knr.1
+#	dh_undocumented
+	dh_installchangelogs -a
+
+	# The non-server utilities get a combined debugging package
+	dh_strip -a
+	#dh_strip -a --dbg-package=ntp --dbg-package=ntp-simple --dbg-package=ntp-refclock --dbg-package=ntp-server --dbg-package=ntpdate
+	#mv debian/ntp-server-dbg/usr/lib/debug/usr/sbin/* debian/ntp-dbg/usr/lib/debug/usr/sbin/
+	#mv debian/ntpdate-dbg/usr/lib/debug/usr/sbin/* debian/ntp-dbg/usr/lib/debug/usr/sbin/
+
+	dh_compress -a
+	#dh_compress -pntp usr/share/doc/ntp/ChangeLog
+	dh_fixperms -a
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+#	dh_makeshlibs -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+source diff:                                                                  
+	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

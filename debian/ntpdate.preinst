@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#DEBHELPER#
+
+if test "$1" = "upgrade" ; then
+	cd /etc/default
+	if test -f ntp-servers && test ! -f ntpdate ; then
+		mv ntp-servers ntpdate
+		echo "/etc/default/ntp-servers has been renamed to /etc/default/ntpdate."
+	fi
+fi
+
+exit 0

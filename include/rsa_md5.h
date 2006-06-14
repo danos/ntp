@@ -23,8 +23,8 @@
    documentation and/or software.  
  */
 
-#ifndef _MD5_H_
-#define _MD5_H_ 1
+#ifndef NTP_MD5_H
+#define NTP_MD5_H 1
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,6 +33,10 @@ extern "C" {
 /*#include "global.h"	*/
 
 /* MD5 context. */
+/* Renamed, as to not conflict with other MD5 implementations included
+ * from elsewhere. */
+#define MD5_CTX NTP_MD5_CTX
+
 typedef struct {
   UINT4 state[4];                                   /* state (ABCD) */
   UINT4 count[2];        /* number of bits, modulo 2^64 (lsb first) */
@@ -48,4 +52,4 @@ void MD5Final PROTO_LIST ((unsigned char [16], MD5_CTX *));
 }
 #endif
 
-#endif
+#endif /* NTP_MD5_H */

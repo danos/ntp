@@ -1,0 +1,5 @@
+etc/init.d
+usr/share/man/man1
+usr/sbin
+etc/logcheck/ignore.d.server
+etc/default

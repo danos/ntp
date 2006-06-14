@@ -317,7 +317,7 @@ AC_CHECK_HEADERS(netinet/ip.h, [], [],
 AC_CHECK_HEADERS(netinfo/ni.h, [AC_DEFINE(HAVE_NETINFO, 1, [NetInfo support?])])
 AC_CHECK_HEADERS(sun/audioio.h sys/audioio.h)
 dnl AC_CHECK_HEADERS(sys/chudefs.h)
-AC_CHECK_HEADERS(sys/clkdefs.h sys/file.h)
+AC_CHECK_HEADERS(sys/clkdefs.h sys/file.h sys/var.h)
 case "$host" in
  *-*-sunos4*) ;;
  *) AC_CHECK_HEADERS(sys/ioctl.h)
@@ -361,6 +361,17 @@ AC_CHECK_HEADER(nlist.h,
 [AC_DEFINE(NLIST_STRUCT, 1, [nlist stuff])
 AC_CACHE_CHECK([for n_un in struct nlist], ac_cv_struct_nlist_n_un,
 [AC_TRY_COMPILE([#include <nlist.h>],
+[struct nlist n; n.n_un.n_name = 0;],
+ac_cv_struct_nlist_n_un=yes, ac_cv_struct_nlist_n_un=no)])
+if test $ac_cv_struct_nlist_n_un = yes; then
+  AC_DEFINE(NLIST_NAME_UNION, 1, [does struct nlist use a name union?])
+fi
+])dnl
+
+AC_CHECK_HEADER(libelf/nlist.h,
+[AC_DEFINE(LIBELF_NLIST_STRUCT, 1, [nlist stuff])
+AC_CACHE_CHECK([for n_un in struct nlist], ac_cv_struct_nlist_n_un,
+[AC_TRY_COMPILE([#include <libelf/nlist.h>],
 [struct nlist n; n.n_un.n_name = 0;],
 ac_cv_struct_nlist_n_un=yes, ac_cv_struct_nlist_n_un=no)])
 if test $ac_cv_struct_nlist_n_un = yes; then
@@ -1536,14 +1547,14 @@ esac
 
 AC_CACHE_CHECK([[availability of ntp_{adj,get}time()]], ac_cv_var_ntp_syscalls,
  [ac_cv_var_ntp_syscalls=no
- case "$ac_cv_func___adjtimex" in
-  yes)
-    ac_cv_var_ntp_syscalls=libc
-    ;;
-  *) case "$ac_cv_func_ntp_adjtime$ac_cv_func_ntp_gettime" in
-      yesyes)
-        ac_cv_var_ntp_syscalls=libc
-        ;;
+ case "$ac_cv_func_ntp_adjtime$ac_cv_func_ntp_gettime" in
+  yesyes)
+     ac_cv_var_ntp_syscalls=libc
+     ;;
+  *) case "$ac_cv_func___adjtimex" in
+      yes)
+         ac_cv_var_ntp_syscalls=adjtimex
+         ;;
       *) AC_EGREP_CPP(yes,
          [#include <sys/syscall.h>
 #if defined(SYS_ntp_gettime) && defined(SYS_ntp_adjtime)
@@ -3585,6 +3596,16 @@ AC_CACHE_CHECK(if we should enable NIST lockclock scheme, ac_cv_var_nist_lockclo
 ac_cv_var_nist_lockclock=$ans])
 case "$ac_cv_var_nist_lockclock" in
  yes) AC_DEFINE(LOCKCLOCK, 1, [Should we align with the NIST lockclock scheme?]) ;;
+esac
+
+AC_CACHE_CHECK(if we should cache bad destination addresses, ac_cv_errorcache,
+[AC_ARG_ENABLE(errorcache, 
+	AC_HELP_STRING([--enable-errorcache], [- if we should enable caching bad IP destinations]),
+    [ans=$enableval],[ans=no])
+ac_cv_errorcache=$ans])
+case "$ac_cv_errorcache" in
+ yes) AC_DEFINE(ERRORCACHE, 10, [Should we cache bad destination addresses?]) ;;
+ no) AC_DEFINE(ERRORCACHE, 0, [Should we cache bad destination addresses?]) ;;
 esac
 
 #

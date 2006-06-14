@@ -176,11 +176,15 @@ main(
 
 #ifdef NLIST_STRUCT
 # include <nlist.h>
+#elif LIBELF_NLIST_STRUCT
+# include <libelf/nlist.h>
 #else /* not NLIST_STRUCT */ /* was defined(SYS_AUX3) || defined(SYS_AUX2) */
 # include <sys/resource.h>
 # include <sys/file.h>
 # include <a.out.h>
-# include <sys/var.h>
+# ifdef HAVE_SYS_VAR_H
+#  include <sys/var.h>
+# endif
 #endif
 
 #include "ntp_io.h"

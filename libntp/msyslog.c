@@ -163,6 +163,7 @@ void msyslog(int level, const char *fmt, ...)
 	format_errmsg(nfmt, sizeof(nfmt), fmt, errval);
 
 	vsnprintf(buf, sizeof(buf), nfmt, ap);
+	buf[sizeof(buf)-1] = '\0'; 
 	addto_syslog(level, buf);
 	va_end(ap);
 }

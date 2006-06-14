@@ -1321,6 +1321,30 @@ clock_adjust(void)
 }
 
 
+/*
+ * is_unreachable - check to see if we have a route to given destination
+ *		    (non-blocking).
+ */
+static int
+is_reachable (struct sockaddr_storage *dst)
+{
+	SOCKET sockfd;
+
+	sockfd = socket(dst->ss_family, SOCK_DGRAM, 0);
+	if (sockfd == -1) {
+		return 0;
+	}
+
+	if(connect(sockfd, (struct sockaddr *)dst, SOCKLEN(dst))) {
+		closesocket(sockfd);
+		return 0;
+	}
+	closesocket(sockfd);
+	return 1;
+}
+
+
+
 /* XXX ELIMINATE: merge BIG slew into adj_systime in lib/systime.c */
 /*
  * addserver - determine a server's address and allocate a new structure
@@ -1333,7 +1357,7 @@ addserver(
 {
 	register struct server *server;
 	/* Address infos structure to store result of getaddrinfo */
-	struct addrinfo *addrResult;
+	struct addrinfo *addrResult, *ptr;
 	/* Address infos structure to store hints for getaddrinfo */
 	struct addrinfo hints;
 	/* Error variable for getaddrinfo */
@@ -1364,22 +1388,28 @@ addserver(
 	}
 #endif
 
-	server = (struct server *)emalloc(sizeof(struct server));
-	memset((char *)server, 0, sizeof(struct server));
+	/* We must get all returned server in case the first one fails */
+	for (ptr = addrResult; ptr != NULL; ptr = ptr->ai_next) {
+		if (is_reachable ((struct sockaddr_storage *)ptr->ai_addr)) {
+			server = (struct server *)emalloc(sizeof(struct server));
+			memset((char *)server, 0, sizeof(struct server));
 
-	/* For now we only get the first returned server of the addrinfo list */
-	memset(&(server->srcadr), 0, sizeof(struct sockaddr_storage));
-	memcpy(&(server->srcadr), addrResult->ai_addr, addrResult->ai_addrlen);
-	server->event_time = ++sys_numservers;
-	if (sys_servers == NULL)
-		sys_servers = server;
-	else {
-		struct server *sp;
+			memset(&(server->srcadr), 0, sizeof(struct sockaddr_storage));
+			memcpy(&(server->srcadr), ptr->ai_addr, ptr->ai_addrlen);
+			server->event_time = ++sys_numservers;
+			if (sys_servers == NULL)
+				sys_servers = server;
+			else {
+				struct server *sp;
 
-		for (sp = sys_servers; sp->next_server != NULL;
-		     sp = sp->next_server) ;
-		sp->next_server = server;
+				for (sp = sys_servers; sp->next_server != NULL;
+				     sp = sp->next_server) ;
+				sp->next_server = server;
+			}
+		}
 	}
+
+	freeaddrinfo(addrResult);
 }
 
 
@@ -1717,8 +1747,7 @@ init_io(void)
 	   if (res->ai_family == AF_INET6)
 		if (setsockopt(fd[nbsock], IPPROTO_IPV6, IPV6_V6ONLY, (void*) &optval, sizeof(optval)) < 0) {
 			   netsyslog(LOG_ERR, "setsockopt() IPV6_V6ONLY failed: %m");
-			   exit(1);
-			   /*NOTREACHED*/
+			   /* exit(1); */
 		}
 #endif
 
@@ -1728,7 +1757,7 @@ init_io(void)
 	/*
 	 * bind the socket to the NTP port
 	 */
-	if (!debug && !simple_query && !unpriv_port) {
+	if (!simple_query && !unpriv_port) {
 		if (bind(fd[nbsock], res->ai_addr, SOCKLEN(res->ai_addr)) < 0) {
 #ifndef SYS_WINNT
 			if (errno == EADDRINUSE)
@@ -2008,8 +2037,10 @@ l_adj_systime(
 		adjtv.tv_usec = -adjtv.tv_usec;
 	}
 
-	if (adjtv.tv_usec != 0 && !debug) {
-		if (adjtime(&adjtv, &oadjtv) < 0) {
+	if (adjtv.tv_usec != 0) {
+		if (debug) {
+			msyslog(LOG_DEBUG, "Debug mode --not changing the system date");
+		} else if (adjtime(&adjtv, &oadjtv) < 0) {
 			msyslog(LOG_ERR, "Can't adjust the time of day: %m");
 			return 0;
 		}
@@ -2035,7 +2066,6 @@ l_step_systime(
 	int isneg;
 	int n;
 
-	if (debug) return 1;
 	/*
 	 * Take the absolute value of the offset
 	 */
@@ -2062,8 +2092,6 @@ l_step_systime(
 	 * line.
 	 */
 #endif
-	if (debug)
-		return 1;
 #ifdef FORCE_NTPDATE_STEP
 	LFPTOD(ts, dtemp);
 	return step_systime(dtemp);
@@ -2072,8 +2100,6 @@ l_step_systime(
 	return 1;
 #endif
 #else /* SLEWALWAYS */
-	if (debug)
-		return 1;
 	LFPTOD(ts, dtemp);
 	return step_systime(dtemp);
 #endif	/* SLEWALWAYS */

@@ -1,0 +1,28 @@
+#!/bin/sh 
+
+# only do remaining stuff if we're being called to configure the package
+if [ "$1" != "configure" ]
+then
+	exit 0
+fi
+
+# make sure a couple of directories we need exist
+mkdir -p /var/log/ntpstats /var/lib/ntp 
+
+# ntpd now runs as normal user, but must be able to write some files
+adduser --system --quiet --group --no-create-home ntp || true
+chown -R ntp:ntp /var/log/ntpstats /var/lib/ntp
+
+# restart the server, in case ntp-server's postinst ran before us
+if [ -x "/etc/init.d/ntp-server" ]; then
+        update-rc.d ntp-server defaults 23 >/dev/null
+        if [ -x /usr/sbin/invoke-rc.d ]; then
+                invoke-rc.d ntp-server restart
+        else
+                /etc/init.d/ntp-server restart
+        fi
+fi
+
+#DEBHELPER#
+
+exit 0

@@ -8,6 +8,7 @@
 #include "ntp_select.h"
 #include "ntp_malloc.h"
 #include "ntp_refclock.h"
+#include "ntp_control.h"
 #include "recvbuff.h"
 
 #ifdef SYS_WINNT
@@ -225,7 +226,6 @@ extern int	config_priority;
 #endif
 
 /* ntp_control.c */
-struct ctl_trap;
 extern struct ctl_trap ctl_trap[];
 extern int	num_ctl_traps;
 extern keyid_t	ctl_auth_keyid;		/* keyid used for authenticating write requests */

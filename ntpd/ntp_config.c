@@ -5,21 +5,6 @@
 # include <config.h>
 #endif
 
-#ifdef HAVE_NETINFO
-# include <netinfo/ni.h>
-#endif
-
-#include <netdb.h>
-
-#include "ntpd.h"
-#include "ntp_io.h"
-#include "ntp_unixtime.h"
-#include "ntp_refclock.h"
-#include "ntp_filegen.h"
-#include "ntp_stdlib.h"
-#include "ntp_config.h"
-#include "ntp_cmdargs.h"
-
 #include <stdio.h>
 #include <ctype.h>
 #ifdef HAVE_SYS_PARAM_H
@@ -39,6 +24,21 @@
 # include <io.h>
 extern HANDLE ResolverThreadHandle;
 #endif /* SYS_WINNT */
+
+#ifdef HAVE_NETINFO
+# include <netinfo/ni.h>
+#endif
+
+#include <netdb.h>
+
+#include "ntpd.h"
+#include "ntp_io.h"
+#include "ntp_unixtime.h"
+#include "ntp_refclock.h"
+#include "ntp_filegen.h"
+#include "ntp_stdlib.h"
+#include "ntp_config.h"
+#include "ntp_cmdargs.h"
 
 extern int priority_done;
 

@@ -8,6 +8,7 @@ use vars qw($opt_n);
 
 $ntpq = "ntpq";
 
+$Getopt::Std::STANDARD_HELP_VERSION=1;
 getopts('n');
 
 $dodns = 1;

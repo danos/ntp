@@ -162,7 +162,7 @@ int	rval;			/* return status */
 #ifdef OPENSSL
 u_int	modulus = PLEN;		/* prime modulus size (bits) */
 #endif
-int	nkeys = 0;		/* MV keys */
+int	nkeys = 1;		/* MV keys */
 time_t	epoch;			/* Unix epoch (seconds) since 1970 */
 char	*hostname;		/* host name (subject name) */
 char	*trustname;		/* trusted host name (issuer name) */
@@ -254,13 +254,16 @@ main(
 #endif
 
 #ifdef OPENSSL
+#if 0 /* This is stupid. Ever heard of upwards-compatible library versions? */
 	if (SSLeay() != OPENSSL_VERSION_NUMBER) {
 		fprintf(stderr,
 		    "OpenSSL version mismatch. Built against %lx, you have %lx\n",
 		    OPENSSL_VERSION_NUMBER, SSLeay());
 		return (-1);
 
-	} else {
+	} else
+#endif
+	{
 		fprintf(stderr,
 		    "Using OpenSSL version %lx\n", SSLeay());
 	}
@@ -439,9 +442,11 @@ main(
 		 */
 		case 'V':
 			mvpar++;
-			if (sscanf(optarg, "%d", &nkeys) != 1)
+			if (sscanf(optarg, "%d", &nkeys) != 1 || nkeys < 1) {
 				fprintf(stderr,
 				    "invalid option -V %s\n", optarg);
+				nkeys = 1;
+			}
 			continue;
 #endif
 

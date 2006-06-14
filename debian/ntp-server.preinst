@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+	install|upgrade)
+		## We have to remove the old config files from ntp-simple and
+		## ntp-refclock.  There's no other clean way to do this. Sorry.
+
+		for s in simple refclock ; do
+			for d in init.d cron.daily cron.weekly ; do
+				if test -f /etc/$d/ntp-$s ; then
+					mv -f /etc/$d/ntp-$s /etc/$d/ntp-$s.dpkg-old
+				fi
+			done
+			update-rc.d -f ntp-$s remove
+		done
+
+		# Ditto for init.d/ntp ...
+		if test -f /etc/init.d/ntp ; then
+			mv -f /etc/init.d/ntp /etc/init.d/ntp.dpkg-old
+		fi
+		update-rc.d -f ntp remove
+
+		# There's also the problem of spurious ntpd server processes,
+		# caused by the old (buggy) script in /etc/init.d whic fail to
+		# properly shutdown the server sometimes.
+		# Thus, we just kill all servers off here. This is not very nice,
+		# but unfortunately it's necessary. :-/
+		if [ "$1" = "install" ] || dpkg --compare-versions "$2" lt-nl 1:4.2.0a-10
+		then 
+			killall ntpd || true
+		fi
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

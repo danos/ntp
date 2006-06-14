@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include "ntp_rfc2553.h"
+#include "ntp_refclock.h"
 
 #include "ntp_types.h"
 #include "ntp_string.h"
@@ -134,7 +135,6 @@ extern u_char *	cache_key;		/* key pointer */
 extern u_int	cache_keylen;		/* key length */
 
 /* clocktypes.c */
-struct clktype;
 extern struct clktype clktypes[];
 
 /* getopt.c */

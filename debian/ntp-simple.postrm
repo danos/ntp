@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#DEBHELPER#
+
+if [ "$1" = "purge" ]; then
+        deluser --system --quiet ntp || true
+	rm /var/lib/ntp/ntp.drift
+	rmdir /var/lib/ntp
+	rm -r /var/log/ntpstats
+fi
+
+exit 0

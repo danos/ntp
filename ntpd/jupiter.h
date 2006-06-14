@@ -1,4 +1,4 @@
-/* @(#) $Header: /daten/tmp/ex.16779/ntp-4.2.0a+stable.orig/ntpd/jupiter.h 1.2 01/10/08 21:18:16-04:00 stenn@whimsy.udel.edu $ (LBL) */
+/* @(#) $Header: /daten/tmp/ex.17575/ntp-4.2.0a+stable/ntpd/jupiter.h 1.2 01/10/08 21:18:16-04:00 stenn@whimsy.udel.edu $ (LBL) */
 
 /*
  * Rockwell Jupiter GPS receiver definitions

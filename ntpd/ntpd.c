@@ -173,6 +173,8 @@ int droproot = 0;
 char *user = NULL;		/* User to switch to */
 char *group = NULL;		/* group to switch to */
 char *chrootdir = NULL;		/* directory to chroot to */
+int have_caps = 0;              /* runtime check whether capabilities work,
+                                   leave at 0 here */
 int sw_uid;
 int sw_gid;
 char *endp;  
@@ -839,8 +841,29 @@ service_main(
 # endif  
 #endif
 
+#ifdef HAVE_LINUX_CAPABILITIES
+        {
+                /*  Check that setting capabilities actually works; we might be
+                 *  run on a kernel with disabled capabilities. We must not
+                 *  drop privileges in this case.
+                 */
+                cap_t caps;
+                if( ! ( caps = cap_from_text( "cap_sys_time,cap_setuid,cap_setgid=pe" ) ) ) {
+                        msyslog( LOG_ERR, "cap_from_text() failed: %m" );
+                        exit(-1);
+                }
+                if( cap_set_proc( caps ) == 0 ) 
+                    have_caps = 1;
+                cap_free( caps );
+        }
+#endif /* HAVE_LINUX_CAPABILITIES */
+
 #ifdef HAVE_DROPROOT
+#ifdef HAVE_LINUX_CAPABILITIES
+	if( droproot && have_caps ) {
+#else
 	if( droproot ) {
+#endif
 		/* Drop super-user privileges and chroot now if the OS supports this */
 
 #ifdef HAVE_LINUX_CAPABILITIES
@@ -867,7 +890,6 @@ getuser:
 				if ((pw = getpwnam(user)) != NULL) {
 					sw_uid = pw->pw_uid;
 				} else {
-					errno = 0;
 					msyslog(LOG_ERR, "Cannot find user `%s'", user);
 					exit (-1);
 				}
@@ -881,7 +903,7 @@ getuser:
 			} else {
 getgroup:	
 				if ((gr = getgrnam(group)) != NULL) {
-					sw_gid = pw->pw_gid;
+					sw_gid = gr->gr_gid;
 				} else {
 					errno = 0;
 					msyslog(LOG_ERR, "Cannot find group `%s'", group);
@@ -924,7 +946,7 @@ getgroup:
 			 *  We drop all of them, except for the crucial one: cap_sys_time:
 			 */
 			cap_t caps;
-			if( ! ( caps = cap_from_text( "cap_sys_time=ipe" ) ) ) {
+			if( ! ( caps = cap_from_text( "cap_sys_time=pe" ) ) ) {
 				msyslog( LOG_ERR, "cap_from_text() failed: %m" );
 				exit(-1);
 			}
