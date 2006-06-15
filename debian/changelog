@@ -1,3 +1,10 @@
+ntp (1:4.2.0a+stable-9) unstable; urgency=low
+
+  * New maintainer address, new uploaders
+  * Acknowledge NMUs (closes: #327012, #312331)
+
+ -- Peter Eisentraut <petere@debian.org>  Thu, 15 Jun 2006 21:00:47 +0200
+
 ntp (1:4.2.0a+stable-8.2) unstable; urgency=high
 
   * NMU

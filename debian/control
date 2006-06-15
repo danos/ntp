@@ -1,10 +1,10 @@
 Source: ntp
 Section: net
 Priority: optional
-Maintainer: Debian NTP Team <debian-ntp@gag.com>
+Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Build-Depends: debhelper (>> 4.1.0), libreadline5-dev, lynx, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), binutils (>= 2.14.90.0.7)
 Standards-Version: 3.6.1
-Uploaders: Bruce Walker <w1bw@debian.org>, Bdale Garbee <bdale@gag.com>, Matthias Urlichs <smurf@debian.org>
+Uploaders: Bruce Walker <w1bw@debian.org>, Bdale Garbee <bdale@gag.com>, Matthias Urlichs <smurf@debian.org>, Peter Eisentraut <petere@debian.org>
 
 Package: ntp
 Architecture: any
