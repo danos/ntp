@@ -4,9 +4,8 @@
 
 if [ "$1" = "purge" ]; then
         deluser --system --quiet ntp || true
-	rm /var/lib/ntp/ntp.drift
-	rmdir /var/lib/ntp
-	rm -r /var/log/ntpstats
+	rm -rf /var/lib/ntp/
+	rm -rf /var/log/ntpstats/
 fi
 
 exit 0

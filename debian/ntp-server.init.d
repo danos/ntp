@@ -8,27 +8,27 @@ RUNASUSER=ntp
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
 
 if [ -z "$UGID" ]; then
-  echo "User $USER does not exist" >&2
+  echo "User $RUNASUSER does not exist" >&2
   exit 1
 fi
 
 case "$1" in
 	start)
 		echo -n "Starting NTP server: ntpd"
-  		start-stop-daemon --start --quiet --pidfile /var/run/ntpd.pid --exec /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID
+  		start-stop-daemon --start --quiet --oknodo --pidfile /var/run/ntpd.pid --startas /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID
 		echo "."
   		;;
 	stop)
 		echo -n "Stopping NTP server: ntpd"
-  		start-stop-daemon --stop --quiet --pidfile /var/run/ntpd.pid
+  		start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/ntpd.pid
 		echo "."
 		rm -f /var/run/ntpd.pid
   		;;
 	restart|force-reload)
 		echo -n "Restarting NTP server: ntpd... "
-  		start-stop-daemon --stop --quiet --pidfile /var/run/ntpd.pid
+  		start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/ntpd.pid
   		sleep 2
-  		start-stop-daemon --start --quiet --exec /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID
+  		start-stop-daemon --start --quiet --oknodo --pidfile /var/run/ntpd.pid --startas /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID
 		echo "done."
   		;;
 	reload)
