@@ -97,7 +97,6 @@ ntp (1:4.2.0a+stable-4) unstable; urgency=low
   * Enhance ntpdate's logcheck rule. Closes: #283386
   * Built against libreadline5.
 
- -- Matthias Urlichs <smurf@debian.org>  Sat, 12 Mar 2005 06:00:04 +0100
  -- Matthias Urlichs <smurf@debian.org>  Sat, 12 Mar 2005 06:16:39 +0100
 
 ntp (1:4.2.0a-11ubuntu2) hoary; urgency=low
