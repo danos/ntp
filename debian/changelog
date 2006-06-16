@@ -9,8 +9,9 @@ ntp (1:4.2.0a+stable-9) unstable; urgency=low
     ntp-simple/ntp-refclock (closes: #365950)
   * Use pool.ntp.org vendor zone by default (closes: #349392, #269572)
   * Updated public NTP server list URL (closes: #320143)
+  * Updated pool.ntp.org URL and information (closes: #322675)
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 16 Jun 2006 21:27:44 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 16 Jun 2006 21:31:18 +0200
 
 ntp (1:4.2.0a+stable-8.2) unstable; urgency=high
 
