@@ -10,8 +10,10 @@ ntp (1:4.2.0a+stable-9) unstable; urgency=low
   * Use pool.ntp.org vendor zone by default (closes: #349392, #269572)
   * Updated public NTP server list URL (closes: #320143)
   * Updated pool.ntp.org URL and information (closes: #322675)
+  * Renamed debian/NEWS.Debian to debian/NEWS, so it gets installed by
+    dh_installchangelogs (closes: #245612)
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 16 Jun 2006 21:31:18 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 16 Jun 2006 21:47:59 +0200
 
 ntp (1:4.2.0a+stable-8.2) unstable; urgency=high
 
