@@ -7,7 +7,7 @@ test -f /usr/sbin/ntpdate || exit 0
 if test -f /etc/default/ntpdate ; then
 . /etc/default/ntpdate
 else
-NTPSERVERS="pool.ntp.org"
+NTPSERVERS="0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org 3.debian.pool.ntp.org"
 fi
 
 test -n "$NTPSERVERS" || exit 0

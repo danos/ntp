@@ -9,13 +9,12 @@ Note that the actual NTP server is in the "ntp-server" package.
 
 A list of Public NTP Time Servers is available on the web at
 
-	http://www.eecis.udel.edu/~mills/ntp/servers.html
+	http://ntp.isc.org/bin/view/Servers/WebHome
 
-The default ntp.conf file uses one of these servers. You may use a
-(different) second pool.ntp.org server by simply duplicating the
-appropriate line in that file. If you need even more reliability,
-add one or two known and local NTP servers, and/or consider joining the
-pool.ntp.org effort!
+The default ntp.conf file uses servers from a pool.ntp.org vendor zone
+assigned to Debian.  This should be sufficient for most users, but
+consider replacing this if you have local time servers in your
+organization or network.
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
