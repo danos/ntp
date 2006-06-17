@@ -3,8 +3,8 @@
 # remove (or comment out) the next line if your network addresses change
 exit 0
 
-case $IFACE in
-	eth*)
+case $ADDRFAM in
+	inet*)
 		/etc/init.d/ntp-server restart
 		;;
 esac

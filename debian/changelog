@@ -12,8 +12,9 @@ ntp (1:4.2.0a+stable-9) unstable; urgency=low
   * Updated pool.ntp.org URL and information (closes: #322675)
   * Renamed debian/NEWS.Debian to debian/NEWS, so it gets installed by
     dh_installchangelogs (closes: #245612)
+  * Fixed if-up.d/ntp-server to cope with ifrename (closes: #356211)
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 16 Jun 2006 21:47:59 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat, 17 Jun 2006 10:47:21 +0200
 
 ntp (1:4.2.0a+stable-8.2) unstable; urgency=high
 
