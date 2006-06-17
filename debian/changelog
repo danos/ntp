@@ -1,5 +1,6 @@
 ntp (1:4.2.0a+stable-9) unstable; urgency=low
 
+  [ Peter Eisentraut ]
   * New maintainer address, new uploaders
   * Acknowledge NMUs (closes: #327012, #312331)
   * Added --oknodo option in init script (closes: #302127)
@@ -13,6 +14,12 @@ ntp (1:4.2.0a+stable-9) unstable; urgency=low
   * Renamed debian/NEWS.Debian to debian/NEWS, so it gets installed by
     dh_installchangelogs (closes: #245612)
   * Fixed if-up.d/ntp-server to cope with ifrename (closes: #356211)
+
+  [ Kurt Roeckx ]
+  * Remove pre-sarge upgrade parts of the maintainer scripts.  The files
+    now only have debhelper generated things in them, so they got deleted:
+    ntpdate.preinst, ntpdate.prerm, ntp-doc.prerm, ntp-server.preinst
+    and ntp.postinst.  This also really fixes #312331 be removing the code.
 
  -- Peter Eisentraut <petere@debian.org>  Sat, 17 Jun 2006 10:47:21 +0200
 
