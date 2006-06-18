@@ -21,7 +21,7 @@ ntp (1:4.2.0a+stable-9) unstable; urgency=low
     ntpdate.preinst, ntpdate.prerm, ntp-doc.prerm, ntp-server.preinst
     and ntp.postinst.  This also really fixes #312331 be removing the code.
 
- -- Peter Eisentraut <petere@debian.org>  Sat, 17 Jun 2006 10:47:21 +0200
+ -- Kurt Roeckx <kurt@intrepid>  Sun, 18 Jun 2006 14:04:57 +0000
 
 ntp (1:4.2.0a+stable-8.2) unstable; urgency=high
 
