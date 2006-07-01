@@ -3,13 +3,13 @@
 # Comment this to turn off verbose mode.
 # export DH_VERBOSE=1
 
+include /usr/share/quilt/quilt.make
+
 config: config-stamp
-config-stamp:
+config-stamp: patch
 	dh_testdir
 
-	# Create autoconf stuff, if not present
-	if test ! -f configure; then $(MAKE) -f debian/rules clean; fi
-	chmod +x ./configure
+	chmod a+x configure
 
 	# refclock version
 	mkdir -p build-refclock
@@ -32,7 +32,7 @@ config-stamp:
 	touch config-stamp
 
 build: build-stamp
-build-stamp: config-stamp
+build-stamp: config-stamp version
 	dh_testdir
 
 	make -C build-refclock/ntpd
@@ -40,7 +40,11 @@ build-stamp: config-stamp
 
 	touch build-stamp
 
-clean:
+version: debian/changelog
+	dpkg-parsechangelog | sed -ne 's/^Version:[ 	]*//p' >$@
+
+clean: clean-patched unpatch
+clean-patched:
 	dh_testdir
 	dh_testroot
 	rm -f config-stamp build-stamp 
@@ -52,15 +56,7 @@ clean:
 	-test -r /usr/share/misc/config.guess && \
 		cp -f /usr/share/misc/config.guess config.guess
 
-	-if test -f aclocal.m4 ; then touch aclocal.m4; else aclocal-1.7; fi
-	-if test -f config.h.in ; then touch config.h.in; else autoheader; fi
-	-if test -f Makefile.in ; then find . -name Makefile.in -exec touch {} \; ;\
-		else automake-1.7 --copy --add-missing; fi
-
-	-if test -f configure ; then touch configure; else autoconf; fi
-	-if test -f version ; then touch version; else \
-		dpkg-parsechangelog | sed -ne 's/^Version:[ 	]*//p' > version; fi
-
+	rm -f COPYRIGHT version
 	dh_clean
 
 install: build-stamp
@@ -194,4 +190,4 @@ source diff:
 	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+.PHONY: build clean binary-indep binary-arch binary install patch unpatch clean-patched

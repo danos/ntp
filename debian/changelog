@@ -1,3 +1,9 @@
+ntp (1:4.2.0a+stable-10) unstable; urgency=low
+
+  * Consolidated patches using quilt
+
+ -- Peter Eisentraut <petere@debian.org>  Sat,  1 Jul 2006 20:07:03 +0200
+
 ntp (1:4.2.0a+stable-9) unstable; urgency=low
 
   [ Peter Eisentraut ]
