@@ -13,9 +13,9 @@ then
 
       *Would\ send\ signal*)
 
-	/etc/init.d/ntp-server stop > /dev/null
+	/etc/init.d/ntp stop > /dev/null
 	savelog -g adm -m 644 -u root -c 4 /var/log/ntpd > /dev/null
-	/etc/init.d/ntp-server start > /dev/null
+	/etc/init.d/ntp start > /dev/null
 
       ;;
 
