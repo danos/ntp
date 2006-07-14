@@ -1,44 +1,73 @@
-#!/bin/sh -e
+#!/bin/sh
 
-PATH=/sbin:/bin:/usr/bin
+### BEGIN INIT INFO
+# Provides:        $time
+# Required-Start:  $network
+# Required-Stop:   $network
+# Should-Start:    ntpdate
+# Should-Stop:     ntpdate
+# Default-Start:   S 1 2 3 4 5
+# Default-Stop:    0 6
+### END INIT INFO
 
-test -f /usr/sbin/ntpd || exit 0
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+. /lib/lsb/init-functions
+
+NAME=ntp
+DAEMON=/usr/sbin/ntpd
+
+test -x $DAEMON || exit 5
+
+if [ -r /etc/default/$NAME ]; then
+	. /etc/default/$NAME
+fi
 
 RUNASUSER=ntp
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
 
 if [ -z "$UGID" ]; then
-  echo "User $RUNASUSER does not exist" >&2
-  exit 1
+	echo "$0: user $RUNASUSER does not exist" >&2
+	exit 1
 fi
 
-case "$1" in
+case $1 in
 	start)
-		echo -n "Starting NTP server: ntpd"
-  		start-stop-daemon --start --quiet --oknodo --pidfile /var/run/ntpd.pid --startas /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID
-		echo "."
+		log_daemon_msg "Starting NTP server" "ntpd"
+  		start-stop-daemon --start --quiet --oknodo --pidfile /var/run/ntpd.pid --startas /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID $NTPD_OPTS
+		log_end_msg $?
   		;;
 	stop)
-		echo -n "Stopping NTP server: ntpd"
+		log_daemon_msg "Stopping NTP server" "ntpd"
   		start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/ntpd.pid
-		echo "."
+		log_end_msg $?
 		rm -f /var/run/ntpd.pid
   		;;
 	restart|force-reload)
-		echo -n "Restarting NTP server: ntpd... "
-  		start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/ntpd.pid
-  		sleep 2
-  		start-stop-daemon --start --quiet --oknodo --pidfile /var/run/ntpd.pid --startas /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID
-		echo "done."
+		$0 stop && sleep 2 && $0 start
   		;;
+	try-restart)
+		if $0 status >/dev/null; then
+			$0 restart
+		else
+			exit 0
+		fi
+		;;
 	reload)
-		echo "Not supported, sorry. Use 'restart' or 'force-reload'." >&2
-		exit 1
+		exit 3
+		;;
+	status)
+		pidofproc $DAEMON >/dev/null
+		status=$?
+		if [ $status -eq 0 ]; then
+			log_success_msg "NTP server is running."
+		else
+			log_failure_msg "NTP server is not running."
+		fi
+		exit $status
 		;;
 	*)
-  		echo "Usage: $0 {start|stop|restart|force-reload}"
-  		exit 1
+		echo "Usage: $0 {start|stop|restart|try-restart|force-reload|status}"
+		exit 2
 		;;
 esac
-
-exit 0

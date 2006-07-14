@@ -1,34 +1,48 @@
 #!/bin/sh
 
-PATH=/sbin:/bin
+### BEGIN INIT INFO
+# Provides:        $time
+# Required-Start:  $remote_fs $network hwclock
+# Required-Stop:   $remote_fs $network hwclock
+# Default-Start:   S 1 2 3 4 5
+# Default-Stop:    0 6
+### END INIT INFO
 
-test -f /usr/sbin/ntpdate || exit 0
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
-if test -f /etc/default/ntpdate ; then
-. /etc/default/ntpdate
-else
-NTPSERVERS="0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org 3.debian.pool.ntp.org"
+. /lib/lsb/init-functions
+
+NAME=ntpdate
+PROG=/usr/sbin/ntpdate
+
+test -x $PROG || exit 5
+
+if [ -r /etc/default/$NAME ]; then
+	. /etc/default/$NAME
 fi
 
-test -n "$NTPSERVERS" || exit 0
+test -n "$NTPSERVERS" || exit 6
 
-case "$1" in
-start|force-reload)
-  echo -n "Running ntpdate to synchronize clock"
-  /usr/sbin/ntpdate -b -s $NTPOPTIONS $NTPSERVERS
-  echo "."
-  ;;
-restart|reload)
-  # Drop -b to slew clock rather than step it if called after system is up
-  echo -n "Running ntpdate to synchronize clock"
-  /usr/sbin/ntpdate -s $NTPOPTIONS $NTPSERVERS
-  echo "."
-  ;;
-stop)
-  ;;
-*)
-  echo "Usage: /etc/init.d/ntpdate {start|stop|restart|reload|force-reload}"
-  exit 1
+case $1 in
+	start|force-reload)
+		log_action_begin_msg "Running ntpdate to synchronize clock"
+		$PROG -b -s $NTPOPTIONS $NTPSERVERS
+		log_action_end_msg $?
+		;;
+	restart|try-restart|reload)
+		# Drop -b to slew clock rather than step it if called after system is up
+		log_action_begin_msg "Running ntpdate to synchronize clock"
+		$PROG -s $NTPOPTIONS $NTPSERVERS
+		log_action_end_msg $?
+		;;
+	stop)
+		exit 0
+		;;
+	status)
+		exit 0
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart|try-restart|force-reload|reload}"
+		exit 2
+		;;
 esac
-
-exit 0

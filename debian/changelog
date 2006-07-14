@@ -5,12 +5,17 @@ ntp (1:4.2.0a+stable-10) unstable; urgency=low
   * Merged ntp, ntp-server, ntp-simple, ntp-refclock into single package ntp
     (closes: #222369, #343131, #377578)
   * Removed conflict of ntpdate with chrony (closes: #322503)
+  * Improved init scripts:
+    - Added LSB-formatted dependency information (closes: #332848)
+    - Added status option (closes: #319392)
+    - Added support for /etc/default/ntp (closes: #316306, #158389, #309200)
+    - Use LSB functions for messages (closes: #219193)
 
   [ Kurt Roeckx ]
   * Make ntp, ntp-simple, ntp-refclock and ntpdate depend on
     netbase because they require /etc/services (Closes: #376295)
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 17:00:47 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 20:20:24 +0200
 
 ntp (1:4.2.0a+stable-9) unstable; urgency=low
 
