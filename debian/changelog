@@ -10,12 +10,14 @@ ntp (1:4.2.0a+stable-10) unstable; urgency=low
     - Added status option (closes: #319392)
     - Added support for /etc/default/ntp (closes: #316306, #158389, #309200)
     - Use LSB functions for messages (closes: #219193)
+  * Retain cap_sys_chroot capability a while longer so that chroot works
+    (closes: #308840)
 
   [ Kurt Roeckx ]
   * Make ntp, ntp-simple, ntp-refclock and ntpdate depend on
     netbase because they require /etc/services (Closes: #376295)
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 20:20:24 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 22:55:36 +0200
 
 ntp (1:4.2.0a+stable-9) unstable; urgency=low
 
