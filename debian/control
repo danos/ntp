@@ -30,7 +30,7 @@ Package: ntpdate
 Architecture: any
 Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
 Suggests: ntp
-Conflicts: ntp (<< 1:4.0.98a), chrony
+Conflicts: ntp (<< 1:4.0.98a)
 Replaces: ntp (<< 1:4.0.98a), xntp, xntp3
 Description: The ntpdate client for setting system time from NTP servers
  NTP, the Network Time Protocol, is used to keep computer clocks accurate
