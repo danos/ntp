@@ -5,13 +5,15 @@
 # datestamped set of files at midnight, so all we need to do is delete old
 # ones, and compress the ones we're keeping so disk usage is controlled
 
-if [ -d /var/log/ntpstats ]
+statsdir=$(cat /etc/ntp.conf | grep -v '^#' | sed -n 's/statsdir \([^ ][^ ]*\)/\1/p')
+
+if [ -n "$statsdir" ] && [ -d "$statsdir" ]
 then
 	# only keep a week's depth of these
-	find /var/log/ntpstats -type f -mtime +7 -exec rm {} \;
+	find "$statsdir" -type f -mtime +7 -exec rm {} \;
 
 	# compress whatever is left to save space
-	cd /var/log/ntpstats 
+	cd "$statsdir"
 	ls loopstats.???????? peerstats.???????? > /dev/null 2>&1
 	if [ $? = 0 ]
 	then
