@@ -1,3 +1,8 @@
+ntp (1:4.2.0a+stable-10) unstable; urgency=low
+
+  The packages ntp, ntp-server, ntp-simple, and ntp-refclock have been
+  into a single package ntp.
+
 ntp (1:4.2.0a+stable-8) unstable; urgency=medium
 
   The NTP server now runs as the user "ntp". (Obviously it retains its

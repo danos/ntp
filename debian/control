@@ -8,89 +8,30 @@ Uploaders: Bruce Walker <w1bw@debian.org>, Bdale Garbee <bdale@gag.com>, Matthia
 
 Package: ntp
 Architecture: any
-Depends: ${shlibs:Depends}, psmisc, perl-modules, netbase
-Recommends: ntp-server
-Suggests: ntpdate,ntp-doc
-Replaces: xntp,xntp3
-Conflicts: chrony
-Description: Network Time Protocol: network utilities
+Depends: adduser, netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
+Suggests: ntp-doc
+Replaces: ntp-server (<= 1:4.2.0a+stable-9), ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9), xntp, xntp3
+Conflicts: chrony, ntp-server (<= 1:4.2.0a+stable-9), ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
+Description: Network Time Protocol: server and utility programs
  NTP, the Network Time Protocol, is used to keep computer clocks accurate
  over the Internet, or by following an accurate hardware receiver which
  interprets GPS, DCF-77, NIST or similar time signals.
  .
- This package contains control programs which can access a remote NTP
- server.  Thus you will need either ntp-simple or ntp-refclock;
- ntp-refclock includes drivers for radio clocks.
- .
- For more information about the NTP protocol / NTP server configuration
- and operation, load the optional Debian package 'ntp-doc'.
-
-Package: ntp-server
-Architecture: any
-Depends: ntp-simple (>> 1:4.2.0a+stable-6) | ntp-refclock (>> 1:4.2.0a+stable-6), ntp
-Suggests: ntpdate,ntp-doc
-Replaces: xntp,xntp3,ntp (<= 1:4.1.0-2)
-Conflicts: ntp-simple (<< 1:4.2.0), ntp-refclock (<< 1:4.2.0), ntp (<< 1:4.2.0-0.6)
-Description: Network Time Protocol: common server tools
- NTP, the Network Time Protocol, is used to keep computer clocks accurate
- over the Internet, or by following an accurate hardware receiver which
- interprets GPS, DCF-77, NIST or similar time signals.
- .
- This package holds the common files for the NTP server and all programs
- which need to run on the actual server.
- .
- There are two server packages: 'ntp-simple' only knows about your computer's
- built-in clock. 'ntp-refclock' has built-in support for a variety of
- time signal receivers. Both server packages, of course, can synchronize
- with other servers across the Internet.
-
-Package: ntp-simple
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, netbase
-Recommends: ntp-server (= ${Source-Version})
-Suggests: ntpdate,ntp-doc,ntp
-Replaces: xntp,xntp3,ntp (<= 1:4.1.0-2)
-Conflicts: chrony, ntp (<< 1:4.1.0), ntp-refclock
-Description: Network Time Protocol: daemon for simple systems
- NTP, the Network Time Protocol, is used to keep computer clocks accurate
- over the Internet, or by following an accurate hardware receiver which
- interprets GPS, DCF-77, NIST or similar time signals.
- .
- This version of the ntp daemon can synchronize to other servers across
- the Internet, or (if none are available) use your computer's built-in
- clock as a time source for a local network. It is sufficient for most
- systems.
- .
- If you wish to configure a reference clock, particularly if you have a radio 
- clock, use the ntp-refclock package instead.
-
-Package: ntp-refclock
-Architecture: any
-Priority: extra
-Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, netbase
-Recommends: ntp-server (= ${Source-Version})
-Suggests: ntpdate,ntp-doc,ntp
-Replaces: xntp,xntp3,ntp (<= 1:4.1.0-2)
-Conflicts: chrony, ntp (<< 1:4.1.0), ntp-simple
-Description: Network Time Protocol: daemon for reference clocks
- NTP, the Network Time Protocol, is used to keep computer clocks accurate
- over the Internet, or by following an accurate hardware receiver which
- interprets GPS, DCF-77, NIST or similar time signals.
- .
- This version of the ntp daemon can understand a variety of time signal
- receivers. If you do not have a radio clock, use the ntp-simple package
- instead, as it consumes far less memory.
+ This package contains the server and utility programs.
  .
  If you're serious about building a high-quality stratum 1 timekeeper, please
  take a look at Ulrich Windl's PPSkit patchset for the Linux kernel, available
  from the kernel.org mirror network in pub/linux/daemons/ntp.
+ .
+ For more information about the NTP protocol / NTP server configuration
+ and operation, load the optional Debian package 'ntp-doc'.
 
 Package: ntpdate
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, netbase
+Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
 Suggests: ntp
-Conflicts: ntp (<< 1:4.0.98a),chrony
-Replaces: ntp (<< 1:4.0.98a),xntp,xntp3
+Conflicts: ntp (<< 1:4.0.98a), chrony
+Replaces: ntp (<< 1:4.0.98a), xntp, xntp3
 Description: The ntpdate client for setting system time from NTP servers
  NTP, the Network Time Protocol, is used to keep computer clocks accurate
  over the Internet, or by following an accurate hardware receiver which
@@ -121,4 +62,3 @@ Description: Network Time Protocol: documentation
  pages for ntp's programs and configuration files, this package is
  desirable for any setup beyond the simple configuration supplied by the
  server packages.
-

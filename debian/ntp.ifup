@@ -5,6 +5,6 @@ exit 0
 
 case $ADDRFAM in
 	inet*)
-		/etc/init.d/ntp-server restart
+		/etc/init.d/ntp restart
 		;;
 esac

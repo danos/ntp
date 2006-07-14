@@ -5,40 +5,29 @@
 
 include /usr/share/quilt/quilt.make
 
-config: config-stamp
-config-stamp: patch
+# hacks to avoid running these things during the build
+export ACLOCAL    = : aclocal
+export AUTOCONF   = : autoconf
+export AUTOMAKE   = : automake
+export AUTOHEADER = : autoheader
+
+config: config.status
+config.status: patch
 	dh_testdir
 
 	chmod a+x configure
 
-	# refclock version
-	mkdir -p build-refclock
-	cd build-refclock && ../configure --prefix=/usr \
+	./configure --prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
-		--cache-file=../config.cache --disable-errorcache \
+		--disable-errorcache \
 		--enable-linuxcaps
-	touch build-refclock/stamp-h.in
-
-	# build simple version
-	mkdir -p build-simple
-	cd build-simple && ../configure --prefix=/usr \
-		--disable-all-clocks --disable-parse-clocks \
-		--disable-debugging --enable-LOCAL-CLOCK \
-		--sysconfdir=/var/lib/ntp --cache-file=../config.cache \
-		--disable-errorcache --enable-linuxcaps
-	touch build-simple/stamp-h.in
-
-	touch config-stamp
 
 build: build-stamp
-build-stamp: config-stamp version
+build-stamp: config.status version
 	dh_testdir
-
-	make -C build-refclock/ntpd
-	make -C build-simple
-
-	touch build-stamp
+	$(MAKE)
+	touch $@
 
 version: debian/changelog
 	dpkg-parsechangelog | sed -ne 's/^Version:[ 	]*//p' >$@
@@ -47,9 +36,8 @@ clean: clean-patched unpatch
 clean-patched:
 	dh_testdir
 	dh_testroot
-	rm -f config-stamp build-stamp 
-	rm -rf build-simple build-refclock
-	rm -f config.cache
+	rm -f build-stamp 
+	-$(MAKE) -i -k distclean
 
 	-test -r /usr/share/misc/config.sub && \
 		cp -f /usr/share/misc/config.sub config.sub
@@ -65,29 +53,18 @@ install: build-stamp
 	dh_clean -k
 	dh_installdirs
 
-	$(MAKE) -C build-simple install \
-		bindir=`pwd`/debian/ntp/usr/sbin \
-		prefix=`pwd`/debian/ntp/usr
+	$(MAKE) install bindir=`pwd`/debian/ntp/usr/sbin prefix=`pwd`/debian/ntp/usr
 
 	# move the user-space programs from /usr/sbin to /usr/bin
 	for file in ntpq ntpdc ntptrace; do \
 		mv debian/ntp/usr/sbin/$$file debian/ntp/usr/bin/$$file; \
 	done
 
-	# move the daemon to their packages
-	mv debian/ntp/usr/sbin/ntpd debian/ntp-simple/usr/sbin/ntpd
-	install build-refclock/ntpd/ntpd debian/ntp-refclock/usr/sbin/ntpd
-
-	# move support programs
-	for file in ntp-wait ntptime tickadj; do \
-		mv debian/ntp/usr/sbin/$$file debian/ntp-server/usr/sbin/$$file; \
-	done
-
-	install -o root -g root -m 755 debian/ntp-server.ifup \
-		debian/ntp-server/etc/network/if-up.d/ntp-server
-	install -o root -g root -m 0755 build-simple/scripts/ntpsweep \
+	install -o root -g root -m 755 debian/ntp.ifup \
+		debian/ntp/etc/network/if-up.d/ntp
+	install -o root -g root -m 0755 scripts/ntpsweep \
 		debian/ntp/usr/bin/ntpsweep
-	install -o root -g root -m 0755 build-simple/util/ntp-keygen \
+	install -o root -g root -m 0755 util/ntp-keygen \
 		debian/ntp/usr/sbin/ntp-keygen
 	install -o root -g root -m 0644 debian/ntpsweep.1 \
 		debian/ntp/usr/share/man/man1/ntpsweep.1
@@ -96,31 +73,29 @@ install: build-stamp
 	install -o root -g root -m 0644 debian/ntpdate.1 \
 		debian/ntpdate/usr/share/man/man1/ntpdate.1
 	install -o root -g root -m 0644 debian/ntpd.1 \
-		debian/ntp-simple/usr/share/man/man1/ntpd.1
-	install -o root -g root -m 0644 debian/ntpd.1 \
-		debian/ntp-refclock/usr/share/man/man1/ntpd.1
+		debian/ntp/usr/share/man/man1/ntpd.1
 	install -o root -g root -m 0644 debian/useless.1 \
 		debian/ntp/usr/share/man/man1/ntpdc.1
 	install -o root -g root -m 0644 debian/useless.1 \
 		debian/ntp/usr/share/man/man1/ntp-keygen.1
 	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp-server/usr/share/man/man1/ntp-wait.1
+		debian/ntp/usr/share/man/man1/ntp-wait.1
 	install -o root -g root -m 0644 debian/useless.1 \
 		debian/ntp/usr/share/man/man1/ntpq.1
 	install -o root -g root -m 0644 debian/useless.1 \
 		debian/ntp/usr/share/man/man1/ntptrace.1
 	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp-server/usr/share/man/man1/tickadj.1
+		debian/ntp/usr/share/man/man1/tickadj.1
 	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp-server/usr/share/man/man1/ntptime.1
+		debian/ntp/usr/share/man/man1/ntptime.1
 	install -o root -g root -m 0644 debian/ntp.conf \
-		debian/ntp-server/etc
+		debian/ntp/etc
 	install -o root -g root -m 0644 debian/useless.5 \
-		debian/ntp-server/usr/share/man/man5/ntp.conf.5
+		debian/ntp/usr/share/man/man5/ntp.conf.5
 	install -o root -g root -m 0644 debian/ntpdate.default \
 		debian/ntpdate/etc/default/ntpdate
-	install -o root -g root -m 0644 debian/ntp-server.ignore \
-		debian/ntp-server/etc/logcheck/ignore.d.server/ntp-server
+	install -o root -g root -m 0644 debian/ntp.ignore \
+		debian/ntp/etc/logcheck/ignore.d.server/ntp
 	install -o root -g root -m 0644 debian/ntpdate.ignore \
 		debian/ntpdate/etc/logcheck/ignore.d.server/ntpdate
 
@@ -162,20 +137,14 @@ binary-arch: build install
 	dh_installmenu -a
 #	dh_installemacsen -a
 	dh_installdebconf -a
-	dh_installinit -pntp-server --update-rcd-params="defaults 23" 
+	dh_installinit -pntp --update-rcd-params="defaults 23" 
 	dh_installinit -pntpdate --update-rcd-params="start 51 S ." \
 		--init-script=ntpdate
 	dh_installcron -a
 #	dh_installmanpages -a ansi2knr.1
 #	dh_undocumented
 	dh_installchangelogs -a
-
-	# The non-server utilities get a combined debugging package
 	dh_strip -a
-	#dh_strip -a --dbg-package=ntp --dbg-package=ntp-simple --dbg-package=ntp-refclock --dbg-package=ntp-server --dbg-package=ntpdate
-	#mv debian/ntp-server-dbg/usr/lib/debug/usr/sbin/* debian/ntp-dbg/usr/lib/debug/usr/sbin/
-	#mv debian/ntpdate-dbg/usr/lib/debug/usr/sbin/* debian/ntp-dbg/usr/lib/debug/usr/sbin/
-
 	dh_compress -a
 	#dh_compress -pntp usr/share/doc/ntp/ChangeLog
 	dh_fixperms -a
