@@ -11,8 +11,8 @@ export AUTOCONF   = : autoconf
 export AUTOMAKE   = : automake
 export AUTOHEADER = : autoheader
 
-config: config.status
-config.status: patch
+config: patch config.status
+config.status: $(QUILT_STAMPFN)
 	dh_testdir
 
 	chmod a+x configure
@@ -24,7 +24,7 @@ config.status: patch
 		--enable-linuxcaps \
 		--disable-dependency-tracking
 
-build: build-stamp
+build: config build-stamp
 build-stamp: config.status version
 	dh_testdir
 	$(MAKE)
