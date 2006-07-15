@@ -1,6 +1,8 @@
---- ntp-4.2.0a+stable.orig/ntpd/ntp_intres.c
-+++ ntp-4.2.0a+stable/ntpd/ntp_intres.c
-@@ -151,11 +151,11 @@
+Index: ntp-4.2.2+dfsg/ntpd/ntp_intres.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/ntpd/ntp_intres.c	2006-06-06 20:16:40.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpd/ntp_intres.c	2006-07-02 14:25:13.000000000 +0000
+@@ -157,11 +157,11 @@
  struct ntp_res_t_pkt {		/* Tagged packet: */
  	void *tag;		/* For the caller */
  	u_int32 paddr;		/* IP to look up, or 0 */
@@ -14,75 +16,11 @@
  	u_int32 paddr;
  	int mode;
  	int version;
---- ntp-4.2.0a+stable.orig/ntpd/ntp_proto.c
-+++ ntp-4.2.0a+stable/ntpd/ntp_proto.c
-@@ -2293,8 +2293,8 @@
- 			if (debug > 1)
- 				printf("select: prefer offset %.6f\n",
- 				    sys_offset);
--		}
- #endif
-+		}
- 	} else {
- 
- 		/*
---- ntp-4.2.0a+stable.orig/ntpd/ntp_config.c
-+++ ntp-4.2.0a+stable/ntpd/ntp_config.c
-@@ -5,21 +5,6 @@
- # include <config.h>
- #endif
- 
--#ifdef HAVE_NETINFO
--# include <netinfo/ni.h>
--#endif
--
--#include <netdb.h>
--
--#include "ntpd.h"
--#include "ntp_io.h"
--#include "ntp_unixtime.h"
--#include "ntp_refclock.h"
--#include "ntp_filegen.h"
--#include "ntp_stdlib.h"
--#include "ntp_config.h"
--#include "ntp_cmdargs.h"
--
- #include <stdio.h>
- #include <ctype.h>
- #ifdef HAVE_SYS_PARAM_H
-@@ -40,6 +25,21 @@
- extern HANDLE ResolverThreadHandle;
- #endif /* SYS_WINNT */
- 
-+#ifdef HAVE_NETINFO
-+# include <netinfo/ni.h>
-+#endif
-+
-+#include <netdb.h>
-+
-+#include "ntpd.h"
-+#include "ntp_io.h"
-+#include "ntp_unixtime.h"
-+#include "ntp_refclock.h"
-+#include "ntp_filegen.h"
-+#include "ntp_stdlib.h"
-+#include "ntp_config.h"
-+#include "ntp_cmdargs.h"
-+
- extern int priority_done;
- 
- /*
---- ntp-4.2.0a+stable.orig/ntpd/jupiter.h
-+++ ntp-4.2.0a+stable/ntpd/jupiter.h
-@@ -1,4 +1,4 @@
--/* @(#) $Header: /daten/tmp/ex.16779/ntp-4.2.0a+stable.orig/ntpd/jupiter.h 1.2 01/10/08 21:18:16-04:00 stenn@whimsy.udel.edu $ (LBL) */
-+/* @(#) $Header: /daten/tmp/ex.17575/ntp-4.2.0a+stable/ntpd/jupiter.h 1.2 01/10/08 21:18:16-04:00 stenn@whimsy.udel.edu $ (LBL) */
- 
- /*
-  * Rockwell Jupiter GPS receiver definitions
---- ntp-4.2.0a+stable.orig/ntpd/ntpd.c
-+++ ntp-4.2.0a+stable/ntpd/ntpd.c
-@@ -173,6 +173,8 @@
+Index: ntp-4.2.2+dfsg/ntpd/ntpd.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/ntpd/ntpd.c	2006-06-06 20:16:46.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpd/ntpd.c	2006-07-02 14:25:13.000000000 +0000
+@@ -165,6 +165,8 @@
  char *user = NULL;		/* User to switch to */
  char *group = NULL;		/* group to switch to */
  char *chrootdir = NULL;		/* directory to chroot to */
@@ -91,9 +29,9 @@
  int sw_uid;
  int sw_gid;
  char *endp;  
-@@ -839,8 +841,29 @@
- # endif  
- #endif
+@@ -749,8 +751,29 @@
+ 	initializing = 0;
+ 
  
 +#ifdef HAVE_LINUX_CAPABILITIES
 +        {
@@ -121,7 +59,7 @@
  		/* Drop super-user privileges and chroot now if the OS supports this */
  
  #ifdef HAVE_LINUX_CAPABILITIES
-@@ -867,7 +890,6 @@
+@@ -777,7 +800,6 @@
  				if ((pw = getpwnam(user)) != NULL) {
  					sw_uid = pw->pw_uid;
  				} else {
@@ -129,16 +67,7 @@
  					msyslog(LOG_ERR, "Cannot find user `%s'", user);
  					exit (-1);
  				}
-@@ -881,7 +903,7 @@
- 			} else {
- getgroup:	
- 				if ((gr = getgrnam(group)) != NULL) {
--					sw_gid = pw->pw_gid;
-+					sw_gid = gr->gr_gid;
- 				} else {
- 					errno = 0;
- 					msyslog(LOG_ERR, "Cannot find group `%s'", group);
-@@ -924,7 +946,7 @@
+@@ -834,7 +856,7 @@
  			 *  We drop all of them, except for the crucial one: cap_sys_time:
  			 */
  			cap_t caps;
@@ -147,8 +76,10 @@
  				msyslog( LOG_ERR, "cap_from_text() failed: %m" );
  				exit(-1);
  			}
---- ntp-4.2.0a+stable.orig/include/ntp_stdlib.h
-+++ ntp-4.2.0a+stable/include/ntp_stdlib.h
+Index: ntp-4.2.2+dfsg/include/ntp_stdlib.h
+===================================================================
+--- ntp-4.2.2+dfsg.orig/include/ntp_stdlib.h	2006-06-06 20:16:19.000000000 +0000
++++ ntp-4.2.2+dfsg/include/ntp_stdlib.h	2006-07-02 14:25:13.000000000 +0000
 @@ -4,6 +4,7 @@
  #include <sys/types.h>
  #include <sys/socket.h>
@@ -157,60 +88,26 @@
  
  #include "ntp_types.h"
  #include "ntp_string.h"
-@@ -134,7 +135,6 @@
- extern u_int	cache_keylen;		/* key length */
- 
- /* clocktypes.c */
--struct clktype;
- extern struct clktype clktypes[];
- 
- /* getopt.c */
---- ntp-4.2.0a+stable.orig/include/rsa_md5.h
-+++ ntp-4.2.0a+stable/include/rsa_md5.h
-@@ -23,8 +23,8 @@
-    documentation and/or software.  
-  */
- 
--#ifndef _MD5_H_
--#define _MD5_H_ 1
-+#ifndef NTP_MD5_H
-+#define NTP_MD5_H 1
- 
- #ifdef __cplusplus
- extern "C" {
-@@ -33,6 +33,10 @@
- /*#include "global.h"	*/
- 
- /* MD5 context. */
-+/* Renamed, as to not conflict with other MD5 implementations included
-+ * from elsewhere. */
-+#define MD5_CTX NTP_MD5_CTX
-+
- typedef struct {
-   UINT4 state[4];                                   /* state (ABCD) */
-   UINT4 count[2];        /* number of bits, modulo 2^64 (lsb first) */
-@@ -48,4 +52,4 @@
- }
- #endif
- 
--#endif
-+#endif /* NTP_MD5_H */
---- ntp-4.2.0a+stable.orig/include/ntp_control.h
-+++ ntp-4.2.0a+stable/include/ntp_control.h
+Index: ntp-4.2.2+dfsg/include/ntp_control.h
+===================================================================
+--- ntp-4.2.2+dfsg.orig/include/ntp_control.h	2006-06-06 20:16:17.000000000 +0000
++++ ntp-4.2.2+dfsg/include/ntp_control.h	2006-07-02 14:25:13.000000000 +0000
 @@ -1,3 +1,5 @@
 +#ifndef NTP_CONTROL
 +#define NTP_CONTROL
  /*
   * ntp_control.h - definitions related to NTP mode 6 control messages
   */
-@@ -283,3 +285,5 @@
+@@ -285,3 +287,5 @@
  #define	TYPE_SYS	1
  #define	TYPE_PEER	2
  #define	TYPE_CLOCK	3
 +
 +#endif /* NTP_CONTROL */
---- ntp-4.2.0a+stable.orig/include/ntpd.h
-+++ ntp-4.2.0a+stable/include/ntpd.h
+Index: ntp-4.2.2+dfsg/include/ntpd.h
+===================================================================
+--- ntp-4.2.2+dfsg.orig/include/ntpd.h	2006-06-06 20:16:20.000000000 +0000
++++ ntp-4.2.2+dfsg/include/ntpd.h	2006-07-02 14:25:13.000000000 +0000
 @@ -8,6 +8,7 @@
  #include "ntp_select.h"
  #include "ntp_malloc.h"
@@ -219,16 +116,10 @@
  #include "recvbuff.h"
  
  #ifdef SYS_WINNT
-@@ -225,7 +226,6 @@
- #endif
- 
- /* ntp_control.c */
--struct ctl_trap;
- extern struct ctl_trap ctl_trap[];
- extern int	num_ctl_traps;
- extern keyid_t	ctl_auth_keyid;		/* keyid used for authenticating write requests */
---- ntp-4.2.0a+stable.orig/include/ntp_syscall.h
-+++ ntp-4.2.0a+stable/include/ntp_syscall.h
+Index: ntp-4.2.2+dfsg/include/ntp_syscall.h
+===================================================================
+--- ntp-4.2.2+dfsg.orig/include/ntp_syscall.h	2004-02-25 05:57:56.000000000 +0000
++++ ntp-4.2.2+dfsg/include/ntp_syscall.h	2006-07-02 14:25:13.000000000 +0000
 @@ -24,6 +24,15 @@
  
  #  define ntp_adjtime(t)	__adjtimex((t))
@@ -253,8 +144,10 @@
  # else /* !HAVE__ADJTIMEX */
  #  ifdef HAVE___NTP_GETTIME
  #   define ntp_gettime(t)	__ntp_gettime((t))
---- ntp-4.2.0a+stable.orig/include/ntp.h
-+++ ntp-4.2.0a+stable/include/ntp.h
+Index: ntp-4.2.2+dfsg/include/ntp.h
+===================================================================
+--- ntp-4.2.2+dfsg.orig/include/ntp.h	2006-06-06 20:16:17.000000000 +0000
++++ ntp-4.2.2+dfsg/include/ntp.h	2006-07-02 14:25:13.000000000 +0000
 @@ -5,6 +5,7 @@
  #define NTP_H
  
@@ -263,9 +156,11 @@
  #include <math.h>
  #ifdef OPENSSL
  #include "ntp_crypto.h"
---- ntp-4.2.0a+stable.orig/libntp/msyslog.c
-+++ ntp-4.2.0a+stable/libntp/msyslog.c
-@@ -163,6 +163,7 @@
+Index: ntp-4.2.2+dfsg/libntp/msyslog.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/libntp/msyslog.c	2006-06-06 20:16:28.000000000 +0000
++++ ntp-4.2.2+dfsg/libntp/msyslog.c	2006-07-02 14:25:13.000000000 +0000
+@@ -162,6 +162,7 @@
  	format_errmsg(nfmt, sizeof(nfmt), fmt, errval);
  
  	vsnprintf(buf, sizeof(buf), nfmt, ap);
@@ -273,8 +168,10 @@
  	addto_syslog(level, buf);
  	va_end(ap);
  }
---- ntp-4.2.0a+stable.orig/libntp/icom.c
-+++ ntp-4.2.0a+stable/libntp/icom.c
+Index: ntp-4.2.2+dfsg/libntp/icom.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/libntp/icom.c	2006-06-06 20:16:27.000000000 +0000
++++ ntp-4.2.2+dfsg/libntp/icom.c	2006-07-02 14:25:13.000000000 +0000
 @@ -10,6 +10,7 @@
  #include <stdio.h>
  #include <fcntl.h>
@@ -283,93 +180,11 @@
  
  #include "ntp_tty.h"
  #include "l_stdlib.h"
---- ntp-4.2.0a+stable.orig/ntpdate/ntpdate.c
-+++ ntp-4.2.0a+stable/ntpdate/ntpdate.c
-@@ -1321,6 +1321,30 @@
- }
- 
- 
-+/*
-+ * is_unreachable - check to see if we have a route to given destination
-+ *		    (non-blocking).
-+ */
-+static int
-+is_reachable (struct sockaddr_storage *dst)
-+{
-+	SOCKET sockfd;
-+
-+	sockfd = socket(dst->ss_family, SOCK_DGRAM, 0);
-+	if (sockfd == -1) {
-+		return 0;
-+	}
-+
-+	if(connect(sockfd, (struct sockaddr *)dst, SOCKLEN(dst))) {
-+		closesocket(sockfd);
-+		return 0;
-+	}
-+	closesocket(sockfd);
-+	return 1;
-+}
-+
-+
-+
- /* XXX ELIMINATE: merge BIG slew into adj_systime in lib/systime.c */
- /*
-  * addserver - determine a server's address and allocate a new structure
-@@ -1333,7 +1357,7 @@
- {
- 	register struct server *server;
- 	/* Address infos structure to store result of getaddrinfo */
--	struct addrinfo *addrResult;
-+	struct addrinfo *addrResult, *ptr;
- 	/* Address infos structure to store hints for getaddrinfo */
- 	struct addrinfo hints;
- 	/* Error variable for getaddrinfo */
-@@ -1364,22 +1388,28 @@
- 	}
- #endif
- 
--	server = (struct server *)emalloc(sizeof(struct server));
--	memset((char *)server, 0, sizeof(struct server));
--
--	/* For now we only get the first returned server of the addrinfo list */
--	memset(&(server->srcadr), 0, sizeof(struct sockaddr_storage));
--	memcpy(&(server->srcadr), addrResult->ai_addr, addrResult->ai_addrlen);
--	server->event_time = ++sys_numservers;
--	if (sys_servers == NULL)
--		sys_servers = server;
--	else {
--		struct server *sp;
--
--		for (sp = sys_servers; sp->next_server != NULL;
--		     sp = sp->next_server) ;
--		sp->next_server = server;
-+	/* We must get all returned server in case the first one fails */
-+	for (ptr = addrResult; ptr != NULL; ptr = ptr->ai_next) {
-+		if (is_reachable ((struct sockaddr_storage *)ptr->ai_addr)) {
-+			server = (struct server *)emalloc(sizeof(struct server));
-+			memset((char *)server, 0, sizeof(struct server));
-+
-+			memset(&(server->srcadr), 0, sizeof(struct sockaddr_storage));
-+			memcpy(&(server->srcadr), ptr->ai_addr, ptr->ai_addrlen);
-+			server->event_time = ++sys_numservers;
-+			if (sys_servers == NULL)
-+				sys_servers = server;
-+			else {
-+				struct server *sp;
-+
-+				for (sp = sys_servers; sp->next_server != NULL;
-+				     sp = sp->next_server) ;
-+				sp->next_server = server;
-+			}
-+		}
- 	}
-+
-+	freeaddrinfo(addrResult);
- }
- 
- 
-@@ -1717,8 +1747,7 @@
+Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/ntpdate/ntpdate.c	2006-06-06 20:16:59.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpdate/ntpdate.c	2006-07-02 14:25:13.000000000 +0000
+@@ -1777,8 +1777,7 @@
  	   if (res->ai_family == AF_INET6)
  		if (setsockopt(fd[nbsock], IPPROTO_IPV6, IPV6_V6ONLY, (void*) &optval, sizeof(optval)) < 0) {
  			   netsyslog(LOG_ERR, "setsockopt() IPV6_V6ONLY failed: %m");
@@ -379,7 +194,7 @@
  		}
  #endif
  
-@@ -1728,7 +1757,7 @@
+@@ -1788,7 +1787,7 @@
  	/*
  	 * bind the socket to the NTP port
  	 */
@@ -388,7 +203,7 @@
  		if (bind(fd[nbsock], res->ai_addr, SOCKLEN(res->ai_addr)) < 0) {
  #ifndef SYS_WINNT
  			if (errno == EADDRINUSE)
-@@ -2008,8 +2037,10 @@
+@@ -2067,8 +2066,10 @@
  		adjtv.tv_usec = -adjtv.tv_usec;
  	}
  
@@ -401,7 +216,7 @@
  			msyslog(LOG_ERR, "Can't adjust the time of day: %m");
  			return 0;
  		}
-@@ -2035,7 +2066,6 @@
+@@ -2094,7 +2095,6 @@
  	int isneg;
  	int n;
  
@@ -409,7 +224,7 @@
  	/*
  	 * Take the absolute value of the offset
  	 */
-@@ -2062,8 +2092,6 @@
+@@ -2121,8 +2121,6 @@
  	 * line.
  	 */
  #endif
@@ -418,7 +233,7 @@
  #ifdef FORCE_NTPDATE_STEP
  	LFPTOD(ts, dtemp);
  	return step_systime(dtemp);
-@@ -2072,8 +2100,6 @@
+@@ -2131,8 +2129,6 @@
  	return 1;
  #endif
  #else /* SLEWALWAYS */
@@ -427,9 +242,11 @@
  	LFPTOD(ts, dtemp);
  	return step_systime(dtemp);
  #endif	/* SLEWALWAYS */
---- ntp-4.2.0a+stable.orig/util/ntp-keygen.c
-+++ ntp-4.2.0a+stable/util/ntp-keygen.c
-@@ -162,7 +162,7 @@
+Index: ntp-4.2.2+dfsg/util/ntp-keygen.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/util/ntp-keygen.c	2006-06-06 20:17:17.000000000 +0000
++++ ntp-4.2.2+dfsg/util/ntp-keygen.c	2006-07-02 14:25:13.000000000 +0000
+@@ -163,7 +163,7 @@
  #ifdef OPENSSL
  u_int	modulus = PLEN;		/* prime modulus size (bits) */
  #endif
@@ -438,39 +255,22 @@
  time_t	epoch;			/* Unix epoch (seconds) since 1970 */
  char	*hostname;		/* host name (subject name) */
  char	*trustname;		/* trusted host name (issuer name) */
-@@ -254,13 +254,16 @@
- #endif
- 
- #ifdef OPENSSL
-+#if 0 /* This is stupid. Ever heard of upwards-compatible library versions? */
- 	if (SSLeay() != OPENSSL_VERSION_NUMBER) {
- 		fprintf(stderr,
- 		    "OpenSSL version mismatch. Built against %lx, you have %lx\n",
- 		    OPENSSL_VERSION_NUMBER, SSLeay());
- 		return (-1);
- 
--	} else {
-+	} else
-+#endif
-+	{
- 		fprintf(stderr,
- 		    "Using OpenSSL version %lx\n", SSLeay());
- 	}
-@@ -439,9 +442,11 @@
+@@ -447,9 +447,10 @@
  		 */
  		case 'V':
  			mvpar++;
--			if (sscanf(optarg, "%d", &nkeys) != 1)
+-			if (sscanf(optarg, "%d", &nkeys) != 1) {
 +			if (sscanf(optarg, "%d", &nkeys) != 1 || nkeys < 1) {
  				fprintf(stderr,
  				    "invalid option -V %s\n", optarg);
 +				nkeys = 1;
-+			}
+ 				++errflg;
+ 			}
  			continue;
- #endif
- 
---- ntp-4.2.0a+stable.orig/util/tickadj.c
-+++ ntp-4.2.0a+stable/util/tickadj.c
+Index: ntp-4.2.2+dfsg/util/tickadj.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/util/tickadj.c	2004-02-25 05:58:33.000000000 +0000
++++ ntp-4.2.2+dfsg/util/tickadj.c	2006-07-02 14:25:13.000000000 +0000
 @@ -176,11 +176,15 @@
  
  #ifdef NLIST_STRUCT
@@ -488,13 +288,15 @@
  #endif
  
  #include "ntp_io.h"
---- ntp-4.2.0a+stable.orig/scripts/ntptrace.in
-+++ ntp-4.2.0a+stable/scripts/ntptrace.in
+Index: ntp-4.2.2+dfsg/scripts/ntptrace.in
+===================================================================
+--- ntp-4.2.2+dfsg.orig/scripts/ntptrace.in	2006-06-06 20:17:11.000000000 +0000
++++ ntp-4.2.2+dfsg/scripts/ntptrace.in	2006-07-02 14:25:13.000000000 +0000
 @@ -8,6 +8,7 @@
-
+ 
  $ntpq = "ntpq";
-
+ 
 +$Getopt::Std::STANDARD_HELP_VERSION=1;
- getopts('n');
-
+ getopts('nm:');
+ 
  $dodns = 1;

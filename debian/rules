@@ -20,7 +20,7 @@ config.status: patch
 	./configure --prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
-		--disable-errorcache \
+		--disable-errorcache --with-sntp=no \
 		--enable-linuxcaps
 
 build: build-stamp
