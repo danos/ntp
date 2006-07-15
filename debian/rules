@@ -19,13 +19,10 @@ config.status: $(QUILT_STAMPFN)
 		--disable-dependency-tracking
 
 build: config build-stamp
-build-stamp: config.status version
+build-stamp: config.status
 	dh_testdir
 	$(MAKE)
 	touch $@
-
-version: debian/changelog
-	dpkg-parsechangelog | sed -ne 's/^Version:[ 	]*//p' >$@
 
 clean: clean-patched unpatch
 clean-patched:
@@ -39,7 +36,6 @@ clean-patched:
 	-test -r /usr/share/misc/config.guess && \
 		cp -f /usr/share/misc/config.guess config.guess
 
-	rm -f COPYRIGHT version
 	dh_clean
 
 install: build-stamp
