@@ -21,7 +21,8 @@ config.status: patch
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
 		--disable-errorcache --with-sntp=no \
-		--enable-linuxcaps
+		--enable-linuxcaps \
+		--disable-dependency-tracking
 
 build: build-stamp
 build-stamp: config.status version
