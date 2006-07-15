@@ -52,47 +52,21 @@ install: build-stamp
 
 	# move the user-space programs from /usr/sbin to /usr/bin
 	for file in ntpq ntpdc ntptrace; do \
-		mv debian/ntp/usr/sbin/$$file debian/ntp/usr/bin/$$file; \
+		mv debian/ntp/usr/sbin/$$file debian/ntp/usr/bin/$$file || exit; \
 	done
 
-	install -o root -g root -m 755 debian/ntp.ifup \
-		debian/ntp/etc/network/if-up.d/ntp
-	install -o root -g root -m 0755 scripts/ntpsweep \
-		debian/ntp/usr/bin/ntpsweep
-	install -o root -g root -m 0755 util/ntp-keygen \
-		debian/ntp/usr/sbin/ntp-keygen
-	install -o root -g root -m 0644 debian/ntpsweep.1 \
-		debian/ntp/usr/share/man/man1/ntpsweep.1
-	# hand-craft the manpages since they're all worthless creations...
+	install -D -m 0755 debian/ntp.ifup debian/ntp/etc/network/if-up.d/ntp
+	install -D -m 0755 scripts/ntpsweep debian/ntp/usr/bin/ntpsweep
 
-	install -o root -g root -m 0644 debian/ntpdate.1 \
-		debian/ntpdate/usr/share/man/man1/ntpdate.1
-	install -o root -g root -m 0644 debian/ntpd.1 \
-		debian/ntp/usr/share/man/man1/ntpd.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/ntpdc.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/ntp-keygen.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/ntp-wait.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/ntpq.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/ntptrace.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/tickadj.1
-	install -o root -g root -m 0644 debian/useless.1 \
-		debian/ntp/usr/share/man/man1/ntptime.1
-	install -o root -g root -m 0644 debian/ntp.conf \
-		debian/ntp/etc
-	install -o root -g root -m 0644 debian/useless.5 \
-		debian/ntp/usr/share/man/man5/ntp.conf.5
-	install -o root -g root -m 0644 debian/ntpdate.default \
-		debian/ntpdate/etc/default/ntpdate
-	install -o root -g root -m 0644 debian/ntp.ignore \
-		debian/ntp/etc/logcheck/ignore.d.server/ntp
-	install -o root -g root -m 0644 debian/ntpdate.ignore \
-		debian/ntpdate/etc/logcheck/ignore.d.server/ntpdate
+	install -D -m 0644 debian/ntpsweep.1 debian/ntp/usr/share/man/man1/ntpsweep.1
+	install -D -m 0644 debian/ntpdate.1 debian/ntpdate/usr/share/man/man1/ntpdate.1
+	install -D -m 0644 debian/ntpd.1 debian/ntp/usr/share/man/man1/ntpd.1
+	for file in ntpdc ntp-keygen ntp-wait ntpq ntptrace tickadj ntptime; do \
+		install -D -m 0644 debian/useless.1 debian/ntp/usr/share/man/man1/$$file.1 || exit; \
+	done
+
+	install -D -m 0644 debian/ntp.conf debian/ntp/etc/ntp.conf
+	install -D -m 0644 debian/useless.5 debian/ntp/usr/share/man/man5/ntp.conf.5
 
 	dh_movefiles --sourcedir=debian/ntp
 
@@ -101,11 +75,9 @@ binary-indep: build install
 	dh_testroot -i
 	dh_installdocs -i html
 	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/hints/solaris*
-	find debian/ntp-doc/usr/share/doc/ntp-doc/html/ -name SCCS -print0 \
-		| xargs -0r rm -rf
-	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/htmlprimer.html
 	dh_installexamples -i
 	dh_installcron -i
+	dh_installlogcheck -i
 	dh_installchangelogs -i
 	dh_compress -i
 	dh_fixperms -i
@@ -120,9 +92,9 @@ binary-arch: build install
 	dh_installdocs -a
 	dh_installexamples -a
 	dh_installinit -pntp --update-rcd-params="defaults 23" 
-	dh_installinit -pntpdate --update-rcd-params="start 51 S ." \
-		--init-script=ntpdate
+	dh_installinit -pntpdate --update-rcd-params="start 51 S ." --init-script=ntpdate
 	dh_installcron -a
+	dh_installlogcheck -a
 	dh_installchangelogs -a
 	dh_strip -a
 	dh_compress -a
