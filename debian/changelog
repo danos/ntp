@@ -14,6 +14,8 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
     (closes: #308840)
   * Cron jobs parse /etc/ntp.conf to fetch current values of logfile and
     statsdir (closes: #177341, #318824)
+  * Support DEB_BUILD_OPTIONS=noopt
+  * Compile with -fno-strict-aliasing (closes: #316304)
 
   [ Kurt Roeckx ]
   * Make ntp and ntpdate depend on netbase because they

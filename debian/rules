@@ -8,10 +8,18 @@ export AUTOCONF   = : autoconf
 export AUTOMAKE   = : automake
 export AUTOHEADER = : autoheader
 
+CFLAGS = -g -fno-strict-aliasing
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+CFLAGS += -O0
+else
+CFLAGS += -O2
+endif
+
 config: patch config.status
 config.status: $(QUILT_STAMPFN)
 	dh_testdir
-	./configure --prefix=/usr \
+	./configure CFLAGS='$(CFLAGS)' \
+		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
 		--disable-errorcache --with-sntp=no \
