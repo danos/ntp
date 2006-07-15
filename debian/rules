@@ -1,8 +1,5 @@
 #!/usr/bin/make -f
 
-# Comment this to turn off verbose mode.
-# export DH_VERBOSE=1
-
 include /usr/share/quilt/quilt.make
 
 # hacks to avoid running these things during the build
@@ -14,9 +11,6 @@ export AUTOHEADER = : autoheader
 config: patch config.status
 config.status: $(QUILT_STAMPFN)
 	dh_testdir
-
-	chmod a+x configure
-
 	./configure --prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
@@ -102,9 +96,7 @@ install: build-stamp
 
 	dh_movefiles --sourcedir=debian/ntp
 
-# Build architecture-independent files here.
 binary-indep: build install
-#	dh_testversion
 	dh_testdir -i
 	dh_testroot -i
 	dh_installdocs -i html
@@ -113,13 +105,7 @@ binary-indep: build install
 		| xargs -0r rm -rf
 	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/htmlprimer.html
 	dh_installexamples -i
-	dh_installmenu -i
-#	dh_installemacsen -i
-#	dh_installinit -i
 	dh_installcron -i
-	dh_installdebconf -i
-#	dh_installmanpages -i ansi2knr.1
-#	dh_undocumented
 	dh_installchangelogs -i
 	dh_compress -i
 	dh_fixperms -i
@@ -128,22 +114,15 @@ binary-indep: build install
 	dh_md5sums -i
 	dh_builddeb -i
 
-# Build architecture-dependent files here.
 binary-arch: build install
-#	dh_testversion
 	dh_testdir -a
 	dh_testroot -a
 	dh_installdocs -a
 	dh_installexamples -a
-	dh_installmenu -a
-#	dh_installemacsen -a
-	dh_installdebconf -a
 	dh_installinit -pntp --update-rcd-params="defaults 23" 
 	dh_installinit -pntpdate --update-rcd-params="start 51 S ." \
 		--init-script=ntpdate
 	dh_installcron -a
-#	dh_installmanpages -a ansi2knr.1
-#	dh_undocumented
 	dh_installchangelogs -a
 	dh_strip -a
 	dh_compress -a
@@ -151,12 +130,8 @@ binary-arch: build install
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a
-#	dh_makeshlibs -a
 	dh_md5sums -a
 	dh_builddeb -a
-
-source diff:                                                                  
-	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install patch unpatch clean-patched
