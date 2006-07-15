@@ -121,7 +121,7 @@ binary-indep: build install
 #	dh_installmanpages -i ansi2knr.1
 #	dh_undocumented
 	dh_installchangelogs -i
-	gzip -9f debian/ntp-doc/usr/share/doc/ntp-doc/changelog.Debian
+	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
 	dh_gencontrol -i
@@ -147,7 +147,6 @@ binary-arch: build install
 	dh_installchangelogs -a
 	dh_strip -a
 	dh_compress -a
-	#dh_compress -pntp usr/share/doc/ntp/ChangeLog
 	dh_fixperms -a
 	dh_installdeb -a
 	dh_shlibdeps -a
