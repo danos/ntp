@@ -16,6 +16,7 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
     statsdir (closes: #177341, #318824)
   * Support DEB_BUILD_OPTIONS=noopt
   * Compile with -fno-strict-aliasing (closes: #316304)
+  * Removed inactive comaintainers
 
   [ Kurt Roeckx ]
   * Make ntp and ntpdate depend on netbase because they
