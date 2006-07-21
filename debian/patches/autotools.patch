@@ -1,7 +1,7 @@
 Index: ntp-4.2.2+dfsg/ntpd/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpd/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpd/Makefile.in	2006-07-15 00:55:13.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpd/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpd/Makefile.in	2006-07-21 15:45:50.000000000 +0000
 @@ -81,15 +81,15 @@
  	refclock_irig$U.$(OBJEXT) refclock_jjy$U.$(OBJEXT) \
  	refclock_jupiter$U.$(OBJEXT) refclock_leitch$U.$(OBJEXT) \
@@ -127,8 +127,8 @@ Index: ntp-4.2.2+dfsg/ntpd/Makefile.in
  ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 Index: ntp-4.2.2+dfsg/include/isc/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/include/isc/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/include/isc/Makefile.in	2006-07-15 00:55:12.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/include/isc/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/include/isc/Makefile.in	2006-07-21 15:45:49.000000000 +0000
 @@ -83,6 +83,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -179,8 +179,8 @@ Index: ntp-4.2.2+dfsg/include/isc/Makefile.in
  subdirs = @subdirs@
 Index: ntp-4.2.2+dfsg/include/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/include/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/include/Makefile.in	2006-07-15 00:55:12.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/include/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/include/Makefile.in	2006-07-21 15:45:49.000000000 +0000
 @@ -90,6 +90,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -229,7 +229,7 @@ Index: ntp-4.2.2+dfsg/include/Makefile.in
  sbindir = @sbindir@
  sharedstatedir = @sharedstatedir@
  subdirs = @subdirs@
-@@ -182,7 +188,6 @@
+@@ -182,12 +188,10 @@
  EXTRA_DIST = version.def
  SUBDIRS = isc
  noinst_HEADERS = \
@@ -237,7 +237,12 @@ Index: ntp-4.2.2+dfsg/include/Makefile.in
  	audio.h \
  	ascii.h \
  	audio.h \
-@@ -230,10 +235,6 @@
+ 	binio.h \
+-	global.h \
+ 	gps.h \
+ 	hopf6039.h \
+ 	icom.h \
+@@ -230,10 +234,6 @@
  	parse.h \
  	parse_conf.h \
  	recvbuff.h \
@@ -250,8 +255,8 @@ Index: ntp-4.2.2+dfsg/include/Makefile.in
  all: all-recursive
 Index: ntp-4.2.2+dfsg/libntp/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/libntp/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/libntp/Makefile.in	2006-07-15 00:55:13.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/libntp/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/libntp/Makefile.in	2006-07-21 15:45:50.000000000 +0000
 @@ -56,24 +56,23 @@
  ARFLAGS = cru
  libntp_a_AR = $(AR) $(ARFLAGS)
@@ -450,8 +455,8 @@ Index: ntp-4.2.2+dfsg/libntp/Makefile.in
  ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 Index: ntp-4.2.2+dfsg/libparse/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/libparse/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/libparse/Makefile.in	2006-07-15 00:55:13.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/libparse/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/libparse/Makefile.in	2006-07-21 15:45:50.000000000 +0000
 @@ -62,19 +62,18 @@
  	clk_rawdcf$U.$(OBJEXT) clk_trimtsip$U.$(OBJEXT) \
  	clk_dcf7000$U.$(OBJEXT) clk_trimtaip$U.$(OBJEXT) \
@@ -578,8 +583,8 @@ Index: ntp-4.2.2+dfsg/libparse/Makefile.in
  ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 Index: ntp-4.2.2+dfsg/ntpdate/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpdate/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpdate/Makefile.in	2006-07-15 00:55:13.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpdate/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpdate/Makefile.in	2006-07-21 15:45:50.000000000 +0000
 @@ -110,6 +110,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -639,8 +644,8 @@ Index: ntp-4.2.2+dfsg/ntpdate/Makefile.in
  ETAGS_ARGS = Makefile.am
 Index: ntp-4.2.2+dfsg/scripts/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/scripts/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/scripts/Makefile.in	2006-07-15 00:55:14.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/scripts/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/scripts/Makefile.in	2006-07-21 15:45:51.000000000 +0000
 @@ -41,8 +41,8 @@
  	$(srcdir)/calc_tickadj.in $(srcdir)/checktime.in \
  	$(srcdir)/freq_adj.in $(srcdir)/html2man.in $(srcdir)/mkver.in \
@@ -728,8 +733,8 @@ Index: ntp-4.2.2+dfsg/scripts/Makefile.in
  summary: $(top_builddir)/config.status $(srcdir)/summary.in
 Index: ntp-4.2.2+dfsg/kernel/sys/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/kernel/sys/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/kernel/sys/Makefile.in	2006-07-15 00:55:13.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/kernel/sys/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/kernel/sys/Makefile.in	2006-07-21 15:45:50.000000000 +0000
 @@ -83,6 +83,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -780,8 +785,8 @@ Index: ntp-4.2.2+dfsg/kernel/sys/Makefile.in
  subdirs = @subdirs@
 Index: ntp-4.2.2+dfsg/kernel/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/kernel/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/kernel/Makefile.in	2006-07-15 00:55:12.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/kernel/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/kernel/Makefile.in	2006-07-21 15:45:49.000000000 +0000
 @@ -87,6 +87,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -832,8 +837,8 @@ Index: ntp-4.2.2+dfsg/kernel/Makefile.in
  subdirs = @subdirs@
 Index: ntp-4.2.2+dfsg/ntpdc/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpdc/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpdc/Makefile.in	2006-07-15 00:55:14.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpdc/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpdc/Makefile.in	2006-07-21 15:45:51.000000000 +0000
 @@ -107,6 +107,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -893,8 +898,8 @@ Index: ntp-4.2.2+dfsg/ntpdc/Makefile.in
  DISTCLEANFILES = .version version.c
 Index: ntp-4.2.2+dfsg/util/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/util/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/util/Makefile.in	2006-07-15 00:55:14.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/util/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/util/Makefile.in	2006-07-21 15:45:51.000000000 +0000
 @@ -36,7 +36,6 @@
  POST_UNINSTALL = :
  build_triplet = @build@
@@ -1185,8 +1190,8 @@ Index: ntp-4.2.2+dfsg/util/Makefile.in
  ../libntp/libntp.a:
 Index: ntp-4.2.2+dfsg/parseutil/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/parseutil/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/parseutil/Makefile.in	2006-07-15 00:55:14.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/parseutil/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/parseutil/Makefile.in	2006-07-21 15:45:51.000000000 +0000
 @@ -98,6 +98,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -1237,8 +1242,8 @@ Index: ntp-4.2.2+dfsg/parseutil/Makefile.in
  subdirs = @subdirs@
 Index: ntp-4.2.2+dfsg/clockstuff/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/clockstuff/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/clockstuff/Makefile.in	2006-07-15 00:55:12.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/clockstuff/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/clockstuff/Makefile.in	2006-07-21 15:45:49.000000000 +0000
 @@ -101,6 +101,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -1289,8 +1294,8 @@ Index: ntp-4.2.2+dfsg/clockstuff/Makefile.in
  subdirs = @subdirs@
 Index: ntp-4.2.2+dfsg/adjtimed/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/adjtimed/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/adjtimed/Makefile.in	2006-07-15 00:55:12.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/adjtimed/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/adjtimed/Makefile.in	2006-07-21 15:45:49.000000000 +0000
 @@ -103,6 +103,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -1341,8 +1346,8 @@ Index: ntp-4.2.2+dfsg/adjtimed/Makefile.in
  subdirs = @subdirs@
 Index: ntp-4.2.2+dfsg/ntpq/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpq/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpq/Makefile.in	2006-07-15 00:55:14.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpq/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpq/Makefile.in	2006-07-21 15:45:51.000000000 +0000
 @@ -99,6 +99,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -1402,8 +1407,8 @@ Index: ntp-4.2.2+dfsg/ntpq/Makefile.in
  ETAGS_ARGS = Makefile.am
 Index: ntp-4.2.2+dfsg/configure.ac
 ===================================================================
---- ntp-4.2.2+dfsg.orig/configure.ac	2006-07-15 00:54:17.000000000 +0000
-+++ ntp-4.2.2+dfsg/configure.ac	2006-07-15 00:54:47.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/configure.ac	2006-07-21 15:45:20.000000000 +0000
++++ ntp-4.2.2+dfsg/configure.ac	2006-07-21 15:45:20.000000000 +0000
 @@ -392,7 +392,7 @@
  AC_CHECK_HEADERS(netinfo/ni.h, [AC_DEFINE(HAVE_NETINFO, 1, [NetInfo support?])])
  AC_CHECK_HEADERS(sun/audioio.h sys/audioio.h)
@@ -1473,8 +1478,8 @@ Index: ntp-4.2.2+dfsg/configure.ac
  #
 Index: ntp-4.2.2+dfsg/configure
 ===================================================================
---- ntp-4.2.2+dfsg.orig/configure	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/configure	2006-07-15 00:55:07.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/configure	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/configure	2006-07-21 15:45:40.000000000 +0000
 @@ -1,8 +1,9 @@
  #! /bin/sh
  # Guess values for system-dependent variables and create Makefiles.
@@ -34430,8 +34435,8 @@ Index: ntp-4.2.2+dfsg/configure
  
 Index: ntp-4.2.2+dfsg/Makefile.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/Makefile.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/Makefile.in	2006-07-15 00:55:14.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/Makefile.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/Makefile.in	2006-07-21 15:45:51.000000000 +0000
 @@ -101,6 +101,7 @@
  EF_PROGS = @EF_PROGS@
  EGREP = @EGREP@
@@ -34507,8 +34512,8 @@ Index: ntp-4.2.2+dfsg/Makefile.in
  DISTCHECK_CONFIGURE_FLAGS = --with-arlib --with-sntp
 Index: ntp-4.2.2+dfsg/config.h.in
 ===================================================================
---- ntp-4.2.2+dfsg.orig/config.h.in	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/config.h.in	2006-07-15 00:55:11.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/config.h.in	2006-07-21 15:43:59.000000000 +0000
++++ ntp-4.2.2+dfsg/config.h.in	2006-07-21 15:45:44.000000000 +0000
 @@ -90,9 +90,6 @@
  /* Magnavox MX4200 GPS receiver */
  #undef CLOCK_MX4200
