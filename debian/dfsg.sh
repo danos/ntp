@@ -9,11 +9,13 @@ rm html/build/hints/solaris-dosynctodr.html
 rm libntp/adjtime.c
 rm include/adjtime.h
 rm include/rsa_md5.h
+rm include/global.h
 rm libntp/md5c.c
 rm include/timepps-SCO.h
 rm include/timepps-Solaris.h
 rm include/timepps-SunOS.h
 rm kernel/tty_chu_STREAMS.c
+rm kernel/tty_clk_STREAMS.c
 rm ports/winnt/libntp/messages.mc
 rm ports/winnt/include/hopf_PCI_io.h
 rm scripts/monitoring/lr.pl

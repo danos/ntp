@@ -1,7 +1,7 @@
 Index: ntp-4.2.2+dfsg/adjtimed/adjtimed.c
 ===================================================================
---- ntp-4.2.2+dfsg.orig/adjtimed/adjtimed.c	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/adjtimed/adjtimed.c	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/adjtimed/adjtimed.c	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/adjtimed/adjtimed.c	2006-07-21 13:32:08.000000000 +0000
 @@ -41,8 +41,6 @@
  #include "ntp_syslog.h"
  #include "ntp_stdlib.h"
@@ -13,8 +13,8 @@ Index: ntp-4.2.2+dfsg/adjtimed/adjtimed.c
  int InitClockRate (void);
 Index: ntp-4.2.2+dfsg/include/ntp_md5.h
 ===================================================================
---- ntp-4.2.2+dfsg.orig/include/ntp_md5.h	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/include/ntp_md5.h	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/include/ntp_md5.h	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/include/ntp_md5.h	2006-07-21 13:32:08.000000000 +0000
 @@ -2,7 +2,12 @@
   * ntp_md5.h: deal with md5.h headers
   */
@@ -31,8 +31,8 @@ Index: ntp-4.2.2+dfsg/include/ntp_md5.h
  # include "rsa_md5.h"
 Index: ntp-4.2.2+dfsg/libntp/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/libntp/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/libntp/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/libntp/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/libntp/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -2,13 +2,13 @@
  AUTOMAKE_OPTIONS = ../util/ansi2knr
  noinst_LIBRARIES = libntp.a @MAKE_LIBNTPSIM@
@@ -51,9 +51,9 @@ Index: ntp-4.2.2+dfsg/libntp/Makefile.am
  	ntp_random.c recvbuff.c refnumtoa.c snprintf.c socktoa.c socktohost.c \
 Index: ntp-4.2.2+dfsg/libntp/a_md5encrypt.c
 ===================================================================
---- ntp-4.2.2+dfsg.orig/libntp/a_md5encrypt.c	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/libntp/a_md5encrypt.c	2006-07-15 00:54:17.000000000 +0000
-@@ -16,11 +16,6 @@
+--- ntp-4.2.2+dfsg.orig/libntp/a_md5encrypt.c	2006-07-21 13:32:05.000000000 +0000
++++ ntp-4.2.2+dfsg/libntp/a_md5encrypt.c	2006-07-21 13:32:14.000000000 +0000
+@@ -16,13 +16,7 @@
  #include "ntp_string.h"
  #include "ntp_stdlib.h"
  
@@ -63,12 +63,14 @@ Index: ntp-4.2.2+dfsg/libntp/a_md5encrypt.c
 -#undef OPENSSL
 -
  #include "ntp.h"
- #include "global.h"
+-#include "global.h"
  #include "ntp_md5.h"
+ 
+ /*
 Index: ntp-4.2.2+dfsg/ntpdate/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpdate/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpdate/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpdate/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpdate/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -8,7 +8,7 @@
  ntptimeset_SOURCES=	ntptimeset.c ntptime_config.c
  AM_CPPFLAGS=	-I$(top_srcdir)/include
@@ -80,8 +82,8 @@ Index: ntp-4.2.2+dfsg/ntpdate/Makefile.am
  ETAGS_ARGS=	Makefile.am
 Index: ntp-4.2.2+dfsg/ntpdc/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpdc/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpdc/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpdc/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpdc/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -7,7 +7,7 @@
  BUILT_SOURCES=	@MAKE_CHECK_LAYOUT@
  AM_CPPFLAGS=	-I$(top_srcdir)/include
@@ -93,8 +95,8 @@ Index: ntp-4.2.2+dfsg/ntpdc/Makefile.am
  DISTCLEANFILES=	.version version.c
 Index: ntp-4.2.2+dfsg/ntpq/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpq/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpq/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpq/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpq/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -4,7 +4,7 @@
  AM_CPPFLAGS=	-I$(top_srcdir)/include
  
@@ -106,8 +108,8 @@ Index: ntp-4.2.2+dfsg/ntpq/Makefile.am
  ETAGS_ARGS=	Makefile.am
 Index: ntp-4.2.2+dfsg/include/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/include/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/include/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/include/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/include/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -6,7 +6,6 @@
  SUBDIRS = isc
  
@@ -128,8 +130,8 @@ Index: ntp-4.2.2+dfsg/include/Makefile.am
  
 Index: ntp-4.2.2+dfsg/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -5,7 +5,6 @@
  SUBDIRS = \
  	scripts \
@@ -157,8 +159,8 @@ Index: ntp-4.2.2+dfsg/Makefile.am
  
 Index: ntp-4.2.2+dfsg/configure.ac
 ===================================================================
---- ntp-4.2.2+dfsg.orig/configure.ac	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/configure.ac	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/configure.ac	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/configure.ac	2006-07-21 13:32:08.000000000 +0000
 @@ -2338,15 +2338,15 @@
   yes*-*-ultrix*) AC_MSG_WARN(*** But the expected answer is... no ***) ;;
  esac
@@ -239,8 +241,8 @@ Index: ntp-4.2.2+dfsg/configure.ac
  AC_CONFIG_FILES(util/Makefile)
 Index: ntp-4.2.2+dfsg/util/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/util/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/util/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/util/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/util/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -1,5 +1,5 @@
  #AUTOMAKE_OPTIONS = ../ansi2knr no-dependencies
 -AUTOMAKE_OPTIONS=	ansi2knr
@@ -250,8 +252,8 @@ Index: ntp-4.2.2+dfsg/util/Makefile.am
  		ntp-keygen
 Index: ntp-4.2.2+dfsg/scripts/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/scripts/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/scripts/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/scripts/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/scripts/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -1,4 +1,4 @@
  bin_SCRIPTS=	ntp-wait ntptrace
 -noinst_SCRIPTS=	calc_tickadj checktime freq_adj html2man mkver ntpsweep ntpver plot_summary summary
@@ -260,8 +262,8 @@ Index: ntp-4.2.2+dfsg/scripts/Makefile.am
  	ntp-close ntp-groper ntp-restart ntp-status rc1 rc2 stats
 Index: ntp-4.2.2+dfsg/libparse/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/libparse/Makefile.am	2006-07-15 00:53:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/libparse/Makefile.am	2006-07-15 00:54:17.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/libparse/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/libparse/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -19,7 +19,6 @@
                       clk_rcc8000.c \
                       clk_hopf6021.c \
@@ -280,8 +282,8 @@ Index: ntp-4.2.2+dfsg/libparse/Makefile.am
  			    kmfp_mul$U.o \
 Index: ntp-4.2.2+dfsg/ntpd/Makefile.am
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpd/Makefile.am	2006-07-15 00:54:18.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpd/Makefile.am	2006-07-15 00:54:34.000000000 +0000
+--- ntp-4.2.2+dfsg.orig/ntpd/Makefile.am	2006-07-21 13:31:45.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpd/Makefile.am	2006-07-21 13:32:08.000000000 +0000
 @@ -45,7 +45,7 @@
  	refclock_fg.c refclock_gpsvme.c refclock_heath.c refclock_hopfser.c \
  	refclock_hopfpci.c refclock_hpgps.c refclock_irig.c refclock_jjy.c \
