@@ -26,6 +26,8 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
     or otherwise didn't meet the DFSG.  As a result, the following
     clocks are no longer supported: wharton and neoclock4x
     (Closes: #328200)
+  * Update the copyright file, and add all missing copyright
+    notices and licences to it.
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 22:55:36 +0200
 
