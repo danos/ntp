@@ -8,7 +8,7 @@ Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, K
 
 Package: ntp
 Architecture: any
-Depends: adduser, netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
+Depends: lsb-base, adduser, netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
 Suggests: ntp-doc
 Replaces: ntp-server (<= 1:4.2.0a+stable-9), ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9), xntp, xntp3
 Conflicts: chrony, ntp-server (<= 1:4.2.0a+stable-9), ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
@@ -28,7 +28,7 @@ Description: Network Time Protocol: server and utility programs
 
 Package: ntpdate
 Architecture: any
-Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
+Depends: lsb-base, netbase, ${misc:Depends}, ${shlibs:Depends}
 Suggests: ntp
 Conflicts: ntp (<< 1:4.0.98a)
 Replaces: ntp (<< 1:4.0.98a), xntp, xntp3
@@ -57,8 +57,7 @@ Description: Network Time Protocol: documentation
  over the Internet, or by following an accurate hardware receiver which
  interprets GPS, DCF-77, NIST or similar time signals.
  .
- This package contains HTML documentation for the ntp packages (ntp,
- ntpdate, ntp-simple, ntp-refclock).  Since there are no substantive man
- pages for ntp's programs and configuration files, this package is
- desirable for any setup beyond the simple configuration supplied by the
- server packages.
+ This package contains HTML documentation for the ntp packages (ntp, ntpdate).  
+ Since there are no substantive man pages for ntp's programs and
+ configuration files, this package is desirable for any setup beyond the
+ simple configuration supplied by the server packages.

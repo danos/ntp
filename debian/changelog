@@ -28,6 +28,8 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
     (Closes: #328200)
   * Update the copyright file, and add all missing copyright
     notices and licences to it.
+  * Add Depends on lsb-base, since the init scripts makes use of it now
+    and it's not essential.
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 22:55:36 +0200
 
