@@ -17,6 +17,7 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
   * Support DEB_BUILD_OPTIONS=noopt
   * Compile with -fno-strict-aliasing (closes: #316304)
   * Removed inactive comaintainers
+  * Removed local clock section in default ntp.conf (closes: #262037)
 
   [ Kurt Roeckx ]
   * Make ntp and ntpdate depend on netbase because they
