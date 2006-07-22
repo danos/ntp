@@ -30,6 +30,11 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
     notices and licences to it.
   * Add Depends on lsb-base, since the init scripts makes use of it now
     and it's not essential.
+  * Always stop call the init script to stop the daemon in the postinst
+    on configure.  Older versions upto and including 1:4.2.0a+stable-8.2
+    could remove ntp-simple | ntp-refclock before ntp-server, and when
+    ntp-server then tries to stop the daemon it doesn't find the binary
+    and the init script doesn't do anything.
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 22:55:36 +0200
 

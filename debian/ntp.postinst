@@ -3,6 +3,19 @@
 if [ "$1" = "configure" ]; then
 	adduser --system --quiet --group --no-create-home ntp || :
 	chown -R ntp:ntp /var/lib/ntp /var/log/ntpstats
+
+	# Make sure the previous daemon gets stopped.  Versions
+	# upto and including 1:4.2.0a+stable-8.2 don't properly
+	# stop the daemon in case ntp-simple or ntp-refclock
+	# is remove before ntp-server, the binary is removed
+	# and the init script doesn't do a thing.
+	if [ -x "/etc/init.d/ntp" ]; then
+		if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+			invoke-rc.d ntp stop || exit $?
+		else
+			/etc/init.d/ntp stop || exit $?
+		fi
+	fi
 fi
 
 #DEBHELPER#
