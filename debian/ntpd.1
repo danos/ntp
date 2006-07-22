@@ -4,15 +4,18 @@
 ntpd \- Network Time Protocol (NTP) daemon.
 .SH SYNOPSIS
 .B ntpd
-[ -aAbdmn ]
+[ -aAbdDgLmnNqx ]
 [ -c conffile ]
 [ -f driftfile ]
+[ -i jaildir ]
 [ -k keyfile ]
 [ -l logfile ]
 [ -p pidfile ]
+[ -P priority ]
 [ -r broadcastdelay ]
 [ -s statsdir ]
 [ -t key ]
+[ -u user[:group] ]
 [ -v variable ]
 [ -V variable ]
 
@@ -99,9 +102,16 @@ Specify debugging level directly.
 Specify the name and path of the drift file.
 .TP
 .I -g
-Normally, the daemon exits if the offset exceeds a 1000s sanity limit
+Normally, the daemon exits if the offset exceeds a 1000s sanity limit.
 This option overrides this limit and allows the time to be set to an
 value without restriction.
+.TP
+.I -i jaildir 
+Chroot the server to the directory jaildir. This option also implies
+that the server attempts to drop root privileges at startup (otherwise,
+chroot gives very little additional security), and it is only available
+if the OS supports to run the server without full root privileges. You
+may need to also specify a -u option.
 .TP
 .I -k keyfile
 Specify the name and path of the file containing the NTP authentication
@@ -111,6 +121,9 @@ keys.
 Specify the name and path of the log file.  The default is the system
 log facility.
 .TP
+.I -L 
+Do not listen to virtual IPs. The default is to listen.
+.TP
 .I -m
 Synchronize using NTP multicast messages on the IP multicast group
 address 224.0.1.1 (requires multicast kernel).
@@ -118,12 +131,21 @@ address 224.0.1.1 (requires multicast kernel).
 .I -n
 Don't fork, i.e. run in the foreground.
 .TP
+.I -N 
+To the extent permitted by the operating system, run the ntpd at the highest priority.
+.TP
 .I -p pidfile
 Specify the name and path to record the daemon's process ID.
 .TP
 .I -P
 Override the priority limit set by the operating system.  Not
 recommended for sissies.
+.TP
+.I -q 
+Exit the ntpd just after the first time the clock is set. This behavior
+mimics that of the ntpdate program, which is to be retired. The -g and
+-x options can be used with this option. Note: The kernel time discipline
+is disabled with this option.
 .TP
 .I -r broadcastdelay
 Specify the default propagation delay from the broadcast/multicast
@@ -136,6 +158,9 @@ facility.
 .TP
 .I -t key
 Add a key number to the trusted key list.
+.TP
+.I -u user[:group]  
+Specify a user, and optionally a group, to switch to.
 .TP
 .I -v variable
 .TP
