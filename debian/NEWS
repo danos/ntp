@@ -1,7 +1,7 @@
 ntp (1:1:4.2.2+dfsg-1) unstable; urgency=low
 
   The packages ntp, ntp-server, ntp-simple, and ntp-refclock have been
-  into a single package ntp.
+  merged into a single package ntp.
 
   Support for the following clocks have been removed because they didn't
   have a license on it: wharton and neoclock4x.
