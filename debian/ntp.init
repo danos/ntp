@@ -23,6 +23,12 @@ if [ -r /etc/default/$NAME ]; then
 	. /etc/default/$NAME
 fi
 
+# This is required in case the old ntp-server package is purged, which
+# removes this stuff.
+mkdir -p /var/lib/ntp /var/log/ntpstats
+adduser --system --quiet --group --no-create-home ntp || :
+chown -R ntp:ntp /var/lib/ntp /var/log/ntpstats
+
 RUNASUSER=ntp
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
 
