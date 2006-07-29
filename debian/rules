@@ -96,7 +96,7 @@ binary-arch: build install
 	dh_installdocs -a
 	dh_installexamples -a
 	dh_installinit -pntp --update-rcd-params="defaults 23" 
-	dh_installinit -pntpdate --update-rcd-params="start 51 S ." --init-script=ntpdate
+	dh_installinit -pntpdate --update-rcd-params="start 51 S ." --init-script=ntpdate --no-start
 	dh_installcron -a
 	dh_installlogcheck -a
 	dh_installchangelogs -a

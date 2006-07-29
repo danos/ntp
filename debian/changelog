@@ -4,8 +4,10 @@ ntp (1:4.2.2+dfsg-2) UNRELEASED; urgency=low
   * Added iburst option to default server lines (closes: #319776)
   * Initialize ntpdate server list from ntp.conf by default (closes: #376019)
     (patch by martin f krafft)
+  * Do not run ntpdate init script on package installation or removal
+    (closes: #363513, #378480)
 
- -- Peter Eisentraut <petere@debian.org>  Sat, 29 Jul 2006 23:30:37 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat, 29 Jul 2006 23:37:20 +0200
 
 ntp (1:4.2.2+dfsg-1) unstable; urgency=low
 
