@@ -2,7 +2,7 @@ Source: ntp
 Section: net
 Priority: optional
 Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
-Build-Depends: debhelper (>> 4.1.0), libreadline5-dev, lynx, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), binutils (>= 2.14.90.0.7), quilt (>= 0.40)
+Build-Depends: debhelper (>> 4.1.0), libreadline5-dev, lynx, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), quilt (>= 0.40)
 Standards-Version: 3.6.1
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
 

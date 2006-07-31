@@ -6,6 +6,7 @@ ntp (1:4.2.2+dfsg-2) UNRELEASED; urgency=low
     (patch by martin f krafft)
   * Do not run ntpdate init script on package installation or removal
     (closes: #363513, #378480)
+  * Dropped build dependency on binutils; now covered by build-essential
 
  -- Peter Eisentraut <petere@debian.org>  Sat, 29 Jul 2006 23:37:20 +0200
 
