@@ -113,13 +113,14 @@ General copyright and license:
    51. Ulrich Windl <Ulrich.Windl@rz.uni-regensburg.de> corrected and
        validated HTML documents according to the HTML DTD
 
+
 Copyright and licenses for other files:
+
 
 A lot of the other files are:
  * Copyright (c) 1995-2006 by Frank Kardel <kardel <AT> ntp.org>
  * Copyright (c) 1989-1994 by Frank Kardel, Friedrich-Alexander Universität Erlangen-Nürnberg, Germany
  * Copyright (c) 1997 by Meinberg Funkuhren (www.meinberg.de)
-
 
 With the following license:
  * Redistribution and use in source and binary forms, with or without
@@ -307,6 +308,7 @@ inet_aton.c:
  * ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
  * SOFTWARE.
 
+
 strstr.c:
  * Copyright (c) 1991-1998 University of Maryland at College Park
  * All Rights Reserved.
@@ -415,12 +417,6 @@ summary, plot_summary:
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-On Debian GNU/Linux systems, the complete text of the GNU General Public
-License can be found in `/usr/share/common-licenses/GPL'.
-
-
+On Debian systems, the complete text of the GNU General Public License
+can be found in the file /usr/share/common-licenses/GPL.
