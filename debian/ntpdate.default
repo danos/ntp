@@ -1,7 +1,7 @@
 # Servers to check (Separate multiple servers with spaces.)
 # This code will take the server list from /etc/ntp.conf, so you only have
 # to keep it in one place.
-NTPSERVERS=$(sed -rne 's/^server ([-_.[:alnum:]]+)$/\1/p' /etc/ntp.conf 2>/dev/null)
+NTPSERVERS=$(sed -rne 's/^server ([-_.[:alnum:]]+).*$/\1/p' /etc/ntp.conf 2>/dev/null)
 if [ -z "$NTPSERVERS" ]; then
 	NTPSERVERS="0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org 3.debian.pool.ntp.org"
 fi
