@@ -5,6 +5,12 @@ exit 0
 
 case $ADDRFAM in
 	inet*)
-		/etc/init.d/ntp restart
+		if [ -x "/etc/init.d/ntp" ]; then
+			if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+				invoke-rc.d ntp restart || exit $?
+			else
+				/etc/init.d/ntp restart || exit $?
+			fi
+		fi
 		;;
 esac
