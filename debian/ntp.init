@@ -16,6 +16,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 NAME=ntp
 DAEMON=/usr/sbin/ntpd
+PIDFILE=/var/run/ntpd.pid
 
 test -x $DAEMON || exit 5
 
@@ -40,14 +41,14 @@ fi
 case $1 in
 	start)
 		log_daemon_msg "Starting NTP server" "ntpd"
-  		start-stop-daemon --start --quiet --oknodo --pidfile /var/run/ntpd.pid --startas /usr/sbin/ntpd -- -p /var/run/ntpd.pid -u $UGID $NTPD_OPTS
+  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p PIDFILE -u $UGID $NTPD_OPTS
 		log_end_msg $?
   		;;
 	stop)
 		log_daemon_msg "Stopping NTP server" "ntpd"
-  		start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/ntpd.pid
+  		start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
 		log_end_msg $?
-		rm -f /var/run/ntpd.pid
+		rm -f $PIDFILE
   		;;
 	restart|force-reload)
 		$0 stop && sleep 2 && $0 start
@@ -63,7 +64,7 @@ case $1 in
 		exit 3
 		;;
 	status)
-		pidofproc $DAEMON >/dev/null
+		pidofproc -p $PIDFILE $DAEMON >/dev/null
 		status=$?
 		if [ $status -eq 0 ]; then
 			log_success_msg "NTP server is running."

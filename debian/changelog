@@ -1,5 +1,6 @@
 ntp (1:4.2.2+dfsg-2) UNRELEASED; urgency=low
 
+  [ Peter Eisentraut ]
   * Set -g as default command-line option of ntpd (closes: #168585, #319776)
   * Added iburst option to default server lines (closes: #319776)
   * Initialize ntpdate server list from ntp.conf by default (closes: #376019)
@@ -7,6 +8,9 @@ ntp (1:4.2.2+dfsg-2) UNRELEASED; urgency=low
   * Do not run ntpdate init script on package installation or removal
     (closes: #363513, #378480)
   * Dropped build dependency on binutils; now covered by build-essential
+
+  [ Kurt Roeckx ]
+  * Make init script use $DAEMON, add $PIDFILE and use it.
 
  -- Peter Eisentraut <petere@debian.org>  Sat, 29 Jul 2006 23:37:20 +0200
 
