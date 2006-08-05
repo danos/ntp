@@ -13,6 +13,7 @@ ntp (1:4.2.2+dfsg-2) UNRELEASED; urgency=low
   * Make init script use $DAEMON, add $PIDFILE and use it.
   * Use invoke-rc.d in the ifup script instead of directly using
     /etc/init.d/ntp.
+  * Make cron.weekly use invoke-rc.d
 
  -- Peter Eisentraut <petere@debian.org>  Sat, 29 Jul 2006 23:37:20 +0200
 
