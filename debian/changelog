@@ -1,4 +1,4 @@
-ntp (1:4.2.2+dfsg-2) unstable; urgency=low
+ntp (1:4.2.2+dfsg.2-2) unstable; urgency=low
 
   [ Peter Eisentraut ]
   * Set -g as default command-line option of ntpd (closes: #168585, #319776)
@@ -14,11 +14,13 @@ ntp (1:4.2.2+dfsg-2) unstable; urgency=low
   * Added note about upgrading in README.Debian
 
   [ Kurt Roeckx ]
+  * Newly built upstream tarball:
+    - Removed tty_clk_STREAMS.c and global.h
   * Make init script use $DAEMON, add $PIDFILE and use it.
   * Use invoke-rc.d in the ifup script instead of directly using
     /etc/init.d/ntp.
 
- -- Peter Eisentraut <petere@debian.org>  Wed,  9 Aug 2006 12:49:15 +0200
+ -- Peter Eisentraut <petere@debian.org>  Wed,  9 Aug 2006 13:58:26 +0200
 
 ntp (1:4.2.2+dfsg-1) unstable; urgency=low
 
