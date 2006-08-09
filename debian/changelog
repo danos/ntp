@@ -1,4 +1,4 @@
-ntp (1:4.2.2+dfsg.2-2) unstable; urgency=low
+ntp (1:4.2.2+dfsg.2-1) unstable; urgency=low
 
   [ Peter Eisentraut ]
   * Set -g as default command-line option of ntpd (closes: #168585, #319776)
