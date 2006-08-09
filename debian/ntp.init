@@ -41,7 +41,7 @@ fi
 case $1 in
 	start)
 		log_daemon_msg "Starting NTP server" "ntpd"
-  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p PIDFILE -u $UGID $NTPD_OPTS
+  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE -u $UGID $NTPD_OPTS
 		log_end_msg $?
   		;;
 	stop)
