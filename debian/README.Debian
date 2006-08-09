@@ -58,19 +58,16 @@ necessary on SMP Intel systems.
 Logging
 -------
 
-By default, ntpd will log via syslog.  Since Debian does not have a
-LOG_NTP facility defined, the daemon will use LOG_DAEMON, leading to
-ntpd log entries going to /var/log/daemon.log.  If you define a
-logfile location in /etc/ntp.conf, the daemon will do direct file
-system writes to the specified file, avoiding syslog.  Previous Debian
-packages did this, with the side effect that they had to ship a weekly
-cron job that stopped the daemon, rotated the log, then restarted the
-daemon.  This is moderately evil for high-stratum NTP servers, where
-ntpd should be allowed to run more or less forever.  To handle both
-modes of logging, the cron.weekly script is still provided to rotate
-/var/log/ntpd if present, but it will not cycle the daemon if syslog
-is in use.  By default, new installations of this package will use
-syslog.
+By default, ntpd will log via syslog.  The daemon will use the
+LOG_DAEMON facility, leading to ntpd log entries going to
+/var/log/daemon.log.  If you define a logfile location in
+/etc/ntp.conf, the daemon will do direct file system writes to the
+specified file, avoiding syslog.  Previous Debian packages did this,
+with the side effect that they had to ship a weekly cron job that
+stopped the daemon, rotated the log, then restarted the daemon.  This
+is moderately evil for high-stratum NTP servers, where ntpd should be
+allowed to run more or less forever.  This mode of logging is not
+recommended and no longer supported by the Debian packages.
 
 
 NTP and hwclock Issues
@@ -106,3 +103,13 @@ Keys
 ntp-genkeys now generates an MD5 ntp.keys file in /var/lib/ntp.  Use
 of these keys has not yet been tested; please report success or
 failure in using them to the maintainer.
+
+
+Upgrading
+---------
+
+Upgrading from the old packaging scheme that contained ntp-server,
+ntp-simple, and ntp-refclock (upgrades from sarge to etch) will remove
+those packages and replace them by the ntp package, but depending on
+the upgrade method, it may not purge those packages.  You can purge
+them manually, but it is safest to restart the ntp server thereafter.

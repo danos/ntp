@@ -1,20 +1,39 @@
 #!/bin/sh 
 
+set -e
+
 if [ "$1" = "configure" ]; then
 	adduser --system --quiet --group --no-create-home ntp || :
 	chown -R ntp:ntp /var/lib/ntp /var/log/ntpstats
 
-	# Make sure the previous daemon gets stopped.  Versions
-	# upto and including 1:4.2.0a+stable-8.2 don't properly
-	# stop the daemon in case ntp-simple or ntp-refclock
-	# is remove before ntp-server, the binary is removed
-	# and the init script doesn't do a thing.
-	if [ -x "/etc/init.d/ntp" ]; then
-		if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
-			invoke-rc.d ntp stop || exit $?
-		else
-			/etc/init.d/ntp stop || exit $?
+	# Make sure the previous daemon gets stopped.  Versions up to and
+	# including 1:4.2.0a+stable-8.2 don't properly stop the daemon in
+	# case ntp-simple or ntp-refclock is removed before ntp-server:
+	# the binary is removed and the init script doesn't do a thing.
+	if [ -n "$2" ] && dpkg --compare-versions "$2" lt 1:4.2.0a+stable-9; then
+		if [ -x "/etc/init.d/ntp" ]; then
+			if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+				invoke-rc.d ntp stop
+			else
+				/etc/init.d/ntp stop
+			fi
 		fi
+	fi
+
+	# Disable configuration files of predecessor package.
+	if [ -n "$2" ] && dpkg --compare-versions "$2" lt 1:4.2.2+dfsg-1; then
+		for file in \
+			/etc/cron.daily/ntp-server \
+			/etc/cron.weekly/ntp-server \
+			/etc/init.d/ntp-server \
+			/etc/interfaces/if-up.d/ntp-server \
+			/etc/logcheck/ignore.d.server/ntp-server
+		do
+			if [ -f $file ]; then
+				mv -f $file $file.dpkg-old
+			fi
+		done
+		update-rc.d -f ntp-server remove
 	fi
 fi
 

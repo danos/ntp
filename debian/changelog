@@ -8,14 +8,17 @@ ntp (1:4.2.2+dfsg-2) UNRELEASED; urgency=low
   * Do not run ntpdate init script on package installation or removal
     (closes: #363513, #378480)
   * Dropped build dependency on binutils; now covered by build-essential
+  * Removed support for not logging through syslog (closes: #340781)
+  * Disable old ntp-server init script during package configuration
+    (closes: #380233)
+  * Added note about upgrading in README.Debian
 
   [ Kurt Roeckx ]
   * Make init script use $DAEMON, add $PIDFILE and use it.
   * Use invoke-rc.d in the ifup script instead of directly using
     /etc/init.d/ntp.
-  * Make cron.weekly use invoke-rc.d
 
- -- Peter Eisentraut <petere@debian.org>  Sat, 29 Jul 2006 23:37:20 +0200
+ -- Peter Eisentraut <petere@debian.org>  Wed,  9 Aug 2006 01:30:27 +0200
 
 ntp (1:4.2.2+dfsg-1) unstable; urgency=low
 
