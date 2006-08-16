@@ -10,8 +10,9 @@ Package: ntp
 Architecture: any
 Depends: lsb-base, adduser, netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
 Suggests: ntp-doc
-Replaces: ntp-server (<= 1:4.2.0a+stable-9), ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9), xntp, xntp3
-Conflicts: chrony, ntp-server (<= 1:4.2.0a+stable-9), ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
+Replaces: ntp-server, ntp-simple, ntp-refclock, xntp, xntp3
+Conflicts: chrony, ntp-server, ntp-simple, ntp-refclock
+Provides: ntp-server, ntp-simple, ntp-refclock
 Description: Network Time Protocol: server and utility programs
  NTP, the Network Time Protocol, is used to keep computer clocks accurate
  over the Internet, or by following an accurate hardware receiver which

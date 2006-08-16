@@ -1,3 +1,16 @@
+ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
+
+  [ Branden Robinson ]
+  * Soften ntp binary package's Conflicts and Replaces relationships with
+    ntp-{refclock,server,simple} so that they are unversioned; a versioning
+    expression is unnecessary as none of these exist now as dummy packages
+    (and do not need to, as all depended directly or transitively on ntp
+    itself).  State that ntp Provides the three merged packages, so that
+    packages depending on them are not spuriously blocked from upgrading
+    before their dependencies are manually changed.
+
+ -- Peter Eisentraut <petere@debian.org>  Wed,  9 Aug 2006 14:55:58 +0200
+
 ntp (1:4.2.2+dfsg.2-1) unstable; urgency=low
 
   [ Peter Eisentraut ]
