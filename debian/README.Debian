@@ -1,24 +1,25 @@
 Potentially useful things to know about the Debian NTP packages ...
 
 
-Time Servers
-------------
+Configuration
+-------------
 
-A list of public NTP time servers is available on the web at
+The default ntp.conf file is set up for an NTP "client" that
+synchronizes to high-stratum NTP servers on the Internet.  This should
+be sufficient for most installations on well-connected hosts that
+simply want to keep their clocks accurate.
+
+The default time servers are servers from a pool.ntp.org vendor zone
+assigned to Debian.  Consider replacing this if you have local time
+servers in your organization or network.  A list of public NTP time
+servers is available on the web at
 
     http://ntp.isc.org/bin/view/Servers/WebHome
 
-The default ntp.conf file uses servers from a pool.ntp.org vendor zone
-assigned to Debian.  This should be sufficient for most users, but
-consider replacing this if you have local time servers in your
-organization or network.
-
-
-ntpdate
--------
-
-Note that "ntpdate" doesn't parse the /etc/ntp.conf file.  Its server
-list resides in /etc/default/ntpdate.
+Extra configuration work will be necessary to offer time service to
+other hosts, to use hardware time receivers, or to synchronize the
+clocks on networks that are not connected to the Internet.  The
+documentation in the package ntp-doc will assist with these tasks.
 
 
 Startup
@@ -42,8 +43,8 @@ if-post-down.d, as well as /etc/ppp/ip-up.d and ip-down-d.
 
 Likewise, if your laptop acquires a different set of interfaces / IP
 addresses after sleeping, you probably need to add a small script that
-restarts NTP to /etc/network/if-up.d/.  (Update: Such a script has
-been added.  It defaults to being disabled, however.)
+restarts NTP to /etc/network/if-up.d/.  (Such a script has been added.
+It defaults to being disabled, however.)
 
 
 SMP Systems
@@ -113,3 +114,12 @@ ntp-simple, and ntp-refclock (upgrades from sarge to etch) will remove
 those packages and replace them by the ntp package, but depending on
 the upgrade method, it may not purge those packages.  You can purge
 them manually, but it is safest to restart the ntp server thereafter.
+
+
+PPSkit
+------
+
+If you're serious about building a high-quality stratum 1 timekeeper,
+please take a look at Ulrich Windl's PPSkit patchset for the Linux
+kernel, available from the kernel.org mirror network in
+pub/linux/daemons/ntp.

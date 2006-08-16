@@ -13,52 +13,53 @@ Suggests: ntp-doc
 Replaces: ntp-server, ntp-simple, ntp-refclock, xntp, xntp3
 Conflicts: chrony, ntp-server, ntp-simple, ntp-refclock
 Provides: ntp-server, ntp-simple, ntp-refclock
-Description: Network Time Protocol: server and utility programs
- NTP, the Network Time Protocol, is used to keep computer clocks accurate
- over the Internet, or by following an accurate hardware receiver which
- interprets GPS, DCF-77, NIST or similar time signals.
+Description: Network Time Protocol daemon and utility programs
+ NTP, the Network Time Protocol, is used to keep computer clocks
+ accurate by synchronizing them over the Internet or a local network,
+ or by following an accurate hardware receiver that interprets GPS,
+ DCF-77, NIST or similar time signals.
  .
- This package contains the server and utility programs.
+ This package contains the NTP daemon and utility programs.  An NTP
+ daemon needs to be running on each host that is to have its clock
+ accuracy controlled by NTP.  The same NTP daemon is also used to
+ provide NTP service to other hosts.
  .
- If you're serious about building a high-quality stratum 1 timekeeper, please
- take a look at Ulrich Windl's PPSkit patchset for the Linux kernel, available
- from the kernel.org mirror network in pub/linux/daemons/ntp.
- .
- For more information about the NTP protocol / NTP server configuration
- and operation, load the optional Debian package 'ntp-doc'.
+ For more information about the NTP protocol and NTP server
+ configuration and operation, install the package "ntp-doc".
 
 Package: ntpdate
 Architecture: any
 Depends: lsb-base, netbase, ${misc:Depends}, ${shlibs:Depends}
-Suggests: ntp
 Conflicts: ntp (<< 1:4.0.98a)
 Replaces: ntp (<< 1:4.0.98a), xntp, xntp3
-Description: The ntpdate client for setting system time from NTP servers
- NTP, the Network Time Protocol, is used to keep computer clocks accurate
- over the Internet, or by following an accurate hardware receiver which
- interprets GPS, DCF-77, NIST or similar time signals.
+Description: client for setting system time from NTP servers
+ NTP, the Network Time Protocol, is used to keep computer clocks
+ accurate by synchronizing them over the Internet or a local network,
+ or by following an accurate hardware receiver that interprets GPS,
+ DCF-77, NIST or similar time signals.
  .
- ntpdate is a simple NTP client which allows a system's clock to be set
- to match the time obtained by communicating with one or more servers.
+ ntpdate is a simple NTP client that sets a system's clock to match
+ the time obtained by communicating with one or more NTP servers.  It
+ is not sufficient, however, for maintaining an accurate clock in the
+ long run.  ntpdate by itself is useful for occasionally setting the
+ time on machines that do not have full-time network access, such as
+ laptops.
  .
- ntpdate is optional (but recommended) if you're running an NTP server,
- because initially setting the system clock to an almost-correct time
- will help the NTP server synchronize faster.
- .
- The ntpdate client by itself is useful for occasionally setting the time on
- machines that are not on the net full-time, such as laptops.
+ If the full NTP daemon from the package "ntp" is installed, then
+ ntpdate is not necessary.
 
 Package: ntp-doc
 Architecture: all
 Section: doc
 Conflicts: xntp-doc,xntp3-doc
 Replaces: xntp-doc,xntp3-doc
-Description: Network Time Protocol: documentation
- NTP, the Network Time Protocol, is used to keep computer clocks accurate
- over the Internet, or by following an accurate hardware receiver which
- interprets GPS, DCF-77, NIST or similar time signals.
+Description: Network Time Protocol documentation
+ NTP, the Network Time Protocol, is used to keep computer clocks
+ accurate by synchronizing them over the Internet or a local network,
+ or by following an accurate hardware receiver that interprets GPS,
+ DCF-77, NIST or similar time signals.
  .
- This package contains HTML documentation for the ntp packages (ntp, ntpdate).  
- Since there are no substantive man pages for ntp's programs and
- configuration files, this package is desirable for any setup beyond the
- simple configuration supplied by the server packages.
+ This package contains HTML documentation for the ntp packages (ntp,
+ ntpdate).  Since there are no substantive man pages for ntp's
+ programs and configuration files, this package is desirable for any
+ setup beyond the simple default configuration.
