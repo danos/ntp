@@ -7,7 +7,7 @@ ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
     (and do not need to, as all depended directly or transitively on ntp
     itself).  State that ntp Provides the three merged packages, so that
     packages depending on them are not spuriously blocked from upgrading
-    before their dependencies are manually changed.
+    before their dependencies are manually changed. (closes: #383212)
 
  -- Peter Eisentraut <petere@debian.org>  Wed,  9 Aug 2006 14:55:58 +0200
 
