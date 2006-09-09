@@ -25,7 +25,7 @@ ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
   * debian/control:
     + Add ntp-refclock and ntp-simple transition packages (closes: #384857).
   * debian/ntp.init:
-    + Remove adduser call from initscript.
+    + Remove adduser call from initscript (closes: #383666).
 
  -- Peter Eisentraut <petere@debian.org>  Sat,  9 Sep 2006 18:38:05 +0200
 
