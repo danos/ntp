@@ -19,6 +19,7 @@ ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
   * Cleaned out package relationships with long-obsolete packages
   * Updated standards version
   * Also parse peer lines in ntp.conf from ntpdate.default (closes: #382311)
+  * Added pointer in ntpdate.default where to find ntp.conf (closes: #386323)
 
   [ Julien BLACHE ]
   * debian/control:
