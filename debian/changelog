@@ -16,8 +16,16 @@ ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
     (closes: #56499, #245338, #312576)
   * Run ntpdate from ifup in the background (closes: #321759, #375280,
     #382543)
+  * Cleaned out package relationships with long-obsolete packages
+  * Updated standards version
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 31 Aug 2006 20:29:56 +0200
+  [ Julien BLACHE ]
+  * debian/control:
+    + Add ntp-refclock and ntp-simple transition packages (closes: #384857).
+  * debian/ntp.init:
+    + Remove adduser call from initscript.
+
+ -- Peter Eisentraut <petere@debian.org>  Sat,  9 Sep 2006 18:38:05 +0200
 
 ntp (1:4.2.2+dfsg.2-1) unstable; urgency=low
 

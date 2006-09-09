@@ -3,16 +3,16 @@ Section: net
 Priority: optional
 Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Build-Depends: debhelper (>> 4.1.0), libreadline5-dev, lynx, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), quilt (>= 0.40)
-Standards-Version: 3.6.1
+Standards-Version: 3.7.2
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
 
 Package: ntp
 Architecture: any
-Depends: lsb-base, adduser, netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
+Depends: adduser, lsb-base, netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
 Suggests: ntp-doc
-Replaces: ntp-server, ntp-simple, ntp-refclock, xntp, xntp3
-Conflicts: chrony, ntp-server, ntp-simple, ntp-refclock
-Provides: ntp-server, ntp-simple, ntp-refclock
+Replaces: ntp-server
+Conflicts: ntp-server
+Provides: ntp-server
 Description: Network Time Protocol daemon and utility programs
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
@@ -30,8 +30,6 @@ Description: Network Time Protocol daemon and utility programs
 Package: ntpdate
 Architecture: any
 Depends: lsb-base, netbase, ${misc:Depends}, ${shlibs:Depends}
-Conflicts: ntp (<< 1:4.0.98a)
-Replaces: ntp (<< 1:4.0.98a), xntp, xntp3
 Description: client for setting system time from NTP servers
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
@@ -51,8 +49,6 @@ Description: client for setting system time from NTP servers
 Package: ntp-doc
 Architecture: all
 Section: doc
-Conflicts: xntp-doc,xntp3-doc
-Replaces: xntp-doc,xntp3-doc
 Description: Network Time Protocol documentation
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
@@ -63,3 +59,17 @@ Description: Network Time Protocol documentation
  ntpdate).  Since there are no substantive man pages for ntp's
  programs and configuration files, this package is desirable for any
  setup beyond the simple default configuration.
+
+Package: ntp-simple
+Architecture: all
+Depends: ntp (>= 1:4.2.2+dfsg.2-2)
+Description: transition package
+ This package is a transition package designed to help ease the transition
+ to the new ntp package.  It is safe to remove this package.
+
+Package: ntp-refclock
+Architecture: all
+Depends: ntp (>= 1:4.2.2+dfsg.2-2)
+Description: transition package
+ This package is a transition package designed to help ease the transition
+ to the new ntp package.  It is safe to remove this package.
