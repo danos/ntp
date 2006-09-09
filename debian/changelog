@@ -12,8 +12,12 @@ ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
   [ Peter Eisentraut ]
   * Updated README.Debian's and package descriptions, reflecting that
     ntpdate is no longer necessary when ntp is installed
+  * npdate is no longer started from an init script but instead by ifup
+    (closes: #56499, #245338, #312576)
+  * Run ntpdate from ifup in the background (closes: #321759, #375280,
+    #382543)
 
- -- Peter Eisentraut <petere@debian.org>  Wed,  9 Aug 2006 14:55:58 +0200
+ -- Peter Eisentraut <petere@debian.org>  Thu, 31 Aug 2006 20:29:56 +0200
 
 ntp (1:4.2.2+dfsg.2-1) unstable; urgency=low
 

@@ -60,6 +60,7 @@ install: build-stamp
 	done
 
 	install -D -m 0755 debian/ntp.ifup debian/ntp/etc/network/if-up.d/ntp
+	install -D -m 0755 debian/ntpdate.ifup debian/ntpdate/etc/network/if-up.d/ntpdate
 	install -D -m 0755 scripts/ntpsweep debian/ntp/usr/bin/ntpsweep
 
 	install -D -m 0644 debian/ntpsweep.1 debian/ntp/usr/share/man/man1/ntpsweep.1
@@ -96,7 +97,7 @@ binary-arch: build install
 	dh_installdocs -a
 	dh_installexamples -a
 	dh_installinit -pntp --update-rcd-params="defaults 23" 
-	dh_installinit -pntpdate --update-rcd-params="start 51 S ." --init-script=ntpdate --no-start
+	dh_installinit -pntpdate
 	dh_installcron -a
 	dh_installlogcheck -a
 	dh_installchangelogs -a

@@ -1,4 +1,13 @@
-ntp (1:1:4.2.2+dfsg-1) unstable; urgency=low
+ntp (1:4.2.2+dfsg.2-2) unstable; urgency=low
+
+  ntpdate is no longer started from an init script but instead by ifup.
+  The specifics can be configured in /etc/network/if-up.d/ntpdate.
+
+  Installing ntp and ntpdate together is obsolete.  ntp is now configured
+  by default in such a manner that it handles the initial clock adjustment
+  by itself.
+
+ntp (1:4.2.2+dfsg-1) unstable; urgency=low
 
   The packages ntp, ntp-server, ntp-simple, and ntp-refclock have been
   merged into a single package ntp.
