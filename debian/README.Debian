@@ -25,12 +25,11 @@ documentation in the package ntp-doc will assist with these tasks.
 Startup
 -------
 
-There is no sane way to startup ntpdate and ntp that works for
-everybody.  Some people have a fixed network connection and start ntp
-ASAP.  Some start it in the background because boot speed is very
-important to them.  Some need to wait until their PPP connection is
-up.  Some need ntp to listen to new network interfaces (this currently
-requires restarting).
+There is no sane way to startup ntp that works for everybody.  Some
+people have a fixed network connection and start ntp ASAP.  Some start
+it in the background because boot speed is very important to them.
+Some need to wait until their PPP connection is up.  Some need ntp to
+listen to new network interfaces (this currently requires restarting).
 
 Because of these conflicting demands and the inability of the
 maintainer to come up with a simple set of questions that cover most
@@ -38,8 +37,9 @@ of them, the Debian package for ntp contains *no* support for any of
 these cases.
 
 If you need to, you're encouraged to add apropriate calls to
-/etc/init.d/ntp(date) start/stop/restart to /etc/network/if-up.d or
-if-post-down.d, as well as /etc/ppp/ip-up.d and ip-down-d.
+/etc/init.d/ntp start/stop/restart to /etc/network/if-up.d/ntp or
+/etc/network/if-post-down.d/ntp, as well as in /etc/ppp/ip-up.d and
+ip-down-d.
 
 Likewise, if your laptop acquires a different set of interfaces / IP
 addresses after sleeping, you probably need to add a small script that
@@ -104,16 +104,6 @@ Keys
 ntp-genkeys now generates an MD5 ntp.keys file in /var/lib/ntp.  Use
 of these keys has not yet been tested; please report success or
 failure in using them to the maintainer.
-
-
-Upgrading
----------
-
-Upgrading from the old packaging scheme that contained ntp-server,
-ntp-simple, and ntp-refclock (upgrades from sarge to etch) will remove
-those packages and replace them by the ntp package, but depending on
-the upgrade method, it may not purge those packages.  You can purge
-them manually, but it is safest to restart the ntp server thereafter.
 
 
 PPSkit

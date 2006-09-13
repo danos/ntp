@@ -3,16 +3,13 @@ in /etc/default/ntpdate.  But if you happen to have a file
 /etc/ntp.conf installed, then /etc/default/ntpdate will try to grab
 the server list from there.
 
-ntpdate is run during system startup.  If you specify servers that are
-not reachable at boot time, you'll have to wait for ntpdate to time
-out looking for them.  In this case, you might want to consider
-editing /etc/init.d/ntpdate to comment out the invocation there, and
-add a fragment to your ppp/isdn/whatever startup scripts instead.
+ntpdate is run whenever a network interface is brought up.  To adjust
+this behavior, the file /etc/network/if-up.d/ntpdate should be edited.
 
 Note that ntpdate is *not* really intended to be used by hosts with
 good network connectivity.  The "ntp" package, which provides a
 persistent daemon that does a better job of keeping system time than
 even a cron'ed invocation of ntpdate, is a better choice for systems
 with good network connectivity.  If all you want is to set the clock
-to reasonable value once in a while, a more light-weight package like
-"rdate" can also do the job.
+to a reasonable value once in a while, a more light-weight package
+like "rdate" can also do the job.
