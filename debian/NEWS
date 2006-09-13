@@ -7,6 +7,8 @@ ntp (1:4.2.2+dfsg.2-2) unstable; urgency=low
   by default in such a manner that it handles the initial clock adjustment
   by itself.
 
+ -- Peter Eisentraut <petere@debian.org>  Mon, 11 Sep 2006 21:23:08 +0200
+
 ntp (1:4.2.2+dfsg-1) unstable; urgency=low
 
   The packages ntp, ntp-server, ntp-simple, and ntp-refclock have been
@@ -14,6 +16,8 @@ ntp (1:4.2.2+dfsg-1) unstable; urgency=low
 
   Support for the following clocks have been removed because they didn't
   have a license on it: wharton and neoclock4x.
+
+ -- Peter Eisentraut <petere@debian.org>  Fri, 14 Jul 2006 22:55:36 +0200
 
 ntp (1:4.2.0a+stable-8) unstable; urgency=medium
 
