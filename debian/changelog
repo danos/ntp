@@ -1,4 +1,4 @@
-ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
+ntp (1:4.2.2+dfsg.2-2) unstable; urgency=medium
 
   [ Branden Robinson ]
   * Soften ntp binary package's Conflicts and Replaces relationships with
@@ -31,7 +31,7 @@ ntp (1:4.2.2+dfsg.2-2) UNRELEASED; urgency=low
   [ Petter Reinholdtsen ]
   * Fixed init script LSB header dependency information (closes: #387002)
 
- -- Peter Eisentraut <petere@debian.org>  Mon, 11 Sep 2006 21:23:08 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 15 Sep 2006 11:24:09 +0200
 
 ntp (1:4.2.2+dfsg.2-1) unstable; urgency=low
 
