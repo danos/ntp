@@ -2,8 +2,9 @@ ntp (1:4.2.2+dfsg.2-3) UNRELEASED; urgency=medium
 
   * Check ntp.conf existence before parsing it in /etc/default/ntpdate
     (closes: #388032)
+  * Added version number to lsb-base dependency (closes: #388561)
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 21 Sep 2006 19:37:56 +0200
+ -- Peter Eisentraut <petere@debian.org>  Thu, 21 Sep 2006 19:46:51 +0200
 
 ntp (1:4.2.2+dfsg.2-2) unstable; urgency=medium
 
