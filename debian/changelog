@@ -6,8 +6,9 @@ ntp (1:4.2.2+dfsg.2-3) UNRELEASED; urgency=medium
   * Put back versioned Conflicts and Replaces for ntp-simple and
     ntp-refclock since we now have transition packages that need to be
     upgraded at the same time (closes: #389113)
+  * Added Short-Description to init script LSB header
 
- -- Peter Eisentraut <petere@debian.org>  Sun, 24 Sep 2006 22:56:43 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sun, 24 Sep 2006 23:05:11 +0200
 
 ntp (1:4.2.2+dfsg.2-2) unstable; urgency=medium
 
