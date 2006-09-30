@@ -7,8 +7,10 @@ ntp (1:4.2.2+dfsg.2-3) UNRELEASED; urgency=medium
     ntp-refclock since we now have transition packages that need to be
     upgraded at the same time (closes: #389113)
   * Added Short-Description to init script LSB header
+  * Remove ntpdate init script installation during upgrade
+    (closes: #389089)
 
- -- Peter Eisentraut <petere@debian.org>  Sun, 24 Sep 2006 23:05:11 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat, 30 Sep 2006 10:41:49 +0200
 
 ntp (1:4.2.2+dfsg.2-2) unstable; urgency=medium
 
