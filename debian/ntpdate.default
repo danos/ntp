@@ -9,4 +9,4 @@ if [ -z "$NTPSERVERS" ]; then
 fi
 
 # Additional options for ntpdate
-NTPOPTIONS="-u"
+NTPOPTIONS=""
