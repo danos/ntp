@@ -1,4 +1,4 @@
-ntp (1:4.2.2+dfsg.2-3) UNRELEASED; urgency=medium
+ntp (1:4.2.2+dfsg.2-3) unstable; urgency=high
 
   * Check ntp.conf existence before parsing it in /etc/default/ntpdate
     (closes: #388032)
@@ -11,7 +11,7 @@ ntp (1:4.2.2+dfsg.2-3) UNRELEASED; urgency=medium
     (closes: #389089)
   * Removed -u from default ntpdate options, to avoid collisions with ntpd
 
- -- Peter Eisentraut <petere@debian.org>  Mon,  2 Oct 2006 19:36:32 +0200
+ -- Peter Eisentraut <petere@debian.org>  Mon,  2 Oct 2006 19:47:47 +0200
 
 ntp (1:4.2.2+dfsg.2-2) unstable; urgency=medium
 
