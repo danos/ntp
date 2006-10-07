@@ -23,6 +23,10 @@ if [ -r /etc/default/$NAME ]; then
 	. /etc/default/$NAME
 fi
 
+if [ -e /etc/ntp.conf.dhcp ]; then
+	NTPD_OPTS="$NTPD_OPTS -c /etc/ntp.conf.dhcp"
+fi
+
 RUNASUSER=ntp
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
 

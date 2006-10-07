@@ -7,6 +7,9 @@ fi
 if [ -z "$NTPSERVERS" ]; then
 	NTPSERVERS="0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org 3.debian.pool.ntp.org"
 fi
+if [ -r /etc/default/ntpdate.dhcp ]; then
+	. /etc/default/ntpdate.dhcp
+fi
 
 # Additional options for ntpdate
 NTPOPTIONS=""
