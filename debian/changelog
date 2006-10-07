@@ -1,3 +1,10 @@
+ntp (1:4.2.2+dfsg.2-4) UNRELEASED; urgency=medium
+
+  * Check for existence of ntp user in init script only in start action
+  * Handle failure to stop daemon in ntp.prerm (closes: #391352)
+
+ -- Peter Eisentraut <petere@debian.org>  Sat,  7 Oct 2006 10:37:28 +0200
+
 ntp (1:4.2.2+dfsg.2-3) unstable; urgency=high
 
   * Check ntp.conf existence before parsing it in /etc/default/ntpdate

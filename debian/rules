@@ -96,7 +96,7 @@ binary-arch: build install
 	dh_testroot -a
 	dh_installdocs -a
 	dh_installexamples -a
-	dh_installinit -pntp --update-rcd-params="defaults 23" 
+	dh_installinit -pntp --update-rcd-params="defaults 23" --error-handler=installinit_error
 	dh_installinit -pntpdate
 	dh_installcron -a
 	dh_installlogcheck -a

@@ -37,4 +37,8 @@ if [ "$1" = "configure" ]; then
 	fi
 fi
 
+installinit_error() {
+	exit $?
+}
+
 #DEBHELPER#
