@@ -12,8 +12,9 @@ ntp (1:4.2.2p3+dfsg-1) UNRELEASED; urgency=medium
   * Use server names sent by DHCP server if available (closes: #268328)
   * Added real man pages, transcribed from HTML documentation
     (closes: #84979, #201529, #343123, #388503)
+  * Use dh_perl to calculate Perl dependencies
 
- -- Peter Eisentraut <petere@debian.org>  Sat,  7 Oct 2006 16:49:16 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat,  7 Oct 2006 17:10:22 +0200
 
 ntp (1:4.2.2+dfsg.2-3) unstable; urgency=high
 

@@ -9,7 +9,7 @@ XS-X-Vcs-Svn: svn://svn.debian.org/pkg-ntp/ntp/
 
 Package: ntp
 Architecture: any
-Depends: adduser, lsb-base (>= 3.0-3), netbase, perl-modules, psmisc, ${misc:Depends}, ${shlibs:Depends}
+Depends: adduser, lsb-base (>= 3.0-3), netbase, psmisc, ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
 Suggests: ntp-doc
 Replaces: ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
 Conflicts: ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)

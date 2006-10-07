@@ -79,6 +79,7 @@ binary-indep: build install
 	dh_installcron -i
 	dh_installlogcheck -i
 	dh_installchangelogs -i
+	dh_perl -i
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
@@ -97,6 +98,7 @@ binary-arch: build install
 	dh_installcron -a
 	dh_installlogcheck -a
 	dh_installchangelogs -a
+	dh_perl -a
 	dh_strip -a
 	dh_compress -a
 	dh_fixperms -a
