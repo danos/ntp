@@ -1,5 +1,8 @@
-ntp (1:4.2.2+dfsg.2-4) UNRELEASED; urgency=medium
+ntp (1:4.2.2p3+dfsg-1) UNRELEASED; urgency=medium
 
+  * New upstream release
+    - Updated copyright file
+    - Updated autotools.patch, dfsg.patch
   * Check for existence of ntp user in init script only in start action
   * Handle failure to stop daemon in ntp.prerm (closes: #391352)
   * Added watch file
