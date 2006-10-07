@@ -2,3 +2,5 @@ dfsg.patch
 autotools.patch
 code.patch
 doc.patch
+maxhost-fix.patch
+no-ipv6-fix.patch
