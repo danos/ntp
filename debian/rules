@@ -65,15 +65,7 @@ install: build-stamp
 	install -D -m 0644 debian/ntp.dhcp debian/ntp/etc/dhcp3/dhclient-enter-hooks.d/ntp
 	install -D -m 0644 debian/ntpdate.dhcp debian/ntpdate/etc/dhcp3/dhclient-enter-hooks.d/ntpdate
 
-	install -D -m 0644 debian/ntpsweep.1 debian/ntp/usr/share/man/man1/ntpsweep.1
-	install -D -m 0644 debian/ntpdate.1 debian/ntpdate/usr/share/man/man1/ntpdate.1
-	install -D -m 0644 debian/ntpd.1 debian/ntp/usr/share/man/man1/ntpd.1
-	for file in ntpdc ntp-keygen ntp-wait ntpq ntptrace tickadj ntptime; do \
-		install -D -m 0644 debian/useless.1 debian/ntp/usr/share/man/man1/$$file.1 || exit; \
-	done
-
 	install -D -m 0644 debian/ntp.conf debian/ntp/etc/ntp.conf
-	install -D -m 0644 debian/useless.5 debian/ntp/usr/share/man/man5/ntp.conf.5
 
 	dh_movefiles --sourcedir=debian/ntp
 
@@ -83,6 +75,7 @@ binary-indep: build install
 	dh_installdocs -i html
 	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/hints/solaris*
 	dh_installexamples -i
+	dh_installman -i
 	dh_installcron -i
 	dh_installlogcheck -i
 	dh_installchangelogs -i
@@ -98,6 +91,7 @@ binary-arch: build install
 	dh_testroot -a
 	dh_installdocs -a
 	dh_installexamples -a
+	dh_installman -a
 	dh_installinit -pntp --update-rcd-params="defaults 23" --error-handler=installinit_error
 	dh_installinit -pntpdate
 	dh_installcron -a
