@@ -5,7 +5,9 @@ ntp-wait \- wait for NTP server to synchronize
 .B ntp-wait
 [ -f ] [ -n \fItries\fR ] [ -s \fIsleep\fR ] [ -v ]
 .SH DESCRIPTION
-ntp-wait waits until the locally running ntpd has synchronized.
+ntp-wait waits until the locally running ntpd is in state 4 (synchronized).
+This could be useful at boot time, to delay the boot sequence until after
+"ntpd -g" has set the time.
 .SH OPTIONS
 .TP
 -f
