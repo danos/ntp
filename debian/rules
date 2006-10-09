@@ -52,11 +52,11 @@ install: build-stamp
 	dh_clean -k
 	dh_installdirs
 
-	$(MAKE) install bindir=`pwd`/debian/ntp/usr/sbin prefix=`pwd`/debian/ntp/usr
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/ntp
 
-	# move the user-space programs from /usr/sbin to /usr/bin
-	for file in ntpq ntpdc ntptrace; do \
-		mv debian/ntp/usr/sbin/$$file debian/ntp/usr/bin/$$file || exit; \
+	# move the administrator programs from /usr/bin to /usr/sbin
+	for file in ntpdate ntp-wait ntpd ntptime tickadj ntp-keygen; do \
+		mv debian/ntp/usr/bin/$$file debian/ntp/usr/sbin/$$file || exit; \
 	done
 
 	install -D -m 0755 debian/ntp.ifup debian/ntp/etc/network/if-up.d/ntp
