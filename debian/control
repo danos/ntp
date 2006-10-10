@@ -9,7 +9,7 @@ XS-X-Vcs-Svn: svn://svn.debian.org/pkg-ntp/ntp/
 
 Package: ntp
 Architecture: any
-Depends: adduser, lsb-base (>= 3.0-3), netbase, psmisc, ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
+Depends: adduser, lsb-base (>= 3.0-3), netbase, ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
 Suggests: ntp-doc
 Replaces: ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
 Conflicts: ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
@@ -30,7 +30,7 @@ Description: Network Time Protocol daemon and utility programs
 
 Package: ntpdate
 Architecture: any
-Depends: lsb-base, netbase, ${misc:Depends}, ${shlibs:Depends}
+Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
 Description: client for setting system time from NTP servers
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
