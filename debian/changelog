@@ -13,8 +13,10 @@ ntp (1:4.2.2p3+dfsg-1) UNRELEASED; urgency=medium
   * Added real man pages, transcribed from HTML documentation
     (closes: #84979, #201529, #343123, #388503)
   * Use dh_perl to calculate Perl dependencies
+  * Split code.patch into more logical pieces
+  * Removed obsolete msyslog.c patch
 
- -- Peter Eisentraut <petere@debian.org>  Sat,  7 Oct 2006 17:10:22 +0200
+ -- Peter Eisentraut <petere@debian.org>  Tue, 10 Oct 2006 11:13:27 +0200
 
 ntp (1:4.2.2+dfsg.2-3) unstable; urgency=high
 

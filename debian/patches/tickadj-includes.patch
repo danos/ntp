@@ -1,0 +1,21 @@
+Index: ntp-4.2.2+dfsg/util/tickadj.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/util/tickadj.c	2004-02-25 05:58:33.000000000 +0000
++++ ntp-4.2.2+dfsg/util/tickadj.c	2006-07-02 14:25:13.000000000 +0000
+@@ -176,11 +176,15 @@
+ 
+ #ifdef NLIST_STRUCT
+ # include <nlist.h>
++#elif LIBELF_NLIST_STRUCT
++# include <libelf/nlist.h>
+ #else /* not NLIST_STRUCT */ /* was defined(SYS_AUX3) || defined(SYS_AUX2) */
+ # include <sys/resource.h>
+ # include <sys/file.h>
+ # include <a.out.h>
+-# include <sys/var.h>
++# ifdef HAVE_SYS_VAR_H
++#  include <sys/var.h>
++# endif
+ #endif
+ 
+ #include "ntp_io.h"

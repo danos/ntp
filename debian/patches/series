@@ -1,6 +1,14 @@
 dfsg.patch
 autotools.patch
-code.patch
+includes.patch
+ntptimeval.patch
+ntpdate-debug.patch
+ntpdate-ipv6.patch
+ntpd-char-fix.patch
+ntpd-linux-caps.patch
+ntp-keygen-option.patch
+ntptrace-getopt.patch
+tickadj-includes.patch
 doc.patch
-maxhost-fix.patch
+ntpd-ni-maxhost.patch
 no-ipv6-fix.patch

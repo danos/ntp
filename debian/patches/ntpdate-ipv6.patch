@@ -1,0 +1,14 @@
+Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/ntpdate/ntpdate.c	2006-06-06 20:16:59.000000000 +0000
++++ ntp-4.2.2+dfsg/ntpdate/ntpdate.c	2006-07-02 14:25:13.000000000 +0000
+@@ -1777,8 +1777,7 @@
+ 	   if (res->ai_family == AF_INET6)
+ 		if (setsockopt(fd[nbsock], IPPROTO_IPV6, IPV6_V6ONLY, (void*) &optval, sizeof(optval)) < 0) {
+ 			   netsyslog(LOG_ERR, "setsockopt() IPV6_V6ONLY failed: %m");
+-			   exit(1);
+-			   /*NOTREACHED*/
++			   /* exit(1); */
+ 		}
+ #endif
+ 

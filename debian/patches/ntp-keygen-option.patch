@@ -1,0 +1,25 @@
+Index: ntp-4.2.2+dfsg/util/ntp-keygen.c
+===================================================================
+--- ntp-4.2.2+dfsg.orig/util/ntp-keygen.c	2006-06-06 20:17:17.000000000 +0000
++++ ntp-4.2.2+dfsg/util/ntp-keygen.c	2006-07-02 14:25:13.000000000 +0000
+@@ -163,7 +163,7 @@
+ #ifdef OPENSSL
+ u_int	modulus = PLEN;		/* prime modulus size (bits) */
+ #endif
+-int	nkeys = 0;		/* MV keys */
++int	nkeys = 1;		/* MV keys */
+ time_t	epoch;			/* Unix epoch (seconds) since 1970 */
+ char	*hostname;		/* host name (subject name) */
+ char	*trustname;		/* trusted host name (issuer name) */
+@@ -447,9 +447,10 @@
+ 		 */
+ 		case 'V':
+ 			mvpar++;
+-			if (sscanf(optarg, "%d", &nkeys) != 1) {
++			if (sscanf(optarg, "%d", &nkeys) != 1 || nkeys < 1) {
+ 				fprintf(stderr,
+ 				    "invalid option -V %s\n", optarg);
++				nkeys = 1;
+ 				++errflg;
+ 			}
+ 			continue;
