@@ -1,7 +1,6 @@
-ntpdate doesn't parse the /etc/ntp.conf file.  Its server list resides
-in /etc/default/ntpdate.  But if you happen to have a file
-/etc/ntp.conf installed, then /etc/default/ntpdate will try to grab
-the server list from there.
+ntpdate doesn't parse the /etc/ntp.conf file.  The program
+ntpdate-debian is provided that reads its server list from
+/etc/default/ntpdate or alternatively from /etc/ntp.conf.
 
 ntpdate is run whenever a network interface is brought up.  To adjust
 this behavior, the file /etc/network/if-up.d/ntpdate should be edited.

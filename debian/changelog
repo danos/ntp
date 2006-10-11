@@ -17,6 +17,11 @@ ntp (1:4.2.2p3+dfsg-1) UNRELEASED; urgency=medium
   * Removed obsolete msyslog.c patch
   * Removed obsolete dependencies: psmisc (killall no longer used), lsb-base
     for ntpdate (no longer has an init script)
+  * Added script ntpdate-debian.  This is identical to ntpdate but reads
+    /etc/default/ntpdate automatically, allowing for centralized
+    configuration.  (closes: #147590, #372119, #392098)
+  * Moved ntp.conf parsing logic to ntpdate-debian (closes: #392325)
+  * Redirect error output of ntpdate.ifup to /dev/null (closes: #391819)
 
  -- Peter Eisentraut <petere@debian.org>  Tue, 10 Oct 2006 11:13:27 +0200
 
