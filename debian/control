@@ -11,7 +11,7 @@ Package: ntp
 Architecture: any
 Depends: adduser, lsb-base (>= 3.0-3), netbase, ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
 Suggests: ntp-doc
-Replaces: ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
+Replaces: logcheck-database, ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
 Conflicts: ntp-server, ntp-simple (<= 1:4.2.0a+stable-9), ntp-refclock (<= 1:4.2.0a+stable-9)
 Provides: ntp-server
 Description: Network Time Protocol daemon and utility programs

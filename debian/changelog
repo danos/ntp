@@ -22,8 +22,9 @@ ntp (1:4.2.2.p3+dfsg-1) unstable; urgency=medium
     configuration.  (closes: #147590, #372119, #392098)
   * Moved ntp.conf parsing logic to ntpdate-debian (closes: #392325)
   * Redirect error output of ntpdate.ifup to /dev/null (closes: #391819)
+  * Added Replaces: logcheck-database (closes: #392562)
 
- -- Peter Eisentraut <petere@debian.org>  Wed, 11 Oct 2006 22:15:54 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat, 14 Oct 2006 02:20:21 +0200
 
 ntp (1:4.2.2+dfsg.2-3) unstable; urgency=high
 
