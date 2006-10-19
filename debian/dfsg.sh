@@ -26,4 +26,3 @@ rm scripts/monitoring/ntptrap
 rm scripts/ntpver.in
 rm libparse/clk_wharton.c
 rm ntpd/refclock_neoclock4x.c
-

@@ -1,5 +1,8 @@
-ntp (1:4.2.2.p3+dfsg-2) UNRELEASED; urgency=low
+ntp (1:4.2.2.p4+dfsg-1) UNRELEASED; urgency=low
 
+  * New upstream release
+    - Fixes off-by-one error in compat getnameinfo() (closes: #387627)
+    - Updated autotools.patch
   * Fixed watch file for mangled version number
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 19 Oct 2006 13:35:28 +0200
