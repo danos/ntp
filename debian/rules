@@ -22,7 +22,7 @@ config.status: $(QUILT_STAMPFN)
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
-		--disable-errorcache --with-sntp=no \
+		--with-sntp=no \
 		--enable-linuxcaps \
 		--disable-dependency-tracking
 

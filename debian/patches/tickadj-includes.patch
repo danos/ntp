@@ -1,5 +1,32 @@
-Index: ntp-4.2.2+dfsg/util/tickadj.c
-===================================================================
+--- ntp-4.2.2.p4+dfsg.orig/configure.ac	2006-10-19 14:13:20.000000000 +0200
++++ ntp-4.2.2.p4+dfsg/configure.ac	2006-10-19 14:13:36.000000000 +0200
+@@ -392,7 +392,7 @@
+ AC_CHECK_HEADERS(netinfo/ni.h, [AC_DEFINE(HAVE_NETINFO, 1, [NetInfo support?])])
+ AC_CHECK_HEADERS(sun/audioio.h sys/audioio.h)
+ dnl AC_CHECK_HEADERS(sys/chudefs.h)
+-AC_CHECK_HEADERS(sys/clkdefs.h sys/file.h)
++AC_CHECK_HEADERS(sys/clkdefs.h sys/file.h sys/var.h)
+ case "$host" in
+  *-*-sunos4*) ;;
+  *) AC_CHECK_HEADERS(sys/ioctl.h)
+@@ -464,6 +464,17 @@
+ fi
+ ])dnl
+ 
++AC_CHECK_HEADER(libelf/nlist.h,
++[AC_DEFINE(LIBELF_NLIST_STRUCT, 1, [nlist stuff])
++AC_CACHE_CHECK([for n_un in struct nlist], ac_cv_struct_nlist_n_un,
++[AC_TRY_COMPILE([#include <libelf/nlist.h>],
++[struct nlist n; n.n_un.n_name = 0;],
++ac_cv_struct_nlist_n_un=yes, ac_cv_struct_nlist_n_un=no)])
++if test $ac_cv_struct_nlist_n_un = yes; then
++  AC_DEFINE(NLIST_NAME_UNION, 1, [does struct nlist use a name union?])
++fi
++])dnl
++
+ dnl AC_CHECK_HEADERS(net/if.h, [], [],
+ dnl [#if HAVE_SYS_TYPES_H
+ dnl # include <sys/types.h>
 --- ntp-4.2.2+dfsg.orig/util/tickadj.c	2004-02-25 05:58:33.000000000 +0000
 +++ ntp-4.2.2+dfsg/util/tickadj.c	2006-07-02 14:25:13.000000000 +0000
 @@ -176,11 +176,15 @@

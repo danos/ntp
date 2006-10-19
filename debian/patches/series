@@ -1,5 +1,4 @@
 dfsg.patch
-autotools.patch
 includes.patch
 ntptimeval.patch
 ntpdate-debug.patch
@@ -12,3 +11,5 @@ tickadj-includes.patch
 doc.patch
 ntpd-ni-maxhost.patch
 no-ipv6-fix.patch
+ntp_gettime.patch
+autotools.patch
