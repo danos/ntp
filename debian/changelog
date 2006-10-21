@@ -1,4 +1,4 @@
-ntp (1:4.2.2.p4+dfsg-1) UNRELEASED; urgency=low
+ntp (1:4.2.2.p4+dfsg-1) unstable; urgency=low
 
   * New upstream release
     - Fixes off-by-one error in compat getnameinfo() (closes: #387627)
@@ -9,7 +9,7 @@ ntp (1:4.2.2.p4+dfsg-1) UNRELEASED; urgency=low
       start
   * Added web sites to package descriptions
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 19 Oct 2006 13:35:28 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat, 21 Oct 2006 16:34:35 +0200
 
 ntp (1:4.2.2.p3+dfsg-1) unstable; urgency=medium
 
