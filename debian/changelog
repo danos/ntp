@@ -7,6 +7,7 @@ ntp (1:4.2.2.p4+dfsg-1) UNRELEASED; urgency=low
   * Split out configure.ac hunk from autotools.patch into logical pieces
     - Removed error cache disabling code, which was nonfunctional from the
       start
+  * Added web sites to package descriptions
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 19 Oct 2006 13:35:28 +0200
 

@@ -27,6 +27,8 @@ Description: Network Time Protocol daemon and utility programs
  .
  For more information about the NTP protocol and NTP server
  configuration and operation, install the package "ntp-doc".
+ .
+ Web sites: http://ntp.isc.org/ and http://www.ntp.org/
 
 Package: ntpdate
 Architecture: any
@@ -46,6 +48,8 @@ Description: client for setting system time from NTP servers
  .
  If the full NTP daemon from the package "ntp" is installed, then
  ntpdate is not necessary.
+ .
+ Web sites: http://ntp.isc.org/ and http://www.ntp.org/
 
 Package: ntp-doc
 Architecture: all
@@ -60,6 +64,8 @@ Description: Network Time Protocol documentation
  ntpdate).  Since there are no substantive man pages for ntp's
  programs and configuration files, this package is desirable for any
  setup beyond the simple default configuration.
+ .
+ Web sites: http://ntp.isc.org/ and http://www.ntp.org/
 
 Package: ntp-simple
 Architecture: all
