@@ -6,8 +6,10 @@ ntp (1:4.2.2.p4+dfsg-2) UNRELEASED; urgency=low
 
   [ Kurt Roeckx ]
   * Set a default restriction list for ipv6 too. (Closes: #411809)
+  * Stop using dhcp provided servers on release and stop.  Thanks
+    to Torne <torne@wolfpuppy.org.uk> (Closes: #411200)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat,  3 Mar 2007 11:18:08 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat,  3 Mar 2007 12:01:36 +0000
 
 ntp (1:4.2.2.p4+dfsg-1) unstable; urgency=low
 

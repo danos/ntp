@@ -54,7 +54,7 @@ ntp_servers_setup() {
 		BOUND|RENEW|REBIND|REBOOT)
 			ntp_servers_setup_add
 			;;
-		EXPIRE|FAIL)
+		EXPIRE|FAIL|RELEASE|STOP)
 			ntp_servers_setup_remove
 			;;
 	esac
