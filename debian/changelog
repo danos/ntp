@@ -8,8 +8,13 @@ ntp (1:4.2.2.p4+dfsg-2) UNRELEASED; urgency=low
   * Set a default restriction list for ipv6 too. (Closes: #411809)
   * Stop using dhcp provided servers on release and stop.  Thanks
     to Torne <torne@wolfpuppy.org.uk> (Closes: #411200)
+  * Don't use the nomodify option for localhost.  Modification
+    is only allowed when authenticated, so having the nomodify
+    option doesn't buy us anything.  It just prevents the resolver
+    slave process who does authenticate itself from properly working
+    (Closes: #385334, #401847)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat,  3 Mar 2007 12:01:36 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun,  4 Mar 2007 01:25:32 +0000
 
 ntp (1:4.2.2.p4+dfsg-1) unstable; urgency=low
 
