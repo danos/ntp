@@ -13,8 +13,9 @@ ntp (1:4.2.2.p4+dfsg-2) UNRELEASED; urgency=low
     option doesn't buy us anything.  It just prevents the resolver
     slave process who does authenticate itself from properly working
     (Closes: #385334, #401847)
+  * Make sure that we disable ntp-server for everybody. (Closes: #410383)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun,  4 Mar 2007 01:25:32 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun,  4 Mar 2007 01:43:24 +0000
 
 ntp (1:4.2.2.p4+dfsg-1) unstable; urgency=low
 

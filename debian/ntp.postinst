@@ -21,7 +21,7 @@ if [ "$1" = "configure" ]; then
 	fi
 
 	# Disable configuration files of predecessor package.
-	if [ -n "$2" ] && dpkg --compare-versions "$2" lt 1:4.2.2+dfsg-1; then
+	if [ -n "$2" ] && dpkg --compare-versions "$2" le 1:4.2.2.p4+dfsg-1; then
 		for file in \
 			/etc/cron.daily/ntp-server \
 			/etc/cron.weekly/ntp-server \
