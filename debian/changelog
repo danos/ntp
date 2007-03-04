@@ -1,4 +1,4 @@
-ntp (1:4.2.2.p4+dfsg-2) UNRELEASED; urgency=low
+ntp (1:4.2.2.p4+dfsg-2) unstable; urgency=low
 
   [ Peter Eisentraut ]
   * Removed obsolete logcheck entry
@@ -15,7 +15,7 @@ ntp (1:4.2.2.p4+dfsg-2) UNRELEASED; urgency=low
     (Closes: #385334, #401847)
   * Make sure that we disable ntp-server for everybody. (Closes: #410383)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun,  4 Mar 2007 01:43:24 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun,  4 Mar 2007 13:01:11 +0000
 
 ntp (1:4.2.2.p4+dfsg-1) unstable; urgency=low
 
