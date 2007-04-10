@@ -2,8 +2,9 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
 
   * New upstream release
     - Updated patches
+  * Added XS-Vcs-Browser field
 
- -- Peter Eisentraut <petere@debian.org>  Tue, 10 Apr 2007 10:34:22 +0200
+ -- Peter Eisentraut <petere@debian.org>  Tue, 10 Apr 2007 11:50:16 +0200
 
 ntp (1:4.2.2.p4+dfsg-2) unstable; urgency=low
 

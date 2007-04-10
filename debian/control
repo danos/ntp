@@ -5,6 +5,7 @@ Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
 Build-Depends: debhelper (>= 4.2.12), libreadline5-dev, lynx, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), quilt (>= 0.40)
 Standards-Version: 3.7.2
+XS-Vcs-Browser: http://svn.debian.org/wsvn/pkg-ntp/ntp/
 XS-Vcs-Svn: svn://svn.debian.org/pkg-ntp/ntp/
 
 Package: ntp
