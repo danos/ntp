@@ -1,8 +1,8 @@
-Index: ntp-4.2.2+dfsg/ntpd/ntpd.c
+Index: ntp-4.2.4p0+dfsg/ntpd/ntpd.c
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpd/ntpd.c	2006-06-06 20:16:46.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpd/ntpd.c	2006-07-02 14:25:13.000000000 +0000
-@@ -165,6 +165,8 @@
+--- ntp-4.2.4p0+dfsg.orig/ntpd/ntpd.c	2007-03-07 12:02:30.000000000 +0100
++++ ntp-4.2.4p0+dfsg/ntpd/ntpd.c	2007-04-10 10:55:51.000000000 +0200
+@@ -168,6 +168,8 @@
  char *user = NULL;		/* User to switch to */
  char *group = NULL;		/* group to switch to */
  char *chrootdir = NULL;		/* directory to chroot to */
@@ -11,9 +11,9 @@ Index: ntp-4.2.2+dfsg/ntpd/ntpd.c
  int sw_uid;
  int sw_gid;
  char *endp;  
-@@ -749,8 +751,29 @@
+@@ -851,8 +853,29 @@
+ #endif /* OPENSSL */
  	initializing = 0;
- 
  
 +#ifdef HAVE_LINUX_CAPABILITIES
 +        {
@@ -26,7 +26,7 @@ Index: ntp-4.2.2+dfsg/ntpd/ntpd.c
 +                        msyslog( LOG_ERR, "cap_from_text() failed: %m" );
 +                        exit(-1);
 +                }
-+                if( cap_set_proc( caps ) == 0 ) 
++                if( cap_set_proc( caps ) == 0 )
 +                    have_caps = 1;
 +                cap_free( caps );
 +        }
@@ -41,7 +41,7 @@ Index: ntp-4.2.2+dfsg/ntpd/ntpd.c
  		/* Drop super-user privileges and chroot now if the OS supports this */
  
  #ifdef HAVE_LINUX_CAPABILITIES
-@@ -777,7 +800,6 @@
+@@ -879,7 +902,6 @@
  				if ((pw = getpwnam(user)) != NULL) {
  					sw_uid = pw->pw_uid;
  				} else {
@@ -49,12 +49,14 @@ Index: ntp-4.2.2+dfsg/ntpd/ntpd.c
  					msyslog(LOG_ERR, "Cannot find user `%s'", user);
  					exit (-1);
  				}
-@@ -834,7 +856,7 @@
- 			 *  We drop all of them, except for the crucial one: cap_sys_time:
+@@ -953,8 +975,8 @@
  			 */
  			cap_t caps;
--			if( ! ( caps = cap_from_text( "cap_sys_time=ipe" ) ) ) {
-+			if( ! ( caps = cap_from_text( "cap_sys_time=pe" ) ) ) {
+ 			char *captext = interface_interval ?
+-			       	"cap_sys_time,cap_net_bind_service=ipe" :
+-			       	"cap_sys_time=ipe";
++			       	"cap_sys_time,cap_net_bind_service=pe" :
++			       	"cap_sys_time=pe";
+ 			if( ! ( caps = cap_from_text( captext ) ) ) {
  				msyslog( LOG_ERR, "cap_from_text() failed: %m" );
  				exit(-1);
- 			}

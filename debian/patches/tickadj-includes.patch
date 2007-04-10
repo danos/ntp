@@ -1,6 +1,8 @@
---- ntp-4.2.2.p4+dfsg.orig/configure.ac	2006-10-19 14:13:20.000000000 +0200
-+++ ntp-4.2.2.p4+dfsg/configure.ac	2006-10-19 14:13:36.000000000 +0200
-@@ -392,7 +392,7 @@
+Index: ntp-4.2.4p0+dfsg/configure.ac
+===================================================================
+--- ntp-4.2.4p0+dfsg.orig/configure.ac	2007-04-10 10:37:30.000000000 +0200
++++ ntp-4.2.4p0+dfsg/configure.ac	2007-04-10 11:08:16.000000000 +0200
+@@ -443,7 +443,7 @@
  AC_CHECK_HEADERS(netinfo/ni.h, [AC_DEFINE(HAVE_NETINFO, 1, [NetInfo support?])])
  AC_CHECK_HEADERS(sun/audioio.h sys/audioio.h)
  dnl AC_CHECK_HEADERS(sys/chudefs.h)
@@ -9,9 +11,9 @@
  case "$host" in
   *-*-sunos4*) ;;
   *) AC_CHECK_HEADERS(sys/ioctl.h)
-@@ -464,6 +464,17 @@
- fi
- ])dnl
+@@ -530,6 +530,17 @@
+     ;;
+ esac
  
 +AC_CHECK_HEADER(libelf/nlist.h,
 +[AC_DEFINE(LIBELF_NLIST_STRUCT, 1, [nlist stuff])
@@ -27,8 +29,10 @@
  dnl AC_CHECK_HEADERS(net/if.h, [], [],
  dnl [#if HAVE_SYS_TYPES_H
  dnl # include <sys/types.h>
---- ntp-4.2.2+dfsg.orig/util/tickadj.c	2004-02-25 05:58:33.000000000 +0000
-+++ ntp-4.2.2+dfsg/util/tickadj.c	2006-07-02 14:25:13.000000000 +0000
+Index: ntp-4.2.4p0+dfsg/util/tickadj.c
+===================================================================
+--- ntp-4.2.4p0+dfsg.orig/util/tickadj.c	2004-02-25 06:58:33.000000000 +0100
++++ ntp-4.2.4p0+dfsg/util/tickadj.c	2007-04-10 11:08:16.000000000 +0200
 @@ -176,11 +176,15 @@
  
  #ifdef NLIST_STRUCT

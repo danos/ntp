@@ -1,9 +1,11 @@
 Compilation fix for systems without MAXHOSTNAMELEN (e.g., Hurd); but the
 use of MAXHOSTNAMELEN is incorrect here anyway.  (bug #387665)
 
---- ntp-4.2.2.orig/ntpd/ntp_intres.c
-+++ ntp-4.2.2/ntpd/ntp_intres.c
-@@ -524,10 +524,10 @@
+Index: ntp-4.2.4p0+dfsg/ntpd/ntp_intres.c
+===================================================================
+--- ntp-4.2.4p0+dfsg.orig/ntpd/ntp_intres.c	2007-04-10 10:48:59.000000000 +0200
++++ ntp-4.2.4p0+dfsg/ntpd/ntp_intres.c	2007-04-10 11:21:40.000000000 +0200
+@@ -526,10 +526,10 @@
  			msyslog(LOG_INFO, "findhostaddr: Resolving %s>",
  				stoa(&entry->peer_store));
  #endif

@@ -1,8 +1,8 @@
-Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
+Index: ntp-4.2.4p0+dfsg/ntpdate/ntpdate.c
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpdate/ntpdate.c	2006-06-06 20:16:59.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpdate/ntpdate.c	2006-07-02 14:25:13.000000000 +0000
-@@ -1788,7 +1787,7 @@
+--- ntp-4.2.4p0+dfsg.orig/ntpdate/ntpdate.c	2007-02-22 12:02:08.000000000 +0100
++++ ntp-4.2.4p0+dfsg/ntpdate/ntpdate.c	2007-04-10 10:48:06.000000000 +0200
+@@ -1768,7 +1768,7 @@
  	/*
  	 * bind the socket to the NTP port
  	 */
@@ -11,7 +11,7 @@ Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
  		if (bind(fd[nbsock], res->ai_addr, SOCKLEN(res->ai_addr)) < 0) {
  #ifndef SYS_WINNT
  			if (errno == EADDRINUSE)
-@@ -2067,8 +2066,10 @@
+@@ -2047,8 +2047,10 @@
  		adjtv.tv_usec = -adjtv.tv_usec;
  	}
  
@@ -24,7 +24,7 @@ Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
  			msyslog(LOG_ERR, "Can't adjust the time of day: %m");
  			return 0;
  		}
-@@ -2094,7 +2095,6 @@
+@@ -2074,7 +2076,6 @@
  	int isneg;
  	int n;
  
@@ -32,7 +32,7 @@ Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
  	/*
  	 * Take the absolute value of the offset
  	 */
-@@ -2121,8 +2121,6 @@
+@@ -2101,8 +2102,6 @@
  	 * line.
  	 */
  #endif
@@ -41,7 +41,7 @@ Index: ntp-4.2.2+dfsg/ntpdate/ntpdate.c
  #ifdef FORCE_NTPDATE_STEP
  	LFPTOD(ts, dtemp);
  	return step_systime(dtemp);
-@@ -2131,8 +2129,6 @@
+@@ -2111,8 +2110,6 @@
  	return 1;
  #endif
  #else /* SLEWALWAYS */
