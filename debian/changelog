@@ -3,6 +3,7 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
   * New upstream release
     - Updated patches
   * Added XS-Vcs-Browser field
+  * Made ntpdate-debian handle empty ntp.conf better (closes: #413692)
 
  -- Peter Eisentraut <petere@debian.org>  Tue, 10 Apr 2007 11:50:16 +0200
 
