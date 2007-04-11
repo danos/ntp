@@ -5,7 +5,6 @@ ntpdate-debug.patch
 ntpdate-ipv6.patch
 ntpd-char-fix.patch
 ntpd-linux-caps.patch
-ntp-keygen-option.patch
 ntptrace-getopt.patch
 tickadj-includes.patch
 doc.patch
