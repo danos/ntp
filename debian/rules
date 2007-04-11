@@ -68,6 +68,9 @@ install: build-stamp
 
 	install -D -m 0644 debian/ntp.conf debian/ntp/etc/ntp.conf
 
+	# remove upstream man pages, which are currently not as nice as ours
+	rm $(addprefix debian/ntp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntpdsim.1 ntp-keygen.1 ntpq.1)
+
 	dh_movefiles --sourcedir=debian/ntp
 
 binary-indep: build install
