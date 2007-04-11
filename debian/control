@@ -67,17 +67,3 @@ Description: Network Time Protocol documentation
  setup beyond the simple default configuration.
  .
  Web sites: http://ntp.isc.org/ and http://www.ntp.org/
-
-Package: ntp-simple
-Architecture: all
-Depends: ntp (>= 1:4.2.2+dfsg.2-2)
-Description: transition package
- This package is a transition package designed to help ease the transition
- to the new ntp package.  It is safe to remove this package.
-
-Package: ntp-refclock
-Architecture: all
-Depends: ntp (>= 1:4.2.2+dfsg.2-2)
-Description: transition package
- This package is a transition package designed to help ease the transition
- to the new ntp package.  It is safe to remove this package.

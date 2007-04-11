@@ -9,6 +9,7 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
   * Removed ntp-keygen-option.patch; options parsing has changed
   * Removed new upstream man pages, which are currently not as nice as the
     ones we already have.
+  * Removed transition packages ntp-simple and ntp-refclock
 
  -- Peter Eisentraut <petere@debian.org>  Tue, 10 Apr 2007 11:50:16 +0200
 
