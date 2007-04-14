@@ -1,7 +1,7 @@
 Index: ntp-4.2.4p0+dfsg/ntpd/ntpd.c
 ===================================================================
---- ntp-4.2.4p0+dfsg.orig/ntpd/ntpd.c	2007-03-07 12:02:30.000000000 +0100
-+++ ntp-4.2.4p0+dfsg/ntpd/ntpd.c	2007-04-10 10:55:51.000000000 +0200
+--- ntp-4.2.4p0+dfsg.orig/ntpd/ntpd.c	2007-04-15 01:00:14.000000000 +0200
++++ ntp-4.2.4p0+dfsg/ntpd/ntpd.c	2007-04-15 01:02:01.000000000 +0200
 @@ -168,6 +168,8 @@
  char *user = NULL;		/* User to switch to */
  char *group = NULL;		/* group to switch to */
@@ -22,7 +22,7 @@ Index: ntp-4.2.4p0+dfsg/ntpd/ntpd.c
 +                 *  drop privileges in this case.
 +                 */
 +                cap_t caps;
-+                if( ! ( caps = cap_from_text( "cap_sys_time,cap_setuid,cap_setgid,cap_sys_chroot=pe" ) ) ) {
++                if( ! ( caps = cap_from_text( "cap_sys_time,cap_setuid,cap_setgid,cap_sys_chroot,cap_net_bind_service=pe" ) ) ) {
 +                        msyslog( LOG_ERR, "cap_from_text() failed: %m" );
 +                        exit(-1);
 +                }

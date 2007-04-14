@@ -1,5 +1,6 @@
 ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
 
+  [ Peter Eisentraut ]
   * New upstream release
     - Updated patches
     - ntpd usage message now shows debug option only if actually available
@@ -11,7 +12,10 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
     ones we already have.
   * Removed transition packages ntp-simple and ntp-refclock
 
- -- Peter Eisentraut <petere@debian.org>  Tue, 10 Apr 2007 11:50:16 +0200
+  [ Kurt Roeckx ]
+  * Change ntpd-linux-caps.patch to also request CAP_NET_BIND_SERVICE.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 15 Apr 2007 01:05:26 +0200
 
 ntp (1:4.2.2.p4+dfsg-2) unstable; urgency=low
 
