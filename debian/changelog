@@ -5,7 +5,8 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
     - Updated patches
     - ntpd usage message now shows debug option only if actually available
       (closes: #327347)
-    - Dynamic interface scanning should work now (Closes: #253597, #317250)
+    - Dynamic interface scanning should work now
+      (Closes: #253597, #317250, #399905)
   * Added XS-Vcs-Browser field
   * Made ntpdate-debian handle empty ntp.conf better (closes: #413692)
   * Removed ntp-keygen-option.patch; options parsing has changed
