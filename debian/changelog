@@ -13,11 +13,12 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
   * Removed new upstream man pages, which are currently not as nice as the
     ones we already have.
   * Removed transition packages ntp-simple and ntp-refclock
+  * Updated information about pool.ntp.conf in ntp.conf
 
   [ Kurt Roeckx ]
   * Change ntpd-linux-caps.patch to also request CAP_NET_BIND_SERVICE.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 15 Apr 2007 01:05:26 +0200
+ -- Peter Eisentraut <petere@debian.org>  Tue, 24 Apr 2007 20:00:25 +0200
 
 ntp (1:4.2.2.p4+dfsg-2) unstable; urgency=low
 
