@@ -59,7 +59,6 @@ install: build-stamp
 		mv debian/ntp/usr/bin/$$file debian/ntp/usr/sbin/$$file || exit; \
 	done
 
-	install -D -m 0755 debian/ntp.ifup debian/ntp/etc/network/if-up.d/ntp
 	install -D -m 0755 debian/ntpdate.ifup debian/ntpdate/etc/network/if-up.d/ntpdate
 	install -D -m 0755 scripts/ntpsweep debian/ntp/usr/bin/ntpsweep
 	install -D -m 0644 debian/ntp.dhcp debian/ntp/etc/dhcp3/dhclient-enter-hooks.d/ntp

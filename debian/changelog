@@ -16,6 +16,7 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
   * Updated information about pool.ntp.conf in ntp.conf
   * Disabled statsdir by default (closes: #316669)
   * Added "dynamic" option to default server entries in ntp.conf
+  * Removed ntp.ifup; supplanted by dynamic interface rescanning
 
   [ Kurt Roeckx ]
   * Change ntpd-linux-caps.patch to also request CAP_NET_BIND_SERVICE.

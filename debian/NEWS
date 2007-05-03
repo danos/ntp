@@ -1,3 +1,12 @@
+ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
+
+  This version of ntp will periodically rescan the network interfaces to
+  pick up new and deleted interfaces.  This should supplant most or all
+  of the various workarounds in use such as restarting the daemon in
+  /etc/network/if-up.d/ or /etc/ppp/ip-up.d/.
+
+ -- Peter Eisentraut <petere@debian.org>  Thu,  3 May 2007 11:32:29 +0200
+
 ntp (1:4.2.2+dfsg.2-2) unstable; urgency=low
 
   ntpdate is no longer started from an init script but instead by ifup.
