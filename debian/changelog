@@ -13,7 +13,7 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
   * Removed new upstream man pages, which are currently not as nice as the
     ones we already have.
   * Removed transition packages ntp-simple and ntp-refclock
-  * Updated information about pool.ntp.conf in ntp.conf
+  * Updated information about pool.ntp.org in ntp.conf
   * Disabled statsdir by default (closes: #316669)
   * Added "dynamic" option to default server entries in ntp.conf
   * Removed ntp.ifup; supplanted by dynamic interface rescanning
