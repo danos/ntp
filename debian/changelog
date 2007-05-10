@@ -22,7 +22,7 @@ ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
   [ Kurt Roeckx ]
   * Change ntpd-linux-caps.patch to also request CAP_NET_BIND_SERVICE.
 
- -- Peter Eisentraut <petere@debian.org>  Tue, 24 Apr 2007 20:00:25 +0200
+ -- Peter Eisentraut <petere@debian.org>  Thu, 10 May 2007 14:52:48 +0200
 
 ntp (1:4.2.2.p4+dfsg-2) unstable; urgency=low
 
