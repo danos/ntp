@@ -1,3 +1,10 @@
+ntp (1:4.2.4p0+dfsg-2) unstable; urgency=low
+
+  * Removed mentions of -d and -D options from ntpd and ntpq man pages
+    (closes: #427634, #428241)
+
+ -- Peter Eisentraut <petere@debian.org>  Sun, 17 Jun 2007 03:22:16 +0200
+
 ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
 
   [ Peter Eisentraut ]
