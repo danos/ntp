@@ -1,7 +1,7 @@
-Index: ntp-4.2.4p3+dfsg/ntpd/Makefile.in
+Index: ntp-4.2.4p4+dfsg/ntpd/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/ntpd/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/ntpd/Makefile.in	2007-08-02 22:42:09.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/ntpd/Makefile.in	2007-09-11 02:18:02.000000000 +0200
++++ ntp-4.2.4p4+dfsg/ntpd/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -81,14 +81,14 @@
  	refclock_irig$U.$(OBJEXT) refclock_jjy$U.$(OBJEXT) \
  	refclock_jupiter$U.$(OBJEXT) refclock_leitch$U.$(OBJEXT) \
@@ -130,10 +130,10 @@ Index: ntp-4.2.4p3+dfsg/ntpd/Makefile.in
  refclock_nmea_.$(OBJEXT) refclock_nmea_.lo refclock_oncore_.$(OBJEXT) \
  refclock_oncore_.lo refclock_palisade_.$(OBJEXT) refclock_palisade_.lo \
  refclock_parse_.$(OBJEXT) refclock_parse_.lo refclock_pcf_.$(OBJEXT) \
-Index: ntp-4.2.4p3+dfsg/include/isc/Makefile.in
+Index: ntp-4.2.4p4+dfsg/include/isc/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/include/isc/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/include/isc/Makefile.in	2007-08-02 22:42:07.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/include/isc/Makefile.in	2007-09-11 02:17:46.000000000 +0200
++++ ntp-4.2.4p4+dfsg/include/isc/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -92,6 +92,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -205,10 +205,10 @@ Index: ntp-4.2.4p3+dfsg/include/isc/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/include/Makefile.in
+Index: ntp-4.2.4p4+dfsg/include/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/include/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/include/Makefile.in	2007-08-02 22:42:07.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/include/Makefile.in	2007-09-11 02:17:44.000000000 +0200
++++ ntp-4.2.4p4+dfsg/include/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -99,6 +99,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -304,10 +304,10 @@ Index: ntp-4.2.4p3+dfsg/include/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/libntp/Makefile.in
+Index: ntp-4.2.4p4+dfsg/libntp/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/libntp/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/libntp/Makefile.in	2007-08-02 22:42:08.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/libntp/Makefile.in	2007-09-11 02:17:54.000000000 +0200
++++ ntp-4.2.4p4+dfsg/libntp/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -56,24 +56,23 @@
  ARFLAGS = cru
  libntp_a_AR = $(AR) $(ARFLAGS)
@@ -540,10 +540,10 @@ Index: ntp-4.2.4p3+dfsg/libntp/Makefile.in
  
  mostlyclean-libtool:
  	-rm -f *.lo
-Index: ntp-4.2.4p3+dfsg/libparse/Makefile.in
+Index: ntp-4.2.4p4+dfsg/libparse/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/libparse/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/libparse/Makefile.in	2007-08-02 22:42:08.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/libparse/Makefile.in	2007-09-11 02:17:59.000000000 +0200
++++ ntp-4.2.4p4+dfsg/libparse/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -62,19 +62,18 @@
  	clk_rawdcf$U.$(OBJEXT) clk_trimtsip$U.$(OBJEXT) \
  	clk_dcf7000$U.$(OBJEXT) clk_trimtaip$U.$(OBJEXT) \
@@ -690,10 +690,10 @@ Index: ntp-4.2.4p3+dfsg/libparse/Makefile.in
  parsesolaris_.lo parsestreams_.$(OBJEXT) parsestreams_.lo \
  trim_info_.$(OBJEXT) trim_info_.lo : $(ANSI2KNR)
  
-Index: ntp-4.2.4p3+dfsg/ntpdate/Makefile.in
+Index: ntp-4.2.4p4+dfsg/ntpdate/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/ntpdate/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/ntpdate/Makefile.in	2007-08-02 22:42:09.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/ntpdate/Makefile.in	2007-09-11 02:18:05.000000000 +0200
++++ ntp-4.2.4p4+dfsg/ntpdate/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -123,6 +123,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -774,10 +774,10 @@ Index: ntp-4.2.4p3+dfsg/ntpdate/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/scripts/Makefile.in
+Index: ntp-4.2.4p4+dfsg/scripts/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/scripts/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/scripts/Makefile.in	2007-08-02 22:42:09.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/scripts/Makefile.in	2007-09-11 02:18:14.000000000 +0200
++++ ntp-4.2.4p4+dfsg/scripts/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -41,8 +41,8 @@
  	$(srcdir)/calc_tickadj.in $(srcdir)/checktime.in \
  	$(srcdir)/freq_adj.in $(srcdir)/html2man.in $(srcdir)/mkver.in \
@@ -886,10 +886,10 @@ Index: ntp-4.2.4p3+dfsg/scripts/Makefile.in
  plot_summary: $(top_builddir)/config.status $(srcdir)/plot_summary.in
  	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
  summary: $(top_builddir)/config.status $(srcdir)/summary.in
-Index: ntp-4.2.4p3+dfsg/kernel/sys/Makefile.in
+Index: ntp-4.2.4p4+dfsg/kernel/sys/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/kernel/sys/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/kernel/sys/Makefile.in	2007-08-02 22:42:08.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/kernel/sys/Makefile.in	2007-09-11 02:17:50.000000000 +0200
++++ ntp-4.2.4p4+dfsg/kernel/sys/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -92,6 +92,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -961,10 +961,10 @@ Index: ntp-4.2.4p3+dfsg/kernel/sys/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/kernel/Makefile.in
+Index: ntp-4.2.4p4+dfsg/kernel/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/kernel/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/kernel/Makefile.in	2007-08-02 22:42:08.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/kernel/Makefile.in	2007-09-11 02:17:48.000000000 +0200
++++ ntp-4.2.4p4+dfsg/kernel/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -96,6 +96,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -1036,10 +1036,10 @@ Index: ntp-4.2.4p3+dfsg/kernel/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/ntpdc/Makefile.in
+Index: ntp-4.2.4p4+dfsg/ntpdc/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/ntpdc/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/ntpdc/Makefile.in	2007-08-02 22:42:09.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/ntpdc/Makefile.in	2007-09-11 02:18:07.000000000 +0200
++++ ntp-4.2.4p4+dfsg/ntpdc/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -126,6 +126,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -1120,10 +1120,10 @@ Index: ntp-4.2.4p3+dfsg/ntpdc/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/util/Makefile.in
+Index: ntp-4.2.4p4+dfsg/util/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/util/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/util/Makefile.in	2007-08-02 22:42:10.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/util/Makefile.in	2007-09-11 02:18:18.000000000 +0200
++++ ntp-4.2.4p4+dfsg/util/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -36,7 +36,6 @@
  POST_UNINSTALL = :
  build_triplet = @build@
@@ -1457,10 +1457,10 @@ Index: ntp-4.2.4p3+dfsg/util/Makefile.in
  
  
  $(srcdir)/ntp-keygen-opts.h: $(srcdir)/ntp-keygen-opts.c
-Index: ntp-4.2.4p3+dfsg/parseutil/Makefile.in
+Index: ntp-4.2.4p4+dfsg/parseutil/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/parseutil/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/parseutil/Makefile.in	2007-08-02 22:42:09.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/parseutil/Makefile.in	2007-09-11 02:18:12.000000000 +0200
++++ ntp-4.2.4p4+dfsg/parseutil/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -111,6 +111,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -1532,10 +1532,10 @@ Index: ntp-4.2.4p3+dfsg/parseutil/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/clockstuff/Makefile.in
+Index: ntp-4.2.4p4+dfsg/clockstuff/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/clockstuff/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/clockstuff/Makefile.in	2007-08-02 22:42:07.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/clockstuff/Makefile.in	2007-09-11 02:17:42.000000000 +0200
++++ ntp-4.2.4p4+dfsg/clockstuff/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -114,6 +114,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -1607,10 +1607,10 @@ Index: ntp-4.2.4p3+dfsg/clockstuff/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/adjtimed/Makefile.in
+Index: ntp-4.2.4p4+dfsg/adjtimed/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/adjtimed/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/adjtimed/Makefile.in	2007-08-02 22:42:07.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/adjtimed/Makefile.in	2007-09-11 02:17:39.000000000 +0200
++++ ntp-4.2.4p4+dfsg/adjtimed/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -116,6 +116,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -1682,10 +1682,10 @@ Index: ntp-4.2.4p3+dfsg/adjtimed/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/ntpq/Makefile.in
+Index: ntp-4.2.4p4+dfsg/ntpq/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/ntpq/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/ntpq/Makefile.in	2007-08-02 22:42:09.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/ntpq/Makefile.in	2007-09-11 02:18:10.000000000 +0200
++++ ntp-4.2.4p4+dfsg/ntpq/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -117,6 +117,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -1766,15 +1766,15 @@ Index: ntp-4.2.4p3+dfsg/ntpq/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
  	@case '$?' in \
-Index: ntp-4.2.4p3+dfsg/configure
+Index: ntp-4.2.4p4+dfsg/configure
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/configure	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/configure	2007-08-02 22:42:00.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/configure	2007-09-11 02:18:40.000000000 +0200
++++ ntp-4.2.4p4+dfsg/configure	2007-10-11 10:39:30.000000000 +0200
 @@ -1,25 +1,54 @@
  #! /bin/sh
  # Guess values for system-dependent variables and create Makefiles.
--# Generated by GNU Autoconf 2.59 for ntp 4.2.4p3.
-+# Generated by GNU Autoconf 2.61 for ntp 4.2.4p3.
+-# Generated by GNU Autoconf 2.59 for ntp 4.2.4p4.
++# Generated by GNU Autoconf 2.61 for ntp 4.2.4p4.
  #
 -# Copyright (C) 2003 Free Software Foundation, Inc.
 +# Copyright (C) 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001,
@@ -3302,7 +3302,7 @@ Index: ntp-4.2.4p3+dfsg/configure
 +test -n "$ac_init_help" && exit $ac_status
  if $ac_init_version; then
    cat <<\_ACEOF
- ntp configure 4.2.4p3
+ ntp configure 4.2.4p4
 -generated by GNU Autoconf 2.59
 +generated by GNU Autoconf 2.61
  
@@ -3321,7 +3321,7 @@ Index: ntp-4.2.4p3+dfsg/configure
  This file contains any messages produced by compilers while
  running configure, to aid debugging if configure makes a mistake.
  
- It was created by ntp $as_me 4.2.4p3, which was
+ It was created by ntp $as_me 4.2.4p4, which was
 -generated by GNU Autoconf 2.59.  Invocation command line was
 +generated by GNU Autoconf 2.61.  Invocation command line was
  
@@ -53193,7 +53193,7 @@ Index: ntp-4.2.4p3+dfsg/configure
 -
 +# values after options handling.
 +ac_log="
- This file was extended by ntp $as_me 4.2.4p3, which was
+ This file was extended by ntp $as_me 4.2.4p4, which was
 -generated by GNU Autoconf 2.59.  Invocation command line was
 +generated by GNU Autoconf 2.61.  Invocation command line was
  
@@ -53256,7 +53256,7 @@ Index: ntp-4.2.4p3+dfsg/configure
 +_ACEOF
  cat >>$CONFIG_STATUS <<_ACEOF
  ac_cs_version="\\
- ntp config.status 4.2.4p3
+ ntp config.status 4.2.4p4
 -configured by $0, generated by GNU Autoconf 2.59,
 -  with options \\"`echo "$ac_configure_args" | sed 's/[\\""\`\$]/\\\\&/g'`\\"
 +configured by $0, generated by GNU Autoconf 2.61,
@@ -55227,10 +55227,10 @@ Index: ntp-4.2.4p3+dfsg/configure
    done
  fi
  
-Index: ntp-4.2.4p3+dfsg/Makefile.in
+Index: ntp-4.2.4p4+dfsg/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/Makefile.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/Makefile.in	2007-08-02 22:42:10.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/Makefile.in	2007-09-11 02:18:20.000000000 +0200
++++ ntp-4.2.4p4+dfsg/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -111,6 +111,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
@@ -55316,10 +55316,10 @@ Index: ntp-4.2.4p3+dfsg/Makefile.in
  	util		\
  	$(NULL)
  
-Index: ntp-4.2.4p3+dfsg/config.h.in
+Index: ntp-4.2.4p4+dfsg/config.h.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/config.h.in	2007-08-02 22:40:44.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/config.h.in	2007-08-02 22:42:06.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/config.h.in	2007-09-11 02:27:45.000000000 +0200
++++ ntp-4.2.4p4+dfsg/config.h.in	2007-10-11 10:38:40.000000000 +0200
 @@ -87,9 +87,6 @@
  /* Magnavox MX4200 GPS receiver */
  #undef CLOCK_MX4200
@@ -55402,10 +55402,10 @@ Index: ntp-4.2.4p3+dfsg/config.h.in
  #undef size_t
  
  /* Define to `long' if <sys/types.h> does not define. */
-Index: ntp-4.2.4p3+dfsg/aclocal.m4
+Index: ntp-4.2.4p4+dfsg/aclocal.m4
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/aclocal.m4	2007-08-02 22:41:02.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/aclocal.m4	2007-08-02 22:41:46.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/aclocal.m4	2007-09-11 02:16:00.000000000 +0200
++++ ntp-4.2.4p4+dfsg/aclocal.m4	2007-10-11 10:38:40.000000000 +0200
 @@ -13,7 +13,7 @@
  
  # libtool.m4 - Configure libtool for the host system. -*-Autoconf-*-
@@ -57854,10 +57854,10 @@ Index: ntp-4.2.4p3+dfsg/aclocal.m4
  AC_MSG_RESULT([$SED])
  ])
  
-Index: ntp-4.2.4p3+dfsg/libopts/Makefile.in
+Index: ntp-4.2.4p4+dfsg/libopts/Makefile.in
 ===================================================================
---- ntp-4.2.4p3+dfsg.orig/libopts/Makefile.in	2007-08-02 22:41:27.000000000 +0200
-+++ ntp-4.2.4p3+dfsg/libopts/Makefile.in	2007-08-02 22:42:08.000000000 +0200
+--- ntp-4.2.4p4+dfsg.orig/libopts/Makefile.in	2007-09-11 02:17:56.000000000 +0200
++++ ntp-4.2.4p4+dfsg/libopts/Makefile.in	2007-10-11 10:38:40.000000000 +0200
 @@ -115,6 +115,7 @@
  EXEEXT = @EXEEXT@
  F77 = @F77@
