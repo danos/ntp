@@ -4,6 +4,7 @@ ntp (1:4.2.4p4+dfsg-1) UNRELEASED; urgency=low
     - Updated patches
   * Removed obsolete build dependency lynx (closes: #446722)
   * Added Homepage control field
+  * Don't ignore errors from make distclean, as per lintian check
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 11 Oct 2007 10:34:34 +0200
 
