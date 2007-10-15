@@ -1,4 +1,4 @@
-ntp (1:4.2.4p4+dfsg-1) UNRELEASED; urgency=low
+ntp (1:4.2.4p4+dfsg-1) unstable; urgency=medium
 
   * New upstream release
     - Updated patches
@@ -9,7 +9,7 @@ ntp (1:4.2.4p4+dfsg-1) UNRELEASED; urgency=low
   * Downgraded perl dependency to Recommends (closes: #324559, #416875)
   * Removed useless directory /usr/lib/ from ntp package
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 11 Oct 2007 10:34:34 +0200
+ -- Peter Eisentraut <petere@debian.org>  Mon, 15 Oct 2007 13:59:34 +0200
 
 ntp (1:4.2.4p3+dfsg-1) unstable; urgency=low
 
