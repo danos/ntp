@@ -6,6 +6,7 @@ ntp (1:4.2.4p4+dfsg-1) UNRELEASED; urgency=low
   * Added Homepage control field
   * Don't ignore errors from make distclean, as per lintian check
   * Downgraded perl dependency to Recommends (closes: #324559, #416875)
+  * Removed useless directory /usr/lib/ from ntp package
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 11 Oct 2007 10:34:34 +0200
 
