@@ -5,6 +5,7 @@ Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
 Build-Depends: debhelper (>= 4.2.12), libreadline5-dev, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), quilt (>= 0.40)
 Standards-Version: 3.7.2
+Homepage: http://ntp.isc.org/
 XS-Vcs-Browser: http://svn.debian.org/wsvn/pkg-ntp/ntp/
 XS-Vcs-Svn: svn://svn.debian.org/pkg-ntp/ntp/
 
@@ -28,8 +29,6 @@ Description: Network Time Protocol daemon and utility programs
  .
  For more information about the NTP protocol and NTP server
  configuration and operation, install the package "ntp-doc".
- .
- Web sites: http://ntp.isc.org/ and http://www.ntp.org/
 
 Package: ntpdate
 Architecture: any
@@ -49,8 +48,6 @@ Description: client for setting system time from NTP servers
  .
  If the full NTP daemon from the package "ntp" is installed, then
  ntpdate is not necessary.
- .
- Web sites: http://ntp.isc.org/ and http://www.ntp.org/
 
 Package: ntp-doc
 Architecture: all
@@ -65,5 +62,3 @@ Description: Network Time Protocol documentation
  ntpdate).  Since there are no substantive man pages for ntp's
  programs and configuration files, this package is desirable for any
  setup beyond the simple default configuration.
- .
- Web sites: http://ntp.isc.org/ and http://www.ntp.org/
