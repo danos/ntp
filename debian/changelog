@@ -1,3 +1,11 @@
+ntp (1:4.2.4p4+dfsg-2) unstable; urgency=low
+
+  * Disable checking of openssl library version.  
+    (Closes: #446710, #446711, #447431)
+    Patch from Steve Langasek <vorlon@debian.org>
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 23 Oct 2007 18:39:47 +0200
+
 ntp (1:4.2.4p4+dfsg-1) unstable; urgency=medium
 
   * New upstream release
