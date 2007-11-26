@@ -1,7 +1,7 @@
 ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
 
-  * Various manpage and NEWS fixes (patches by Justin Pryzby)
-    (closes: #450721)
+  * Various manpage and NEWS fixes (patches by Justin Pryzby and Vincent
+    Lefevre) (closes: #439726, #450721)
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 26 Nov 2007 15:12:53 +0100
 
