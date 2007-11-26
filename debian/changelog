@@ -2,6 +2,8 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
 
   * Various manpage and NEWS fixes (patches by Justin Pryzby and Vincent
     Lefevre) (closes: #439726, #450721)
+  * Run DHCP hooks as exit hooks instead of enter hooks (closes: #408219)
+  * Use try-restart to restart ntpd after DHCP event
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 26 Nov 2007 15:12:53 +0100
 
