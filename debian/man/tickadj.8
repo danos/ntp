@@ -1,12 +1,12 @@
 .\" transcribed from ntp 4.2.2p3
-.TH TICKADJ 8 "October 7, 2006" "Network Time Protocol"
+.TH TICKADJ 8 "November 9, 2007" "Network Time Protocol"
 .SH NAME
 tickadj \- set time-related kernel variables
 .SH SYNOPSIS
 .B tickadj
 [ -Aqs ] [ -a \fItickadj\fR ] [ -t \fItick\fR ]
 .SH DESCRIPTION
-The tickadj program reads, and optionally modifies, several timekeeping-related variables in older kernels that do not have support for precision ttimekeeping, including HP-UX, SunOS, Ultrix, SGI and probably others. Those machines provide means to patch the kernel /dev/kmem. Newer machines with precision time support, including Solaris, Tru64, FreeBSD and Linux (with PPSkit patch) should NOT use the program. The particular variables that can be changed with tickadj include tick, which is the number of microseconds added to the system time for a clock interrupt, tickadj, which sets the slew rate and resolution used by the adjtime system call, and dosynctodr, which indicates to the kernels on some machines whether they should internally adjust the system clock to keep it in line with time-of-day clock or not.
+The tickadj program reads, and optionally modifies, several timekeeping-related variables in older kernels that do not have support for precision timekeeping, including HP-UX, SunOS, Ultrix, SGI and probably others. Those machines provide means to patch the kernel /dev/kmem. Newer machines with precision time support, including Solaris, Tru64, FreeBSD and Linux (with PPSkit patch) should NOT use the program. The particular variables that can be changed with tickadj include tick, which is the number of microseconds added to the system time for a clock interrupt, tickadj, which sets the slew rate and resolution used by the adjtime system call, and dosynctodr, which indicates to the kernels on some machines whether they should internally adjust the system clock to keep it in line with time-of-day clock or not.
 .PP
 By default, with no arguments, tickadj reads the variables of interest in the kernel and displays them. At the same time, it determines an "optimal" value for the value of the tickadj variable if the intent is to run the ntpd Network Time Protocol (NTP) daemon, and prints this as well. Since the operation of tickadj when reading the kernel mimics the operation of similar parts of the ntpd program fairly closely, this can be useful when debugging problems with ntpd.
 .PP

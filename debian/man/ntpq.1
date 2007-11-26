@@ -1,5 +1,5 @@
 .\" transcribed from ntp 4.2.2p3
-.TH NTPQ 1 "October 7, 2006" "Network Time Protocol"
+.TH NTPQ 1 "November 9, 2007" "Network Time Protocol"
 .SH NAME
 ntpq \- standard NTP query program
 .SH SYNOPSIS
@@ -10,7 +10,7 @@ The ntpq utility program is used to monitor NTP daemon ntpd operations and deter
 .PP
 The program can be run either in interactive mode or controlled using command line arguments. Requests to read and write arbitrary variables can be assembled, with raw and pretty-printed output options being available. The ntpq can also obtain and print a list of peers in a common format by sending multiple queries to the server.
 .PP
-If one or more request options is included on the command line when ntpq is executed, each of the requests will be sent to the NTP servers running on each of the hosts given as command line arguments, or on localhost by default. If no request options are given, ntpq will attempt to read commands from the standard input and execute these on the NTP server running on the first host given on the command line, again defaulting to localhost when no other host is specified. ntpqwill prompt for commands if the standard input is a terminal device.
+If one or more request options is included on the command line when ntpq is executed, each of the requests will be sent to the NTP servers running on each of the hosts given as command line arguments, or on localhost by default. If no request options are given, ntpq will attempt to read commands from the standard input and execute these on the NTP server running on the first host given on the command line, again defaulting to localhost when no other host is specified. ntpq will prompt for commands if the standard input is a terminal device.
 .PP
 ntpq uses NTP mode 6 packets to communicate with the NTP server, and hence can be used to query any compatible server on the network which permits it. Note that since NTP is a UDP protocol this communication will be somewhat unreliable, especially over large distances in terms of network topology. ntpq makes one attempt to retransmit requests, and will time requests out if the remote host is not heard from within a suitable timeout time.
 .PP

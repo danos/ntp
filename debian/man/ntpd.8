@@ -1,5 +1,5 @@
 .\" -*- nroff -*"
-.TH  NTPD 8 "November 17, 1999" "Version 4.0.98d" "Network Time Protocol Daemon"
+.TH  NTPD 8 "November 9, 2007" "Version 4.0.98d" "Network Time Protocol Daemon"
 .SH NAME
 ntpd \- Network Time Protocol (NTP) daemon.
 .SH SYNOPSIS
@@ -270,27 +270,27 @@ broadcastclient or multicastclient commands below.
 [maxpoll maxpoll]
 [ttl ttl]
 .PP
-For type m addresses (only), this mobilizes a manycast client-mod
+For type m addresses (only), this mobilizes a manycast client-mode
 association for the multicast address specified.  In this case 
-specific address must be supplied which matches the address used on th
-manycastserver command for the designated manycast servers.  The NT
+specific address must be supplied which matches the address used on the
+manycastserver command for the designated manycast servers.  The NTP
 multicast address 224.0.1.1 assigned by the IANA should NOT be used
-unless specific means are taken to avoid spraying large areas of th
-Internet with these messages and causing a possibly massive implosion o
+unless specific means are taken to avoid spraying large areas of the
+Internet with these messages and causing a possibly massive implosion of
 replies at the sender
 .PP
-The manycast command specifies that the local server is to operate i
-client mode with the remote server that are discovered as the result o
+The manycast command specifies that the local server is to operate in
+client mode with the remote server that are discovered as the result of
 broadcast/multicast messages.  The client broadcasts a request message
 to the group address associated with the specified address an
 specifically enabled servers respond to these messages.  The client
 selects the servers providing the best time and continues as with the
 server command.  The remaining servers are discarded as if never heard
 .PP
-These four commands specify the time server name or address to be use
+These four commands specify the time server name or address to be used
 and the mode in which to operate.  The address can be either a DNS name
 or a IP address in dotted-quad notation.  Additional information on
-association behaviour can be found in the Association Management page
+association behaviour can be found in the Association Management page.
 .TP
 .I autokey
 All packets sent to the address are to include authentication field
@@ -353,7 +353,7 @@ offset of the local clock oscillator.  If the file exists, it is read at
 startup in order to set the initial frequency offset and then updated
 once per hour with the current frequency offset computed by the daemon.
 If the file does not exist or this command is not given, the initial
-frequency offset is assume zero.  In this case, it may take some hours
+frequency offset is assumed to be zero.  In this case, it may take some hours
 for the frequency to stabilize and the residual timing errors to
 subside.
 .PP
@@ -409,7 +409,7 @@ default for this flag is disable.
 Enables the precision-time kernel support for the ntp_adjtime() system
 call, if implemented.  Ordinarily, support for this routine is detected
 automatically when the NTP daemon is compiled, so it is not necessary
-for the user to worry about this flag.  It flag is provided primarily so
+for the user to worry about this flag.  This flag is provided primarily so
 that this support can be disabled during kernel development.
 .TP
 .I monitor
@@ -421,7 +421,7 @@ Enables the server to adjust its local clock by means of NTP.  If
 disabled, the local clock free-runs at its intrinsic time and frequency
 offset.  This flag is useful in case the local clock is controlled by
 some other device or protocol and NTP is used only to provide
-synchronization to other clients In this case, the local clock driver
+synchronization to other clients.  In this case, the local clock driver
 can be used to provide this function and also certain time variables for
 error estimates and leap-indicators.  The default for this flag is enable.
 .TP

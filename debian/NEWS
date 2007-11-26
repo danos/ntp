@@ -74,7 +74,7 @@ ntp (1:4.2.0a-3) unstable; urgency=medium
 ntp (1:4.2.0a-0.1) experimental; urgency=low
 
   Upstream has implemented their own patch for chroot-jail and change-uid.
-  Predictably, they use different flags (-j and -u, not -R and -U).
+  Predictably, they use different flags (-i and -u, not -R and -U).
 
   The Debian patch introduced in version 1:4.2.0-0.4 is therefore removed;
   -R and -U are no longer recognized.
