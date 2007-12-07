@@ -4,8 +4,10 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
     Lefevre) (closes: #439726, #450721)
   * Run DHCP hooks as exit hooks instead of enter hooks (closes: #408219)
   * Use try-restart to restart ntpd after DHCP event
+  * Wait for /usr to appear when running ntpdate on network events
+    (closes: #448462)
 
- -- Peter Eisentraut <petere@debian.org>  Mon, 26 Nov 2007 15:12:53 +0100
+ -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
 
 ntp (1:4.2.4p4+dfsg-2) unstable; urgency=low
 

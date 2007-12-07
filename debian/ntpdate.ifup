@@ -1,5 +1,12 @@
 #!/bin/sh
 
+(
+
+if [ -r /lib/udev/hotplug.functions ]; then
+	. /lib/udev/hotplug.functions
+	wait_for_file /usr/sbin/ntpdate-debian
+fi
+
 if [ ! -x /usr/sbin/ntpdate-debian ]; then
 	exit 0
 fi
@@ -16,4 +23,6 @@ if [ "$METHOD" = static ]; then
 	OPTS="-b"
 fi
 
-/usr/sbin/ntpdate-debian -s $OPTS 2>/dev/null &
+/usr/sbin/ntpdate-debian -s $OPTS 2>/dev/null
+
+) &
