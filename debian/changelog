@@ -6,6 +6,7 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
   * Use try-restart to restart ntpd after DHCP event
   * Wait for /usr to appear when running ntpdate on network events
     (closes: #448462)
+  * Updated standards version
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
 
