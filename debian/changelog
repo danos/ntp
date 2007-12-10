@@ -9,6 +9,8 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
   * Updated standards version
   * Updated ntpd man page from HTML (closes: #444633)
   * Moved configuration file description from ntpd(8) to ntp.conf(5)
+  * Made NTPDATE_USE_NTP_CONF work with openntpd (initial patch by Benoît
+    Dejean) (closes: #420692)
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
 
