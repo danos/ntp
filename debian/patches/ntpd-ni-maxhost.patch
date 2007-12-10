@@ -1,5 +1,6 @@
 Compilation fix for systems without MAXHOSTNAMELEN (e.g., Hurd); but the
-use of MAXHOSTNAMELEN is incorrect here anyway.  (bug #387665)
+use of MAXHOSTNAMELEN is incorrect here anyway.  (bug #387665,
+http://bugs.ntp.org/978)
 
 Index: ntp-4.2.4p0+dfsg/ntpd/ntp_intres.c
 ===================================================================

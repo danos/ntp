@@ -1,4 +1,4 @@
-bug #50433
+Fix support for systems without ntptimeval (bug #50433, http://bugs.ntp.org/979)
 
 Index: ntp-4.2.2+dfsg/include/ntp_syscall.h
 ===================================================================

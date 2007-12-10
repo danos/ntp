@@ -1,4 +1,5 @@
-compilation fix for systems without IPv6 support (bug #387665)
+compilation fix for systems without IPv6 support (bug #387665,
+http://bugs.ntp.org/977)
 
 --- ntp-4.2.2.orig/libisc/net.c
 +++ ntp-4.2.2/libisc/net.c
