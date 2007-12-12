@@ -1,6 +1,6 @@
 ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
 
-  * Various manpage and NEWS fixes (patches by Justin Pryzby and Vincent
+  * Various man page and NEWS fixes (patches by Justin Pryzby and Vincent
     Lefevre) (closes: #439726, #450721)
   * Run DHCP hooks as exit hooks instead of enter hooks (closes: #408219)
   * Use try-restart to restart ntpd after DHCP event
@@ -11,6 +11,8 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
   * Moved configuration file description from ntpd(8) to ntp.conf(5)
   * Made NTPDATE_USE_NTP_CONF work with openntpd (initial patch by Benoît
     Dejean) (closes: #420692)
+  * Added documentary comments to ntp.conf, reformatted the file a bit
+    (closes: #416818)
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
 
