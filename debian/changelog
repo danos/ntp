@@ -13,6 +13,7 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
     Dejean) (closes: #420692)
   * Added documentary comments to ntp.conf, reformatted the file a bit
     (closes: #416818)
+  * Fixed whitespace in doc-base, pointed out by lintian
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
 
