@@ -1,7 +1,6 @@
 dfsg.patch
 includes.patch
 ntptimeval.patch
-ntpdate-debug.patch
 ntpdate-ipv6.patch
 ntpd-char-fix.patch
 ntpd-linux-caps.patch

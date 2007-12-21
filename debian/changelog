@@ -14,6 +14,8 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
   * Added documentary comments to ntp.conf, reformatted the file a bit
     (closes: #416818)
   * Fixed whitespace in doc-base, pointed out by lintian
+  * Removed ntpdate-debug.patch; debug behavior is now again consistent with
+    upstream (closes: #451525)
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
 
