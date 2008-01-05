@@ -51,31 +51,6 @@ place:
     option ntp-servers ntp1.foo.bar, ntp2.foo.bar;
 
 
-Startup
--------
-
-There is no sane way to startup ntp that works for everybody.  Some
-people have a fixed network connection and start ntp ASAP.  Some start
-it in the background because boot speed is very important to them.
-Some need to wait until their PPP connection is up.  Some need ntp to
-listen to new network interfaces (this currently requires restarting).
-
-Because of these conflicting demands and the inability of the
-maintainer to come up with a simple set of questions that cover most
-of them, the Debian package for ntp contains *no* support for any of
-these cases.
-
-If you need to, you're encouraged to add apropriate calls to
-/etc/init.d/ntp start/stop/restart to /etc/network/if-up.d/ntp or
-/etc/network/if-post-down.d/ntp, as well as in /etc/ppp/ip-up.d and
-ip-down-d.
-
-Likewise, if your laptop acquires a different set of interfaces / IP
-addresses after sleeping, you probably need to add a small script that
-restarts NTP to /etc/network/if-up.d/.  (Such a script has been added.
-It defaults to being disabled, however.)
-
-
 SMP Systems
 -----------
 
