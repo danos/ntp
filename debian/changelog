@@ -1,4 +1,4 @@
-ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
+ntp (1:4.2.4p4+dfsg-3) unstable; urgency=low
 
   * Various man page and NEWS fixes (patches by Justin Pryzby and Vincent
     Lefevre) (closes: #439726, #450721)
@@ -18,7 +18,7 @@ ntp (1:4.2.4p4+dfsg-3) UNRELEASED; urgency=low
     upstream (closes: #451525)
   * Dropped some useless documentation files
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 07 Dec 2007 15:08:07 +0100
+ -- Peter Eisentraut <petere@debian.org>  Sun, 13 Jan 2008 12:18:13 +0100
 
 ntp (1:4.2.4p4+dfsg-2) unstable; urgency=low
 
