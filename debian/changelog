@@ -3,6 +3,10 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
   * Small ntp.conf man page fix (patch by Justin Pryzby) (closes: #450721)
   * Removed incorrect mention of -m option on ntpd man page (closes: #468348)
   * Corrected doc-base section for ntp-doc
+  * Added build dependency on libavahi-compat-libdnssd-dev, so that that 
+    feature is consistently enabled (closes: #462597)
+  * Added build conflicts against libwww-dev, libwww-ssl-dev, so we don't 
+    accidentally link with their libmd5 (closes: #462597)
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
 

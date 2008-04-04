@@ -3,7 +3,8 @@ Section: net
 Priority: optional
 Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
-Build-Depends: debhelper (>= 4.2.12), libreadline5-dev, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), quilt (>= 0.40)
+Build-Depends: debhelper (>= 4.2.12), libavahi-compat-libdnssd-dev, libreadline5-dev, libcap-dev | not+linux-gnu, libssl-dev (>= 0.9), quilt (>= 0.40)
+Build-Conflicts: libwww-dev, libwww-ssl-dev
 Standards-Version: 3.7.3
 Homepage: http://ntp.isc.org/
 XS-Vcs-Browser: http://svn.debian.org/wsvn/pkg-ntp/ntp/
