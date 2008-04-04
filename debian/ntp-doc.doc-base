@@ -6,7 +6,7 @@ Abstract: The Network Time Protocol (NTP) is used to synchronize the time
  such as a radio or satellite receiver or modem.  It provides client
  accuracies typically within a millisecond on LANs and up to a few tens of
  milliseconds on WANs.
-Section: Apps/Net
+Section: System/Administration
 
 Format: HTML
 Index: /usr/share/doc/ntp-doc/html/index.html

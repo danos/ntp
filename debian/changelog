@@ -2,8 +2,9 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
 
   * Small ntp.conf man page fix (patch by Justin Pryzby) (closes: #450721)
   * Removed incorrect mention of -m option on ntpd man page (closes: #468348)
+  * Corrected doc-base section for ntp-doc
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 22:49:21 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
 
 ntp (1:4.2.4p4+dfsg-3) unstable; urgency=low
 
