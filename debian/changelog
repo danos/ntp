@@ -1,3 +1,9 @@
+ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
+
+  * Small man page fix (patch by Justin Pryzby) (closes: #450721)
+
+ -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 22:49:21 +0200
+
 ntp (1:4.2.4p4+dfsg-3) unstable; urgency=low
 
   * Various man page and NEWS fixes (patches by Justin Pryzby and Vincent
