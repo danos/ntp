@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 (
 
 if [ -r /lib/udev/hotplug.functions ]; then
@@ -23,6 +25,20 @@ if [ "$METHOD" = static ]; then
 	OPTS="-b"
 fi
 
+LOCKFILE=/var/lock/$(basename $0)
+
+# Avoid running more than one at a time
+if [ -x /usr/bin/lockfile-create ]; then
+	lockfile-create $LOCKFILE
+	lockfile-touch $LOCKFILE &
+	LOCKTOUCHPID="$!"
+fi
+
 /usr/sbin/ntpdate-debian -s $OPTS 2>/dev/null
+
+if [ -x /usr/bin/lockfile-create ] ; then
+	kill $LOCKTOUCHPID
+	lockfile-remove $LOCKFILE
+fi
 
 ) &
