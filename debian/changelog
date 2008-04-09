@@ -9,6 +9,7 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
     accidentally link with their libmd5 (closes: #462597)
   * Use lockfile-progs to ensure that only one ntpdate.ifup is running at a 
     time (closes: #471358)
+  * Updated ntp.conf man page from HTML (closes: #466046)
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
 
