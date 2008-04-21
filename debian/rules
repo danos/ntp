@@ -59,7 +59,6 @@ install: build-stamp
 		mv debian/ntp/usr/bin/$$file debian/ntp/usr/sbin/$$file || exit; \
 	done
 
-	install -D -m 0755 debian/ntpdate.ifup debian/ntpdate/etc/network/if-up.d/ntpdate
 	install -D -m 0755 scripts/ntpsweep debian/ntp/usr/bin/ntpsweep
 	install -D -m 0644 debian/ntp.dhcp debian/ntp/etc/dhcp3/dhclient-exit-hooks.d/ntp
 	install -D -m 0644 debian/ntpdate.dhcp debian/ntpdate/etc/dhcp3/dhclient-exit-hooks.d/ntpdate
@@ -84,6 +83,7 @@ binary-indep: build install
 	dh_installcron -i
 	dh_installlogcheck -i
 	dh_installchangelogs -i
+	dh_installifupdown -i
 	dh_perl -i
 	dh_compress -i
 	dh_fixperms -i
@@ -103,6 +103,7 @@ binary-arch: build install
 	dh_installcron -a
 	dh_installlogcheck -a
 	dh_installchangelogs -a
+	dh_installifupdown -a
 	dh_perl -a
 	dh_strip -a
 	dh_compress -a

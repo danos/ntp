@@ -14,6 +14,8 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
   * Updated ntp.conf man page from HTML (closes: #466046)
   * Changed control fields XS-Vcs-* to Vcs-*, and added trunk path
   * Removed code used for sarge to etch transition
+  * Changed to Debhelper level 6
+  * Use dh_installifupdown
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
 
