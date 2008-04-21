@@ -12,6 +12,7 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
   * Also use lockfile-progs to ensure that ntpd does not start while
     ntpdate.ifup is running (closes: #436029)
   * Updated ntp.conf man page from HTML (closes: #466046)
+  * Changed control fields XS-Vcs-* to Vcs-*, and added trunk path
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
 
