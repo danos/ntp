@@ -1,3 +1,5 @@
+http://bugs.ntp.org/980
+
 Index: ntp-4.2.2+dfsg/scripts/ntptrace.in
 ===================================================================
 --- ntp-4.2.2+dfsg.orig/scripts/ntptrace.in	2006-06-06 20:17:11.000000000 +0000
