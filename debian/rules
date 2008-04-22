@@ -19,6 +19,7 @@ config: patch config.status
 config.status: $(QUILT_STAMPFN)
 	dh_testdir
 	./configure CFLAGS='$(CFLAGS)' \
+		ac_cv_var_tick=no ac_cv_var_tickadj=no \
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
@@ -55,7 +56,7 @@ install: build-stamp
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/ntp
 
 	# move the administrator programs from /usr/bin to /usr/sbin
-	for file in ntpdate ntp-wait ntpd ntptime tickadj ntp-keygen; do \
+	for file in ntpdate ntp-wait ntpd ntptime ntp-keygen; do \
 		mv debian/ntp/usr/bin/$$file debian/ntp/usr/sbin/$$file || exit; \
 	done
 

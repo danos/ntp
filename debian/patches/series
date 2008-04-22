@@ -5,7 +5,6 @@ ntpdate-ipv6.patch
 ntpd-char-fix.patch
 ntpd-linux-caps.patch
 ntptrace-getopt.patch
-tickadj-includes.patch
 doc.patch
 ntpd-ni-maxhost.patch
 no-ipv6-fix.patch

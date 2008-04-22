@@ -7,4 +7,3 @@ debian/man/ntpsweep.1
 debian/man/ntptime.8
 debian/man/ntptrace.1
 debian/man/ntp-wait.8
-debian/man/tickadj.8

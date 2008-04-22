@@ -16,6 +16,8 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
   * Removed code used for sarge to etch transition
   * Changed to Debhelper level 6
   * Use dh_installifupdown
+  * Removed tickadj program from installation.  It is quite unportable, the
+    documentation is inaccurate, and adjtimex could be used instead.
 
  -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
 
