@@ -1,4 +1,4 @@
-ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
+ntp (1:4.2.4p4+dfsg-4) unstable; urgency=low
 
   * Small ntp.conf man page fix (patch by Justin Pryzby) (closes: #450721)
   * Removed incorrect mention of -m option on ntpd man page (closes: #468348)
@@ -19,7 +19,7 @@ ntp (1:4.2.4p4+dfsg-4) UNRELEASED; urgency=low
   * Removed tickadj program from installation.  It is quite unportable, the
     documentation is inaccurate, and adjtimex could be used instead.
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 04 Apr 2008 23:07:18 +0200
+ -- Peter Eisentraut <petere@debian.org>  Tue, 29 Apr 2008 11:19:54 +0200
 
 ntp (1:4.2.4p4+dfsg-3) unstable; urgency=low
 
