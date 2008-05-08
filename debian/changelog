@@ -1,3 +1,10 @@
+ntp (1:4.2.4p4+dfsg-5) UNRELEASED; urgency=low
+
+  * Removed mentions of -d and -D options from ntpd man page, because the 
+    Debian package does not support these options (closes: #479015)
+
+ -- Peter Eisentraut <petere@debian.org>  Thu, 08 May 2008 16:23:05 +0200
+
 ntp (1:4.2.4p4+dfsg-4) unstable; urgency=low
 
   * Small ntp.conf man page fix (patch by Justin Pryzby) (closes: #450721)

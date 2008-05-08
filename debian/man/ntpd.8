@@ -3,7 +3,7 @@
 ntpd \- Network Time Protocol (NTP) daemon
 .SH SYNOPSIS
 .B ntpd
-[ -46aAbdDgLmnNqx ]
+[ -46aAbgLmnNqx ]
 [ -c \fIconffile\fR ]
 [ -f \fIdriftfile\fR ]
 [ -i \fIjaildir\fR ]
@@ -70,13 +70,6 @@ Enable the client to synchronize to broadcast servers.
 .TP
 \fB-c\fR \fIconffile\fR
 Specify the name and path of the configuration file, default \fI/etc/ntp.conf\fR.
-.TP
-.B -d
-Specify debugging mode.
-This option may occur more than once, with each occurrence indicating greater detail of display.
-.TP
-\fB-D\fR \fIlevel\fR
-Specify debugging level directly.
 .TP
 \fB-f\fR \fIdriftfile\fR
 Specify the name and path of the frequency file, default \fI/etc/ntp.drift\fR.
