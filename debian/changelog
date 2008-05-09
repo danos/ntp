@@ -1,10 +1,10 @@
-ntp (1:4.2.4p4+dfsg-5) UNRELEASED; urgency=low
+ntp (1:4.2.4p4+dfsg-5) unstable; urgency=low
 
   * Removed mentions of -d and -D options from ntpd man page, because the 
     Debian package does not support these options (closes: #479015)
   * Ignore errors from ntpdate-debian call in ntpdate.if-up (closes: #478655)
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 08 May 2008 16:23:05 +0200
+ -- Peter Eisentraut <petere@debian.org>  Fri, 09 May 2008 10:28:24 +0200
 
 ntp (1:4.2.4p4+dfsg-4) unstable; urgency=low
 
