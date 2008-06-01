@@ -1,3 +1,9 @@
+ntp (1:4.2.4p4+dfsg-6) UNRELEASED; urgency=low
+
+  * Put back accidentally removed /etc/defaults/ntpdate (closes: #482605)
+
+ -- Peter Eisentraut <petere@debian.org>  Sun, 01 Jun 2008 16:21:33 +0200
+
 ntp (1:4.2.4p4+dfsg-5) unstable; urgency=low
 
   * Removed mentions of -d and -D options from ntpd man page, because the 
