@@ -5,6 +5,9 @@ ntp (1:4.2.4p4+dfsg-6) UNRELEASED; urgency=low
   * Use libedit instead of libreadline, added libedit.patch (closes: #448408)
   * While updating autotools.patch, added description how it is generated
     (closes: #446756)
+  * Since the scripts summary and plot_summary are not installed in a binary 
+    package, drop their mention from the copyright file, thus deconfusing 
+    lintian
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 01 Jun 2008 16:21:33 +0200
 
