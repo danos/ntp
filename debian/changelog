@@ -8,6 +8,8 @@ ntp (1:4.2.4p4+dfsg-6) UNRELEASED; urgency=low
   * Since the scripts summary and plot_summary are not installed in a binary 
     package, drop their mention from the copyright file, thus deconfusing 
     lintian
+  * Avoid timeout message from ntpdate.if-up when ntpdate package was removed 
+    but not purged (closes: #481049)
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 01 Jun 2008 16:21:33 +0200
 
