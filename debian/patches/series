@@ -9,4 +9,5 @@ doc.patch
 ntpd-ni-maxhost.patch
 no-ipv6-fix.patch
 openssl-disable-check.patch
+libedit.patch
 autotools.patch
