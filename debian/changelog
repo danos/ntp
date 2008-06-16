@@ -1,4 +1,4 @@
-ntp (1:4.2.4p4+dfsg-6) UNRELEASED; urgency=low
+ntp (1:4.2.4p4+dfsg-6) unstable; urgency=low
 
   * Put back accidentally removed /etc/defaults/ntpdate (closes: #482605)
   * Updated Homepage (closes: #482628)
@@ -11,7 +11,7 @@ ntp (1:4.2.4p4+dfsg-6) UNRELEASED; urgency=low
   * Avoid timeout message from ntpdate.if-up when ntpdate package was removed 
     but not purged (closes: #481049)
 
- -- Peter Eisentraut <petere@debian.org>  Sun, 01 Jun 2008 16:21:33 +0200
+ -- Peter Eisentraut <petere@debian.org>  Mon, 16 Jun 2008 12:55:54 +0200
 
 ntp (1:4.2.4p4+dfsg-5) unstable; urgency=low
 
