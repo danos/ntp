@@ -2,6 +2,7 @@ ntp (1:4.2.4p4+dfsg-7) UNRELEASED; urgency=low
 
   * Added support for numeric IPv6 address in ntpdate-debian (closes: #489712)
   * Updated standards version
+  * Added PATH to ntpdate.if-up (closes: #490061)
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 07 Jul 2008 13:53:03 +0200
 

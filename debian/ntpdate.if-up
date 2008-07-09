@@ -2,6 +2,8 @@
 
 set -e
 
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
 # This is a heuristic:  The idea is that if a static interface is brought
 # up, that is a major event, and we can put in some extra effort to fix
 # the system time.  Feel free to change this, especially if you regularly
