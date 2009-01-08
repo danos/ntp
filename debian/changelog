@@ -1,3 +1,11 @@
+ntp (1:4.2.4p4+dfsg-8) unstable; urgency=low
+
+  * It did not properly check the return value of EVP_VerifyFinal
+    which results in an malformed DSA signature being treated as
+    a good signature rather than as an error.  (CVE-2009-0021)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 05 Jan 2009 21:10:03 +0100
+
 ntp (1:4.2.4p4+dfsg-7) unstable; urgency=low
 
   * Added support for numeric IPv6 address in ntpdate-debian (closes: #489712)
