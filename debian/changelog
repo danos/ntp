@@ -1,3 +1,11 @@
+ntp (1:4.2.4p6+dfsg-1) UNRELEASED; urgency=low
+
+  * New upstream release
+    - Updated ntpdate-ipv6.patch, autotools.patch
+    - Obsoletes no-ipv6-fix.patch, CVE-2009-0021.patch
+
+ -- Peter Eisentraut <petere@debian.org>  Mon, 09 Feb 2009 00:26:18 +0200
+
 ntp (1:4.2.4p4+dfsg-8) unstable; urgency=low
 
   * It did not properly check the return value of EVP_VerifyFinal
