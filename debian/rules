@@ -18,7 +18,7 @@ endif
 config: patch config.status
 config.status: $(QUILT_STAMPFN)
 	dh_testdir
-	./configure CFLAGS='$(CFLAGS)' \
+	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='-D_GNU_SOURCE' \
 		ac_cv_var_tick=no ac_cv_var_tickadj=no \
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
