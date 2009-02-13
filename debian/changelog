@@ -5,6 +5,7 @@ ntp (1:4.2.4p6+dfsg-1) UNRELEASED; urgency=low
     - Obsoletes no-ipv6-fix.patch, CVE-2009-0021.patch
   * Switched build dependency from libcap-dev to libcap2-dev (closes: #474639)
   * Added -D_GNU_SOURCE to CPPFLAGS, to support glibc 2.8 (closes: #507806)
+  * Recognize "adjust" in ntpdate logcheck rules (closes: #493907)
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 09 Feb 2009 00:26:18 +0200
 
