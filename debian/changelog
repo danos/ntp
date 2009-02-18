@@ -1,4 +1,4 @@
-ntp (1:4.2.4p6+dfsg-1) UNRELEASED; urgency=low
+ntp (1:4.2.4p6+dfsg-1) unstable; urgency=low
 
   * New upstream release
     - Updated ntpdate-ipv6.patch, autotools.patch
@@ -9,7 +9,7 @@ ntp (1:4.2.4p6+dfsg-1) UNRELEASED; urgency=low
   * Removed "dynamic" key word from default ntp.conf, because this is now 
     obsolete and the default
 
- -- Peter Eisentraut <petere@debian.org>  Mon, 09 Feb 2009 00:26:18 +0200
+ -- Peter Eisentraut <petere@debian.org>  Wed, 18 Feb 2009 20:24:14 +0200
 
 ntp (1:4.2.4p4+dfsg-8) unstable; urgency=low
 
