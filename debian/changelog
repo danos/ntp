@@ -1,3 +1,9 @@
+ntp (1:4.2.4p6+dfsg-2) UNRELEASED; urgency=low
+
+  * Fixed typo in ntpdate man page
+
+ -- Peter Eisentraut <petere@debian.org>  Thu, 23 Apr 2009 10:50:27 +0300
+
 ntp (1:4.2.4p6+dfsg-1) unstable; urgency=low
 
   * New upstream release
