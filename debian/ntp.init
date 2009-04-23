@@ -23,8 +23,8 @@ if [ -r /etc/default/$NAME ]; then
 	. /etc/default/$NAME
 fi
 
-if [ -e /etc/ntp.conf.dhcp ]; then
-	NTPD_OPTS="$NTPD_OPTS -c /etc/ntp.conf.dhcp"
+if [ -e /var/lib/ntp/ntp.conf.dhcp ]; then
+	NTPD_OPTS="$NTPD_OPTS -c /var/lib/ntp/ntp.conf.dhcp"
 fi
 
 

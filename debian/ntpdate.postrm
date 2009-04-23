@@ -5,5 +5,5 @@ set -e
 #DEBHELPER#
 
 if [ "$1" = "purge" ]; then
-	rm -f /etc/default/ntpdate.dhcp
+	rm -rf /var/lib/ntpdate/
 fi
