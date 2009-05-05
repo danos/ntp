@@ -4,7 +4,7 @@
 ntptrace \- trace a chain of NTP servers back to the primary source
 .SH SYNOPSIS
 .B ntptrace
-[ -vdn ] [ -r \fIretries\fR ] [ -t \fItimeout\fR ] [ \fIserver\fR ]
+[ \-vdn ] [ \-r \fIretries\fR ] [ \-t \fItimeout\fR ] [ \fIserver\fR ]
 .SH DESCRIPTION
 ntptrace determines where a given Network Time Protocol (NTP) server gets its time from, and follows the chain of NTP servers back to their master time source. If given no arguments, it starts with localhost. Here is an example of the output from ntptrace:
 .PP

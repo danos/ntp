@@ -13,7 +13,7 @@ broadcast/multicast client, with all peers being determined by listening to
 broadcasts at run time.
 
 Usually, the configuration file is installed in the \fI/etc\fR directory, but 
-could be installed elsewhere (see the -c \fIconffile\fR command line option).  
+could be installed elsewhere (see the \-c \fIconffile\fR command line option).  
 The file format is similar to other Unix configuration files - comments begin 
 with a # character and extend to the end of the line; blank lines are ignored.
 
@@ -44,8 +44,8 @@ support of the IPv4 address family.  IPv6 addresses can be identified by the
 presence of colons ":" in the address field.  IPv6 addresses can be used 
 almost everywhere where IPv4 addresses can be used, with the exception of 
 reference clock addresses, which are always IPv4.  Note that in contexts where 
-a host name is expected, a -4 qualifier preceding the host name forces DNS 
-resolution to the IPv4 namespace, while a -6 qualifier forces DNS resolution 
+a host name is expected, a \-4 qualifier preceding the host name forces DNS 
+resolution to the IPv4 namespace, while a \-6 qualifier forces DNS resolution 
 to the IPv6 namespace.
 
 There are three types of associations: persistent, preemptable and ephemeral. 
