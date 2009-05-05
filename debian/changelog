@@ -1,6 +1,6 @@
 ntp (1:4.2.4p6+dfsg-2) UNRELEASED; urgency=low
 
-  * Fixed typo in ntpdate man page
+  * Fixed typo in ntpdate man page (closes: #526086)
   * Updated standards version
   * Moved .dhcp version of configuration files to /var/lib/ntp and 
     /var/lib/ntpdate (closes: #524035)
