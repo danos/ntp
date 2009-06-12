@@ -18,6 +18,7 @@ endif
 config: patch config.status
 config.status: $(QUILT_STAMPFN)
 	dh_testdir
+	cp /usr/share/misc/config.guess /usr/share/misc/config.sub .
 	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='-D_GNU_SOURCE' \
 		ac_cv_var_tick=no ac_cv_var_tickadj=no \
 		--prefix=/usr \
@@ -39,12 +40,7 @@ clean-patched:
 	dh_testroot
 	rm -f build-stamp 
 	[ ! -f Makefile ] || $(MAKE) -k distclean
-
-	-test -r /usr/share/misc/config.sub && \
-		cp -f /usr/share/misc/config.sub config.sub
-	-test -r /usr/share/misc/config.guess && \
-		cp -f /usr/share/misc/config.guess config.guess
-
+	rm -f config.guess config.sub
 	dh_clean
 
 install: build-stamp

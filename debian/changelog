@@ -9,6 +9,8 @@ ntp (1:4.2.4p6+dfsg-2) UNRELEASED; urgency=low
   * Fixed limited buffer overflow in ntpq (CVE-2009-0159) (closes: #525373)
   * Fixed stack buffer overflow in ntpd (CVE-2009-1252) (closes: #525373)
   * Use new status_of_proc function to report status in ntp init script
+  * Updated the config.guess/sub handling as recommended by autotools-dev to
+    not clutter the diff, added autotools-dev to build dependencies
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 23 Apr 2009 10:50:27 +0300
 
