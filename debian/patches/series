@@ -10,3 +10,4 @@ ntpd-ni-maxhost.patch
 openssl-disable-check.patch
 libedit.patch
 autotools.patch
+CVE-2009-0159.patch
