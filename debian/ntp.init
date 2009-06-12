@@ -13,14 +13,13 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 . /lib/lsb/init-functions
 
-NAME=ntp
 DAEMON=/usr/sbin/ntpd
 PIDFILE=/var/run/ntpd.pid
 
 test -x $DAEMON || exit 5
 
-if [ -r /etc/default/$NAME ]; then
-	. /etc/default/$NAME
+if [ -r /etc/default/ntp ]; then
+	. /etc/default/ntp
 fi
 
 if [ -e /var/lib/ntp/ntp.conf.dhcp ]; then
@@ -82,14 +81,7 @@ case $1 in
 		exit 3
 		;;
 	status)
-		pidofproc -p $PIDFILE $DAEMON >/dev/null
-		status=$?
-		if [ $status -eq 0 ]; then
-			log_success_msg "NTP server is running."
-		else
-			log_failure_msg "NTP server is not running."
-		fi
-		exit $status
+		status_of_proc $DAEMON "NTP server"
 		;;
 	*)
 		echo "Usage: $0 {start|stop|restart|try-restart|force-reload|status}"

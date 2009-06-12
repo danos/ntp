@@ -12,7 +12,7 @@ Vcs-Svn: svn://svn.debian.org/pkg-ntp/ntp/trunk/
 
 Package: ntp
 Architecture: any
-Depends: adduser, lsb-base (>= 3.0-3), netbase, ${misc:Depends}, ${shlibs:Depends}
+Depends: adduser, lsb-base (>= 3.2-13), netbase, ${misc:Depends}, ${shlibs:Depends}
 Recommends: ${perl:Depends}
 Suggests: ntp-doc
 Replaces: logcheck-database
