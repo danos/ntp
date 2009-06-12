@@ -1,4 +1,4 @@
-ntp (1:4.2.4p6+dfsg-2) UNRELEASED; urgency=low
+ntp (1:4.2.4p6+dfsg-2) unstable; urgency=medium
 
   * Fixed typo in ntpdate man page (closes: #526086)
   * Updated standards version
@@ -12,7 +12,7 @@ ntp (1:4.2.4p6+dfsg-2) UNRELEASED; urgency=low
   * Updated the config.guess/sub handling as recommended by autotools-dev to
     not clutter the diff, added autotools-dev to build dependencies
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 23 Apr 2009 10:50:27 +0300
+ -- Peter Eisentraut <petere@debian.org>  Fri, 12 Jun 2009 17:24:22 +0300
 
 ntp (1:4.2.4p6+dfsg-1) unstable; urgency=low
 
