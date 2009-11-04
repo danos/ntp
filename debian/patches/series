@@ -12,3 +12,4 @@ libedit.patch
 autotools.patch
 CVE-2009-0159.patch
 CVE-2009-1252.patch
+mod_nano.patch

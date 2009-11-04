@@ -1,3 +1,9 @@
+ntp (1:4.2.4p6+dfsg-3) UNRELEASED; urgency=medium
+
+  * Fixed FTBFS because of missing MOD_NANO definition (closes: #552882)
+
+ -- Peter Eisentraut <petere@debian.org>  Tue, 03 Nov 2009 23:38:02 +0200
+
 ntp (1:4.2.4p6+dfsg-2) unstable; urgency=medium
 
   * Fixed typo in ntpdate man page (closes: #526086)
