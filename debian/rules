@@ -1,7 +1,5 @@
 #!/usr/bin/make -f
 
-include /usr/share/quilt/quilt.make
-
 # hacks to avoid running these things during the build
 export ACLOCAL    = : aclocal
 export AUTOCONF   = : autoconf
@@ -15,8 +13,7 @@ else
 CFLAGS += -O2
 endif
 
-config: patch config.status
-config.status: $(QUILT_STAMPFN)
+config.status:
 	dh_testdir
 	cp /usr/share/misc/config.guess /usr/share/misc/config.sub .
 	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='-D_GNU_SOURCE' \
@@ -28,14 +25,13 @@ config.status: $(QUILT_STAMPFN)
 		--enable-linuxcaps \
 		--disable-dependency-tracking
 
-build: config build-stamp
+build: build-stamp
 build-stamp: config.status
 	dh_testdir
 	$(MAKE)
 	touch $@
 
-clean: clean-patched unpatch
-clean-patched:
+clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp 
@@ -112,4 +108,4 @@ binary-arch: build install
 	dh_builddeb -a
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install patch unpatch clean-patched
+.PHONY: build clean binary-indep binary-arch binary install
