@@ -1,9 +1,14 @@
 ntp (1:4.2.4p6+dfsg-3) UNRELEASED; urgency=medium
 
+  [ Peter Eisentraut ]
   * Fixed FTBFS because of missing MOD_NANO definition (closes: #552882)
   * Changed source format to 3.0 (quilt)
 
- -- Peter Eisentraut <petere@debian.org>  Tue, 03 Nov 2009 23:38:02 +0200
+  [ Kurt Roeckx ]
+  * Detect that we run a kernel with nano support or not.  Otherwise
+    it breaks when running on kernels older than 2.6.26.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 13 Nov 2009 20:55:05 +0000
 
 ntp (1:4.2.4p6+dfsg-2) unstable; urgency=medium
 
