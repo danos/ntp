@@ -1,10 +1,14 @@
-ntp (1:4.2.4p6+dfsg-3) UNRELEASED; urgency=medium
+ntp (1:4.2.4p7+dfsg-1) UNRELEASED; urgency=low
 
   [ Peter Eisentraut ]
   * Fixed FTBFS because of missing MOD_NANO definition (closes: #552882)
   * Changed source format to 3.0 (quilt)
 
   [ Kurt Roeckx ]
+  * New upstream version.
+    - Remove patches for CVE-2009-1252.patch and CVE-2009-0159.patch,
+      applied upstream
+    - Regenerate patches to apply to the current version.
   * Detect that we run a kernel with nano support or not.  Otherwise
     it breaks when running on kernels older than 2.6.26.
 

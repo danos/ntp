@@ -2,14 +2,14 @@ Compilation fix for systems without MAXHOSTNAMELEN (e.g., Hurd); but the
 use of MAXHOSTNAMELEN is incorrect here anyway.  (bug #387665,
 http://bugs.ntp.org/978)
 
-Index: ntp-4.2.4p0+dfsg/ntpd/ntp_intres.c
+Index: ntp-4.2.4p7+dfsg/ntpd/ntp_intres.c
 ===================================================================
---- ntp-4.2.4p0+dfsg.orig/ntpd/ntp_intres.c	2007-04-10 10:48:59.000000000 +0200
-+++ ntp-4.2.4p0+dfsg/ntpd/ntp_intres.c	2007-04-10 11:21:40.000000000 +0200
-@@ -526,10 +526,10 @@
- 			msyslog(LOG_INFO, "findhostaddr: Resolving %s>",
- 				stoa(&entry->peer_store));
- #endif
+--- ntp-4.2.4p7+dfsg.orig/ntpd/ntp_intres.c	2009-11-21 15:31:51.000000000 +0000
++++ ntp-4.2.4p7+dfsg/ntpd/ntp_intres.c	2009-11-21 15:33:52.000000000 +0000
+@@ -506,10 +506,10 @@
+ 		DPRINTF(2, ("findhostaddr: Resolving <%s>\n",
+ 			stoa(&entry->peer_store)));
+ 
 -		entry->ce_name = emalloc(MAXHOSTNAMELEN);
 +		entry->ce_name = emalloc(NI_MAXHOST);
  		error = getnameinfo((const struct sockaddr *)&entry->peer_store,
@@ -18,4 +18,4 @@ Index: ntp-4.2.4p0+dfsg/ntpd/ntp_intres.c
 +				   (char *)&entry->ce_name, NI_MAXHOST,
  				   NULL, 0, 0);
  	}
- #ifdef DEBUG
+ 
