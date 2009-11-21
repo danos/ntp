@@ -1,3 +1,10 @@
+ntp (1:4.2.4p7+dfsg-2) unstable; urgency=low
+
+  * Refresh libedit patch because it's fuzzy and fails to apply on
+    the buildds.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 21 Nov 2009 18:01:36 +0000
+
 ntp (1:4.2.4p7+dfsg-1) unstable; urgency=low
 
   [ Peter Eisentraut ]
