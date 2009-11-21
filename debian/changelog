@@ -1,4 +1,4 @@
-ntp (1:4.2.4p7+dfsg-1) UNRELEASED; urgency=low
+ntp (1:4.2.4p7+dfsg-1) unstable; urgency=low
 
   [ Peter Eisentraut ]
   * Fixed FTBFS because of missing MOD_NANO definition (closes: #552882)
@@ -12,7 +12,7 @@ ntp (1:4.2.4p7+dfsg-1) UNRELEASED; urgency=low
   * Detect that we run a kernel with nano support or not.  Otherwise
     it breaks when running on kernels older than 2.6.26.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Fri, 13 Nov 2009 20:55:05 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 21 Nov 2009 17:27:11 +0100
 
 ntp (1:4.2.4p6+dfsg-2) unstable; urgency=medium
 
