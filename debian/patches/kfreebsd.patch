@@ -1,0 +1,89 @@
+From: Aurelien Jarno <aurelien@aurel32.net>
+Subject: Detect that the kernel has nano support or not.
+Bug-Debian: http://bugs.debian.org/522696
+
+
+Index: ntp-4.2.4p7+dfsg/configure.ac
+===================================================================
+--- ntp-4.2.4p7+dfsg.orig/configure.ac	2009-11-25 20:15:34.000000000 +0100
++++ ntp-4.2.4p7+dfsg/configure.ac	2009-11-25 20:16:30.000000000 +0100
+@@ -760,16 +760,19 @@
+     ac_cv_var_override_hz=yes
+     ;;
+  *-*-freebsd*)
+     ac_cv_var_override_hz=yes
+     ;;
+  *-*-sunos4*)
+     ac_cv_var_override_hz=yes
+     ;;
++ *-*-kfreebsd*)
++    ac_cv_var_override_hz=yes
++    ;;
+ esac])
+ case "$ac_cv_var_override_hz" in
+  yes)
+     AC_DEFINE(OVERRIDE_HZ, 1, [Do we need to override the system's idea of HZ?])
+     ;;
+ esac
+ 
+ dnl AC_CACHE_CHECK(ut_host in struct utmp, ac_cv_func_ut_host_in_utmp,
+@@ -1776,16 +1779,19 @@
+ 	ans=no
+ 	;;
+      *-*-*linux*)
+ 	ans=no
+ 	;;
+      *-*-unicosmp*)
+ 	ans=no
+ 	;;
++     *-*-kfreebsd*)
++	ans=no
++	;;
+     esac
+     ;;
+ esac
+ ac_cv_var_signalled_io=$ans])
+ case "$ac_cv_var_signalled_io" in
+  yes) AC_DEFINE(HAVE_SIGNALED_IO, 1, [Can we use SIGIO for tcp and udp IO?]) ;;
+ esac
+ 
+@@ -1844,16 +1850,19 @@
+ 	ans=no
+ 	;;
+      *-*-ultrix*)
+         ans=no
+         ;;
+      *-*-unicosmp*)
+         ans=no
+         ;;
++     *-*-kfreebsd*)
++	ans=no
++	;;
+      *) ans=yes
+         ;;
+     esac
+     ;;
+ esac
+ ac_cv_var_use_udp_sigpoll=$ans])
+ case "$ac_cv_var_use_udp_sigpoll" in
+  yes) AC_DEFINE(USE_UDP_SIGPOLL, 1, [Can we use SIGPOLL for UDP?]) ;;
+@@ -1895,16 +1904,19 @@
+         ans=no
+         ;;
+      *-*-qnx*)
+         ans=no
+         ;;
+      *-*-unicosmp*)
+         ans=no
+         ;;
++     *-*-kfreebsd*)
++	ans=no
++	;;
+      *) ans=yes
+         ;;
+     esac
+     ;;
+ esac
+ ac_cv_var_use_tty_sigpoll=$ans])
+ case "$ac_cv_var_use_tty_sigpoll" in
+  yes) AC_DEFINE(USE_TTY_SIGPOLL, 1, [Can we use SIGPOLL for tty IO?]) ;;
