@@ -1,3 +1,14 @@
+ntp (1:4.2.4p7+dfsg-3) unstable; urgency=low
+
+  * Don't pass --enable-linuxcaps to configure anymore.  It now detects it
+    itself when it's available, and it breaks on non-Linux systems.
+  * Configure didn't know how to set certain options for kfreebsd.
+    Patch by Aurelien Jarno.  (Closes: #522696)
+  * Running as user ntp does not work on kfreebsd because it doesn't support
+    capabilities.  Adjust the init script to start as root.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 25 Nov 2009 20:03:58 +0100
+
 ntp (1:4.2.4p7+dfsg-2) unstable; urgency=low
 
   * Refresh libedit patch because it's fuzzy and fails to apply on
