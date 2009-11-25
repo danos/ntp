@@ -44,8 +44,11 @@ unlock_ntpdate() {
 	fi
 }
 
-
+HOST_OS=$(dpkg-architecture -qDEB_HOST_ARCH_OS)
 RUNASUSER=ntp
+if test "$HOST_OS" = "kfreebsd"; then
+	RUNASUSER=root
+fi
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
 
 case $1 in

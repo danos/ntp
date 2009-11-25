@@ -4,6 +4,8 @@ ntp (1:4.2.4p7+dfsg-3) unstable; urgency=low
     itself when it's available, and it breaks on non-Linux systems.
   * Configure didn't know what to set certain options to on kfreebsd.
     Patch by Aurelien Jarno.  (Closes: #522696)
+  * Running as user ntp does not work on kfreebsd because it doesn't support
+    capabilities.  Adjust the init script to start as root.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed, 25 Nov 2009 20:03:58 +0100
 
