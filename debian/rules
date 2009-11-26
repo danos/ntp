@@ -17,7 +17,7 @@ endif
 
 config.status:
 	dh_testdir
-ifeq (linux, $(DEB_HOST_ARCH_OS))
+ifeq (hurd, $(DEB_HOST_ARCH_OS))
 	# hurd does not provided the system calls needed for ntpd to work.
 	exit 1
 endif
