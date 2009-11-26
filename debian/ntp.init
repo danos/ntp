@@ -44,12 +44,11 @@ unlock_ntpdate() {
 	fi
 }
 
-HOST_OS=$(dpkg-architecture -qDEB_HOST_ARCH_OS)
 RUNASUSER=ntp
-if test "$HOST_OS" = "kfreebsd"; then
-	RUNASUSER=root
-fi
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
+if test "$(uname -s)" = "Linux"; then
+        NTPD_OPTS="$NTPD_OPTS -u $UGID"
+fi
 
 case $1 in
 	start)
@@ -59,7 +58,7 @@ case $1 in
 			exit 1
 		fi
 		lock_ntpdate
-  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE -u $UGID $NTPD_OPTS
+  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE $NTPD_OPTS
 		status=$?
 		unlock_ntpdate
 		log_end_msg $status

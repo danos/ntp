@@ -1,3 +1,10 @@
+ntp (1:4.2.4p7+dfsg-4) unstable; urgency=low
+
+  * Use uname -s instead of dpkg-architecture to found the kernel we're
+    running on.  dpkg-architecture is part of dpkg-dev. (Closes: #558145)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 26 Nov 2009 22:16:37 +0100
+
 ntp (1:4.2.4p7+dfsg-3) unstable; urgency=low
 
   * Don't pass --enable-linuxcaps to configure anymore.  It now detects it
