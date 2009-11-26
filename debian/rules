@@ -6,6 +6,8 @@ export AUTOCONF   = : autoconf
 export AUTOMAKE   = : automake
 export AUTOHEADER = : autoheader
 
+DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
 CFLAGS = -g -fno-strict-aliasing
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 CFLAGS += -O0
@@ -15,6 +17,10 @@ endif
 
 config.status:
 	dh_testdir
+ifeq (linux, $(DEB_HOST_ARCH_OS))
+	# hurd does not provided the system calls needed for ntpd to work.
+	exit 1
+endif
 	cp /usr/share/misc/config.guess /usr/share/misc/config.sub .
 	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='-D_GNU_SOURCE' \
 		ac_cv_var_tick=no ac_cv_var_tickadj=no \

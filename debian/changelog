@@ -2,6 +2,8 @@ ntp (1:4.2.4p7+dfsg-4) unstable; urgency=low
 
   * Use uname -s instead of dpkg-architecture to found the kernel we're
     running on.  dpkg-architecture is part of dpkg-dev. (Closes: #558145)
+  * Make the package fail to build on hurd since it does not provided
+    the needed system calls for ntpd to work.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 26 Nov 2009 22:16:37 +0100
 
