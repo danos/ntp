@@ -1,3 +1,10 @@
+ntp (1:4.2.4p8+dfsg-1) unstable; urgency=high
+
+  * New upstream release.
+    - Fixes DoS with mode 7 packets (CVE-2009-3563) (Closes: #560074)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 08 Dec 2009 21:41:51 +0100
+
 ntp (1:4.2.4p7+dfsg-4) unstable; urgency=low
 
   * Use uname -s instead of dpkg-architecture to found the kernel we're
