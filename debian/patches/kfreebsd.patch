@@ -3,11 +3,11 @@ Subject: Detect that the kernel has nano support or not.
 Bug-Debian: http://bugs.debian.org/522696
 
 
-Index: ntp-4.2.4p7+dfsg/configure.ac
+Index: ntp-4.2.6+dfsg/configure.ac
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/configure.ac	2009-11-25 20:15:34.000000000 +0100
-+++ ntp-4.2.4p7+dfsg/configure.ac	2009-11-25 20:16:30.000000000 +0100
-@@ -760,16 +760,19 @@
+--- ntp-4.2.6+dfsg.orig/configure.ac	2009-12-23 20:02:50.000000000 +0000
++++ ntp-4.2.6+dfsg/configure.ac	2009-12-23 21:03:42.000000000 +0000
+@@ -775,16 +775,19 @@
      ac_cv_var_override_hz=yes
      ;;
   *-*-freebsd*)
@@ -27,7 +27,7 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
  esac
  
  dnl AC_CACHE_CHECK(ut_host in struct utmp, ac_cv_func_ut_host_in_utmp,
-@@ -1776,16 +1779,19 @@
+@@ -1892,16 +1895,19 @@
  	ans=no
  	;;
       *-*-*linux*)
@@ -47,7 +47,7 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
   yes) AC_DEFINE(HAVE_SIGNALED_IO, 1, [Can we use SIGIO for tcp and udp IO?]) ;;
  esac
  
-@@ -1844,16 +1850,19 @@
+@@ -1960,16 +1966,19 @@
  	ans=no
  	;;
       *-*-ultrix*)
@@ -67,7 +67,7 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
  ac_cv_var_use_udp_sigpoll=$ans])
  case "$ac_cv_var_use_udp_sigpoll" in
   yes) AC_DEFINE(USE_UDP_SIGPOLL, 1, [Can we use SIGPOLL for UDP?]) ;;
-@@ -1895,16 +1904,19 @@
+@@ -2011,16 +2020,19 @@
          ans=no
          ;;
       *-*-qnx*)

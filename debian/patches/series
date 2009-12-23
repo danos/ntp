@@ -1,10 +1,8 @@
 dfsg.patch
 includes.patch
-ntptimeval.patch
 ntpdate-ipv6.patch
 ntpd-char-fix.patch
 ntpd-linux-caps.patch
-ntptrace-getopt.patch
 doc.patch
 ntpd-ni-maxhost.patch
 openssl-disable-check.patch

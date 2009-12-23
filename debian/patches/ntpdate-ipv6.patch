@@ -1,14 +1,16 @@
 bug #249216
 
---- a/ntpdate/ntpdate.c
-+++ b/ntpdate/ntpdate.c
-@@ -1777,8 +1777,7 @@ init_io(void)
+Index: ntp-4.2.6+dfsg/ntpdate/ntpdate.c
+===================================================================
+--- ntp-4.2.6+dfsg.orig/ntpdate/ntpdate.c	2009-12-09 07:36:35.000000000 +0000
++++ ntp-4.2.6+dfsg/ntpdate/ntpdate.c	2009-12-23 20:28:37.000000000 +0000
+@@ -1730,8 +1730,7 @@
  		if (res->ai_family == AF_INET6)
  			if (setsockopt(fd[nbsock], IPPROTO_IPV6, IPV6_V6ONLY, (void*) &optval, sizeof(optval)) < 0) {
- 				   netsyslog(LOG_ERR, "setsockopt() IPV6_V6ONLY failed: %m");
+ 				   msyslog(LOG_ERR, "setsockopt() IPV6_V6ONLY failed: %m");
 -					exit(1);
 -					/*NOTREACHED*/
-+					/* exit(1); */
++				/* exit(1); */
  		}
  #endif
  

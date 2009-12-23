@@ -1,8 +1,8 @@
-Index: ntp-4.2.2+dfsg/ntpd/ntp_intres.c
+Index: ntp-4.2.6+dfsg/ntpd/ntp_intres.c
 ===================================================================
---- ntp-4.2.2+dfsg.orig/ntpd/ntp_intres.c	2006-06-06 20:16:40.000000000 +0000
-+++ ntp-4.2.2+dfsg/ntpd/ntp_intres.c	2006-07-02 14:25:13.000000000 +0000
-@@ -157,11 +157,11 @@
+--- ntp-4.2.6+dfsg.orig/ntpd/ntp_intres.c	2009-12-09 07:36:36.000000000 +0000
++++ ntp-4.2.6+dfsg/ntpd/ntp_intres.c	2009-12-23 20:30:20.000000000 +0000
+@@ -167,11 +167,11 @@
  struct ntp_res_t_pkt {		/* Tagged packet: */
  	void *tag;		/* For the caller */
  	u_int32 paddr;		/* IP to look up, or 0 */

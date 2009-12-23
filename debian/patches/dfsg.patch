@@ -1,7 +1,7 @@
-Index: ntp-4.2.4p7+dfsg/adjtimed/adjtimed.c
+Index: ntp-4.2.6+dfsg/adjtimed/adjtimed.c
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/adjtimed/adjtimed.c	2004-02-25 05:57:37.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/adjtimed/adjtimed.c	2009-11-21 15:29:29.000000000 +0000
+--- ntp-4.2.6+dfsg.orig/adjtimed/adjtimed.c	2004-02-25 05:57:37.000000000 +0000
++++ ntp-4.2.6+dfsg/adjtimed/adjtimed.c	2009-12-23 20:02:50.000000000 +0000
 @@ -41,8 +41,6 @@
  #include "ntp_syslog.h"
  #include "ntp_stdlib.h"
@@ -11,141 +11,53 @@ Index: ntp-4.2.4p7+dfsg/adjtimed/adjtimed.c
  double atof (const char *);
  
  int InitClockRate (void);
-Index: ntp-4.2.4p7+dfsg/include/ntp_md5.h
+Index: ntp-4.2.6+dfsg/libntp/Makefile.am
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/include/ntp_md5.h	2004-02-25 05:57:56.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/include/ntp_md5.h	2009-11-21 15:29:29.000000000 +0000
-@@ -2,7 +2,12 @@
-  * ntp_md5.h: deal with md5.h headers
-  */
- 
--#ifdef HAVE_MD5_H
-+#ifdef OPENSSL
-+# include <openssl/md5.h>
-+#define MD5Init MD5_Init
-+#define MD5Update MD5_Update
-+#define MD5Final MD5_Final
-+#elif defined(HAVE_MD5_H)
- # include <md5.h>
- #else
- # include "rsa_md5.h"
-Index: ntp-4.2.4p7+dfsg/libntp/Makefile.am
-===================================================================
---- ntp-4.2.4p7+dfsg.orig/libntp/Makefile.am	2006-06-06 20:16:25.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/libntp/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -2,13 +2,13 @@
- AUTOMAKE_OPTIONS = ../util/ansi2knr
- noinst_LIBRARIES = libntp.a @MAKE_LIBNTPSIM@
+--- ntp-4.2.6+dfsg.orig/libntp/Makefile.am	2009-12-09 07:36:35.000000000 +0000
++++ ntp-4.2.6+dfsg/libntp/Makefile.am	2009-12-23 20:11:20.000000000 +0000
+@@ -7,7 +7,6 @@
  EXTRA_LIBRARIES = libntpsim.a
--libntp_a_SRCS = a_md5encrypt.c adjtime.c atoint.c atolfp.c atouint.c \
-+libntp_a_SRCS = a_md5encrypt.c atoint.c atolfp.c atouint.c \
- 	audio.c authkeys.c authreadkeys.c authusekey.c buftvtots.c \
- 	caljulian.c caltontp.c calyearstart.c clocktime.c \
- 	clocktypes.c decodenetnum.c dofptoa.c dolfptoa.c emalloc.c \
- 	findconfig.c fptoa.c fptoms.c getopt.c hextoint.c \
- 	hextolfp.c humandate.c icom.c inttoa.c iosignal.c \
--	lib_strbuf.c machines.c md5c.c memmove.c mfptoa.c \
-+	lib_strbuf.c machines.c memmove.c mfptoa.c \
- 	mfptoms.c mktime.c modetoa.c mstolfp.c msutotsf.c msyslog.c netof.c \
- 	ntp_rfc2553.c numtoa.c numtohost.c octtoint.c prettydate.c \
- 	ntp_random.c recvbuff.c refnumtoa.c snprintf.c socktoa.c socktohost.c \
-Index: ntp-4.2.4p7+dfsg/libntp/a_md5encrypt.c
+ libntp_a_SRCS =						\
+ 	a_md5encrypt.c					\
+-	adjtime.c					\
+ 	atoint.c					\
+ 	atolfp.c					\
+ 	atouint.c					\
+Index: ntp-4.2.6+dfsg/include/Makefile.am
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/libntp/a_md5encrypt.c	2006-06-06 20:16:25.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/libntp/a_md5encrypt.c	2009-11-21 15:29:29.000000000 +0000
-@@ -16,13 +16,7 @@
- #include "ntp_string.h"
- #include "ntp_stdlib.h"
- 
--/* Disable the openssl md5 includes, because they'd clash with ours. */
--/* #define NO_MD5 */
--/* #define OPENSSL_NO_MD5 */
--#undef OPENSSL
--
- #include "ntp.h"
--#include "global.h"
- #include "ntp_md5.h"
- 
- /*
-Index: ntp-4.2.4p7+dfsg/ntpdate/Makefile.am
-===================================================================
---- ntp-4.2.4p7+dfsg.orig/ntpdate/Makefile.am	2007-02-19 11:02:14.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/ntpdate/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -8,7 +8,7 @@
- ntptimeset_SOURCES=	ntptimeset.c ntptime_config.c
- AM_CPPFLAGS=	-I$(top_srcdir)/include
- # LDADD might need RESLIB and ADJLIB
--LDADD=		version.o ../libntp/libntp.a
-+LDADD=		version.o ../libntp/libntp.a @LCRYPTO@
- DISTCLEANFILES=	.version version.c stamp-v
- noinst_HEADERS=	ntpdate.h
- ETAGS_ARGS=	Makefile.am
-Index: ntp-4.2.4p7+dfsg/ntpdc/Makefile.am
-===================================================================
---- ntp-4.2.4p7+dfsg.orig/ntpdc/Makefile.am	2008-03-22 11:03:23.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/ntpdc/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -7,7 +7,7 @@
- BUILT_SOURCES=	@MAKE_CHECK_LAYOUT@
- AM_CPPFLAGS=	-I$(top_srcdir)/include $(LIBOPTS_CFLAGS)
- # LDADD might need RESLIB and ADJLIB
--ntpdc_LDADD=	version.o @READLINE_LIBS@ $(LIBOPTS_LDADD) ../libntp/libntp.a
-+ntpdc_LDADD=	version.o @READLINE_LIBS@ @LCRYPTO@ $(LIBOPTS_LDADD) ../libntp/libntp.a
- # ntpdc-layout doesn't need any additional libraries at all
- ntpdc_layout_LDADD=
- DISTCLEANFILES=	.version version.c
-Index: ntp-4.2.4p7+dfsg/ntpq/Makefile.am
-===================================================================
---- ntp-4.2.4p7+dfsg.orig/ntpq/Makefile.am	2008-03-22 11:03:23.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/ntpq/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -4,7 +4,7 @@
- AM_CPPFLAGS=	-I$(top_srcdir)/include $(LIBOPTS_CFLAGS)
- 
- # LDADD might need RESLIB and ADJLIB
--ntpq_LDADD=	version.o @READLINE_LIBS@ $(LIBOPTS_LDADD) ../libntp/libntp.a
-+ntpq_LDADD=	version.o @READLINE_LIBS@ @LCRYPTO@ $(LIBOPTS_LDADD) ../libntp/libntp.a
- DISTCLEANFILES=	.version version.c
- noinst_HEADERS=	ntpq.h
- ETAGS_ARGS=	Makefile.am
-Index: ntp-4.2.4p7+dfsg/include/Makefile.am
-===================================================================
---- ntp-4.2.4p7+dfsg.orig/include/Makefile.am	2007-04-14 22:23:50.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/include/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -6,12 +6,10 @@
+--- ntp-4.2.6+dfsg.orig/include/Makefile.am	2009-12-09 07:36:35.000000000 +0000
++++ ntp-4.2.6+dfsg/include/Makefile.am	2009-12-23 20:13:29.000000000 +0000
+@@ -6,7 +6,6 @@
  SUBDIRS = isc
  
- noinst_HEADERS = \
--	adjtime.h \
- 	audio.h \
- 	ascii.h \
- 	audio.h \
- 	binio.h \
--	global.h \
- 	gps.h \
- 	hopf6039.h \
- 	icom.h \
-@@ -55,9 +53,5 @@
- 	parse.h \
- 	parse_conf.h \
- 	recvbuff.h \
--	rsa_md5.h \
+ noinst_HEADERS =	\
+-	adjtime.h	\
+ 	audio.h		\
+ 	ascii.h		\
+ 	audio.h		\
+@@ -62,9 +61,6 @@
+ 	recvbuff.h	\
+ 	refclock_atom.h	\
+ 	ssl_applink.c	\
 -	timepps-SCO.h	\
 -	timepps-Solaris.h	\
 -	timepps-SunOS.h	\
- 	trimble.h
+ 	trimble.h	\
+ 	$(NULL)
  
-Index: ntp-4.2.4p7+dfsg/Makefile.am
+Index: ntp-4.2.6+dfsg/Makefile.am
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/Makefile.am	2007-01-30 11:02:36.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -11,7 +11,6 @@
+--- ntp-4.2.6+dfsg.orig/Makefile.am	2009-12-09 07:36:37.000000000 +0000
++++ ntp-4.2.6+dfsg/Makefile.am	2009-12-23 20:16:58.000000000 +0000
+@@ -8,7 +8,6 @@
  SUBDIRS+= 		\
  	scripts 	\
  	include 	\
 -	ElectricFence	\
- 	@ARLIB_DIR@ 	\
- 	libntp		\
- 	libparse	\
-@@ -23,15 +22,12 @@
+ 	$(NULL)
+ if NEED_LIBOPTS
+ SUBDIRS+= libopts
+@@ -26,15 +25,12 @@
  	adjtimed	\
  	clockstuff	\
  	kernel		\
@@ -161,7 +73,7 @@ Index: ntp-4.2.4p7+dfsg/Makefile.am
  	libntp		\
  	libopts		\
  	libparse	\
-@@ -43,7 +39,6 @@
+@@ -47,7 +43,6 @@
  	adjtimed	\
  	clockstuff	\
  	kernel		\
@@ -169,11 +81,11 @@ Index: ntp-4.2.4p7+dfsg/Makefile.am
  	util		\
  	$(NULL)
  
-Index: ntp-4.2.4p7+dfsg/configure.ac
+Index: ntp-4.2.6+dfsg/configure.ac
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/configure.ac	2009-05-12 05:58:54.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/configure.ac	2009-11-21 15:30:57.000000000 +0000
-@@ -2659,15 +2659,15 @@
+--- ntp-4.2.6+dfsg.orig/configure.ac	2009-12-09 07:36:36.000000000 +0000
++++ ntp-4.2.6+dfsg/configure.ac	2009-12-23 20:02:50.000000000 +0000
+@@ -2791,15 +2791,15 @@
   yes*-*-ultrix*) AC_MSG_WARN(*** But the expected answer is... no ***) ;;
  esac
  
@@ -198,7 +110,7 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
  
  AC_MSG_CHECKING([NMEA GPS receiver])
  AC_ARG_ENABLE(NMEA,
-@@ -3064,21 +3064,21 @@
+@@ -3196,21 +3196,21 @@
      ;;
  esac
  
@@ -235,7 +147,7 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
  
  AC_MSG_CHECKING([VARITEXT clock])
  AC_ARG_ENABLE(VARITEXT,
-@@ -4633,7 +4633,6 @@
+@@ -4874,7 +4874,6 @@
  AC_DEFINE_DIR(NTP_KEYSDIR, sysconfdir, [Default location of crypto key info])
  
  AC_CONFIG_FILES(Makefile)
@@ -243,7 +155,7 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
  AC_CONFIG_FILES(adjtimed/Makefile)
  AC_CONFIG_FILES(clockstuff/Makefile)
  AC_CONFIG_FILES(include/Makefile)
-@@ -4657,7 +4656,6 @@
+@@ -4899,7 +4898,6 @@
  AC_CONFIG_FILES(scripts/ntp-wait,	[chmod +x scripts/ntp-wait])
  AC_CONFIG_FILES(scripts/ntpsweep,	[chmod +x scripts/ntpsweep])
  AC_CONFIG_FILES(scripts/ntptrace,	[chmod +x scripts/ntptrace])
@@ -251,41 +163,30 @@ Index: ntp-4.2.4p7+dfsg/configure.ac
  AC_CONFIG_FILES(scripts/plot_summary,	[chmod +x scripts/plot_summary])
  AC_CONFIG_FILES(scripts/summary,	[chmod +x scripts/summary])
  AC_CONFIG_FILES(util/Makefile)
-Index: ntp-4.2.4p7+dfsg/util/Makefile.am
+Index: ntp-4.2.6+dfsg/scripts/Makefile.am
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/util/Makefile.am	2008-03-22 11:03:24.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/util/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -1,5 +1,5 @@
- #AUTOMAKE_OPTIONS = ../ansi2knr no-dependencies
--AUTOMAKE_OPTIONS=	ansi2knr
-+AUTOMAKE_OPTIONS=
- 
- bin_PROGRAMS=	@MAKE_NTPTIME@ @MAKE_TICKADJ@ @MAKE_TIMETRIM@ \
- 		ntp-keygen
-Index: ntp-4.2.4p7+dfsg/scripts/Makefile.am
-===================================================================
---- ntp-4.2.4p7+dfsg.orig/scripts/Makefile.am	2007-01-30 11:02:37.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/scripts/Makefile.am	2009-11-21 15:29:29.000000000 +0000
+--- ntp-4.2.6+dfsg.orig/scripts/Makefile.am	2009-12-09 07:36:37.000000000 +0000
++++ ntp-4.2.6+dfsg/scripts/Makefile.am	2009-12-23 20:15:03.000000000 +0000
 @@ -1,5 +1,5 @@
  bin_SCRIPTS=	ntp-wait ntptrace
 -noinst_SCRIPTS=	calc_tickadj checktime freq_adj html2man mkver ntpsweep ntpver plot_summary summary
 +noinst_SCRIPTS=	calc_tickadj checktime freq_adj html2man mkver ntpsweep plot_summary summary
- EXTRA_DIST = VersionName fixautomakedepsmagic genCommitLog genver	\
- 	hpadjtime.sh monitoring ntp-close ntp-groper ntp-restart	\
+ EXTRA_DIST = VersionName cvo.sh fixautomakedepsmagic genCommitLog	\
+ 	genver hpadjtime.sh monitoring ntp-close ntp-groper ntp-restart	\
  	ntp-status rc1 rc2 stats
-Index: ntp-4.2.4p7+dfsg/libparse/Makefile.am
+Index: ntp-4.2.6+dfsg/libparse/Makefile.am
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/libparse/Makefile.am	2009-03-30 11:03:25.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/libparse/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -19,7 +19,6 @@
-                      clk_rcc8000.c \
-                      clk_hopf6021.c \
- 	             clk_computime.c \
+--- ntp-4.2.6+dfsg.orig/libparse/Makefile.am	2009-12-09 07:36:35.000000000 +0000
++++ ntp-4.2.6+dfsg/libparse/Makefile.am	2009-12-23 20:08:13.000000000 +0000
+@@ -21,7 +21,6 @@
+ 		     clk_rcc8000.c \
+ 		     clk_hopf6021.c \
+ 		     clk_computime.c \
 -		     clk_wharton.c \
  		     clk_varitext.c \
-                      data_mbg.c \
+ 		     data_mbg.c \
  		     info_trimble.c \
-@@ -42,7 +41,6 @@
+@@ -45,7 +44,6 @@
  			    kclk_trimtaip$U.o \
  			    kclk_trimtsip$U.o \
  			    kclk_varitext$U.o \
@@ -293,16 +194,15 @@ Index: ntp-4.2.4p7+dfsg/libparse/Makefile.am
  			    kbinio$U.o \
  			    kieee754io$U.o \
  			    kmfp_mul$U.o \
-Index: ntp-4.2.4p7+dfsg/ntpd/Makefile.am
+Index: ntp-4.2.6+dfsg/ntpd/Makefile.am
 ===================================================================
---- ntp-4.2.4p7+dfsg.orig/ntpd/Makefile.am	2008-03-22 11:03:20.000000000 +0000
-+++ ntp-4.2.4p7+dfsg/ntpd/Makefile.am	2009-11-21 15:29:29.000000000 +0000
-@@ -59,7 +59,7 @@
- 	refclock_fg.c refclock_gpsvme.c refclock_heath.c refclock_hopfser.c \
- 	refclock_hopfpci.c refclock_hpgps.c refclock_irig.c refclock_jjy.c \
- 	refclock_jupiter.c refclock_leitch.c refclock_local.c \
--	refclock_mx4200.c refclock_neoclock4x.c \
-+	refclock_mx4200.c \
- 	refclock_nmea.c refclock_oncore.c refclock_palisade.c \
- 	refclock_palisade.h refclock_parse.c \
- 	refclock_pcf.c refclock_pst.c refclock_ripencc.c refclock_shm.c \
+--- ntp-4.2.6+dfsg.orig/ntpd/Makefile.am	2009-12-09 07:36:35.000000000 +0000
++++ ntp-4.2.6+dfsg/ntpd/Makefile.am	2009-12-23 20:03:22.000000000 +0000
+@@ -173,7 +173,6 @@
+ 	refclock_leitch.c	\
+ 	refclock_local.c	\
+ 	refclock_mx4200.c	\
+-	refclock_neoclock4x.c	\
+ 	refclock_nmea.c		\
+ 	refclock_oncore.c	\
+ 	refclock_palisade.c	\

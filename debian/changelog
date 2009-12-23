@@ -1,3 +1,20 @@
+ntp (1:4.2.6+dfsg-1) unstable; urgency=low
+
+  * New upstream version
+    - They no longer use the built in md5 with unclear license: adjust
+      dfsg.sh and dfsg.patch.
+    - Location of the html pages has changed location: adjust dfsg.sh
+    - Remove ntptimeval.patch and ntptrace-getopt.patch, applied upstream.
+    - Change libedit.patch and call configure with
+      --with-lineeditlibs=edit instead.
+    - Update nanokernel-status.patch to also do it for the new
+      direct_freq() function.
+    - includes.diff: Stop including ntp_refclock.h, since it breaks things.
+    - Upstream no longer provides an ntpdsim.1 manpage, so don't try to
+      to remove it.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 23 Dec 2009 20:01:17 +0000
+
 ntp (1:4.2.4p8+dfsg-1) unstable; urgency=high
 
   * New upstream release.
