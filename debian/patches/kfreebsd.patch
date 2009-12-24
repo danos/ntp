@@ -1,5 +1,5 @@
 From: Aurelien Jarno <aurelien@aurel32.net>
-Subject: Detect that the kernel has nano support or not.
+Subject: Tell configure what to do on kfreebsd.
 Bug-Debian: http://bugs.debian.org/522696
 
 
