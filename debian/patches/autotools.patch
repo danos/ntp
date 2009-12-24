@@ -1,5 +1,11 @@
-To recreate this patch, use quilt to push this patch to the top, then run
-autoreconf, then quilt refresh.
+From: Kurt Roeckx <kurt@roeckx.be>
+Subject: Regenerate auto* because we modified some of the auto generated files.
+Forwarded: not-needed
+
+To recreate this patch, use quilt to push this patch to the top, then run:
+libtoolize --force
+autoreconf --force
+quilt refresh
 
 Index: ntp-4.2.6+dfsg/ntpd/Makefile.in
 ===================================================================
