@@ -1,3 +1,8 @@
+From: Kurt Roeckx <kurt@roeckx.be>
+Subject: Make the package compile with non dfsg compatible parts removed.
+Forwarded: not-needed
+Bug-Debian: http://bugs.debian.org/328200
+
 Index: ntp-4.2.6+dfsg/adjtimed/adjtimed.c
 ===================================================================
 --- ntp-4.2.6+dfsg.orig/adjtimed/adjtimed.c	2004-02-25 05:57:37.000000000 +0000
