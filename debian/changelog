@@ -19,6 +19,7 @@ ntp (1:4.2.6+dfsg-1) unstable; urgency=low
     wrap adjtimex now anyway.
   * Remove the doc.patch, it's either just wrong or more confusing than the
     original text.
+  * Merge the ntpd-char-fix.patch into ntpd-ni-maxhost.patch
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 24 Dec 2009 01:40:17 +0100
 
