@@ -30,6 +30,7 @@ endif
 		--with-sntp=no \
 		--with-lineeditlibs=edit \
 		--disable-local-libopts \
+		--enable-ntp-signd \
 		--disable-dependency-tracking
 
 build: build-stamp
