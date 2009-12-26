@@ -25,9 +25,10 @@ ntp (1:4.2.6+dfsg-1) unstable; urgency=low
   * Update autotools.patch's comment on how to recreate it.
   * Split ntpd-linux-caps.patch in ntpd-linux-caps-runtime.patch and
     ntpd-linux-caps-inheritable.patch and add comments
+  * Don't run init script on shutdown/reboot, just let sendsigs deal with it.
+    (Closes: #540694)
 
-
- -- Kurt Roeckx <kurt@roeckx.be>  Thu, 24 Dec 2009 01:40:17 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 26 Dec 2009 13:23:57 +0100
 
 ntp (1:4.2.4p8+dfsg-1) unstable; urgency=high
 
