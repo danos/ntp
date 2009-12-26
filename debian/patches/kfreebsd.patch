@@ -1,5 +1,6 @@
 From: Aurelien Jarno <aurelien@aurel32.net>
 Subject: Tell configure what to do on kfreebsd.
+Bug: http://bugs.ntp.org/1440
 Bug-Debian: http://bugs.debian.org/522696
 
 
