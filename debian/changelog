@@ -29,6 +29,8 @@ ntp (1:4.2.6+dfsg-1) unstable; urgency=low
     with it.  (Closes: #540694)
   * Compile with --enable-ntp-signd to enable mssntp for use with samba
     (Closes: #562065)
+  * Remove ntp.logcheck.ignore.server, none of those messages are
+    send to syslog now.  (Closes: #498992)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 26 Dec 2009 14:12:22 +0100
 
