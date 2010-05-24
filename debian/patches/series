@@ -6,7 +6,6 @@ ntpd-linux-caps-inheritable.patch
 ntpd-ni-maxhost.patch
 openssl-disable-check.patch
 libedit.patch
-kfreebsd.patch
 autotools.patch
 mod_nano.patch
 nanokernel-status.patch
