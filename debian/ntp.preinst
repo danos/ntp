@@ -7,14 +7,3 @@ if dpkg-maintscript-helper supports rm_conffile; then
 		/etc/logcheck/ignore.d.server/ntp 1:4.2.6+dfsg-1 -- "$@"
 fi
 
-installinit_error() {
-	exit $?
-}
-
-#DEBHELPER#
-
-if [ "$1" = "purge" ]; then
-	deluser --system --quiet ntp || true
-	rm -rf /var/lib/ntp/
-	rm -rf /var/log/ntpstats/
-fi
