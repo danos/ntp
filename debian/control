@@ -53,6 +53,7 @@ Description: client for setting system time from NTP servers
 
 Package: ntp-doc
 Architecture: all
+Depends: ${misc:Depends}
 Section: doc
 Description: Network Time Protocol documentation
  NTP, the Network Time Protocol, is used to keep computer clocks
