@@ -8,6 +8,10 @@ ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
     Use dpkg 1.15.7.2's dpkg-maintscript-helper.  This needs
     a Pre-Depends to work, else it's never going to be removed.
     (Closes: #569530)
+  * Remove the obsolete config file /etc/dhcp3/dhclient-enter-hooks.d/ntp,
+    it was replaced by /etc/dhcp3/dhclient-exit-hooks.d/ntp in 1:4.2.4p4+dfsg-3
+  * Remove the obsolete config file /etc/network/if-up.d/ntp,
+    it was removed in 1:4.2.4p0+dfsg-1
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 24 May 2010 11:09:51 +0200
 
