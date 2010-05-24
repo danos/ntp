@@ -1,7 +1,9 @@
-ntp (1:4.2.6p1+dfsg-1) unstable; urgency=low
+ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
 
   * New upstream version
     - They no longer ship arlib, adjust dfsg.patch.
+  * Remove the obsolete config file /etc/logcheck/ignore.d.server/ntp
+    Use dpkg 1.15.7.2's maintscript-helper.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 24 May 2010 11:09:51 +0200
 
