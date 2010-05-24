@@ -9,6 +9,3 @@ fi
 
 #DEBHELPER#
 
-if [ "$1" = "purge" ]; then
-	rm -rf /var/lib/ntpdate/
-fi

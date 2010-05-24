@@ -9,7 +9,8 @@ ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
     a Pre-Depends to work, else it's never going to be removed.
     (Closes: #569530)
   * Remove the obsolete config file /etc/dhcp3/dhclient-enter-hooks.d/ntp,
-    it was replaced by /etc/dhcp3/dhclient-exit-hooks.d/ntp in 1:4.2.4p4+dfsg-3
+    and /etc/dhcp3/dhclient-enter-hooks.d/ntpdate.  They were replaced by
+    exit hooks in 1:4.2.4p4+dfsg-3.
   * Remove the obsolete config file /etc/network/if-up.d/ntp,
     it was removed in 1:4.2.4p0+dfsg-1
 
