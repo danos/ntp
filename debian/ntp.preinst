@@ -11,3 +11,5 @@ if dpkg-maintscript-helper supports rm_conffile; then
 		/etc/network/if-up.d/ntp 1:4.2.6+dfsg-1 -- "$@"
 fi
 
+#DEBHELPER#
+
