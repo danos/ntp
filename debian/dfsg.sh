@@ -1,6 +1,5 @@
 #!/bin/sh
 # Used to create the dfsg .orig.tar from the upstream source
-rm -r arlib
 rm -r ElectricFence
 rm -r sntp
 rm util/ansi2knr.c
