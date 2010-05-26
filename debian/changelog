@@ -4,15 +4,21 @@ ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
     - They no longer ship arlib, adjust dfsg.patch.
     - Drop kfreebsd.patch, applied upstream
     - Update patches for upstream changes.
-  * Remove the obsolete config file /etc/logcheck/ignore.d.server/ntp.
+  * Remove the obsolete config files:
+
+    for ntp:
+    - /etc/logcheck/ignore.d.server/ntp, removed in 1:4.2.6+dfsg-1
+    - /etc/dhcp3/dhclient-enter-hooks.d/ntp, replaced by exit hooks in
+      1:4.2.4p4+dfsg-3
+    - /etc/network/if-up.d/ntp, removed in 1:4.2.4p0+dfsg-1
+
+    for ntpdate:
+    - /etc/dhcp3/dhclient-enter-hooks.d/ntpdate, replaced by exit hooks in
+      1:4.2.4p4+dfsg-3
+
     Use dpkg 1.15.7.2's dpkg-maintscript-helper.  This needs
     a Pre-Depends to work, else it's never going to be removed.
     (Closes: #569530)
-  * Remove the obsolete config file /etc/dhcp3/dhclient-enter-hooks.d/ntp,
-    and /etc/dhcp3/dhclient-enter-hooks.d/ntpdate.  They were replaced by
-    exit hooks in 1:4.2.4p4+dfsg-3.
-  * Remove the obsolete config file /etc/network/if-up.d/ntp,
-    it was removed in 1:4.2.4p0+dfsg-1
   * Add "Depends: ${misc:Depends}" to ntp-doc.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 24 May 2010 11:09:51 +0200
