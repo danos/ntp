@@ -34,6 +34,7 @@ Description: Network Time Protocol daemon and utility programs
 Package: ntpdate
 Architecture: any
 Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: dpkg (>= 1.15.7.2)
 Recommends: lockfile-progs
 Description: client for setting system time from NTP servers
  NTP, the Network Time Protocol, is used to keep computer clocks
