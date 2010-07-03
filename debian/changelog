@@ -1,3 +1,10 @@
+ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
+
+  * Update command options section in ntp.conf(5) man page, drop "dynamic"
+    option (closes: #553976)
+
+ -- Peter Eisentraut <petere@debian.org>  Fri, 02 Jul 2010 23:31:17 -0400
+
 ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
 
   * New upstream version
