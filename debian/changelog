@@ -1,12 +1,19 @@
 ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
 
+  [ Peter Eisentraut ]
   * Update command options section in ntp.conf(5) man page, drop "dynamic"
     option (closes: #553976, #439734)
   * Document ntpd -I option and ntp.conf interface command (closes: #506389)
   * Fix type in ntpdate man page (closes: #566621)
   * Added explanation of options to ntptrace man page (closes: #558289)
 
- -- Peter Eisentraut <petere@debian.org>  Fri, 02 Jul 2010 23:54:22 -0400
+  [ Kurt Roeckx ]
+  * Move dhcp exit hooks from /etc/dhcp3/dhclient-enter-hooks.d to
+    /etc/dhcp/dhclient-enter-hooks.d.  Add dpkg-maintscript-helper
+    to maintainer scripts to move them, and add a Breaks on
+    dhcp3-client (<< 4.1.0-1) (Closes: #585054, #585055)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Jul 2010 17:38:31 +0200
 
 ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
 

@@ -17,6 +17,7 @@ Pre-Depends: dpkg (>= 1.15.7.2)
 Recommends: ${perl:Depends}
 Suggests: ntp-doc
 Replaces: logcheck-database
+Breaks: dhcp3-client (<< 4.1.0-1)
 Description: Network Time Protocol daemon and utility programs
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
@@ -36,6 +37,7 @@ Architecture: any
 Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: dpkg (>= 1.15.7.2)
 Recommends: lockfile-progs
+Breaks: dhcp3-client (<< 4.1.0-1)
 Description: client for setting system time from NTP servers
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,

@@ -11,5 +11,12 @@ if dpkg-maintscript-helper supports rm_conffile; then
 		/etc/network/if-up.d/ntp 1:4.2.6+dfsg-1 -- "$@"
 fi
 
+if dpkg-maintscript-helper supports mv_conffile; then
+	dpkg-maintscript-helper mv_conffile \
+		/etc/dhcp3/dhclient-exit-hooks.d/ntp \
+		/etc/dhcp/dhclient-exit-hooks.d/ntp \
+		1:4.2.6.p1+dfsg-1 -- "$@"
+fi
+
 #DEBHELPER#
 
