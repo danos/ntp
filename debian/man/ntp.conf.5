@@ -326,6 +326,24 @@ separate file.  Include files may be nested to a depth of five; upon reaching
 the end of any include file, command processing resumes in the previous 
 configuration file.  This option is useful for sites that run \fBntpd\fR on 
 multiple hosts, with (mostly) common options (e.g., a restriction list).
+.TP
+.B interface \fR[\fBlisten\fR | \fBignore\fR | \fBdrop\fR] [\fBall\fR | \fBipv4\fR | \fBipv6\fR | \fBwildcard\fR | \fIname\fR | \fIaddress\fR[/\fIprefixlen\fR]]
+This command controls which network addresses \fBntpd\fR opens, and
+whether input is dropped without processing. The first parameter
+determines the action for addresses which match the second
+parameter. That parameter specifies a class of addresses, or a
+specific interface name, or an address. In the address case,
+\fIprefixlen\fR determines how many bits must match for this rule to
+apply. \fBignore\fR prevents opening matching addresses, \fBdrop\fR
+causes \fBntpd\fR to open the address and drop all received packets
+without examination. Multiple \fBinterface\fR commands can be
+used. The last rule which matches a particular address determines the
+action for it. \fBinterface\fR commands are disabled if any \fB\-I\fR,
+\fB\-\-interface\fR, \fB\-L\fR, or \fB\-\-novirtualips\fR command-line
+options are used. If none of those options are used and no
+\fBinterface\fR actions are specified in the configuration file, all
+available network addresses are opened. The \fBnic\fR command is an
+alias for \fBinterface\fR.
 .SH FILES
 /etc/ntp.conf
 .SH NOTES

@@ -86,6 +86,13 @@ Chroot the server to the directory \fIjaildir\fR.
 This option also implies that the server attempts to drop root privileges at startup (otherwise, chroot gives very little additional security).
 You may need to also specify a \fB\-u\fR option.
 .TP
+.B \-I \fR[\fIaddress\fR | \fIinterface name\fR]
+Open the network address given, or all the addresses associated with
+the given interface name.  This option may appear multiple times.
+This option also implies not opening other addresses, except wildcard
+and localhost.  This option is deprecated.  Please consider using the
+configuration file \fBinterface\fR command, which is more versatile.
+.TP
 \fB\-k\fR \fIkeyfile\fR
 Specify the name and path of the symmetric key file, default \fI/etc/ntp.keys\fR.
 This is the same operation as the keys \fIkeyfile\fR configuration command.
