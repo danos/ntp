@@ -15,8 +15,10 @@ ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
     dhcp3-client (<< 4.1.0-1) (Closes: #585054, #585055)
   * Remove ntp's Replaces on logcheck-database, we don't ship log
     logcheck entries anymore for ntp.
+  * Use architecture wildcards instead of not+linux-gnu for the libcap2-dev
+    build dependency (Closes: #528440, #587871)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Jul 2010 18:08:41 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 04 Jul 2010 11:04:11 +0200
 
 ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
 
