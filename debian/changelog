@@ -6,6 +6,7 @@ ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
   * Document ntpd -I option and ntp.conf interface command (closes: #506389)
   * Fix type in ntpdate man page (closes: #566621)
   * Added explanation of options to ntptrace man page (closes: #558289)
+  * Removed no longer needed build conflict against libreadline-dev
 
   [ Kurt Roeckx ]
   * Move dhcp exit hooks from /etc/dhcp3/dhclient-enter-hooks.d to
