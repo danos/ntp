@@ -1,4 +1,4 @@
-ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
+ntp (1:4.2.6.p2+dfsg-1) UNRELEASED; urgency=low
 
   [ Peter Eisentraut ]
   * Update command options section in ntp.conf(5) man page, drop "dynamic"
@@ -9,6 +9,8 @@ ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
   * Removed no longer needed build conflict against libreadline-dev
 
   [ Kurt Roeckx ]
+  * New upstream version.
+    - Fixes problem with ipv6 multicast (Closes: #584927)
   * Move dhcp exit hooks from /etc/dhcp3/dhclient-enter-hooks.d to
     /etc/dhcp/dhclient-enter-hooks.d.  Add dpkg-maintscript-helper
     to maintainer scripts to move them, and add a Breaks on
@@ -16,7 +18,7 @@ ntp (1:4.2.6.p1+dfsg-2) UNRELEASED; urgency=low
   * Remove ntp's Replaces on logcheck-database, we don't ship log
     logcheck entries anymore for ntp.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Jul 2010 18:08:41 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 13 Jul 2010 20:16:18 +0200
 
 ntp (1:4.2.6.p1+dfsg-1) unstable; urgency=low
 
