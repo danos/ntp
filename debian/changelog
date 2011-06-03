@@ -4,6 +4,9 @@ ntp (1:4.2.6.p3+dfsg-1) unstable; urgency=low
     - Require newer autogen version
   * Include sntp in source, it got rewritting and licensed changed.
   * Re-add neoclock4x driver, license got changed.
+  * Drop nanokernel-status.patch.  2.6.26 was part of lenny, so everybody
+    really should have nanokernel support now.  The patch also didn't
+    actually enable the nano kernel.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 03 Jun 2011 16:39:02 +0200
 
