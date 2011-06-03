@@ -2,11 +2,11 @@ Compilation fix for systems without MAXHOSTNAMELEN (e.g., Hurd); but the
 use of MAXHOSTNAMELEN is incorrect here anyway.  (bug #387665,
 http://bugs.ntp.org/978)
 
-Index: ntp-4.2.6+dfsg/ntpd/ntp_intres.c
+Index: ntp-4.2.6.p3+dfsg/ntpd/ntp_intres.c
 ===================================================================
---- ntp-4.2.6+dfsg.orig/ntpd/ntp_intres.c	2009-12-09 07:36:36.000000000 +0000
-+++ ntp-4.2.6+dfsg/ntpd/ntp_intres.c	2009-12-24 10:43:50.000000000 +0000
-@@ -167,11 +167,11 @@
+--- ntp-4.2.6.p3+dfsg.orig/ntpd/ntp_intres.c	2011-06-03 15:26:01.000000000 +0000
++++ ntp-4.2.6.p3+dfsg/ntpd/ntp_intres.c	2011-06-03 15:27:15.000000000 +0000
+@@ -186,11 +186,11 @@
  struct ntp_res_t_pkt {		/* Tagged packet: */
  	void *tag;		/* For the caller */
  	u_int32 paddr;		/* IP to look up, or 0 */
@@ -20,7 +20,7 @@ Index: ntp-4.2.6+dfsg/ntpd/ntp_intres.c
  	u_int32 paddr;
  	int mode;
  	int version;
-@@ -564,10 +564,10 @@
+@@ -583,10 +583,10 @@
  		DPRINTF(2, ("findhostaddr: Resolving <%s>\n",
  			stoa(&entry->peer_store)));
  

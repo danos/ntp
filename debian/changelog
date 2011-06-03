@@ -1,3 +1,12 @@
+ntp (1:4.2.6.p3+dfsg-1) unstable; urgency=low
+
+  * New upstream version
+    - Require newer autogen version
+  * Include sntp in source, it got rewritting and licensed changed.
+  * Re-add neoclock4x driver, license got changed.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 03 Jun 2011 16:39:02 +0200
+
 ntp (1:4.2.6.p2+dfsg-1) unstable; urgency=low
 
   [ Peter Eisentraut ]

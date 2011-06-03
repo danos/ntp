@@ -1,7 +1,6 @@
 #!/bin/sh
 # Used to create the dfsg .orig.tar from the upstream source
 rm -r ElectricFence
-rm -r sntp
 rm util/ansi2knr.c
 rm util/ansi2knr.1
 rm html/hints/solaris-dosynctodr.html
@@ -21,4 +20,3 @@ rm scripts/monitoring/ntploopwatch
 rm scripts/monitoring/ntptrap
 rm scripts/ntpver.in
 rm libparse/clk_wharton.c
-rm ntpd/refclock_neoclock4x.c

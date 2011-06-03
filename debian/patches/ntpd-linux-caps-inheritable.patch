@@ -4,11 +4,11 @@ Bug: http://bugs.ntp.org/1432
 Bug-Debian: http://bugs.debian.org/282941
 Bug-Debian: http://bugs.debian.org/298059
 
-Index: ntp-4.2.6+dfsg/ntpd/ntpd.c
+Index: ntp-4.2.6.p3+dfsg/ntpd/ntpd.c
 ===================================================================
---- ntp-4.2.6+dfsg.orig/ntpd/ntpd.c	2009-12-25 12:21:32.000000000 +0000
-+++ ntp-4.2.6+dfsg/ntpd/ntpd.c	2009-12-25 12:21:32.000000000 +0000
-@@ -1015,8 +1015,8 @@
+--- ntp-4.2.6.p3+dfsg.orig/ntpd/ntpd.c	2011-06-03 15:26:29.000000000 +0000
++++ ntp-4.2.6.p3+dfsg/ntpd/ntpd.c	2011-06-03 15:27:00.000000000 +0000
+@@ -1016,8 +1016,8 @@
  			 */
  			cap_t caps;
  			char *captext = (interface_interval)
