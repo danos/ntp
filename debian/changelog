@@ -8,6 +8,8 @@ ntp (1:4.2.6.p3+dfsg-1) unstable; urgency=low
     really should have nanokernel support now.  The patch also didn't
     actually enable the nano kernel.
   * Drop mod_nano.patch, libc now provides the proper defines.
+  * We now build against a libc that has NTP_API 4 support, which means
+    that we get TAI offset support.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 03 Jun 2011 16:39:02 +0200
 
