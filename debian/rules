@@ -8,12 +8,9 @@ export AUTOHEADER = : autoheader
 
 DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 
-CFLAGS = -g -fno-strict-aliasing
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-CFLAGS += -O0
-else
-CFLAGS += -O2
-endif
+CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) -D_GNU_SOURCE
+CFLAGS   = $(shell dpkg-buildflags --get CFLAGS) -fno-strict-aliasing
+LDFLAGS  = $(shell dpkg-buildflags --get LDFLAGS)
 
 config.status:
 	dh_testdir
@@ -22,7 +19,7 @@ ifeq (hurd, $(DEB_HOST_ARCH_OS))
 	exit 1
 endif
 	cp /usr/share/misc/config.guess /usr/share/misc/config.sub .
-	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='-D_GNU_SOURCE' \
+	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='$(CPPFLAGS)' LDFLAGS='$(LDFLAGS)' \
 		ac_cv_var_tick=no ac_cv_var_tickadj=no \
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \

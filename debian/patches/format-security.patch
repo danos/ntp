@@ -1,0 +1,87 @@
+Description: Fix build failures with -Werror=format-security
+ The change to ntp_config.c is merely pacifying GCC, since signd_warning is
+ a constant string containing no '%' characters.  In the other cases, it is
+ much more difficult to prove that the format string cannot contain any '%'
+ characters.
+Author: Colin Watson <cjwatson@ubuntu.com>
+Last-Update: 2011-05-20
+
+Index: b/lib/isc/unix/ifiter_ioctl.c
+===================================================================
+--- a/lib/isc/unix/ifiter_ioctl.c
++++ b/lib/isc/unix/ifiter_ioctl.c
+@@ -159,7 +159,7 @@
+ 				break;
+ 		}
+ 		if (iter->bufsize >= IFCONF_BUFSIZE_MAX) {
+-			UNEXPECTED_ERROR(__FILE__, __LINE__,
++			UNEXPECTED_ERROR(__FILE__, __LINE__, "%s",
+ 					 isc_msgcat_get(isc_msgcat,
+ 							ISC_MSGSET_IFITERIOCTL,
+ 							ISC_MSG_BUFFERMAX,
+@@ -260,7 +260,7 @@
+ 				break;
+ 		}
+ 		if (iter->bufsize6 >= IFCONF_BUFSIZE_MAX) {
+-			UNEXPECTED_ERROR(__FILE__, __LINE__,
++			UNEXPECTED_ERROR(__FILE__, __LINE__, "%s",
+ 					 isc_msgcat_get(isc_msgcat,
+ 							ISC_MSGSET_IFITERIOCTL,
+ 							ISC_MSG_BUFFERMAX,
+Index: b/ntpd/ntp_config.c
+===================================================================
+--- a/ntpd/ntp_config.c
++++ b/ntpd/ntp_config.c
+@@ -2324,7 +2324,7 @@
+ 		if ((RES_MSSNTP & flags) && !warned_signd) {
+ 			warned_signd = 1;
+ 			fprintf(stderr, "%s\n", signd_warning);
+-			msyslog(LOG_WARNING, signd_warning);
++			msyslog(LOG_WARNING, "%s", signd_warning);
+ 		}
+ 	}
+ }
+Index: b/ntpd/ntp_control.c
+===================================================================
+--- a/ntpd/ntp_control.c
++++ b/ntpd/ntp_control.c
+@@ -2948,7 +2948,7 @@
+ 			    " %s", str);
+ 		}
+ 		NLOG(NLOG_SYSEVENT)
+-		    msyslog(LOG_INFO, statstr);
++		    msyslog(LOG_INFO, "%s", statstr);
+ 	} else {
+ 
+ 		/*
+@@ -2980,7 +2980,7 @@
+ 			    " %s", str);
+ 		}
+ 		NLOG(NLOG_PEEREVENT)
+-		    msyslog(LOG_INFO, statstr);
++		    msyslog(LOG_INFO, "%s", statstr);
+ 	}
+ 	record_proto_stats(statstr);
+ #if DEBUG
+Index: b/ntpd/ntpd.c
+===================================================================
+--- a/ntpd/ntpd.c
++++ b/ntpd/ntpd.c
+@@ -1283,7 +1283,7 @@
+ 
+ 	msyslog(LOG_ERR, "%s:%d: fatal error:", file, line);
+ 	vsnprintf(errbuf, sizeof(errbuf), format, args);
+-	msyslog(LOG_ERR, errbuf);
++	msyslog(LOG_ERR, "%s", errbuf);
+ 	msyslog(LOG_ERR, "exiting (due to fatal error in library)");
+ 
+ 	abort();
+@@ -1305,7 +1305,7 @@
+ 
+ 	msyslog(LOG_ERR, "%s:%d: unexpected error:", file, line);
+ 	vsnprintf(errbuf, sizeof(errbuf), format, args);
+-	msyslog(LOG_ERR, errbuf);
++	msyslog(LOG_ERR, "%s", errbuf);
+ 
+ 	if (++unexpected_error_cnt == MAX_UNEXPECTED_ERRORS)
+ 	{
