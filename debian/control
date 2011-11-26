@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
-Build-Depends: autotools-dev, debhelper (>= 6), libedit-dev, libcap2-dev | not+linux-gnu, libssl-dev (>= 0.9), autogen (>= 1:5.11)
+Build-Depends: autotools-dev, debhelper (>= 6), libedit-dev, libcap2-dev [linux-any], libssl-dev (>= 0.9), autogen (>= 1:5.11)
 Build-Conflicts: libavahi-compat-libdnssd-dev, libwww-dev, libwww-ssl-dev
 Standards-Version: 3.8.1
 Homepage: http://support.ntp.org/
