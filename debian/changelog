@@ -2,8 +2,9 @@ ntp (1:4.2.6.p3+dfsg-2) UNRELEASED; urgency=low
 
   * Use architecture wildcard for libcap2-dev build dependency, removing
     type-handing dependency (closes: #587871)
+  * Updated standards version
 
- -- Peter Eisentraut <petere@debian.org>  Sat, 26 Nov 2011 01:46:58 +0200
+ -- Peter Eisentraut <petere@debian.org>  Sat, 26 Nov 2011 23:02:44 +0200
 
 ntp (1:4.2.6.p3+dfsg-1) unstable; urgency=low
 
