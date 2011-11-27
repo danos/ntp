@@ -10,7 +10,7 @@ DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 
 CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) -D_GNU_SOURCE
 CFLAGS   = $(shell dpkg-buildflags --get CFLAGS) -fno-strict-aliasing
-LDFLAGS  = $(shell dpkg-buildflags --get LDFLAGS)
+LDFLAGS  = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 
 config.status:
 	dh_testdir
