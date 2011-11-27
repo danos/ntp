@@ -8,3 +8,4 @@ openssl-disable-check.patch
 libedit.patch
 autotools.patch
 format-security.patch
+sntp-manpage.patch
