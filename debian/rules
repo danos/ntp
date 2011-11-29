@@ -25,6 +25,7 @@ endif
 		--disable-debugging --sysconfdir=/var/lib/ntp \
 		--with-sntp=no \
 		--with-lineeditlibs=edit \
+		--without-ntpsnmpd \
 		--disable-local-libopts \
 		--enable-ntp-signd \
 		--disable-dependency-tracking
@@ -66,8 +67,8 @@ install: build-stamp
 
 	install -D -m 0644 debian/ntp.conf debian/ntp/etc/ntp.conf
 
-	# remove upstream man pages, which are currently not as nice as ours
-	rm $(addprefix debian/ntp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1)
+	# remove upstream man pages, which are currently not as nice as ours / ntpsnmpd we don't want
+	rm $(addprefix debian/ntp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1 ntpsnmpd.1)
 
 	dh_movefiles --sourcedir=debian/ntp
 
