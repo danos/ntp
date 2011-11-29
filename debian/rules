@@ -20,7 +20,6 @@ ifeq (hurd, $(DEB_HOST_ARCH_OS))
 endif
 	cp /usr/share/misc/config.guess /usr/share/misc/config.sub .
 	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='$(CPPFLAGS)' LDFLAGS='$(LDFLAGS)' \
-		ac_cv_var_tick=no ac_cv_var_tickadj=no \
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
@@ -56,6 +55,9 @@ install: build-stamp
 	for file in ntpdate ntp-wait ntpd ntptime ntp-keygen; do \
 		mv debian/ntp/usr/bin/$$file debian/ntp/usr/sbin/$$file || exit; \
 	done
+
+	# don't install tickadj
+	rm debian/ntp/usr/bin/tickadj
 
 	install -D -m 0755 scripts/ntpsweep debian/ntp/usr/bin/ntpsweep
 	install -D -m 0644 debian/ntp.dhcp debian/ntp/etc/dhcp/dhclient-exit-hooks.d/ntp
