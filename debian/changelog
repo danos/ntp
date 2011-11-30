@@ -1,7 +1,7 @@
 ntp (1:4.2.6.p3+dfsg-2) UNRELEASED; urgency=low
 
   * Use architecture wildcard for libcap2-dev build dependency, removing
-    type-handing dependency (closes: #587871)
+    type-handing dependency (closes: #528440, #587871)
   * Updated standards version
   * Get build flags from dpkg-buildflags, and fix the resulting
     -Wformat-security errors using patch from Colin Watson (closes:
