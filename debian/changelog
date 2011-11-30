@@ -5,7 +5,7 @@ ntp (1:4.2.6.p3+dfsg-2) UNRELEASED; urgency=low
   * Updated standards version
   * Get build flags from dpkg-buildflags, and fix the resulting
     -Wformat-security errors using patch from Colin Watson (closes:
-    #627403)
+    #542721, #627403)
   * Add -Wl,--as-needed to LDFLAGS, which drops the dependency of ntpdate
     on libcap2
   * Add sntp-manpage.patch to fix some errors in sntp man page pointed out
