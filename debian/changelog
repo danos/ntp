@@ -16,6 +16,7 @@ ntp (1:4.2.6.p3+dfsg-2) UNRELEASED; urgency=low
   * Explicitly disable building ntpsnmpd and remove man page (closes:
     #608542; see also #622819)
   * ntpdate-debian: Improve parsing of ntp.conf (closes: #606349)
+  * Add descriptions of -4/-6 options to ntpd man page (closes: #613349)
 
  -- Peter Eisentraut <petere@debian.org>  Wed, 30 Nov 2011 06:51:46 +0200
 
