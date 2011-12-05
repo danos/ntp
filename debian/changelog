@@ -19,8 +19,9 @@ ntp (1:4.2.6.p3+dfsg-2) UNRELEASED; urgency=low
   * Add descriptions of -4/-6 options to ntpd man page (closes: #613349)
   * Update options list on ntptrace man page to match reality (closes:
     #593417)
+  * Add build-arch and build-indep debian/rules targets, per lintian
 
- -- Peter Eisentraut <petere@debian.org>  Mon, 05 Dec 2011 19:03:10 +0200
+ -- Peter Eisentraut <petere@debian.org>  Tue, 06 Dec 2011 01:00:02 +0200
 
 ntp (1:4.2.6.p3+dfsg-1) unstable; urgency=low
 
