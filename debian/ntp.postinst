@@ -19,7 +19,8 @@ if dpkg-maintscript-helper supports mv_conffile; then
 fi
 
 if [ "$1" = "configure" ]; then
-	adduser --system --quiet --group --no-create-home ntp || :
+	addgroup --system --quiet ntp
+	adduser --system --quiet --ingroup ntp --no-create-home ntp
 	chown -R ntp:ntp /var/lib/ntp /var/log/ntpstats
 fi
 

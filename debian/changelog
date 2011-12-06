@@ -20,8 +20,12 @@ ntp (1:4.2.6.p3+dfsg-2) UNRELEASED; urgency=low
   * Update options list on ntptrace man page to match reality (closes:
     #593417)
   * Add build-arch and build-indep debian/rules targets, per lintian
+  * Create ntp user and group separately, to handle the case where the
+    user already exists but not the group (closes: #624275)
+  * Don't ignore errors from adduser.  If the system user or group already
+    exist, this is ignored anyway.  Anything else we want to know about.
 
- -- Peter Eisentraut <petere@debian.org>  Tue, 06 Dec 2011 01:00:02 +0200
+ -- Peter Eisentraut <petere@debian.org>  Tue, 06 Dec 2011 19:57:43 +0200
 
 ntp (1:4.2.6.p3+dfsg-1) unstable; urgency=low
 
