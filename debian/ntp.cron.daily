@@ -14,14 +14,14 @@ if [ -n "$statsdir" ] && [ -d "$statsdir" ]; then
 
 	# compress whatever is left to save space
 	cd "$statsdir"
-	ls loopstats.???????? peerstats.???????? > /dev/null 2>&1
+	ls *stats.???????? > /dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		# Note that gzip won't compress the file names that
 		# are hard links to the live/current files, so this
 		# compresses yesterday and previous, leaving the live
 		# log alone.  We supress the warnings gzip issues
 		# about not compressing the linked file.
-		gzip --best --quiet loopstats.???????? peerstats.???????? 
+		gzip --best --quiet *stats.???????? 
 		return=$?
 		case $return in
 		    2)
