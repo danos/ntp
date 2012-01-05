@@ -1,9 +1,9 @@
-ntp (1:4.2.6.p3+dfsg-3) UNRELEASED; urgency=medium
+ntp (1:4.2.6.p3+dfsg-3) unstable; urgency=medium
 
   * Update format-security.patch to include kfreebsd-specific fixes
     (closes: #653771)
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 05 Jan 2012 19:28:23 +0200
+ -- Peter Eisentraut <petere@debian.org>  Thu, 05 Jan 2012 19:37:28 +0200
 
 ntp (1:4.2.6.p3+dfsg-2) unstable; urgency=low
 
