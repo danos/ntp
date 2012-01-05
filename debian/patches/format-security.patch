@@ -4,7 +4,12 @@ Description: Fix build failures with -Werror=format-security
  much more difficult to prove that the format string cannot contain any '%'
  characters.
 Author: Colin Watson <cjwatson@ubuntu.com>
-Last-Update: 2011-05-20
+Author: Steven Chamberlain <steven@pyro.eu.org>
+Author: Peter Eisentraut <petere@debian.org>
+Bug: http://bugs.ntp.org/2106
+Bug-Debian: http://bugs.debian.org/627403
+Bug-Debian: http://bugs.debian.org/653771
+Last-Update: 2012-01-05
 
 --- a/lib/isc/unix/ifiter_ioctl.c
 +++ b/lib/isc/unix/ifiter_ioctl.c
@@ -77,3 +82,25 @@ Last-Update: 2011-05-20
  
  	if (++unexpected_error_cnt == MAX_UNEXPECTED_ERRORS)
  	{
+--- a/ntpd/refclock_oncore.c
++++ b/ntpd/refclock_oncore.c
+@@ -4058,7 +4058,7 @@ oncore_log (
+ 
+ 	snprintf(Msg, sizeof(Msg), "ONCORE[%d]: %s", instance->unit,
+ 		 msg);
+-	syslog(log_level, Msg);
++	syslog(log_level, "%s", Msg);
+ 
+ 	i = strlen(msg);
+ 
+--- a/lib/isc/include/isc/msgcat.h
++++ b/lib/isc/include/isc/msgcat.h
+@@ -110,7 +110,7 @@ isc_msgcat_close(isc_msgcat_t **msgcatp)
+ 
+ const char *
+ isc_msgcat_get(isc_msgcat_t *msgcat, int set, int message,
+-	       const char *default_text);
++	       const char *default_text) __attribute__((format_arg(4)));
+ /*%<
+  * Get message 'message' from message set 'set' in 'msgcat'.  If it
+  * is not available, use 'default_text'.
