@@ -1,3 +1,10 @@
+ntp (1:4.2.6.p5+dfsg-1) UNRELEASED; urgency=low
+
+  * New upstream release (closes: #644673)
+  * Updated instructions on generating autotools.patch
+
+ -- Peter Eisentraut <petere@debian.org>  Wed, 22 Feb 2012 22:06:21 +0200
+
 ntp (1:4.2.6.p3+dfsg-3) unstable; urgency=medium
 
   * Update format-security.patch to include kfreebsd-specific fixes
