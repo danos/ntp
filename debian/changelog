@@ -1,10 +1,10 @@
-ntp (1:4.2.6.p5+dfsg-1) UNRELEASED; urgency=low
+ntp (1:4.2.6.p5+dfsg-1) unstable; urgency=low
 
   * New upstream release (closes: #644673)
   * Updated instructions on generating autotools.patch
   * Updated standards version
 
- -- Peter Eisentraut <petere@debian.org>  Sun, 26 Feb 2012 23:05:48 +0200
+ -- Peter Eisentraut <petere@debian.org>  Mon, 27 Feb 2012 13:55:56 +0200
 
 ntp (1:4.2.6.p3+dfsg-3) unstable; urgency=medium
 
