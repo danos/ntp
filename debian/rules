@@ -28,7 +28,8 @@ endif
 		--without-ntpsnmpd \
 		--disable-local-libopts \
 		--enable-ntp-signd \
-		--disable-dependency-tracking
+		--disable-dependency-tracking \
+		--with-openssl-libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
 build: build-arch build-indep
 build-arch: build-stamp
