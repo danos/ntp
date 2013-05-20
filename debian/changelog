@@ -1,3 +1,11 @@
+ntp (1:4.2.6.p5+dfsg-3) unstable; urgency=low
+
+  * Look for <openssl/opensslv.h> rather than <openssl/opensslconf.h>, which
+    is due to move to a different location in order to support multiarch.
+    Patch by Colin Watson <cjwatson@ubuntu.com> (Closes: #696390)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 20 May 2013 16:14:07 +0200
+
 ntp (1:4.2.6.p5+dfsg-2) unstable; urgency=medium
 
   * Re-enable crypto support by pointing openssl libdir to multiarch dir.

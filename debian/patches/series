@@ -6,6 +6,7 @@ ntpd-linux-caps-inheritable.patch
 ntpd-ni-maxhost.patch
 openssl-disable-check.patch
 libedit.patch
-autotools.patch
 format-security.patch
 sntp-manpage.patch
+openssl-headers.patch
+autotools.patch
