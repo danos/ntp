@@ -1,3 +1,9 @@
+ntp (1:4.2.6.p5+dfsg-4) UNRELEASED; urgency=low
+
+  * Fix Lintian warning vcs-field-not-canonical
+
+ -- Peter Eisentraut <petere@debian.org>  Mon, 21 Jul 2014 23:16:55 -0400
+
 ntp (1:4.2.6.p5+dfsg-3) unstable; urgency=low
 
   * Look for <openssl/opensslv.h> rather than <openssl/opensslconf.h>, which
