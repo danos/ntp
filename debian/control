@@ -5,7 +5,7 @@ Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Bdale Garbee <bdale@gag.com>, Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>
 Build-Depends: autotools-dev, debhelper (>= 6), libedit-dev, libcap2-dev [linux-any], libssl-dev (>= 1.0.0e-1), autogen (>= 1:5.11)
 Build-Conflicts: libavahi-compat-libdnssd-dev, libwww-dev, libwww-ssl-dev
-Standards-Version: 3.9.3
+Standards-Version: 3.9.5
 Homepage: http://support.ntp.org/
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-ntp/ntp/trunk/
 Vcs-Svn: svn://anonscm.debian.org/pkg-ntp/ntp/trunk/
