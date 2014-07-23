@@ -100,7 +100,7 @@ binary-arch: build install
 	dh_installdocs -a
 	dh_installexamples -a
 	dh_installman -a
-	dh_installinit -pntp --update-rcd-params="start 23 2 3 4 5 ." --error-handler=installinit_error
+	dh_installinit -pntp --error-handler=installinit_error
 	dh_installinit -pntpdate
 	dh_installcron -a
 	dh_installlogcheck -a
