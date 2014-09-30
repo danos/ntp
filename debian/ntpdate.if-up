@@ -30,20 +30,7 @@ if [ -r /lib/udev/hotplug.functions ]; then
 	wait_for_file /usr/sbin/ntpdate-debian
 fi
 
-LOCKFILE=/var/lock/ntpdate
-
 # Avoid running more than one at a time
-if [ -x /usr/bin/lockfile-create ]; then
-	lockfile-create $LOCKFILE
-	lockfile-touch $LOCKFILE &
-	LOCKTOUCHPID="$!"
-fi
-
-/usr/sbin/ntpdate-debian -s $OPTS 2>/dev/null || :
-
-if [ -x /usr/bin/lockfile-create ] ; then
-	kill $LOCKTOUCHPID
-	lockfile-remove $LOCKFILE
-fi
+flock -n /run/lock/ntpdate /usr/sbin/ntpdate-debian -s $OPTS 2>/dev/null || :
 
 ) &

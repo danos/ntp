@@ -3,8 +3,10 @@ ntp (1:4.2.6.p5+dfsg-4) UNRELEASED; urgency=low
   * Fix Lintian warning vcs-field-not-canonical
   * Update standards version
   * Remove obsolete "start" option to update-rc.d (closes: #755936)
+  * Use flock instead of lockfile-progs for ntpdate.if-up (closes:
+    #731976); change lock file location to /run/lock
 
- -- Peter Eisentraut <petere@debian.org>  Mon, 21 Jul 2014 23:16:55 -0400
+ -- Peter Eisentraut <petere@debian.org>  Tue, 30 Sep 2014 00:04:02 -0400
 
 ntp (1:4.2.6.p5+dfsg-3) unstable; urgency=low
 
