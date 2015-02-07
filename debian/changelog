@@ -1,4 +1,4 @@
-ntp (1:4.2.6.p5+dfsg-4) UNRELEASED; urgency=low
+ntp (1:4.2.6.p5+dfsg-6) UNRELEASED; urgency=low
 
   * Fix Lintian warning vcs-field-not-canonical
   * Update standards version
@@ -9,6 +9,37 @@ ntp (1:4.2.6.p5+dfsg-4) UNRELEASED; urgency=low
     (closes: #749761)
 
  -- Peter Eisentraut <petere@debian.org>  Wed, 01 Oct 2014 00:41:49 -0400
+
+ntp (1:4.2.6.p5+dfsg-5) unstable; urgency=high
+
+  * Add missing fix for CVE-2014-9297
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 07 Feb 2015 12:20:44 +0100
+
+ntp (1:4.2.6.p5+dfsg-4) unstable; urgency=medium
+
+  * Fix CVE-2014-9297
+  * Fix CVE-2014-9298
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 05 Feb 2015 00:27:36 +0100
+
+ntp (1:4.2.6.p5+dfsg-3.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Apply fixes for security updates (Closes: 773576)
+    - cve-2014-9293
+    - cve-2014-9294
+    - cve-2014-9295
+    - cve-2014-9296
+
+ -- Noah Meyerhans <noahm@debian.org>  Sun, 21 Dec 2014 12:01:50 -0800
+
+ntp (1:4.2.6.p5+dfsg-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Use dh-autoreconf to ensure configurey is updated for new architectures
+
+ -- Wookey <wookey@debian.org>  Tue, 15 Jul 2014 11:54:21 +0800
 
 ntp (1:4.2.6.p5+dfsg-3) unstable; urgency=low
 

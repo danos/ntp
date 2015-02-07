@@ -10,3 +10,9 @@ format-security.patch
 sntp-manpage.patch
 openssl-headers.patch
 autotools.patch
+ntp-4.2.6p5-cve-2014-9293.patch
+ntp-4.2.6p5-cve-2014-9294.patch
+ntp-4.2.6p5-cve-2014-9295.patch
+ntp-4.2.6p5-cve-2014-9296.patch
+CVE-2014-9297.patch
+CVE-2014-9298.patch
