@@ -58,7 +58,7 @@ install: build-stamp
 	# don't install tickadj
 	rm debian/ntp/usr/bin/tickadj
 
-	install -D -m 0755 scripts/ntpsweep debian/ntp/usr/bin/ntpsweep
+	install -D -m 0755 scripts/ntpsweep/ntpsweep debian/ntp/usr/bin/ntpsweep
 	install -D -m 0644 debian/ntp.dhcp debian/ntp/etc/dhcp/dhclient-exit-hooks.d/ntp
 	install -D -m 0644 debian/ntpdate.dhcp debian/ntpdate/etc/dhcp/dhclient-exit-hooks.d/ntpdate
 	install -D -m 0755 debian/ntpdate-debian debian/ntpdate/usr/sbin/ntpdate-debian
@@ -66,7 +66,7 @@ install: build-stamp
 	install -D -m 0644 debian/ntp.conf debian/ntp/etc/ntp.conf
 
 	# remove upstream man pages, which are currently not as nice as ours / ntpsnmpd we don't want
-	rm $(addprefix debian/ntp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1 ntpsnmpd.1)
+	rm $(addprefix debian/ntp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1)
 
 	dh_movefiles --sourcedir=debian/ntp
 

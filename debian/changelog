@@ -1,3 +1,19 @@
+ntp (1:4.2.8p3+dfsg-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+   - Patches applied upstream: ntpd-linux-caps-inheritable.patch,
+     ntp-4.2.6p5-cve-2014-9293.patch, ntp-4.2.6p5-cve-2014-9294.patch,
+     ntp-4.2.6p5-cve-2014-9295.patch, ntp-4.2.6p5-cve-2014-9296.patch,
+     CVE-2014-9297.patch, CVE-2014-9298.patch, CVE-2015-1798.patch,
+     CVE-2015-1799.patch, bug-2797.patch, ntpd-ni-maxhost.patch,
+     format-security.patch, sntp-manpage.patch, openssl-headers.patch
+  * Remove autotools.patch since we run dh_autoreconf
+  * Fix a new issue reported by -Werror=format-security
+  * Adjust location in source file for ntpsweep
+  * Upstream doesn't ship ntpsnmpd.1 anymore, so don't remove it
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 20 Jul 2015 23:56:33 +0200
+
 ntp (1:4.2.6.p5+dfsg-8) UNRELEASED; urgency=low
 
   * Fix Lintian warning vcs-field-not-canonical
