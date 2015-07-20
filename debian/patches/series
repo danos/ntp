@@ -16,3 +16,5 @@ ntp-4.2.6p5-cve-2014-9295.patch
 ntp-4.2.6p5-cve-2014-9296.patch
 CVE-2014-9297.patch
 CVE-2014-9298.patch
+CVE-2015-1798.patch
+CVE-2015-1799.patch

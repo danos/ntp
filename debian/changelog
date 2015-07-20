@@ -1,4 +1,4 @@
-ntp (1:4.2.6.p5+dfsg-6) UNRELEASED; urgency=low
+ntp (1:4.2.6.p5+dfsg-7) UNRELEASED; urgency=low
 
   * Fix Lintian warning vcs-field-not-canonical
   * Update standards version
@@ -9,6 +9,12 @@ ntp (1:4.2.6.p5+dfsg-6) UNRELEASED; urgency=low
     (closes: #749761)
 
  -- Peter Eisentraut <petere@debian.org>  Wed, 01 Oct 2014 00:41:49 -0400
+
+ntp (1:4.2.6.p5+dfsg-6) unstable; urgency=high
+
+  * Fix CVE-2015-1798 and CVE-2015-1799 (Closes: #782095)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 10 Apr 2015 20:08:24 +0200
 
 ntp (1:4.2.6.p5+dfsg-5) unstable; urgency=high
 
