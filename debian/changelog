@@ -1,4 +1,4 @@
-ntp (1:4.2.8p3+dfsg-1) UNRELEASED; urgency=medium
+ntp (1:4.2.8p3+dfsg-1) unstable; urgency=medium
 
   * New upstream version
    - Patches applied upstream: ntpd-linux-caps-inheritable.patch,
@@ -17,7 +17,7 @@ ntp (1:4.2.8p3+dfsg-1) UNRELEASED; urgency=medium
     - Add an rlimit memlock so that ntpd actually starts
   * Change the default restrict line to have a rate limit
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 14:04:17 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 14:07:03 +0200
 
 ntp (1:4.2.6.p5+dfsg-8) UNRELEASED; urgency=low
 
