@@ -6,7 +6,7 @@
 # is delete old ones, and compress the ones we're keeping so disk
 # usage is controlled.
 
-statsdir=$(cat /etc/ntp.conf | grep -v '^#' | sed -nr 's/^statsdir[[:space:]]+([^[:space:]]+).*$/\1/p'
+statsdir=$(cat /etc/ntp.conf | grep -v '^#' | sed -nr 's/^statsdir[[:space:]]+([^[:space:]]+).*$/\1/p')
 
 if [ -n "$statsdir" ] && [ -d "$statsdir" ]; then
 	# only keep a week's depth of these
