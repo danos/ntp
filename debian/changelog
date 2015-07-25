@@ -16,8 +16,9 @@ ntp (1:4.2.8p3+dfsg-1) unstable; urgency=medium
     - Add restrict source line so servers can be added and removed
     - Add an rlimit memlock so that ntpd actually starts
   * Change the default restrict line to have a rate limit
+  * Remove empty directory /usr/libexec
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 14:07:03 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 15:29:30 +0200
 
 ntp (1:4.2.6.p5+dfsg-8) UNRELEASED; urgency=low
 

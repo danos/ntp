@@ -68,6 +68,9 @@ install: build-stamp
 	# remove upstream man pages, which are currently not as nice as ours / ntpsnmpd we don't want
 	rm $(addprefix debian/ntp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1)
 
+	# Remove empty directory (/usr/libexec/)
+	find debian/ntp -type d -empty -delete
+
 	dh_movefiles --sourcedir=debian/ntp
 
 binary-indep: build install
