@@ -11,8 +11,13 @@ ntp (1:4.2.8p3+dfsg-1) UNRELEASED; urgency=medium
   * Fix a new issue reported by -Werror=format-security
   * Adjust location in source file for ntpsweep
   * Upstream doesn't ship ntpsnmpd.1 anymore, so don't remove it
+  * Update the default config to use the new pool method:
+    - Use pool instead of server
+    - Add restrict source line so servers can be added and removed
+    - Add an rlimit memlock so that ntpd actually starts
+  * Change the default restrict line to have a rate limit
 
- -- Kurt Roeckx <kurt@roeckx.be>  Mon, 20 Jul 2015 23:56:33 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 14:04:17 +0200
 
 ntp (1:4.2.6.p5+dfsg-8) UNRELEASED; urgency=low
 
