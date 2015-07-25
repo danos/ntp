@@ -17,8 +17,9 @@ ntp (1:4.2.8p3+dfsg-1) unstable; urgency=medium
     - Add an rlimit memlock so that ntpd actually starts
   * Change the default restrict line to have a rate limit
   * Remove empty directory /usr/libexec
+  * Prevent rpaths being set for all binaries
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 15:29:30 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 25 Jul 2015 15:49:37 +0200
 
 ntp (1:4.2.6.p5+dfsg-8) UNRELEASED; urgency=low
 
