@@ -1,3 +1,13 @@
+ntp (1:4.2.8p4+dfsg-1) unstable; urgency=high
+
+  * New upstream release.
+    - Fixes CVE-2015-7850 CVE-2015-7704 CVE-2015-7701 CVE-2015-5196
+      CVE-2015-7848 CVE-2015-7849 CVE-2015-7854 CVE-2015-7852 CVE-2015-7853
+      CVE-2015-7851 CVE-2015-7705 CVE-2015-7855 CVE-2015-7871
+    - Drop format-security.patch, applied upstream.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 21 Oct 2015 20:00:31 +0200
+
 ntp (1:4.2.8p3+dfsg-1) unstable; urgency=medium
 
   * New upstream version
