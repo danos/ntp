@@ -6,3 +6,4 @@ ntpd-linux-caps-runtime.patch
 openssl-disable-check.patch
 libedit.patch
 CVE-2015-5300.patch
+CVE-2015-7704.patch
