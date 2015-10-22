@@ -1,3 +1,12 @@
+ntp (1:4.2.8p4+dfsg-2) unstable; urgency=medium
+
+  You now need to use "rlimit memlock -1" to disable locking memory.  The
+  behaviour for ""rlimit memlock 0" changed between 4.2.8p3 and 4.2.8p4 and
+  it now tries to lock all the memory.  But for various people this still
+  breaks things.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 22 Oct 2015 18:58:56 +0200
+
 ntp (1:4.2.4p0+dfsg-1) unstable; urgency=low
 
   This version of ntp will periodically rescan the network interfaces to
