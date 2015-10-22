@@ -2,8 +2,10 @@ ntp (1:4.2.8p4+dfsg-3) unstable; urgency=medium
 
   * Remove rlimit memlock from default config file, the default is now
     to no longer lock.  (Closes: #793745)
+  * Really properly fix CVE-2015-7704, thanks to Miroslav Lichvar
+    <mlichvar@redhat.com>
 
- -- Kurt Roeckx <kurt@roeckx.be>  Thu, 22 Oct 2015 20:39:36 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 22 Oct 2015 20:44:44 +0200
 
 ntp (1:4.2.8p4+dfsg-2) unstable; urgency=medium
 
