@@ -18,6 +18,8 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
   * Hook into NetworkManager to update ntp servers from dhcp. (Closes:
     #778415).  Patch from Helmut Grohne <helmut@subdivi.de>
   * Build Depend on pps-tools (Closes: #691672)
+  * Don't run ntpdate when method is none.  Patch from
+    Dmitry Borisyuk <q1werty@i.com.ua>
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 

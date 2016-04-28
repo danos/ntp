@@ -12,7 +12,7 @@ if [ "$METHOD" = static ]; then
 	OPTS="-b"
 fi
 
-if [ "$METHOD" = loopback ]; then
+if [ "$METHOD" = loopback ] || [ "$METHOD" = none ]; then
 	exit 0
 fi
 
