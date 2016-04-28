@@ -2,7 +2,9 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
 
   * New upstream version
     This might fix a few CVEs.
-  * Drop CVE-2015-5300.patch and CVE-2015-7704.patch now upstream has fixed it.
+  * Drop CVE-2015-5300.patch and CVE-2015-7704.patch now claimed to
+    be fixed upstream.
+  * Remove Bdale from uploaders (Closes: #804377)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 
