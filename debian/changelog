@@ -12,6 +12,8 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
   * Missing Build-Depends libopts25-dev (which is not implicit in autogen,
     because autogen is M-A:foreign).
     Patch from Helmut Grohne <helmut@subdivi.de>
+  * Fix ntp.dhcp to also check for pool (Closes: #809344)
+    Patch from ron@debian.org
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 

@@ -40,7 +40,7 @@ ntp_servers_setup_add() {
 		echo "server $server iburst"
 	  done
 	  echo
-	  sed -r -e '/^ *(server|peer).*$/d' $NTP_CONF
+	  sed -r -e '/^ *(server|peer|pool).*$/d' $NTP_CONF
 	) >>$tmp
 	
 	mv $tmp $NTP_DHCP_CONF
