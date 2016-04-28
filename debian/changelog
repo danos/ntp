@@ -1,3 +1,11 @@
+ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+    This might fix a few CVEs.
+  * Drop CVE-2015-5300.patch and CVE-2015-7704.patch now upstream has fixed it.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
+
 ntp (1:4.2.8p4+dfsg-3) unstable; urgency=medium
 
   * Remove rlimit memlock from default config file, the default is now

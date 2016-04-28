@@ -8,11 +8,11 @@ add runtime check whether the kernel really supports capabilities; do
 not drop root privileges if not
 
 
-Index: ntp-4.2.8p3+dfsg/ntpd/ntpd.c
+Index: ntp-4.2.8p7+dfsg/ntpd/ntpd.c
 ===================================================================
---- ntp-4.2.8p3+dfsg.orig/ntpd/ntpd.c
-+++ ntp-4.2.8p3+dfsg/ntpd/ntpd.c
-@@ -167,6 +167,7 @@ int droproot;
+--- ntp-4.2.8p7+dfsg.orig/ntpd/ntpd.c
++++ ntp-4.2.8p7+dfsg/ntpd/ntpd.c
+@@ -179,6 +179,7 @@ int droproot;
  int root_dropped;
  char *user;		/* User to switch to */
  char *group;		/* group to switch to */
@@ -20,7 +20,7 @@ Index: ntp-4.2.8p3+dfsg/ntpd/ntpd.c
  const char *chrootdir;	/* directory to chroot to */
  uid_t sw_uid;
  gid_t sw_gid;
-@@ -826,8 +827,29 @@ ntpdmain(
+@@ -939,8 +940,29 @@ ntpdmain(
  	report_event(EVNT_SYSRESTART, NULL, NULL);
  	initializing = FALSE;
  
@@ -38,16 +38,15 @@ Index: ntp-4.2.8p3+dfsg/ntpd/ntpd.c
 +		if (cap_set_proc(caps) == 0)
 +			have_caps = 1;
 +		cap_free(caps);
-+        }
++	}
 +#endif /* HAVE_LINUX_CAPABILITIES */
 +
  # ifdef HAVE_DROPROOT
--	if (droproot) {
 +# ifdef HAVE_LINUX_CAPABILITIES
-+       if (droproot && have_caps) {
++	if (droproot && have_caps) {
 +# else
-+        if (droproot) {
+ 	if (droproot) {
 +# endif
- 		/* Drop super-user privileges and chroot now if the OS supports this */
  
- #  ifdef HAVE_LINUX_CAPABILITIES
+ #ifdef NEED_EARLY_FORK
+ 		fork_nonchroot_worker();
