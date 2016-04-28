@@ -14,6 +14,10 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
     Patch from Helmut Grohne <helmut@subdivi.de>
   * Fix ntp.dhcp to also check for pool (Closes: #809344)
     Patch from ron@debian.org
+  * Change watch file to use https (Closes: #793926)
+  * Hook into NetworkManager to update ntp servers from dhcp. (Closes:
+    #778415).  Patch from Helmut Grohne <helmut@subdivi.de>
+  * Build Depend on pps-tools (Closes: #691672)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 
