@@ -27,22 +27,7 @@ if [ -e /var/lib/ntp/ntp.conf.dhcp ]; then
 fi
 
 
-LOCKFILE=/var/lock/ntpdate
-
-lock_ntpdate() {
-	if [ -x /usr/bin/lockfile-create ]; then
-		lockfile-create $LOCKFILE
-		lockfile-touch $LOCKFILE &
-		LOCKTOUCHPID="$!"
-	fi
-}
-
-unlock_ntpdate() {
-	if [ -x /usr/bin/lockfile-create ] ; then
-		kill $LOCKTOUCHPID
-		lockfile-remove $LOCKFILE
-	fi
-}
+LOCKFILE=/run/lock/ntpdate
 
 RUNASUSER=ntp
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
@@ -57,11 +42,11 @@ case $1 in
 			log_failure_msg "user \"$RUNASUSER\" does not exist"
 			exit 1
 		fi
-		lock_ntpdate
-  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE $NTPD_OPTS
-		status=$?
-		unlock_ntpdate
-		log_end_msg $status
+		(
+			flock -w 180 9
+			start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE $NTPD_OPTS
+		) 9>$LOCKFILE
+		log_end_msg $?
   		;;
 	stop)
 		log_daemon_msg "Stopping NTP server" "ntpd"

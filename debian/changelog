@@ -20,6 +20,8 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
   * Build Depend on pps-tools (Closes: #691672)
   * Don't run ntpdate when method is none.  Patch from
     Dmitry Borisyuk <q1werty@i.com.ua>
+  * Also use flock to in the ntp init script, and update the lock file
+    location.  (Closes: #806556)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 
