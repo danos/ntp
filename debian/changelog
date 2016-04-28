@@ -22,6 +22,8 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
     Dmitry Borisyuk <q1werty@i.com.ua>
   * Also use flock to in the ntp init script, and update the lock file
     location.  (Closes: #806556)
+  * Move apparmor profile from apparmor-profiles-extra. Add Breaks/Replaces.
+    (Closes: #805183)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 
