@@ -5,6 +5,13 @@ ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
   * Drop CVE-2015-5300.patch and CVE-2015-7704.patch now claimed to
     be fixed upstream.
   * Remove Bdale from uploaders (Closes: #804377)
+  * Remove section about patching the kernel for PPS support, it's already
+    included in the kernel (Closes: #811171)
+  * Pass --build and --host to configure. (Closes: #315935)
+    Patch from Helmut Grohne <helmut@subdivi.de>
+  * Missing Build-Depends libopts25-dev (which is not implicit in autogen,
+    because autogen is M-A:foreign).
+    Patch from Helmut Grohne <helmut@subdivi.de>
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 24 Jan 2016 22:57:40 +0100
 

@@ -110,11 +110,3 @@ ntp-genkeys now generates an MD5 ntp.keys file in /var/lib/ntp.  Use
 of these keys has not yet been tested; please report success or
 failure in using them to the maintainer.
 
-
-PPSkit
-------
-
-If you're serious about building a high-quality stratum 1 timekeeper,
-please take a look at Ulrich Windl's PPSkit patchset for the Linux
-kernel, available from the kernel.org mirror network in
-pub/linux/daemons/ntp.
