@@ -1,3 +1,9 @@
+ntp (1:4.2.8p7+dfsg-2) unstable; urgency=medium
+
+  * Only build-depend on pps-tools on Linux
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 29 Apr 2016 18:32:39 +0200
+
 ntp (1:4.2.8p7+dfsg-1) unstable; urgency=medium
 
   * New upstream version
