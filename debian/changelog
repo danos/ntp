@@ -1,3 +1,13 @@
+ntp (1:4.2.8p7+dfsg-3) unstable; urgency=medium
+
+  [ Hideki Yamane ]
+  * Properly enable Apparmor profile from Ubuntu (Closes: #823024)
+    Patch from Hideki Yamane <henrich@debian.or.jp>
+  * Update replace/breaks versions of apparmor-profiles-extra
+    (Closes: #805183)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 30 Apr 2016 12:14:14 +0200
+
 ntp (1:4.2.8p7+dfsg-2) unstable; urgency=medium
 
   * Only build-depend on pps-tools on Linux

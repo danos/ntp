@@ -16,8 +16,8 @@ Depends: adduser, lsb-base (>= 3.2-13), netbase, ${misc:Depends}, ${shlibs:Depen
 Pre-Depends: dpkg (>= 1.15.7.2)
 Recommends: ${perl:Depends}
 Suggests: ntp-doc
-Breaks: dhcp3-client (<< 4.1.0-1), apparmor-profiles-extra (<= 1.6)
-Replaces: apparmor-profiles-extra (<= 1.6)
+Breaks: dhcp3-client (<< 4.1.0-1), apparmor-profiles-extra (<= 1.7)
+Replaces: apparmor-profiles-extra (<= 1.7)
 Description: Network Time Protocol daemon and utility programs
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,

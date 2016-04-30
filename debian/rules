@@ -70,7 +70,10 @@ install: build-stamp
 
 	install -D -m 0644 debian/ntp.conf debian/ntp/etc/ntp.conf
 
-	install -D -m 0644 debian/ntpd.apparmor debian/ntp/etc/apparmor.d/usr.sbin.ntpd
+	# install apparmor profile
+	install -D -m 0644 debian/apparmor-profile debian/ntp/etc/apparmor.d/usr.sbin.ntpd
+	install -D -m 0644 debian/apparmor-profile.tunable debian/ntp/etc/apparmor.d/tunables/ntpd
+	dh_link -pntp etc/apparmor.d/usr.sbin.ntpd etc/apparmor/init/network-interface-security/usr.sbin.ntpd
 
 	# remove upstream man pages, which are currently not as nice as ours / ntpsnmpd we don't want
 	rm $(addprefix debian/tmp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1)
