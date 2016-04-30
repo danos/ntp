@@ -1,3 +1,10 @@
+ntp (1:4.2.8p7+dfsg-4) unstable; urgency=medium
+
+  * Update apparmor-profiles-extra again now we now in which version they
+    removed it.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 30 Apr 2016 13:55:22 +0200
+
 ntp (1:4.2.8p7+dfsg-3) unstable; urgency=medium
 
   [ Hideki Yamane ]
