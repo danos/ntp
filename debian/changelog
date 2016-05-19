@@ -1,9 +1,10 @@
-ntp (1:4.2.8p7+dfsg-4) unstable; urgency=medium
+ntp (1:4.2.8p7+dfsg-4) unstable; urgency=high
 
   * Update apparmor-profiles-extra again now we now in which version they
     removed it.
+  * Call dh_apparmor.  Add build-depends on dh-apparmor.  (Closes: #824767)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 30 Apr 2016 13:55:22 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 19 May 2016 20:44:08 +0200
 
 ntp (1:4.2.8p7+dfsg-3) unstable; urgency=medium
 
