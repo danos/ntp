@@ -44,6 +44,9 @@ override_dh_install:
 	install -D -m 0644 debian/apparmor-profile.tunable debian/ntp/etc/apparmor.d/tunables/ntpd
 	dh_link -pntp etc/apparmor.d/usr.sbin.ntpd etc/apparmor/init/network-interface-security/usr.sbin.ntpd
 
+	# install apport hook
+	install -D -m 644 debian/source_ntp.py debian/ntp/usr/share/apport/package-hooks/source_ntp.py
+
 	# Remove empty directory (/usr/libexec/)
 	find debian/tmp -type d -empty -delete
 
