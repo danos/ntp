@@ -9,19 +9,23 @@
 statsdir=$(cat /etc/ntp.conf | grep -v '^#' | sed -nr 's/^statsdir[[:space:]]+([^[:space:]]+).*$/\1/p')
 
 if [ -n "$statsdir" ] && [ -d "$statsdir" ]; then
-	# only keep a week's depth of these
-	find "$statsdir" -type f -mtime +7 -exec rm {} \;
+	# only keep a week's depth of these. Delete only files exactly
+	# within the directory and do not descend into subdirectories
+	# to avoid security risks on platforms where find is not using
+	# fts-library.
+	find "$statsdir" -maxdepth 1 -type f -mtime +7 -delete
 
-	# compress whatever is left to save space
-	cd "$statsdir"
-	ls *stats.???????? > /dev/null 2>&1
+	# compress whatever is left to save space but make sure to really
+	# do it only in the expected directory.
+	cd "$statsdir" || exit 1
+	ls -d -- *stats.???????? > /dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		# Note that gzip won't compress the file names that
 		# are hard links to the live/current files, so this
 		# compresses yesterday and previous, leaving the live
 		# log alone.  We supress the warnings gzip issues
 		# about not compressing the linked file.
-		gzip --best --quiet *stats.???????? 
+		gzip --best --quiet -- *stats.????????
 		return=$?
 		case $return in
 		    2)

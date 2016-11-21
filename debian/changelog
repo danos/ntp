@@ -1,3 +1,11 @@
+ntp (1:4.2.8p9+dfsg-2) unstable; urgency=medium
+
+  * CVE-2016-0727: NTP statsdir cleanup cronjob insecure (Closes: #839998)
+    Patch by Salvatore Bonaccorso <carnil@debian.org>. Patch was dropped
+    in 1:4.2.8p9+dfsg-1.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 21 Nov 2016 20:09:17 +0100
+
 ntp (1:4.2.8p9+dfsg-1) unstable; urgency=medium
 
   * New usptream version
