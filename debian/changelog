@@ -12,6 +12,8 @@ ntp (1:4.2.8p9+dfsg-1) unstable; urgency=medium
     - Fix CVE-2016-7429
     - Fix CVE-2016-7426
     - Fix CVE-2016-7433
+  * Update watch for new version specific URL. Patch from 
+    Nicholas Luedtke <nicholas.luedtke@hpe.com> (Closes: #823269)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 21 Nov 2016 18:39:02 +0100
 
