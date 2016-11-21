@@ -22,8 +22,8 @@ if [ -r /etc/default/ntp ]; then
 	. /etc/default/ntp
 fi
 
-if [ -e /var/lib/ntp/ntp.conf.dhcp ]; then
-	NTPD_OPTS="$NTPD_OPTS -c /var/lib/ntp/ntp.conf.dhcp"
+if [ -e /run/ntp.conf.dhcp ]; then
+	NTPD_OPTS="$NTPD_OPTS -c /run/ntp.conf.dhcp"
 fi
 
 

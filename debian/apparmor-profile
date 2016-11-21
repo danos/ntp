@@ -45,7 +45,7 @@
   /etc/ntp.conf.dhcp r,
   /etc/ntpd.conf r,
   /etc/ntpd.conf.tmp r,
-  /var/lib/ntp/ntp.conf.dhcp r,
+  /run/ntp.conf.dhcp r,
 
   /etc/ntp.keys r,
   /etc/ntp/** r,

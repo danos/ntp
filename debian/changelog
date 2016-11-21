@@ -16,8 +16,9 @@ ntp (1:4.2.8p9+dfsg-1) unstable; urgency=medium
     Nicholas Luedtke <nicholas.luedtke@hpe.com> (Closes: #823269)
   * Make ntpdate-debian use the DHCP servers. Patch from 
     Christian Ehrhardt <christian.ehrhardt@canonical.com> (Closes: #617965)
+  * Move dhcp temporary files from /var/lib to /run. (Closes: #600661)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Mon, 21 Nov 2016 18:57:29 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 21 Nov 2016 19:14:07 +0100
 
 ntp (1:4.2.8p8+dfsg-1) unstable; urgency=high
 
