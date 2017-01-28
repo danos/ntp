@@ -1,3 +1,10 @@
+ntp (1:4.2.8p9+dfsg-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Force program locations to use 'legacy' defaults (Closes: #851803)
+
+ -- Daniel Silverstone <dsilvers@digital-scurf.org>  Sat, 28 Jan 2017 11:58:18 +0000
+
 ntp (1:4.2.8p9+dfsg-2) unstable; urgency=medium
 
   * CVE-2016-0727: NTP statsdir cleanup cronjob insecure (Closes: #839998)
