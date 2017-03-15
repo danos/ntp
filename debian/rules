@@ -8,14 +8,15 @@ CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) -D_GNU_SOURCE
 CFLAGS   = $(shell dpkg-buildflags --get CFLAGS) -fno-strict-aliasing
 LDFLAGS  = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 
-config.status:
-	dh_testdir
+%:
+	dh $@
+
+override_dh_auto_configure:
 ifeq (hurd, $(DEB_HOST_ARCH_OS))
 	# hurd does not provided the system calls needed for ntpd to work.
 	exit 1
 endif
-	dh_autoreconf
-	./configure CFLAGS='$(CFLAGS)' CPPFLAGS='$(CPPFLAGS)' LDFLAGS='$(LDFLAGS)' \
+	dh_auto_configure -- CFLAGS='$(CFLAGS)' CPPFLAGS='$(CPPFLAGS)' LDFLAGS='$(LDFLAGS)' \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--host=$(DEB_HOST_GNU_TYPE) \
 		--prefix=/usr \
@@ -30,31 +31,7 @@ endif
 		--with-locfile=legacy \
 		--with-openssl-libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
-build: build-arch build-indep
-build-arch: build-stamp
-build-indep: build-stamp
-build-stamp: config.status
-	dh_testdir
-	$(MAKE)
-	touch $@
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp 
-	[ ! -f Makefile ] || $(MAKE) -k distclean
-	dh_autoreconf_clean
-	rm -f Makefile sntp/Makefile
-	dh_clean
-
-install: build-stamp
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
-
+override_dh_install:
 	# move the administrator programs from /usr/bin to /usr/sbin
 	for file in ntpdate ntp-wait ntpd ntptime ntp-keygen; do \
 		mv debian/tmp/usr/bin/$$file debian/tmp/usr/sbin/$$file || exit; \
@@ -84,47 +61,12 @@ install: build-stamp
 
 	dh_install
 
-binary-indep: build install
-	dh_testdir -i
-	dh_testroot -i
-	dh_installdocs -i
 	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/hints/solaris*
-	dh_installexamples -i
-	dh_installman -i
-	dh_installcron -i
-	dh_installlogcheck -i
-	dh_installchangelogs -i
-	dh_installifupdown -i
-	dh_perl -i
-	dh_compress -i
-	dh_fixperms -i
-	dh_installdeb -i
-	dh_gencontrol -i
-	dh_md5sums -i
-	dh_builddeb -i
 
-binary-arch: build install
-	dh_testdir -a
-	dh_testroot -a
-	dh_installdocs -a
-	dh_installexamples -a
-	dh_installman -a
-	dh_installinit -pntp --error-handler=installinit_error
-	dh_installinit -pntpdate
+override_dh_installinit:
+	dh_installinit -pntp --error-handler=installinit_error --no-restart-after-upgrade
+	dh_installinit -pntpdate --no-restart-after-upgrade
 	dh_apparmor --profile-name=usr.sbin.ntpd -pntp
-	dh_installcron -a
-	dh_installlogcheck -a
-	dh_installchangelogs -a
-	dh_installifupdown -a
-	dh_perl -a
-	dh_strip -a
-	dh_compress -a
-	dh_fixperms -a
-	dh_installdeb -a
-	dh_shlibdeps -a
-	dh_gencontrol -a
-	dh_md5sums -a
-	dh_builddeb -a
 
-binary: binary-indep binary-arch
-.PHONY: build build-arch build-indep clean binary-indep binary-arch binary install
+
+override_dh_auto_test:
