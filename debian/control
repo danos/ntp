@@ -7,8 +7,8 @@ Build-Depends: dh-autoreconf, debhelper (>= 6), libedit-dev, libcap2-dev [linux-
 Build-Conflicts: libavahi-compat-libdnssd-dev, libwww-dev, libwww-ssl-dev
 Standards-Version: 3.9.5
 Homepage: http://support.ntp.org/
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-ntp/ntp/trunk/
-Vcs-Svn: svn://anonscm.debian.org/pkg-ntp/ntp/trunk/
+Vcs-Browser: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
+Vcs-Git: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
 
 Package: ntp
 Architecture: any
