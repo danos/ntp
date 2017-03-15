@@ -53,13 +53,19 @@ override_dh_install:
 	install -D -m 0644 debian/apparmor-profile.tunable debian/ntp/etc/apparmor.d/tunables/ntpd
 	dh_link -pntp etc/apparmor.d/usr.sbin.ntpd etc/apparmor/init/network-interface-security/usr.sbin.ntpd
 
-	# remove upstream man pages, which are currently not as nice as ours / ntpsnmpd we don't want
-	rm $(addprefix debian/tmp/usr/share/man/man1/,ntpd.1 ntpdc.1 ntp-keygen.1 ntpq.1)
+	# move upstream manpages to the locations used before 4.2.8p9+dfsg-2.1
+	mkdir -p debian/tmp/usr/share/man/man8/
+	mv debian/tmp/usr/share/man/man1/ntp-keygen.1 debian/tmp/usr/share/man/man8/ntp-keygen.8
+	mv debian/tmp/usr/share/man/man1/ntp-wait.1 debian/tmp/usr/share/man/man8/ntp-wait.8
+	mv debian/tmp/usr/share/man/man1/ntpd.1 debian/tmp/usr/share/man/man8/ntpd.8
+
+	# drop documentation for programs not shipped in Debian
+	rm debian/tmp/usr/share/doc/sntp/sntp.html
 
 	# Remove empty directory (/usr/libexec/)
 	find debian/tmp -type d -empty -delete
 
-	dh_install
+	dh_install --fail-missing
 
 	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/hints/solaris*
 
