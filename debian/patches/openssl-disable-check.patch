@@ -4,21 +4,24 @@
 -- Steve Langasek <vorlon@debian.org>  Sun, 21 Oct 2007 00:58:07 -0700
  
 unchanged:
-Index: ntp-4.2.8p9+dfsg/libntp/ssl_init.c
+Index: ntp-4.2.8p10+dfsg/libntp/ssl_init.c
 ===================================================================
---- ntp-4.2.8p9+dfsg.orig/libntp/ssl_init.c
-+++ ntp-4.2.8p9+dfsg/libntp/ssl_init.c
-@@ -52,15 +52,6 @@ atexit_ssl_cleanup(void)
+--- ntp-4.2.8p10+dfsg.orig/libntp/ssl_init.c
++++ ntp-4.2.8p10+dfsg/libntp/ssl_init.c
+@@ -62,18 +62,6 @@ ssl_init(void)
  void
  ssl_check_version(void)
  {
--	if ((SSLeay() ^ OPENSSL_VERSION_NUMBER) & ~0xff0L) {
+-	u_long	v;
+-	
+-	v = OpenSSL_version_num();
+-	if ((v ^ OPENSSL_VERSION_NUMBER) & ~0xff0L) {
 -		msyslog(LOG_WARNING,
 -		    "OpenSSL version mismatch. Built against %lx, you have %lx",
--		    (u_long)OPENSSL_VERSION_NUMBER, SSLeay());
+-		    (u_long)OPENSSL_VERSION_NUMBER, v);
 -		fprintf(stderr,
 -		    "OpenSSL version mismatch. Built against %lx, you have %lx\n",
--		    (u_long)OPENSSL_VERSION_NUMBER, SSLeay());
+-		    (u_long)OPENSSL_VERSION_NUMBER, v);
 -	}
 -
  	INIT_SSL();
