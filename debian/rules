@@ -22,7 +22,6 @@ endif
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
 		--disable-debugging --sysconfdir=/var/lib/ntp \
-		--with-sntp=no \
 		--with-lineeditlibs=edit \
 		--without-ntpsnmpd \
 		--disable-local-libopts \
@@ -33,7 +32,7 @@ endif
 
 override_dh_install:
 	# move the administrator programs from /usr/bin to /usr/sbin
-	for file in ntpdate ntp-wait ntpd ntptime ntp-keygen; do \
+	for file in ntpdate ntp-wait ntpd ntptime ntp-keygen sntp; do \
 		mv debian/tmp/usr/bin/$$file debian/tmp/usr/sbin/$$file || exit; \
 	done
 
@@ -58,9 +57,6 @@ override_dh_install:
 	mv debian/tmp/usr/share/man/man1/ntp-keygen.1 debian/tmp/usr/share/man/man8/ntp-keygen.8
 	mv debian/tmp/usr/share/man/man1/ntp-wait.1 debian/tmp/usr/share/man/man8/ntp-wait.8
 	mv debian/tmp/usr/share/man/man1/ntpd.1 debian/tmp/usr/share/man/man8/ntpd.8
-
-	# drop documentation for programs not shipped in Debian
-	rm debian/tmp/usr/share/doc/sntp/sntp.html
 
 	# Remove empty directory (/usr/libexec/)
 	find debian/tmp -type d -empty -delete
