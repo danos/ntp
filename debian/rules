@@ -21,7 +21,7 @@ endif
 		--host=$(DEB_HOST_GNU_TYPE) \
 		--prefix=/usr \
 		--enable-all-clocks --enable-parse-clocks --enable-SHM \
-		--disable-debugging --sysconfdir=/var/lib/ntp \
+		--enable-debugging --sysconfdir=/var/lib/ntp \
 		--with-lineeditlibs=edit \
 		--without-ntpsnmpd \
 		--disable-local-libopts \
