@@ -1,3 +1,15 @@
+ntp (1:4.2.8p10+dfsg-2+exp1) experimental; urgency=medium
+
+  [ Bernhard Schmidt ]
+  * Update to debhelper sequencer, compat level 10
+  * Build ntp reproducibly.
+    Thanks to Reiner Herrmann (Closes: #828989)
+  * Install upstream manpages where available
+    (Closes: #794182, #806645, #803709, #805325)
+  * Build sntp (Closes: #793837)
+
+ -- Bernhard Schmidt <berni@debian.org>  Sun, 02 Apr 2017 17:46:10 +0200
+
 ntp (1:4.2.8p10+dfsg-2) unstable; urgency=medium
 
   * Support pool statement in ntpdate-debian (Closes: #854432, #823120)
