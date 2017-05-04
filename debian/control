@@ -12,7 +12,7 @@ Vcs-Git: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
 
 Package: ntp
 Architecture: any
-Depends: adduser, lsb-base (>= 3.2-13), netbase, ${misc:Depends}, ${shlibs:Depends}
+Depends: adduser, lsb-base (>= 3.2-13), netbase, tzdata, ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: dpkg (>= 1.15.7.2)
 Recommends: ${perl:Depends}
 Suggests: ntp-doc
