@@ -1,3 +1,11 @@
+ntp (1:4.2.8p10+dfsg-2) unstable; urgency=medium
+
+  * Support pool statement in ntpdate-debian (Closes: #854432, #823120)
+  * Point Vcs-* to pkg-ntp git repository
+  * Add Bernhard Schmidt to Uploaders
+
+ -- Bernhard Schmidt <berni@debian.org>  Sun, 07 May 2017 14:49:22 +0200
+
 ntp (1:4.2.8p10+dfsg-1) unstable; urgency=high
 
   * New upstream version
