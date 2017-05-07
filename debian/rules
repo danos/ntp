@@ -27,18 +27,10 @@ endif
 		--disable-local-libopts \
 		--enable-ntp-signd \
 		--disable-dependency-tracking \
-		--with-locfile=legacy \
+		--with-locfile=debian \
 		--with-openssl-libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
 override_dh_install:
-	# move the administrator programs from /usr/bin to /usr/sbin
-	for file in ntpdate ntp-wait ntpd ntptime ntp-keygen sntp; do \
-		mv debian/tmp/usr/bin/$$file debian/tmp/usr/sbin/$$file || exit; \
-	done
-
-	# don't install tickadj
-	rm debian/tmp/usr/bin/tickadj
-
 	install -D -m 0755 scripts/ntpsweep/ntpsweep debian/ntp/usr/bin/ntpsweep
 	install -D -m 0644 debian/ntp.dhcp debian/ntp/etc/dhcp/dhclient-exit-hooks.d/ntp
 	install -D -m 0755 debian/ntp.networkmanager debian/ntp/etc/NetworkManager/dispatcher.d/ntp
@@ -51,12 +43,6 @@ override_dh_install:
 	install -D -m 0644 debian/apparmor-profile debian/ntp/etc/apparmor.d/usr.sbin.ntpd
 	install -D -m 0644 debian/apparmor-profile.tunable debian/ntp/etc/apparmor.d/tunables/ntpd
 	dh_link -pntp etc/apparmor.d/usr.sbin.ntpd etc/apparmor/init/network-interface-security/usr.sbin.ntpd
-
-	# move upstream manpages to the locations used before 4.2.8p9+dfsg-2.1
-	mkdir -p debian/tmp/usr/share/man/man8/
-	mv debian/tmp/usr/share/man/man1/ntp-keygen.1 debian/tmp/usr/share/man/man8/ntp-keygen.8
-	mv debian/tmp/usr/share/man/man1/ntp-wait.1 debian/tmp/usr/share/man/man8/ntp-wait.8
-	mv debian/tmp/usr/share/man/man1/ntpd.1 debian/tmp/usr/share/man/man8/ntpd.8
 
 	# Remove empty directory (/usr/libexec/)
 	find debian/tmp -type d -empty -delete

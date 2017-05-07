@@ -7,3 +7,4 @@ openssl-disable-check.patch
 libedit.patch
 reproducible-build.patch
 sntp-sysexits.patch
+debian-locfile.patch
