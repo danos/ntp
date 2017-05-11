@@ -1,3 +1,9 @@
+ntp (1:4.2.8p10+dfsg-3+exp2) experimental; urgency=medium
+
+  * Add systemd unit (Closes: #635752)
+
+ -- Bernhard Schmidt <berni@debian.org>  Thu, 11 May 2017 12:52:16 +0200
+
 ntp (1:4.2.8p10+dfsg-3+exp1) experimental; urgency=medium
 
   [ Bernhard Schmidt ]
