@@ -22,3 +22,4 @@ debian/tmp/usr/share/doc/ntp/ntptrace.html
 debian/tmp/usr/share/doc/sntp/sntp.html
 debian/tmp/usr/share/doc/ntp/update-leap.html
 debian/tmp/usr/share/man/man*/*
+debian/ntp-systemd-wrapper usr/lib/ntp
