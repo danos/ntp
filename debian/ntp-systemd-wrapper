@@ -1,5 +1,8 @@
 #!/bin/sh
 
+DAEMON=/usr/sbin/ntpd
+PIDFILE=/var/run/ntpd.pid
+
 if [ -r /etc/default/ntp ]; then
         . /etc/default/ntp
 fi
@@ -14,5 +17,5 @@ if test "$(uname -s)" = "Linux"; then
         NTPD_OPTS="$NTPD_OPTS -u $UGID"
 fi
 
-exec /usr/sbin/ntpd -p $PIDFILE $NTPD_OPTS
+exec $DAEMON -p $PIDFILE $NTPD_OPTS
 
