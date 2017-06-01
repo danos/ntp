@@ -8,4 +8,3 @@ libedit.patch
 reproducible-build.patch
 sntp-sysexits.patch
 debian-locfile.patch
-sntp-kod-location.patch
