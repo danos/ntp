@@ -14,7 +14,7 @@ Package: ntp
 Architecture: any
 Depends: adduser, lsb-base (>= 3.2-13), netbase, tzdata, ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: dpkg (>= 1.15.7.2)
-Recommends: ${perl:Depends}
+Recommends: ${perl:Depends}, sntp
 Suggests: ntp-doc
 Breaks: dhcp3-client (<< 4.1.0-1), apparmor-profiles-extra (<< 1.8)
 Replaces: apparmor-profiles-extra (<< 1.8)
@@ -67,3 +67,18 @@ Description: Network Time Protocol documentation
  ntpdate).  Since there are no substantive man pages for ntp's
  programs and configuration files, this package is desirable for any
  setup beyond the simple default configuration.
+
+Package: sntp
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Breaks: ntp (<<1:4.2.8p10+dfsg-3+exp3)
+Replaces: ntp (<<1:4.2.8p10+dfsg-3+exp3)
+Description: Network Time Protocol - sntp client
+ NTP, the Network Time Protocol, is used to keep computer clocks
+ accurate by synchronizing them over the Internet or a local network,
+ or by following an accurate hardware receiver that interprets GPS,
+ DCF-77, NIST or similar time signals.
+ .
+ sntp can be used as an SNTP client to query a NTP or SNTP server and
+ either display the time or set the local system's time. It is not
+ sufficient, however, for maintaining an accurate clock in the long run.

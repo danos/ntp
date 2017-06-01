@@ -7,7 +7,6 @@ debian/tmp/usr/sbin/ntp-keygen
 debian/tmp/usr/sbin/ntp-wait
 debian/tmp/usr/sbin/ntpd
 debian/tmp/usr/sbin/ntptime
-debian/tmp/usr/sbin/sntp
 debian/tmp/usr/share/ntp/lib/NTP/Util.pm
 debian/tmp/usr/share/doc/ntp/ntp-keygen.html
 debian/tmp/usr/share/doc/ntp/ntp-wait.html
@@ -19,7 +18,6 @@ debian/tmp/usr/share/doc/ntp/ntpq.html
 debian/tmp/usr/share/doc/ntp/ntpsnmpd.html
 debian/tmp/usr/share/doc/ntp/ntpsweep.html
 debian/tmp/usr/share/doc/ntp/ntptrace.html
-debian/tmp/usr/share/doc/sntp/sntp.html
 debian/tmp/usr/share/doc/ntp/update-leap.html
 debian/tmp/usr/share/man/man*/*
 debian/ntp-systemd-wrapper usr/lib/ntp
