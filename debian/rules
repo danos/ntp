@@ -52,6 +52,10 @@ override_dh_install:
 
 	dh_install --fail-missing
 
+	# move sntp manpage to sntp binary package
+	mkdir -p debian/sntp/usr/share/man/man1/
+	mv debian/ntp/usr/share/man/man1/sntp.1 debian/sntp/usr/share/man/man1/
+
 	rm -f debian/ntp-doc/usr/share/doc/ntp-doc/html/hints/solaris*
 
 override_dh_installinit:
