@@ -3,18 +3,18 @@ Section: net
 Priority: optional
 Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Peter Eisentraut <petere@debian.org>, Kurt Roeckx <kurt@roeckx.be>, Bernhard Schmidt <berni@debian.org>
-Build-Depends: dh-autoreconf, debhelper (>= 6), libedit-dev, libcap2-dev [linux-any], libssl-dev (>= 1.0.0e-1), autogen (>= 1:5.11), libopts25-dev (>= 1:5.11), pps-tools [linux-any], dh-apparmor
+Build-Depends: debhelper (>= 10), libedit-dev, libcap2-dev [linux-any], libssl-dev (>= 1.0.0e-1), autogen (>= 1:5.11), libopts25-dev (>= 1:5.11), pps-tools [linux-any], dh-apparmor
 Build-Conflicts: libavahi-compat-libdnssd-dev, libwww-dev, libwww-ssl-dev
-Standards-Version: 3.9.5
+Standards-Version: 3.9.8
 Homepage: http://support.ntp.org/
 Vcs-Browser: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
 Vcs-Git: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
 
 Package: ntp
 Architecture: any
-Depends: adduser, lsb-base (>= 3.2-13), netbase, ${misc:Depends}, ${shlibs:Depends}
+Depends: adduser, lsb-base (>= 3.2-13), netbase, tzdata, ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: dpkg (>= 1.15.7.2)
-Recommends: ${perl:Depends}
+Recommends: ${perl:Depends}, sntp
 Suggests: ntp-doc
 Breaks: dhcp3-client (<< 4.1.0-1), apparmor-profiles-extra (<< 1.8)
 Replaces: apparmor-profiles-extra (<< 1.8)
@@ -57,6 +57,7 @@ Package: ntp-doc
 Architecture: all
 Depends: ${misc:Depends}
 Section: doc
+Multi-Arch: foreign
 Description: Network Time Protocol documentation
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
@@ -67,3 +68,18 @@ Description: Network Time Protocol documentation
  ntpdate).  Since there are no substantive man pages for ntp's
  programs and configuration files, this package is desirable for any
  setup beyond the simple default configuration.
+
+Package: sntp
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Breaks: ntp (<<1:4.2.8p10+dfsg-3+exp3)
+Replaces: ntp (<<1:4.2.8p10+dfsg-3+exp3)
+Description: Network Time Protocol - sntp client
+ NTP, the Network Time Protocol, is used to keep computer clocks
+ accurate by synchronizing them over the Internet or a local network,
+ or by following an accurate hardware receiver that interprets GPS,
+ DCF-77, NIST or similar time signals.
+ .
+ sntp can be used as an SNTP client to query a NTP or SNTP server and
+ either display the time or set the local system's time. It is not
+ sufficient, however, for maintaining an accurate clock in the long run.

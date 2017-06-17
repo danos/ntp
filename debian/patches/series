@@ -5,3 +5,6 @@ ntpdate-ipv6.patch
 ntpd-linux-caps-runtime.patch
 openssl-disable-check.patch
 libedit.patch
+reproducible-build.patch
+sntp-sysexits.patch
+debian-locfile.patch
