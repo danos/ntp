@@ -1,3 +1,33 @@
+ntp (1:4.2.8p10+dfsg-4) unstable; urgency=medium
+
+  Upload changes tested in experimental to unstable
+
+  * Build system/packaging changes
+    - Update to debhelper sequencer, compat level 10
+    - Bump Standards Version, no changes necessary
+    - Build ntp reproducibly.
+      Thanks to Reiner Herrmann (Closes: #828989)
+    - Use 'debian' location file (Closes: #852946)
+    - Install upstream manpages where available
+      (Closes: #794182, #806645, #803709, #805325)
+    - Reenable Debugging (Closes: #643954)
+  * Build sntp (Closes: #793837)
+    - Split sntp into new binary package
+  * Add systemd unit (Closes: #635752)
+  + Documentation fixes
+    - Fix spelling error in cron.daily/ntp (Closes: #739942)
+    - Fix outdated path/package name in README.Debian (Closes: #806647)
+  * Use tzdata leapfile in default configuration.
+    Thanks to Edmund Grimley Evans (Closes: #858548)
+    - add trigger to restart ntp on leapfile updates
+  * Changes from Ubuntu, thanks to Christian Ehrhardt
+    - apparmor: Allow access to winbindd pipe (Closes: #861727)
+    - add apport hook (Closes: #861730)
+  * Set --home in adduser to resolve lintian error
+  * mark ntp-doc Multi-Arch: foreign
+
+ -- Bernhard Schmidt <berni@debian.org>  Sat, 17 Jun 2017 21:51:57 +0200
+
 ntp (1:4.2.8p10+dfsg-3) unstable; urgency=medium
 
   * No-change upload to supersede accidental upload of experimental
