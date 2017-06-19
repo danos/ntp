@@ -10,7 +10,7 @@ ntp (1:4.2.8p10+dfsg-4) unstable; urgency=medium
     - Use 'debian' location file (Closes: #852946)
     - Install upstream manpages where available
       (Closes: #794182, #806645, #803709, #805325)
-    - Reenable Debugging (Closes: #643954)
+    - Re-enable Debugging (Closes: #643954)
   * Build sntp (Closes: #793837)
     - Split sntp into new binary package
   * Add systemd unit (Closes: #635752)
