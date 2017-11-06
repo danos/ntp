@@ -13,10 +13,9 @@ Vcs-Git: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
 Package: ntp
 Architecture: any
 Depends: adduser, lsb-base (>= 3.2-13), netbase, tzdata, ${misc:Depends}, ${shlibs:Depends}
-Pre-Depends: dpkg (>= 1.15.7.2)
 Recommends: ${perl:Depends}, sntp
 Suggests: ntp-doc
-Breaks: dhcp3-client (<< 4.1.0-1), apparmor-profiles-extra (<< 1.8)
+Breaks: apparmor-profiles-extra (<< 1.8)
 Replaces: apparmor-profiles-extra (<< 1.8)
 Description: Network Time Protocol daemon and utility programs
  NTP, the Network Time Protocol, is used to keep computer clocks
@@ -34,24 +33,17 @@ Description: Network Time Protocol daemon and utility programs
 
 Package: ntpdate
 Architecture: any
-Depends: netbase, ${misc:Depends}, ${shlibs:Depends}
-Pre-Depends: dpkg (>= 1.15.7.2)
-Breaks: dhcp3-client (<< 4.1.0-1)
-Description: client for setting system time from NTP servers
+Depends: netbase, sntp-hooks, ${misc:Depends}, ${shlibs:Depends}
+Description: client for setting system time from NTP servers (deprecated)
  NTP, the Network Time Protocol, is used to keep computer clocks
  accurate by synchronizing them over the Internet or a local network,
  or by following an accurate hardware receiver that interprets GPS,
  DCF-77, NIST or similar time signals.
  .
- ntpdate is a simple NTP client that sets a system's clock to match
- the time obtained by communicating with one or more NTP servers.  It
- is not sufficient, however, for maintaining an accurate clock in the
- long run.  ntpdate by itself is useful for occasionally setting the
- time on machines that do not have full-time network access, such as
- laptops.
+ ntpdate is deprecated. Please use sntp instead.
  .
- If the full NTP daemon from the package "ntp" is installed, then
- ntpdate is not necessary.
+ The ifupdown hooks previously included in the ntpdate package have been
+ migrated to the package sntp-hooks.
 
 Package: ntp-doc
 Architecture: all
@@ -83,3 +75,23 @@ Description: Network Time Protocol - sntp client
  sntp can be used as an SNTP client to query a NTP or SNTP server and
  either display the time or set the local system's time. It is not
  sufficient, however, for maintaining an accurate clock in the long run.
+
+Package: sntp-hooks
+Architecture: all
+Depends: sntp
+Description: Network Time Protocol - hooks for sntp
+ NTP, the Network Time Protocol, is used to keep computer clocks
+ accurate by synchronizing them over the Internet or a local network,
+ or by following an accurate hardware receiver that interprets GPS,
+ DCF-77, NIST or similar time signals.
+ .
+ sntp can be used as an SNTP client to query a NTP or SNTP server and
+ either display the time or set the local system's time. It is not
+ sufficient, however, for maintaining an accurate clock in the long run.
+ .
+ This package contains hooks to automatically sync the time _once_
+ when a network interface comes up or dhclient obtains a new DHCP lease.
+ It is meant to be a replacement for the legacy "ntpdate" package.
+ .
+ If the full NTP daemon from the package "ntp" is installed, then
+ sntp-ifupdown is not necessary.
