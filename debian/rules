@@ -9,13 +9,19 @@ CFLAGS   = $(shell dpkg-buildflags --get CFLAGS) -fno-strict-aliasing
 LDFLAGS  = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 
 %:
-	dh $@
+	# autoreconf is already called by ./bootstrap
+	dh $@ --without autoreconf
 
 override_dh_auto_configure:
 ifeq (hurd, $(DEB_HOST_ARCH_OS))
 	# hurd does not provided the system calls needed for ntpd to work.
 	exit 1
 endif
+	# This is necessary for the changes in sntp-kod-location.patch to
+	# take effect
+	rm sntp/sntp-opts.c
+	./bootstrap
+
 	dh_auto_configure -- CFLAGS='$(CFLAGS)' CPPFLAGS='$(CPPFLAGS)' LDFLAGS='$(LDFLAGS)' \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--host=$(DEB_HOST_GNU_TYPE) \
