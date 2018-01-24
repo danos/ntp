@@ -9,3 +9,4 @@ reproducible-build.patch
 sntp-sysexits.patch
 debian-locfile.patch
 sntp-kod-location.patch
+ntpd-increase-stack-size.patch
