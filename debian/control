@@ -7,8 +7,8 @@ Build-Depends: debhelper (>= 10), libedit-dev, libcap2-dev [linux-any], libssl-d
 Build-Conflicts: libavahi-compat-libdnssd-dev, libwww-dev, libwww-ssl-dev
 Standards-Version: 3.9.8
 Homepage: http://support.ntp.org/
-Vcs-Browser: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
-Vcs-Git: https://anonscm.debian.org/git/pkg-ntp/pkg-ntp.git/
+Vcs-Browser: https://salsa.debian.org/pkg-ntp-team/ntp
+Vcs-Git: https://salsa.debian.org/pkg-ntp-team/ntp.git
 
 Package: ntp
 Architecture: any
