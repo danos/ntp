@@ -119,3 +119,13 @@ works with the default installation, and changes in your configuration may
 require changes to the installed apparmor profile. Please see
 https://wiki.ubuntu.com/DebuggingApparmor before filing a bug against this
 software.
+
+If your ntpd configuration needs access to a device (for example for a local
+DCF clock) you may need to add this device to
+
+	/etc/apparmor.d/tunables/ntpd
+
+Afterwards you need to reload the AppArmor profile for the changes to take
+effect by executing
+
+	# apparmor_parser -r /etc/apparmor.d/usr.sbin.ntpd
