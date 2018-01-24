@@ -1,3 +1,20 @@
+ntp (1:4.2.8p10+dfsg-6) unstable; urgency=medium
+
+  * Make sntp KoD path FHS-compliant.
+    Thanks to Aaron Smith (Closes: #863873)
+  * Drop historic Breaks/Pre-Depends
+  * Drop historic conffile handling from pre-jessie
+  * Adjust ntpdate description stating that it is deprecated
+  * Move Vcs-* to salsa
+  * Bump Standards-Version to 4.1.3.0, no changes necessary
+  * Cherry-pick patch from upstream to increase stack size.
+    Thanks to Frederic Endner-Dühr for testing (Closes: #887385)
+  * Temporarily add ntpdate lock for systemd wrapper.
+    Thanks to Christian Ehrhardt (Closes: #874540)
+  * Add note about AppArmor tunable in README.Debian (Closes: #883949)
+
+ -- Bernhard Schmidt <berni@debian.org>  Wed, 24 Jan 2018 22:42:13 +0100
+
 ntp (1:4.2.8p10+dfsg-5) unstable; urgency=medium
 
   * Fix arch:all FTBFS due to improper moving of sntp manpage (Closes: #865227)
