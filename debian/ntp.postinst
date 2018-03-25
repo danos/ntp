@@ -21,7 +21,7 @@ fi
 if [ "$1" = "configure" ]; then
 	addgroup --system --quiet ntp
 	adduser --system --quiet --ingroup ntp --no-create-home --home /nonexistent ntp
-	chown -R ntp:ntp /var/lib/ntp /var/log/ntpstats
+	chown ntp:ntp /var/lib/ntp /var/log/ntpstats
 
 	# Bug#863857, the experimental version shipped a broken systemd wrapper
 	# writing a bogus PIDFILE on the root partition
