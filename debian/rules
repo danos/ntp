@@ -31,6 +31,7 @@ endif
 		--with-lineeditlibs=edit \
 		--without-ntpsnmpd \
 		--disable-local-libopts \
+		--disable-local-libevent \
 		--enable-ntp-signd \
 		--disable-dependency-tracking \
 		--with-locfile=debian \
