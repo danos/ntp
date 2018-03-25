@@ -1,3 +1,30 @@
+ntp (1:4.2.8p11+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 4.2.8p11+dfsg (Closes: #851096)
+    - Refresh patches
+    - Drop ntpd-increase-stack-size included upstream
+    - CVE-2018-7185: Unauthenticated packet can reset authenticated
+      interleaved association (LOW/MED)
+    - CVE-2018-7184: Interleaved symmetric mode cannot recover from bad state
+      (LOW/MED)
+    - CVE-2018-7170 / CVE-2016-1549: Provide a way to prevent authenticated
+      symmetric passive peering (LOW)
+    - CVE-2018-7183: decodearr() can write beyond its 'buf' limits (Medium)
+    - CVE-2018-7182: ctl_getitem(): buffer read overrun leads to undefined
+      behavior and information leak (Info/Medium)
+    - CVE-2016-1549: Sybil vulnerability: ephemeral association attack
+      (mitigated in 4.2.8p7)
+  * convert dfsg.sh into mk-origtargz script
+  * Run wrap-and-sort
+  * Sync AppArmor profile changes from Ubuntu, including a fix for a
+    harmless AppArmor denial in /usr/local (Closes: #883022)
+  * Don't chown in postinst recursively.
+    Thanks to Daniel Kahn Gillmor (Closes: #889488)
+  * Build sntp against system libevent
+  * Drop versioned build-deps already fulfilled by oldoldstable
+
+ -- Bernhard Schmidt <berni@debian.org>  Sun, 25 Mar 2018 23:52:51 +0200
+
 ntp (1:4.2.8p10+dfsg-6) unstable; urgency=medium
 
   * Make sntp KoD path FHS-compliant.
