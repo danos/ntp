@@ -4,16 +4,14 @@
 -- Steve Langasek <vorlon@debian.org>  Sun, 21 Oct 2007 00:58:07 -0700
  
 unchanged:
-Index: ntp-4.2.8p10+dfsg/libntp/ssl_init.c
-===================================================================
---- ntp-4.2.8p10+dfsg.orig/libntp/ssl_init.c
-+++ ntp-4.2.8p10+dfsg/libntp/ssl_init.c
-@@ -62,18 +62,6 @@ ssl_init(void)
+--- a/libntp/ssl_init.c
++++ b/libntp/ssl_init.c
+@@ -67,18 +67,6 @@
  void
  ssl_check_version(void)
  {
 -	u_long	v;
--	
+-
 -	v = OpenSSL_version_num();
 -	if ((v ^ OPENSSL_VERSION_NUMBER) & ~0xff0L) {
 -		msyslog(LOG_WARNING,
