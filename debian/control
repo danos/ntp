@@ -5,14 +5,14 @@ Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
 Uploaders: Peter Eisentraut <petere@debian.org>,
            Kurt Roeckx <kurt@roeckx.be>,
            Bernhard Schmidt <berni@debian.org>
-Build-Depends: autogen (>= 1:5.11),
+Build-Depends: autogen,
                debhelper (>= 10),
                dh-apparmor,
                libcap2-dev [linux-any],
                libedit-dev,
                libevent-dev,
-               libopts25-dev (>= 1:5.11),
-               libssl-dev (>= 1.0.0e-1),
+               libopts25-dev,
+               libssl-dev,
                pkg-config,
                pps-tools [linux-any]
 Build-Conflicts: libavahi-compat-libdnssd-dev, libwww-dev, libwww-ssl-dev
