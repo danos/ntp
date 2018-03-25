@@ -1,3 +1,4 @@
+debian/ntp-systemd-wrapper usr/lib/ntp
 debian/tmp/usr/bin/calc_tickadj
 debian/tmp/usr/bin/ntpdc
 debian/tmp/usr/bin/ntpq
@@ -7,7 +8,6 @@ debian/tmp/usr/sbin/ntp-keygen
 debian/tmp/usr/sbin/ntp-wait
 debian/tmp/usr/sbin/ntpd
 debian/tmp/usr/sbin/ntptime
-debian/tmp/usr/share/ntp/lib/NTP/Util.pm
 debian/tmp/usr/share/doc/ntp/ntp-keygen.html
 debian/tmp/usr/share/doc/ntp/ntp-wait.html
 debian/tmp/usr/share/doc/ntp/ntp.conf.html
@@ -29,4 +29,4 @@ debian/tmp/usr/share/man/man5/ntp.keys.5
 debian/tmp/usr/share/man/man8/ntp-keygen.8
 debian/tmp/usr/share/man/man8/ntp-wait.8
 debian/tmp/usr/share/man/man8/ntpd.8
-debian/ntp-systemd-wrapper usr/lib/ntp
+debian/tmp/usr/share/ntp/lib/NTP/Util.pm
