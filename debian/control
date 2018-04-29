@@ -2,8 +2,7 @@ Source: ntp
 Section: net
 Priority: optional
 Maintainer: Debian NTP Team <pkg-ntp-maintainers@lists.alioth.debian.org>
-Uploaders: Peter Eisentraut <petere@debian.org>,
-           Kurt Roeckx <kurt@roeckx.be>,
+Uploaders: Kurt Roeckx <kurt@roeckx.be>,
            Bernhard Schmidt <berni@debian.org>
 Build-Depends: autogen,
                debhelper (>= 10),
