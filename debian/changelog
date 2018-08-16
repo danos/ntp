@@ -1,8 +1,14 @@
-ntp (1:4.2.8p11+dfsg-2) UNRELEASED; urgency=medium
+ntp (1:4.2.8p12+dfsg-1) unstable; urgency=medium
 
+  [ Bernhard Schmidt ]
+  * New upstream version 4.2.8p12
+  * Update Maintainer address to ntp@packages.debian.org (Closes: #899940)
+  * Update ntpdate.8 from ntpdate.html (Closes: #476491, #515246)
+
+  [ Peter Eisentraut ]
   * Remove Peter Eisentraut from Uploaders
 
- -- Peter Eisentraut <petere@debian.org>  Sun, 29 Apr 2018 00:52:23 +0000
+ -- Bernhard Schmidt <berni@debian.org>  Thu, 16 Aug 2018 22:20:29 +0200
 
 ntp (1:4.2.8p11+dfsg-1) unstable; urgency=medium
 
