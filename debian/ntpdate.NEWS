@@ -1,0 +1,19 @@
+ntp (1:4.2.8p10+dfsg-4) unstable; urgency=medium
+
+  Historically the package ntpdate has included both /usr/bin/ntpdate (which is
+  the historic go-to program for one-shot NTP querying) and ifupdown hooks to
+  execute a one-shot NTP query on every interface configuration event.
+
+  The ifupdown hooks have introduced buggy behaviour by syncing too often
+  (on every ifup), too seldom (never again) and are likely to interfere with
+  other time-keeping measures on the same system including ntpd.
+
+  For the manual use, /usr/bin/ntpdate has been deprecated upstream and
+  replaced by /usr/bin/sntp (in the sntp binary package).
+
+  If your system does not absolutely depend on ntpdate behaviour it is 
+  recommended to purge ntpdate. For time synchronisation purpose please use
+  one of the many timekeeping daemons in Debian (ntp, systemd-timesyncd,
+  chrony).
+
+ -- Bernhard Schmidt <berni@debian.org>  Sat, 08 Sep 2018 01:03:52 +0200
