@@ -57,11 +57,6 @@ Description: client for setting system time from NTP servers (deprecated)
  .
  ntpdate is deprecated. Please use sntp instead for manual or scripted
  NTP queries/syncs.
- .
- Historically this package also includes hooks for ifupdown and dhclient.
- These will be migrated to sntp in the future. If the full NTP daemon from
- the package "ntp" is installed, this package is not necessary and may cause
- unwanted behaviour.
 
 Package: ntp-doc
 Architecture: all
