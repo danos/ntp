@@ -10,3 +10,4 @@ sntp-sysexits.patch
 debian-locfile.patch
 sntp-kod-location.patch
 #ntpd-increase-stack-size.patch
+disable-test-decodenetnum.patch

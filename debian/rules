@@ -66,6 +66,3 @@ override_dh_installinit:
 	dh_installinit -pntp --error-handler=installinit_error --no-restart-after-upgrade
 	dh_installinit -pntpdate --no-restart-after-upgrade
 	dh_apparmor --profile-name=usr.sbin.ntpd -pntp
-
-
-override_dh_auto_test:
