@@ -8,6 +8,7 @@ ntp (1:4.2.8p12+dfsg-2) unstable; urgency=low
   * Drop maintscript snippets for upgrading from versions prior to Jessie
   * Reenable unittest
     - disable always failing test-decodenetnum with a patch
+  * Set Rules-Requires-Root: no
 
  -- Bernhard Schmidt <berni@debian.org>  Thu, 13 Sep 2018 23:16:11 +0200
 
