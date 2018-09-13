@@ -1,3 +1,16 @@
+ntp (1:4.2.8p12+dfsg-2) unstable; urgency=low
+
+  * Drop ntpdate ifupdown hooks (Closes: #908286)
+    These have been a constant source of problems and one-shot syncs
+    are not a proper solution for timekeeping. See ntpdate.NEWS for
+    details
+  * Do not install /var/lib/ntpdate, not used anymore
+  * Drop maintscript snippets for upgrading from versions prior to Jessie
+  * Reenable unittest
+    - disable always failing test-decodenetnum with a patch
+
+ -- Bernhard Schmidt <berni@debian.org>  Thu, 13 Sep 2018 23:16:11 +0200
+
 ntp (1:4.2.8p12+dfsg-1) unstable; urgency=medium
 
   [ Bernhard Schmidt ]
