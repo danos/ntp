@@ -1,3 +1,10 @@
+ntp (1:4.2.8p12+dfsg-3) unstable; urgency=low
+
+  * Treat testsuite errors as non-fatal on some architectures
+    Fixes FTBFS on ppc64el, ia64, powerpc, ppc64
+
+ -- Bernhard Schmidt <berni@debian.org>  Fri, 14 Sep 2018 22:31:42 +0200
+
 ntp (1:4.2.8p12+dfsg-2) unstable; urgency=low
 
   * Drop ntpdate ifupdown hooks (Closes: #908286)
