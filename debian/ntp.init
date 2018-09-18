@@ -16,7 +16,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/usr/sbin/ntpd
 PIDFILE=/var/run/ntpd.pid
 
-test -x $DAEMON || exit 5
+test -x $DAEMON || exit 0
 
 if [ -r /etc/default/ntp ]; then
 	. /etc/default/ntp
