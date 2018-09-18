@@ -27,8 +27,6 @@ if [ -e /run/ntp.conf.dhcp ]; then
 fi
 
 
-LOCKFILE=/run/lock/ntpdate
-
 RUNASUSER=ntp
 UGID=$(getent passwd $RUNASUSER | cut -f 3,4 -d:) || true
 if test "$(uname -s)" = "Linux"; then
@@ -42,10 +40,7 @@ case $1 in
 			log_failure_msg "user \"$RUNASUSER\" does not exist"
 			exit 1
 		fi
-		(
-			flock -w 180 9
-			start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE $NTPD_OPTS
-		) 9>$LOCKFILE
+		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE $NTPD_OPTS
 		log_end_msg $?
   		;;
 	stop)
