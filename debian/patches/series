@@ -10,3 +10,4 @@ sntp-sysexits.patch
 debian-locfile.patch
 sntp-kod-location.patch
 disable-test-decodenetnum.patch
+CVE-2019-8936.patch
