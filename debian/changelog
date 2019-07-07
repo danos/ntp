@@ -1,12 +1,13 @@
-ntp (1:4.2.8p12+dfsg-4) unstable; urgency=medium
+ntp (1:4.2.8p13+dfsg-1) experimental; urgency=medium
 
-  * CVE-2019-8936: Crafted null dereference attack in authenticated
-    mode 6 packet (Closes: #924228)
-  * ntp: exit 0 from init script if daemon does not exist (Closes: #764546)
-  * Drop locking from ntp initscript/systemd-wrapper
-  * Only delete ntpd statistics files in cronjob (Closes: #772790)
+   * New upstream version 4.2.8p13+dfsg
+     - CVE-2019-8936: Crafted null dereference attack in authenticated
+       mode 6 packet (Closes: #924228)
+   * ntp: exit 0 from init script if daemon does not exist (Closes: #764546)
+   * Drop locking from ntp initscript/systemd-wrapper
+   * Only delete ntpd statistics files in cronjob (Closes: #772790)
 
- -- Bernhard Schmidt <berni@debian.org>  Thu, 21 Mar 2019 23:42:36 +0100
+ -- Bernhard Schmidt <berni@debian.org>  Thu, 21 Mar 2019 23:31:10 +0100
 
 ntp (1:4.2.8p12+dfsg-3) unstable; urgency=low
 
