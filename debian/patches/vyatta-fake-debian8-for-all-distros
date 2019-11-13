@@ -1,0 +1,11 @@
+--- a/sntp/scripts/cvo.sh
++++ b/sntp/scripts/cvo.sh
+@@ -33,7 +33,7 @@ case "$#" in
+ 	elif test -f /etc/debian_version
+ 	then
+ 	    set `cat /etc/debian_version`
+-	    CVO_OS=debian$1
++	    CVO_OS=debian8.6
+ 	    CVO_KOSVER=`uname -r`
+ 	elif test -f /etc/mandrake-release
+ 	then

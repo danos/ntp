@@ -1,0 +1,199 @@
+--- a/include/ntpd.h
++++ b/include/ntpd.h
+@@ -19,6 +19,7 @@
+ #include "ntp_control.h"
+ #include "ntp_intres.h"
+ #include "recvbuff.h"
++#include "ntp_request.h"
+ 
+ /*
+  * First half: ntpd types, functions, macros
+@@ -515,6 +516,9 @@ extern u_long	sys_received;		/* packets
+ extern u_long	sys_restricted;		/* access denied */
+ extern u_long	sys_stattime;		/* time since reset */
+ extern u_long	sys_tsrounding;		/* timestamp rounding errors */
++extern u_long	private_packets_sent;	/* private packets i.e. ntpdc -c iostat */
++extern u_long	private_packets_notsent;
++extern u_long	private_packets_received;
+ 
+ /* ntp_request.c */
+ extern keyid_t	info_auth_keyid;	/* keyid used to authenticate requests */
+--- a/ntpd/ntp_io.c
++++ b/ntpd/ntp_io.c
+@@ -165,6 +165,9 @@ volatile u_long packets_ignored;	/* pack
+ volatile u_long packets_received;	/* total number of packets received */
+ 	 u_long packets_sent;		/* total number of packets sent */
+ 	 u_long packets_notsent;	/* total number of packets which couldn't be sent */
++	 u_long	private_packets_sent;	/* Count private packets i.e. ntpdc -c iostat */
++	 u_long	private_packets_notsent;
++	 u_long	private_packets_received;
+ 
+ volatile u_long handler_calls;	/* number of calls to interrupt handler */
+ volatile u_long handler_pkts;	/* number of pkts received by handler */
+@@ -3111,6 +3114,18 @@ open_socket(
+ 	return fd;
+ }
+ 
++static int
++iscntrlmsg(
++	struct pkt *pkt
++	)
++{
++        /* Check for private and control messages */
++        if (PKT_MODE(pkt->li_vn_mode) == MODE_PRIVATE ||
++            PKT_MODE(pkt->li_vn_mode) == MODE_CONTROL)
++                return 1;
++        return 0;
++}
++
+ 
+ 
+ /* XXX ELIMINATE sendpkt similar in ntpq.c, ntpdc.c, ntp_io.c, ntptrace.c */
+@@ -3208,9 +3223,13 @@ sendpkt(
+ 			    &dest->sa, SOCKLEN(dest));
+ #endif
+ 		if (cc == -1) {
++			if (iscntrlmsg(pkt))
++				private_packets_notsent++;
+ 			src->notsent++;
+ 			packets_notsent++;
+ 		} else	{
++			if (iscntrlmsg(pkt))
++				private_packets_sent++;
+ 			src->sent++;
+ 			packets_sent++;
+ 		}
+@@ -3324,6 +3343,8 @@ read_refclock_packet(
+ 	consumed = indicate_refclock_packet(rp, rb);
+ 	if (!consumed) {
+ 		rp->recvcount++;
++		if (iscntrlmsg(&rb->recv_pkt))
++			private_packets_received++;
+ 		packets_received++;
+ 	}
+ 
+@@ -3594,6 +3615,8 @@ read_network_packet(
+ 	add_full_recv_buffer(rb);
+ 
+ 	itf->received++;
++	if(iscntrlmsg(&rb->recv_pkt))
++		private_packets_received++;
+ 	packets_received++;
+ 	return (buflen);
+ }
+@@ -4364,6 +4387,8 @@ io_clr_stats(void)
+ 	packets_received = 0;
+ 	packets_sent = 0;
+ 	packets_notsent = 0;
++	private_packets_sent = 0;
++	private_packets_notsent = 0;
+ 
+ 	handler_calls = 0;
+ 	handler_pkts = 0;
+--- a/ntpd/ntp_request.c
++++ b/ntpd/ntp_request.c
+@@ -306,6 +306,12 @@ prepare_pkt(
+ 	usingexbuf = 0;
+ 
+ 	/*
++	* Set packet to private mode
++	*/
++	struct pkt *gpkt = (struct pkt *)&rpkt;
++	gpkt->li_vn_mode = PKT_LI_VN_MODE(0,0,7);
++
++	/*
+ 	 * return the beginning of the packet buffer.
+ 	 */
+ 	return &rpkt.u;
+--- a/ntpd/ntp_util.c
++++ b/ntpd/ntp_util.c
+@@ -174,7 +174,6 @@ init_util(void)
+ #endif /* DEBUG */
+ }
+ 
+-
+ /*
+  * hourly_stats - print some interesting stats
+  */
+--- a/ntpq/ntpq-subs.c
++++ b/ntpq/ntpq-subs.c
+@@ -78,6 +78,7 @@ static	void	kerninfo	(struct parse *, FI
+ static	void	monstats	(struct parse *, FILE *);
+ static	void	iostats		(struct parse *, FILE *);
+ static	void	timerstats	(struct parse *, FILE *);
++static	void	privatestats	(struct parse *, FILE *);
+ 
+ /*
+  * Commands we understand.	Ntpdc imports this.
+@@ -206,6 +207,9 @@ struct xcmd opcmds[] = {
+ 	{ "timerstats", timerstats, { NO, NO, NO, NO },
+ 	  { "", "", "", "" },
+ 	  "display interval timer counters" },
++	{ "privatestats", privatestats, { NO, NO, NO, NO },
++	  { "", "", "", "" },
++	  "display private/control messages counter" },
+ 	{ 0,		0,		{ NO, NO, NO, NO },
+ 	  { "-4|-6", "", "", "" }, "" }
+ };
+@@ -4018,6 +4022,23 @@ timerstats(
+ 	collect_display_vdc(0, timerstats_vdc, FALSE, fp);
+ }
+ 
++/*
++ * privatestats - ntpq -c privatestats - private input and output counters
++ */
++static void
++privatestats(
++	struct parse *pcmd,
++	FILE *fp
++	)
++{
++    static vdc privatestats_vdc[] = {
++	VDC_INIT("private_sent",	"private packets sent:     ", NTP_STR),
++	VDC_INIT("private_received",	"private packets received: ", NTP_STR),
++    };
++
++	collect_display_vdc(0, privatestats_vdc, FALSE, fp);
++}
++
+ 
+ /*
+  * authinfo - implements ntpq -c authinfo
+--- a/ntpd/ntp_control.c
++++ b/ntpd/ntp_control.c
+@@ -228,7 +228,9 @@ static const struct ctl_proc control_cod
+ #define	CS_WANDER_THRESH	91
+ #define	CS_LEAPSMEARINTV	92
+ #define	CS_LEAPSMEAROFFS	93
+-#define	CS_MAX_NOAUTOKEY	CS_LEAPSMEAROFFS
++#define	CS_PRIVATE_SENT		94
++#define	CS_PRIVATE_RECEIVED	95
++#define	CS_MAX_NOAUTOKEY	CS_PRIVATE_RECEIVED
+ #ifdef AUTOKEY
+ #define	CS_FLAGS		(1 + CS_MAX_NOAUTOKEY)
+ #define	CS_HOST			(2 + CS_MAX_NOAUTOKEY)
+@@ -430,6 +432,9 @@ static const struct ctl_var sys_var[] =
+ 	{ CS_LEAPSMEARINTV,	RO, "leapsmearinterval" },    /* 92 */
+ 	{ CS_LEAPSMEAROFFS,	RO, "leapsmearoffset" },      /* 93 */
+ 
++	{ CS_PRIVATE_SENT,	RO, "private_sent" },     /* 92 */
++	{ CS_PRIVATE_RECEIVED,	RO, "private_received" }, /* 93 */
++
+ #ifdef AUTOKEY
+ 	{ CS_FLAGS,	RO, "flags" },		/* 1 + CS_MAX_NOAUTOKEY */
+ 	{ CS_HOST,	RO, "host" },		/* 2 + CS_MAX_NOAUTOKEY */
+@@ -2501,6 +2506,14 @@ ctl_putsys(
+ 	case CS_WANDER_THRESH:
+ 		ctl_putdbl(sys_var[varid].text, wander_threshold * 1e6);
+ 		break;
++
++	case CS_PRIVATE_SENT:
++		ctl_putuint(sys_var[varid].text, private_packets_sent);
++		break;
++
++	case CS_PRIVATE_RECEIVED:
++		ctl_putuint(sys_var[varid].text, private_packets_received);
++		break;
+ #ifdef AUTOKEY
+ 	case CS_FLAGS:
+ 		if (crypto_flags)

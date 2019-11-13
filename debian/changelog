@@ -1,3 +1,9 @@
+ntp (1:4.2.8p12+dfsg-4vyatta2) unstable; urgency=medium
+
+  * DANOS Import master
+
+ -- Vyatta Package Maintainers <DL-vyatta-help@att.com>  Tue, 12 Nov 2019 11:04:31 -0800
+
 ntp (1:4.2.8p12+dfsg-4) unstable; urgency=medium
 
   * CVE-2019-8936: Crafted null dereference attack in authenticated

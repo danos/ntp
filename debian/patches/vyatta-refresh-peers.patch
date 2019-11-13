@@ -1,0 +1,70 @@
+--- a/ntpd/ntp_timer.c
++++ b/ntpd/ntp_timer.c
+@@ -55,6 +55,11 @@ static void check_leapsec(u_int32, const
+  * message.
+  */
+ volatile int interface_interval;     /* init_io() sets def. 300s */
++/*
++ * First interface polls at just above the minimum polling interval.
++ * Subsequent updates are the default interval.
++ */
++static int op_interface_interval = ((1 << NTP_MINPOLL) + 1);
+ 
+ /*
+  * Initializing flag.  All async routines watch this and only do their
+@@ -300,6 +305,8 @@ timer(void)
+ 	struct peer *	next_peer;
+ 	l_fp		now;
+ 	time_t          tnow;
++	u_int		dstcnt;
++	u_int		peercnt;
+ 
+ 	/*
+ 	 * The basic timerevent is one second.  This is used to adjust the
+@@ -320,6 +327,12 @@ timer(void)
+ 	}
+ 
+ 	/*
++	 * Count the number of peers that have a local address associated.
++	 */
++	dstcnt = 0;
++	peercnt = 0;
++
++	/*
+ 	 * Now dispatch any peers whose event timer has expired. Be
+ 	 * careful here, since the peer structure might go away as the
+ 	 * result of the call.
+@@ -327,6 +340,11 @@ timer(void)
+ 	for (p = peer_list; p != NULL; p = next_peer) {
+ 		next_peer = p->p_link;
+ 
++		if (p->dstadr)
++			dstcnt++;
++
++		peercnt++;
++
+ 		/*
+ 		 * Restrain the non-burst packet rate not more
+ 		 * than one packet every 16 seconds. This is
+@@ -423,9 +441,20 @@ timer(void)
+ 	 */
+ 	if (interface_interval && interface_timer <= current_time) {
+ 		timer_interfacetimeout(current_time +
+-		    interface_interval);
++		    op_interface_interval);
++		op_interface_interval = interface_interval;
++
+ 		DPRINTF(2, ("timer: interface update\n"));
+ 		interface_update(NULL, NULL);
++
++		if (peercnt > 0 && dstcnt < peercnt &&
++		    current_time > (1 << NTP_MINPOLL)) {
++			/* one interface interval has elapsed and one or more
++			 * of the peers have no local address.  look again.
++			 */
++			refresh_all_peerinterfaces();
++			msyslog(LOG_INFO, "peers refreshed (no local addrs)");
++		}
+ 	}
+ 
+ 	if (worker_idle_timer && worker_idle_timer <= current_time)
