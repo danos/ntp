@@ -1,3 +1,11 @@
+ntp (1:4.2.8p14+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 4.2.8p14+dfsg
+  * Drop patches applied upstream
+  * Enable testsuite on all architectures, should be fixed
+
+ -- Bernhard Schmidt <berni@debian.org>  Fri, 06 Mar 2020 19:38:49 +0100
+
 ntp (1:4.2.8p13+dfsg-2) unstable; urgency=medium
 
   * Upload new upstream version to unstable
