@@ -1,3 +1,12 @@
+ntp (1:4.2.8p14+dfsg-2) unstable; urgency=medium
+
+  * Make test-suite non-fatal on ia64 ppc64 ppc64el where it still fails
+    - Also on m68k where we don't know yet due to Bug#931630
+  * Drop obsolete Breaks+Replaces from pre-oldstable
+  * Add Conflict/Replaces/Provides: time-daemon (Closes: #316549)
+
+ -- Bernhard Schmidt <berni@debian.org>  Tue, 10 Mar 2020 08:38:28 +0100
+
 ntp (1:4.2.8p14+dfsg-1) unstable; urgency=medium
 
   * New upstream version 4.2.8p14+dfsg
