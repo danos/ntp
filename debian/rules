@@ -5,7 +5,7 @@ DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 
 CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) -D_GNU_SOURCE
-CFLAGS   = $(shell dpkg-buildflags --get CFLAGS) -fno-strict-aliasing
+CFLAGS   = $(shell dpkg-buildflags --get CFLAGS) -fno-strict-aliasing -fcommon
 LDFLAGS  = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 
 %:
