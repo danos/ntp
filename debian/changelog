@@ -1,3 +1,10 @@
+ntp (1:4.2.8p15-1) unstable; urgency=medium
+
+  * New upstream version 4.2.8p15
+  * Build with -fcommon to fix FTBFS with GCC-10 (Closes: #957615)
+
+ -- Bernhard Schmidt <berni@debian.org>  Mon, 21 Sep 2020 23:07:42 +0200
+
 ntp (1:4.2.8p14+dfsg-2) unstable; urgency=medium
 
   * Make test-suite non-fatal on ia64 ppc64 ppc64el where it still fails
