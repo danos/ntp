@@ -1,3 +1,10 @@
+ntp (1:4.2.8p12+dfsg-4vyatta3) unstable; urgency=medium
+
+  [ Bernhard Schmidt ]
+  * Build with -fcommon to fix FTBFS with GCC-10
+
+ -- Charles (Chas) Williams <ciwillia@vyatta.att-mail.com>  Tue, 16 Mar 2021 09:00:56 -0400
+
 ntp (1:4.2.8p12+dfsg-4vyatta2) unstable; urgency=medium
 
   * DANOS Import master
