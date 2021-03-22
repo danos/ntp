@@ -1,0 +1,12 @@
+openssl_libdir.patch
+dfsg.patch
+includes.patch
+openssl-disable-check.patch
+libedit.patch
+debian-locfile.patch
+sntp-kod-location.patch
+
+# Patches that are Vyatta specific
+vyatta-fake-debian8-for-all-distros
+vyatta-refresh-peers.patch
+vyatta-private-stat.patch
