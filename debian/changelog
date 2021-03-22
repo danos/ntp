@@ -1,3 +1,9 @@
+ntp (1:4.2.8p15-1vyatta2) unstable; urgency=medium
+
+  * Empty commit so we can reset the version.
+
+ -- Charles (Chas) Williams <ciwillia@vyatta.att-mail.com>  Mon, 22 Mar 2021 14:59:54 -0400
+
 ntp (1:4.2.8p15+1vyatta1) unstable; urgency=medium
 
   * Import 4.2.8p15 from http://www.ntp.org/downloads.html
