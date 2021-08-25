@@ -1,6 +1,6 @@
 Source: ntp
 Section: net
-Priority: optional
+Priority: required
 Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
 Build-Depends: autogen,
                debhelper (>= 10),
