@@ -1,3 +1,10 @@
+ntp (1:4.2.8p15-1vyatta3) unstable; urgency=medium
+
+  [ Daniel Gollub ]
+  * Ensure ntp gets picked-up by debbootstrap
+
+ -- Charles (Chas) Williams <ciwillia@vyatta.att-mail.com>  Mon, 08 Nov 2021 08:33:22 -0500
+
 ntp (1:4.2.8p15-1vyatta2) unstable; urgency=medium
 
   * Empty commit so we can reset the version.
